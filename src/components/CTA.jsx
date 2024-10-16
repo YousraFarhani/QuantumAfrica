@@ -13,7 +13,7 @@ const CTA = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white typing-effect">
           Be a part of our Community!
         </h2>
-        <p className={`text-sm sm:text-base md:text-lg lg:text-xl  text-white leading-relaxed mt-5 max-w-xs sm:max-w-md`}>
+        <p className={`${styles.paragraph} text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mt-5 max-w-xs sm:max-w-md`}>
           We welcome everyone, Quantum Researchers, industry experts, students, and Quantum enthusiasts. Join us now and make your first step into the quantum world.
         </p>
       </div>

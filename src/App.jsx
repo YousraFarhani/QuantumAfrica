@@ -35,12 +35,13 @@ const App = () => {
             <div className="space-y-5">  {/* Adds vertical space between sections */}
                 
                   <Hero />
-
+                {/*
               <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
                   <Stats id="stats" />
                 </div>
               </div>
+            Text and Heading */}
 
               <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
