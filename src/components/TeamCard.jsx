@@ -2,12 +2,12 @@ import React from 'react';
 
 const TeamCard = ({ name, role, img, socialMedia, description }) => {
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-primary backdrop-blur-lg shadow-lg rounded-lg w-[500px] mx-4 my-4 hover:shadow-2xl hover:scale-105 transition-transform duration-300">
+    <div className="flex flex-col items-center justify-center p-6 bg-primary backdrop-blur-lg shadow-lg rounded-lg w-full max-w-[500px] mx-auto my-4 hover:shadow-2xl hover:scale-105 transition-transform duration-300">
       {/* Team Member Image */}
       <img
         src={img}
         alt={name}
-        className="w-[140px] h-[140px] rounded-full object-cover mb-4 border-2 border-white"
+        className="w-[120px] h-[120px] rounded-full object-cover mb-4 border-2 border-white"
       />
       
       {/* Team Member Name */}
@@ -24,14 +24,13 @@ const TeamCard = ({ name, role, img, socialMedia, description }) => {
       )}
 
       {/* Social Media Icons */}
-      <div className="flex mt-3">
+      <div className="flex mt-3 space-x-3">
         {socialMedia.map((social, index) => (
           <a
             key={social.id}
             href={social.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`mr-3 ${index === socialMedia.length - 1 ? 'mr-0' : ''}`}
           >
             <img
               src={social.icon}
@@ -46,4 +45,5 @@ const TeamCard = ({ name, role, img, socialMedia, description }) => {
 };
 
 export default TeamCard;
+
 
