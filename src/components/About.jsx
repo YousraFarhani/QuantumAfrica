@@ -23,16 +23,14 @@ const FeatureCard = ({ icon, title, content, index }) => (
   </div>
 )
 
-const Business = () => {
+const About = () => {
   return (
-    <section id='features' className={layout.section}>
+    <section id='about' className={layout.section}>
       <div className={layout.sectionInfo}>
-        <h2 className={styles.heading2}>You do the business, <br className='sm:block hidden'/>we'll handle the money.</h2>
+        <h2 className={styles.heading2}> About Us </h2>
+        <h2 className='text-gradient ss:text-[50px] text-[52px]'> Our Mission</h2>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          With the right credit card, 
-          you can improve your financial life by building credit,
-          earning rewards and saving money.
-          But with hundreds of credit cards on the market.
+        We aim to empower African researchers, students, and industries by fostering education, collaboration, and innovation in quantum technologies. A key focus is on promoting quantum learning and facilitating access to educational materials and opportunities for African students and professionals, ensuring they can participate in and contribute to the global quantum field.
         </p>
         <Button styles='mt-10'/>
       </div>
@@ -45,4 +43,4 @@ const Business = () => {
   )
 }
 
-export default Business
+export default About

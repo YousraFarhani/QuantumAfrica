@@ -13,6 +13,25 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      keyframes: {
+        bounceIn: {
+          '0%': {
+            opacity: 0,
+            transform: 'translateY(-20px)',
+          },
+          '60%': {
+            opacity: 1,
+            transform: 'translateY(10px)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        bounceIn: 'bounceIn 3s ease-out infinite', // Infinite loop
+      },
     },
     screens: {
       xs: "480px",

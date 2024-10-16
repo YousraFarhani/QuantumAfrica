@@ -13,7 +13,7 @@ import star from "./Star.svg";
 import menu from "./menu.svg";
 import close from "./close.svg";
 import google from "./google.svg";
-import apple from "./apple.svg";
+import spotify from "./spotify.png";
 import arrowUp from "./arrow-up.svg";
 import discount from "./Discount.svg";
 import facebook from "./facebook.svg";
@@ -23,6 +23,8 @@ import twitter from "./twitter.svg";
 import people01 from "./people01.png";
 import people02 from "./people02.png";
 import people03 from "./people03.png";
+import yousra from "./Yousra.png";
+import walid from "./walid.jpeg";
 
 export {
   airbnb,
@@ -40,7 +42,7 @@ export {
   menu,
   close,
   google,
-  apple,
+  spotify,
   arrowUp,
   discount,
   facebook,
@@ -50,4 +52,6 @@ export {
   people01,
   people02,
   people03,
+  yousra,
+  walid
 };
