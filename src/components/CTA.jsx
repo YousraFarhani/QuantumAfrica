@@ -10,10 +10,10 @@ const CTA = () => {
     >
       {/* Text and Heading */}
       <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white typing-effect">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white typing-effect">
           Be a part of our Community!
         </h2>
-        <p className={`${styles.paragraph} max-w-full sm:max-w-[470px] mt-5 text-base sm:text-lg md:text-xl`}>
+        <p className={`text-sm sm:text-base md:text-lg lg:text-xl  text-white leading-relaxed mt-5 max-w-xs sm:max-w-md`}>
           We welcome everyone, Quantum Researchers, industry experts, students, and Quantum enthusiasts. Join us now and make your first step into the quantum world.
         </p>
       </div>
@@ -27,3 +27,4 @@ const CTA = () => {
 };
 
 export default CTA;
+
