@@ -5,8 +5,10 @@ import { teamData } from '../constants'; // Importing the team data
 const OurTeam = () => {
   return (
     <section id='our-team' className="flex flex-col items-center min-h-screen bg-gray-100 py-10">
-      <h1 className="text-5xl font-bold mt-2 mb-10">Our Team</h1>
-      <div className="flex flex-wrap justify-center">
+      <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-10 text-center">Our Team</h1>
+      
+      {/* Adjust layout for responsive design */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 md:px-10">
         {teamData.map((member) => (
           <TeamCard
             key={member.id}
@@ -23,5 +25,6 @@ const OurTeam = () => {
 };
 
 export default OurTeam;
+
 
 

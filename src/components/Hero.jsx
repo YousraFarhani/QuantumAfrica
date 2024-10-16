@@ -21,7 +21,7 @@ const Hero = () => {
         <div className='flex flex-row justify-between items-center w-full'>
           <h1 className='flex-1 font-poppins font-semibold ss:text-[58px]  text-[52px] text-white ss:leading-[100.8px] leading-[75px]'>
           Empowering Africa Through <br className='sm:block hidden'/> {" "}
-            <span className=' typing-effect text-gradient'>Quantum Innovation</span> {" "}
+            <span className=' typing-effect text-gradient text-2xl sm:text-3xl md:text-5xl'>Quantum Innovation</span> {" "}
           </h1>
           <div className='ss:flex hidden md:mr-4 mr-0'>
             <GetStarted/>
