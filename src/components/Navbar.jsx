@@ -32,7 +32,7 @@ const Navbar = () => {
 
         {/* Support Us Button (Desktop) */}
         <li className="ml-10">
-          <a href="https://piehol3p0az.typeform.com/to/QEmSBmwk" target="_blank" rel="noopener noreferrer">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5AzXOJMDwnLs6OoDW6jesHfKyyHqx4X6wvbCZIwEDkiCZ0w/viewform" target="_blank" rel="noopener noreferrer">
             <button
               type='button'
               className={`py-4 px-6 bg-blue-gradient font-poppins font-semibold text-[16px] text-primary outline-none rounded-[10px]`}
@@ -74,7 +74,7 @@ const Navbar = () => {
 
             {/* Support Us Button (Mobile) */}
             <li>
-              <a href="https://piehol3p0az.typeform.com/to/QEmSBmwk" target="_blank" rel="noopener noreferrer">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5AzXOJMDwnLs6OoDW6jesHfKyyHqx4X6wvbCZIwEDkiCZ0w/viewform" target="_blank" rel="noopener noreferrer">
                 <button className='bg-[#14E1E7] text-white py-3 px-5 rounded hover:bg-blue-700'>
                   Support Us
                 </button>

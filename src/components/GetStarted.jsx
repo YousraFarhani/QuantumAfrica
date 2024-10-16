@@ -4,7 +4,7 @@ import { arrowUp } from '../assets';
 
 const GetStarted = () => {
   return (
-    <a href="https://piehol3p0az.typeform.com/to/F0MNJlc5" target="_blank" rel="noopener noreferrer">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdPNR7sb2xvXSgTnujM-yXiXPZ9AuyLDYAYQfpmoTbKGzAikg/viewform" target="_blank" rel="noopener noreferrer">
       <div className={`${styles.flexCenter} w-[140px] h-[140px] rounded-full bg-blue-gradient p-[2px] cursor-pointer`}>
         <div className={`${styles.flexCenter} flex-col bg-primary w-[100%] h-[100%] rounded-full`}>
           <div className={`${styles.flexStart} flex-row`}>

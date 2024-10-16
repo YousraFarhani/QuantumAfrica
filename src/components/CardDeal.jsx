@@ -12,7 +12,7 @@ const CardDeal = () => {
         </p>
         
         {/* Wrap the button with an <a> tag */}
-        <a href="https://piehol3p0az.typeform.com/to/QEmSBmwk" target="_blank" rel="noopener noreferrer">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5AzXOJMDwnLs6OoDW6jesHfKyyHqx4X6wvbCZIwEDkiCZ0w/viewform" target="_blank" rel="noopener noreferrer">
           <button type='button' className={`py-4 px-6 bg-blue-gradient font-poppins font-medium text-[18px] mt-10 text-primary outline-none ${styles} rounded-[10px]`}>
             Be Our Partner
           </button>
