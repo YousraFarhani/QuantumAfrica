@@ -29,7 +29,7 @@ const ContactUs = () => {
   return (
     <div id='contact' className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
       <div style={{  padding: '30px', borderRadius: '10px', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)', width: '100%', maxWidth: '900px' }}>
-      <h1 className='flex-1 font-poppins font-semibold ss:text-[48px] text-[52px] text-white ss:leading-[100.8px]  text-2xl sm:text-3xl md:text-5xl center leading-[75px]'>Contact Us</h1>
+      <h1 className='flex-1 font-poppins font-semibold text-white ss:leading-[100.8px]  text-2xl sm:text-3xl md:text-5xl center leading-[75px]'>Contact Us</h1>
         <form onSubmit={handleSubmit}>
           {/* Name Field */}
           <div style={{ marginBottom: '15px' }}>
