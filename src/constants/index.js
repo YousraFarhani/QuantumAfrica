@@ -217,7 +217,7 @@ export const teamData = [
   {
     id: 1,
     name: 'Yousra Farhani',
-    role: 'Founder of Quantum Africa',
+    role: 'Founder & CEO of Quantum Africa',
     img: yousra, // Replace with actual image path
     description: 'Yousra is a Researcher in Quantum Computing and Optimisation at the National Institute of Applied Science INSA Lyon. Her research and leadership have earned her international awards and recognitions, including the Quantum Rising Star Award Finalist for Women in Quantum 2024 and the Young Arab Pioneers Award 2024 in Quantum Computing. Yousra is a passionate advocate for empowering women in technology. As the former president of the Women Techmakers Algiers community and Google Women Techmaker Ambassador, she has been instrumental in encouraging women in Algeria to pursue careers in STEM. Her drive to advance quantum research in Africa led her to found Quantum Africa, her vision is to build a thriving quantum community in Africa and connect quantum researchers and enthusiasts across the region.',
     socialMedia: [
@@ -236,7 +236,7 @@ export const teamData = [
   {
     id: 2,
     name: 'Walid El Maouaki',
-    role: 'CTO of Quantum Africa',
+    role: 'Co-founder & CTO of Quantum Africa',
     img: walid, // Replace with actual image path
     description: 'Walid is a Researcher and a Ph.D. student in quantum machine learning at Hassan II University in Casablanca, Morocco. With a background in physics, Walid’s research focuses on quantum machine learning applications and security. In addition to his academic work, Walid is actively involved in the quantum computing community. He has presented at international conferences and engaged in mentoring through hackathons and internships, helping early-career researchers and developers build expertise in the field. A passionate advocate for inclusivity and diversity in STEM, Walid strives to foster a supportive environment for students from diverse backgrounds. Looking ahead, he is eager to continue his research in quantum machine learning, focusing on addressing some of the field’s most pressing challenges.',
     socialMedia: [
