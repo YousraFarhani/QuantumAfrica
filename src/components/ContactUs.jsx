@@ -80,7 +80,7 @@ const ContactUs = () => {
             <button
               type="submit"
               style={{
-                backgroundColor: '#14E1E7',
+                backgroundColor: '#9762CA',
                 color: '#fff',
                 padding: '10px 20px',
                 borderRadius: '5px',
