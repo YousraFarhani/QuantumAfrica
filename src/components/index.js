@@ -12,6 +12,7 @@ import Testimonials from './Testimonials'
 import Team from './Team'
 import ContactUs from './ContactUs'
 import Events from './Events'
+import EventCard from './EventCard'
 
 export {
     Billing,
@@ -24,8 +25,9 @@ export {
     Hero,
     Navbar,
     Stats,
+    Testimonials,
     Team,
     ContactUs,
-    Testimonials,
     Events,
+    EventCard,
 }
