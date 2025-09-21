@@ -14,6 +14,7 @@ import {
   ContactUs,
   Events,
   Testimonials,
+  Chapters,
 } from './components';
 import styles from './style';
 
@@ -84,6 +85,7 @@ const App = () => {
           {/* Page Routes */}
           <Route path="/event" element={<Events />} />
           <Route path="/our-team" element={<Team />} />
+          <Route path="/chapters" element={<Chapters />} />
         </Routes>
 
         {/* Common Footer */}

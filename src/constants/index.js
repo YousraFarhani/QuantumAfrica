@@ -26,15 +26,21 @@ export const navLinks = [
     isScroll: true,   // Indicates that this link should use smooth scroll
   },
   {
-    id: "research-initiatives",
-    title: "Research & Initiatives",
+    id: "research",
+    title: "Research",
     path: "/#research-initiatives",  // Hash link for smooth scrolling
     isScroll: true,   // Indicates that this link should use smooth scroll
   },
   {
-    id: "events",
-    title: "Events",
+    id: "events-initiatives",
+    title: "Events & Initiatives",
     path: "/event",  // Regular path for separate page
+    isScroll: false,  // This is not a scroll link
+  },
+  {
+    id: "chapters",
+    title: "Chapters",
+    path: "/chapters",  // Regular path for separate page
     isScroll: false,  // This is not a scroll link
   },
   {

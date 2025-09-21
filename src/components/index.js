@@ -13,6 +13,7 @@ import Team from './Team'
 import ContactUs from './ContactUs'
 import Events from './Events'
 import EventCard from './EventCard'
+import Chapters from './Chapters'
 
 export {
     Billing,
@@ -30,4 +31,5 @@ export {
     ContactUs,
     Events,
     EventCard,
+    Chapters,
 }
