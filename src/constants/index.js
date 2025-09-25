@@ -259,4 +259,18 @@ export const teamData = [
     ],
     
   },
+  {
+    id: 3,
+    name: 'Gamal Moneep',
+    role: 'HR Manager',
+    img: gamal,
+    description: 'Experienced HR professional with a passion for building diverse and inclusive teams in the tech industry.',
+    socialMedia: [
+      {
+        id: 'linkedin',
+        icon: linkedin,
+        link: 'https://www.linkedin.com/in/gamal-moneep/',
+      },
+    ],
+  },
 ];
