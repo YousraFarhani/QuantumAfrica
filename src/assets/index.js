@@ -25,6 +25,7 @@ import people02 from "./people02.png";
 import people03 from "./people03.png";
 import yousra from "./Yousra.png";
 import walid from "./walid.jpeg";
+import gamal from "./gamal.png";
 
 export {
   airbnb,
@@ -53,5 +54,6 @@ export {
   people02,
   people03,
   yousra,
-  walid
+  walid,
+  gamal
 };
