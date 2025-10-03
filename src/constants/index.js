@@ -275,9 +275,60 @@ export const teamData = [
       {
         id: 'twitter',
         icon: twitter,
-        link: 'https://x.com/Walid_Mk99',
+        link: 'https://x.com/zmoneep?s=21&t=GaIxFkoDMMCdFpzMtI84xw',
       },
     ],
     
+  },
+];
+
+export const chaptersData = [
+  {
+    id: 'mauritania',
+    name: 'Mauritania',
+    description: 'Quantum Africa Mauritania Chapter',
+    flagCode: 'mr',
+    flagUrl: 'https://flagcdn.com/mr.svg',
+    status: 'active'
+  },
+  {
+    id: 'nigeria',
+    name: 'Nigeria',
+    description: 'Quantum Africa Nigeria Chapter',
+    flagCode: 'ng',
+    flagUrl: 'https://flagcdn.com/ng.svg',
+    status: 'active'
+  },
+  {
+    id: 'ethiopia',
+    name: 'Ethiopia',
+    description: 'Quantum Africa Ethiopia Chapter',
+    flagCode: 'et',
+    flagUrl: 'https://flagcdn.com/et.svg',
+    status: 'active'
+  },
+  {
+    id: 'egypt',
+    name: 'Egypt',
+    description: 'Quantum Africa Egypt Chapter',
+    flagCode: 'eg',
+    flagUrl: 'https://flagcdn.com/eg.svg',
+    status: 'active'
+  },
+  {
+    id: 'algeria',
+    name: 'Algeria',
+    description: 'Quantum Africa Algeria Chapter',
+    flagCode: 'dz',
+    flagUrl: 'https://flagcdn.com/dz.svg',
+    status: 'active'
+  },
+  {
+    id: 'morocco',
+    name: 'Morocco',
+    description: 'Quantum Africa Morocco Chapter',
+    flagCode: 'ma',
+    flagUrl: 'https://flagcdn.com/ma.svg',
+    status: 'active'
   },
 ];
