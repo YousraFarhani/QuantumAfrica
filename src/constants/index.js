@@ -14,7 +14,8 @@ import {
   shield, 
   star,
   yousra,
-  walid
+  walid,
+  gamal
 } from "../assets";
 
 
@@ -225,7 +226,7 @@ export const teamData = [
     name: 'Yousra Farhani',
     role: 'Founder & CEO of Quantum Africa',
     img: yousra, // Replace with actual image path
-    description: 'Quantum Computing Researcher, Eng, Winner of the Arab Young Pioneers Award in Quantum, and the Quantum Women Rising Star Award.',
+    description: 'Quantum Computing Researcher, Eng, Winner of the Arab Young Pioneers Award in Quantum, and the Quantum Women Rising Star Award',
     socialMedia: [
       {
         id: 'linkedin',
@@ -250,6 +251,26 @@ export const teamData = [
         id: 'linkedin',
         icon: linkedin,
         link: 'https://www.linkedin.com/in/walid-el-maouaki-8b6328190/',
+      },
+      {
+        id: 'twitter',
+        icon: twitter,
+        link: 'https://x.com/Walid_Mk99',
+      },
+    ],
+    
+  },
+  {
+    id: 3,
+    name: 'Gamal Moneep',
+    role: 'HR Lead of Quantum Africa',
+    img: gamal, // Replace with actual image path
+    description: 'Deep Learning Engineer, postgraduate in Computer Science at Cairo University, IBM Qiskit Advocate and contributor to Egypt’s quantum community',
+    socialMedia: [
+      {
+        id: 'linkedin',
+        icon: linkedin,
+        link: 'https://www.linkedin.com/in/gamal-moneep/',
       },
       {
         id: 'twitter',
