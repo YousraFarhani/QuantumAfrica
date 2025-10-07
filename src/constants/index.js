@@ -15,7 +15,7 @@ import {
   star,
   yousra,
   walid,
-  gamal
+  gamal,
 } from "../assets";
 
 
