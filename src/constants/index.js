@@ -191,13 +191,13 @@ export const socialMedia = [
   {
     id: "social-media-1",
     icon: instagram,
-    link: "https://www.instagram.com/",
+    link: "https://www.instagram.com/quantum__africa?igsh=MW9jdTlkMnprbjBzNg%3D%3D&utm_source=qr",
   },
 
   {
     id: "social-media-3",
-    icon: twitter,
-    link: "https://www.twitter.com/",
+     icon: twitter,
+    link: "https://x.com/quantum_africa",
   },
 ];
 
