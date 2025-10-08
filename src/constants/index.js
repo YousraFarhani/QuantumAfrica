@@ -267,7 +267,7 @@ export const teamData = [
     name: 'Gamal Moneep',
     role: 'HR Lead of Quantum Africa',
     img: gamal,
-    description: 'Deep Learning Engineer, postgraduate in Computer Science at Cairo University, IBM Qiskit Advocate and contributor to Egypt’s quantum community',
+    description: 'AI & Deep Learning Engineer at Breast Cancer Therapeutics Ltd, IBM Qiskit Advocate. Quantum AI researcher',
     socialMedia: [
       {
         id: 'linkedin',
