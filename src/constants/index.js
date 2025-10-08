@@ -264,7 +264,7 @@ export const teamData = [
     id: 3,
     name: 'Gamal Moneep',
     role: 'HR Lead of Quantum Africa',
-    img: gamal, // Replace with actual image path
+    img: walid, // Replace with actual image path
     description: 'Deep Learning Engineer, postgraduate in Computer Science at Cairo University, IBM Qiskit Advocate and contributor to Egypt’s quantum community',
     socialMedia: [
       {
