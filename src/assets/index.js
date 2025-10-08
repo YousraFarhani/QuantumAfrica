@@ -55,5 +55,5 @@ export {
   people03,
   yousra,
   walid,
-  gamal
+  gamal,
 };

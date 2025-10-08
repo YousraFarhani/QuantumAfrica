@@ -14,7 +14,9 @@ import {
   shield, 
   star,
   yousra,
-  walid
+  walid,
+  gamal,
+
 } from "../assets";
 
 
@@ -190,13 +192,13 @@ export const socialMedia = [
   {
     id: "social-media-1",
     icon: instagram,
-    link: "https://www.instagram.com/",
+    link: "https://www.instagram.com/quantum__africa?igsh=MW9jdTlkMnprbjBzNg%3D%3D&utm_source=qr",
   },
 
   {
     id: "social-media-3",
-    icon: twitter,
-    link: "https://www.twitter.com/",
+     icon: twitter,
+    link: "https://x.com/quantum_africa",
   },
 ];
 
@@ -225,7 +227,7 @@ export const teamData = [
     name: 'Yousra Farhani',
     role: 'Founder & CEO of Quantum Africa',
     img: yousra, // Replace with actual image path
-    description: 'Quantum Computing Researcher, Eng, Winner of the Arab Young Pioneers Award in Quantum, and the Quantum Women Rising Star Award.',
+    description: 'Quantum Computing Researcher, Eng, Winner of the Arab Young Pioneers Award in Quantum, and the Quantum Women Rising Star Award',
     socialMedia: [
       {
         id: 'linkedin',
@@ -259,18 +261,77 @@ export const teamData = [
     ],
     
   },
+  
   {
     id: 3,
     name: 'Gamal Moneep',
-    role: 'HR Manager',
+    role: 'HR Lead of Quantum Africa',
     img: gamal,
-    description: 'Experienced HR professional with a passion for building diverse and inclusive teams in the tech industry.',
+    description: 'Deep Learning Engineer, postgraduate in Computer Science at Cairo University, IBM Qiskit Advocate and contributor to Egypt’s quantum community',
     socialMedia: [
       {
         id: 'linkedin',
         icon: linkedin,
         link: 'https://www.linkedin.com/in/gamal-moneep/',
       },
+      {
+        id: 'twitter',
+        icon: twitter,
+        link: 'https://x.com/zmoneep?s=21&t=GaIxFkoDMMCdFpzMtI84xw',
+      },
     ],
+    
+  },
+  
+];
+
+export const chaptersData = [
+  {
+    id: 'mauritania',
+    name: 'Mauritania',
+    description: 'Quantum Africa Mauritania Chapter',
+    flagCode: 'mr',
+    flagUrl: 'https://flagcdn.com/mr.svg',
+    status: 'active'
+  },
+  {
+    id: 'nigeria',
+    name: 'Nigeria',
+    description: 'Quantum Africa Nigeria Chapter',
+    flagCode: 'ng',
+    flagUrl: 'https://flagcdn.com/ng.svg',
+    status: 'active'
+  },
+  {
+    id: 'ethiopia',
+    name: 'Ethiopia',
+    description: 'Quantum Africa Ethiopia Chapter',
+    flagCode: 'et',
+    flagUrl: 'https://flagcdn.com/et.svg',
+    status: 'active'
+  },
+  {
+    id: 'egypt',
+    name: 'Egypt',
+    description: 'Quantum Africa Egypt Chapter',
+    flagCode: 'eg',
+    flagUrl: 'https://flagcdn.com/eg.svg',
+    status: 'active'
+  },
+  {
+    id: 'algeria',
+    name: 'Algeria',
+    description: 'Quantum Africa Algeria Chapter',
+    flagCode: 'dz',
+    flagUrl: 'https://flagcdn.com/dz.svg',
+    status: 'active'
+  },
+  {
+    id: 'morocco',
+    name: 'Morocco',
+    description: 'Quantum Africa Morocco Chapter',
+    flagCode: 'ma',
+    flagUrl: 'https://flagcdn.com/ma.svg',
+    status: 'active'
   },
 ];
