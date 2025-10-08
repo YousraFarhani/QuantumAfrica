@@ -6,3 +6,4 @@ export default defineConfig({
   base: './', // Use relative paths for Netlify deployment
 })
 
+ 
