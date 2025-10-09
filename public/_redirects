@@ -1,1 +1,5 @@
+# Redirect from old Netlify subdomain to custom domain
+https://quantumafrica.netlify.app/* https://quantum-africa.org/:splat 301!
+
+# SPA fallback for the main domain
 /*    /index.html   200
