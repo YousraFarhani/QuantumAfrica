@@ -1,4 +1,42 @@
 {
- "updated": null,
- "content": {}
+ "updated": "2026-08-29T17:20:58+00:00",
+ "content": {
+  "site": {},
+  "hero": {
+   "slides": [
+    {
+     "type": "Photo",
+     "image": "media/54e419fc0a87e28c.png",
+     "caption": "photo"
+    }
+   ]
+  },
+  "stats": {},
+  "highlight": {},
+  "about": {},
+  "people": [
+   {
+    "name": "yousra",
+    "group": "Leadership",
+    "role": "Founder",
+    "country": "Algeria",
+    "photo": "media/54e419fc0a87e28c.png",
+    "bio": "ez",
+    "fullBio": "ez",
+    "interests": [
+     "eze"
+    ]
+   }
+  ],
+  "chapters": [],
+  "events": [],
+  "projects": [],
+  "partners": [],
+  "articles": [],
+  "opportunities": [],
+  "conference": {},
+  "tutor": {},
+  "support": {},
+  "legal": {}
+ }
 }

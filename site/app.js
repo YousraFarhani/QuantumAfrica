@@ -2484,8 +2484,9 @@ ${crumb([{t:'Home',h:'#/'},{t:'News & Articles'}])}
         <input type="hidden" name="form-name" value="newsletter">
         <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
         <h5>Subscribe</h5>
-        <div class="field"><label>Email</label><input name="email" type="email" placeholder="you@university.edu"></div>
-        <div class="field"><label>Country</label><select name="country"><option value="">Select…</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">Other</option></select></div>
+        <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@university.edu"></div>
+        <div class="field"><label>Country</label><select name="country" required><option value="">Select…</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">Other</option></select></div>
         <button class="btn teal" type="submit">Subscribe <span class="ar" aria-hidden="true">&rarr;</span></button>
         <div class="form-msg mt16" hidden></div>
         <p class="xs mt16">Your email is handled via Netlify Forms and forwarded to the newsletter team.</p>
@@ -2535,12 +2536,12 @@ ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
       <input type="hidden" name="form-name" value="join">
       <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="grid g2">
-        <div class="field"><label>Full name</label><input name="full_name" placeholder="Your name"></div>
-        <div class="field"><label>Email</label><input name="email" type="email" placeholder="you@university.edu"></div>
-        <div class="field"><label>Country</label><select name="country"><option value="">Select…</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">Other</option></select></div>
+        <div class="field"><label>Full name</label><input name="full_name" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@university.edu"></div>
+        <div class="field"><label>Country</label><select name="country" required><option value="">Select…</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">Other</option></select></div>
         <div class="field"><label>Institution</label><input name="institution" placeholder="University or company"></div>
       </div>
-      <div class="field"><label>I am a…</label><select name="role"><option>Student</option><option>Researcher</option><option>Educator</option><option>Industry professional</option><option>Other</option></select></div>
+      <div class="field"><label>I am a…</label><select name="role" required><option>Student</option><option>Researcher</option><option>Educator</option><option>Industry professional</option><option>Other</option></select></div>
       <div class="field"><label>What are you looking for?</label><textarea name="message" rows="4" placeholder="Learning, research, mentorship, opportunities, starting a chapter…"></textarea></div>
       <button class="btn teal" type="submit">Join Quantum Africa <span class="ar" aria-hidden="true">→</span></button>
       <div class="form-msg mt16" hidden></div>
@@ -2577,11 +2578,11 @@ ${crumb([{t:'Home',h:'#/'},{t:'Contact'}])}
       <input type="hidden" name="form-name" value="contact">
       <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="grid g2">
-        <div class="field"><label>Name</label><input name="name" placeholder="Your name"></div>
-        <div class="field"><label>Email</label><input name="email" type="email" placeholder="you@example.com"></div>
+        <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@example.com"></div>
       </div>
-      <div class="field"><label>Reason</label><select name="reason"><option>Partnership</option><option>University collaboration</option><option>Media</option><option>Speaking request</option><option>Submit an opportunity</option><option>Other</option></select></div>
-      <div class="field"><label>Message</label><textarea name="message" rows="6" placeholder="How can we help?"></textarea></div>
+      <div class="field"><label>Reason</label><select name="reason" required><option>Partnership</option><option>University collaboration</option><option>Media</option><option>Speaking request</option><option>Submit an opportunity</option><option>Other</option></select></div>
+      <div class="field"><label>Message</label><textarea name="message" rows="6" required placeholder="How can we help?"></textarea></div>
       <button class="btn teal" type="submit">Send message</button>
       <div class="form-msg mt16" hidden></div>
     </form>
@@ -3351,7 +3352,7 @@ document.addEventListener('submit', async (e) => {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     if (msg) {
       msg.hidden = false;
-      msg.className = 'mt16 small tl';
+      msg.className = 'form-msg mt16 small tl';
       msg.style.cssText = 'padding:10px 14px;border-radius:4px;background:color-mix(in srgb,var(--teal) 15%,transparent);color:var(--teal);font-weight:500';
       msg.textContent = 'Thank you — your message has been received. We will be in touch shortly.';
     }
@@ -3367,7 +3368,7 @@ document.addEventListener('submit', async (e) => {
     window.location.href = `mailto:contact@quantum-africa.org?subject=${subject}&body=${body}`;
     if (msg) {
       msg.hidden = false;
-      msg.className = 'mt16 small';
+      msg.className = 'form-msg mt16 small';
       msg.style.cssText = 'padding:10px 14px;border-radius:4px;background:color-mix(in srgb,var(--gold) 20%,transparent);color:var(--ink)';
       msg.textContent = 'Your email app has been opened with your message — please press Send there to complete submission.';
     }
