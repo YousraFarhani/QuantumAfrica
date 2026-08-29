@@ -1,7 +1,44 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
+# Netlify configuration.
+#
+# The site is static files, so the "build" is just running the Python script
+# that assembles public/index.html from the sources in site/.
 
+[build]
+  publish = "public"
+  command = "python3 site/build.py"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+# Uploaded images are content-hashed, so they can be cached forever.
+[[headers]]
+  for = "/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The content and feed files change on every publish — never cache those.
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# The page itself is one file that carries a snapshot; revalidate each visit
+# so a publish is visible immediately.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Sensible defaults for a public site with no login.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# The site routes on the hash (#/about), so every path serves the same page.
 [[redirects]]
   from = "/*"
   to = "/index.html"

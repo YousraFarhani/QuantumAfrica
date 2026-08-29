@@ -1,0 +1,55 @@
+# Refreshes the job and event listings every morning, rebuilds the page, and
+# commits the result. Netlify sees the commit and republishes.
+#
+# Nothing here touches the content you write in the admin panel — that lives in
+# public/data/content.json and is only ever changed by you.
+
+name: Refresh listings
+
+on:
+  schedule:
+    - cron: '17 5 * * *'      # 05:17 UTC daily
+  workflow_dispatch:           # and a "Run workflow" button
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feeds
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r backend/requirements.txt
+
+      - name: Collect jobs and events
+        working-directory: backend
+        env:
+          # Put a real inbox here — it identifies the collector to the sites it
+          # reads, so they can contact you rather than block you.
+          QA_CONTACT: hello@quantum-africa.org
+          QA_SITE: https://quantum-africa.org
+          QA_DB: data/feed.sqlite3
+          QA_EXPORT_DIR: ../public/data
+        run: python -m app.cli refresh
+
+      - name: Rebuild the page with the new snapshot
+        run: python3 site/build.py
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "quantum-africa-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/opportunities.json public/data/events.json public/index.html
+          git diff --staged --quiet && echo "nothing changed" && exit 0
+          git commit -m "chore: refresh listings"
+          git push

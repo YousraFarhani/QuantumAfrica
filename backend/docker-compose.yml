@@ -1,0 +1,38 @@
+# Optional: run the LISTINGS COLLECTOR as a hosted service.
+#
+# You probably do not need this. The GitHub Action in .github/workflows/feeds.yml
+# already refreshes the job and event feeds every morning and commits them, and
+# the website reads the committed files. This compose file is here for the case
+# where you would rather the site fetched a live API.
+#
+# The admin panel is NOT hosted by this. It runs on your own computer — see
+# ../admin.sh and ../DEPLOY.md. Admin requests from anywhere but loopback are
+# refused, so exposing this container does not expose the editor.
+
+services:
+  feed:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/srv/data
+    environment:
+      # Put a real inbox here — it identifies the collector to the sites it
+      # reads, so they can contact you instead of blocking you.
+      QA_CONTACT: hello@quantum-africa.org
+      QA_SITE: https://quantum-africa.org
+
+      # Which origins may read the feed API from a browser.
+      QA_CORS: "*"
+
+      # How often to collect, in minutes.
+      QA_REFRESH_MINUTES: "720"
+
+      # Enables POST /api/refresh. Leave unset to disable that endpoint.
+      # QA_ADMIN_TOKEN: change-me
+
+      # --- Do not set these here ---------------------------------------
+      # QA_ADMIN_PASSWORD / QA_ALLOW_REMOTE_ADMIN would put the content editor
+      # on the public internet. Edit locally instead; it is safer and costs
+      # nothing but being at your own computer.

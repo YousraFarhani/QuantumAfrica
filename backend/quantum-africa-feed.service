@@ -1,0 +1,31 @@
+# /etc/systemd/system/quantum-africa-feed.service
+# systemctl enable --now quantum-africa-feed
+[Unit]
+Description=Quantum Africa opportunities and events feed
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=quantumafrica
+WorkingDirectory=/srv/quantum-africa/backend
+Environment=QA_CONTACT=hello@quantum-africa.org
+Environment=QA_SITE=https://quantum-africa.org
+Environment=QA_DB=/srv/quantum-africa/backend/data/feed.sqlite3
+Environment=QA_EXPORT_DIR=/srv/quantum-africa/public/data
+# Admin panel — without these two the panel is disabled.
+Environment=QA_ADMIN_PASSWORD=change-me
+Environment=QA_SECRET=change-me-too
+ExecStart=/srv/quantum-africa/backend/.venv/bin/python -m app.cli serve
+Restart=on-failure
+RestartSec=20
+
+# It only needs to read its own code and write its data directory.
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/srv/quantum-africa/backend/data /srv/quantum-africa/public/data
+
+[Install]
+WantedBy=multi-user.target

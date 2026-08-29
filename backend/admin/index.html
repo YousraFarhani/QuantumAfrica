@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quantum Africa — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+/* The panel wears the same palette as the site so editing does not feel like
+   leaving it. It is deliberately plainer: this is a workbench, not a shop window. */
+:root{
+  --navy:#001F3F; --navy-d:#00162E; --navy-l:#0A3357;
+  --gold:#C9A55B; --gold-l:#E2C68C; --green:#007736; --red:#B3402F;
+  --bg:#F7F5F0; --card:#fff; --line:rgba(0,31,63,.14); --line-2:rgba(0,31,63,.26);
+  --ink:#001F3F; --ink-2:#4A5768; --ink-3:#8A8F97;
+  --f:"Gotham","Gotham HTF",Poppins,"Helvetica Neue",Arial,sans-serif;
+  --sidebar:264px;
+}
+@font-face{font-family:"Gotham";src:url("assets/fonts/Gotham-Book.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Gotham";src:url("assets/fonts/Gotham-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Gotham";src:url("assets/fonts/Gotham-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--f);background:var(--bg);color:var(--ink);font-size:14px;line-height:1.55}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--navy-l)}
+.hidden{display:none!important}
+
+/* ---------------- sign in ---------------- */
+#login{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,var(--navy-l),var(--navy) 55%,var(--navy-d));z-index:50;padding:24px}
+.lbox{width:min(420px,100%);background:var(--card);border-radius:8px;padding:38px 34px;
+  box-shadow:0 40px 90px -30px rgba(0,22,46,.7)}
+.lbox h1{margin:0 0 6px;font-size:1.5rem;letter-spacing:-.03em}
+.lbox p{margin:0 0 26px;color:var(--ink-3);font-size:.9rem}
+.lbox label{display:block;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:600;color:var(--ink-2);margin-bottom:8px}
+.lbox input{width:100%;padding:12px 14px;border:1px solid var(--line-2);border-radius:4px;background:#fff}
+.lbox input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.lbox .err{color:var(--red);font-size:.85rem;margin-top:12px;min-height:20px}
+
+/* ---------------- shell ---------------- */
+#app{display:grid;grid-template-columns:var(--sidebar) 1fr;min-height:100%}
+aside{background:var(--navy);color:#fff;padding:22px 0;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{padding:0 22px 20px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:16px}
+.brand b{display:block;font-weight:700;font-size:1rem;letter-spacing:-.02em}
+.brand span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l)}
+.snav{display:flex;flex-direction:column;gap:1px;padding:0 10px}
+.snav button{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  width:100%;text-align:left;background:none;border:0;border-radius:4px;padding:10px 12px;
+  color:rgba(255,255,255,.72);cursor:pointer;font-size:.9rem;transition:background .15s,color .15s}
+.snav button:hover{background:rgba(255,255,255,.07);color:#fff}
+.snav button.on{background:var(--gold);color:var(--navy);font-weight:600}
+.snav .n{font-size:.68rem;opacity:.7;font-variant-numeric:tabular-nums}
+.snav button.on .n{opacity:.85}
+.side-foot{padding:20px 22px 0;margin-top:20px;border-top:1px solid rgba(255,255,255,.14);
+  font-size:.75rem;color:rgba(255,255,255,.5);display:flex;flex-direction:column;gap:10px}
+.side-foot a{color:var(--gold-l)}
+.side-foot button{background:none;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.8);
+  border-radius:4px;padding:7px 10px;cursor:pointer;font-size:.75rem;text-align:left}
+.side-foot button:hover{border-color:var(--gold);color:var(--gold-l)}
+
+main{padding:0 0 120px;min-width:0}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(247,245,240,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);padding:16px 34px;display:flex;align-items:center;
+  justify-content:space-between;gap:18px;flex-wrap:wrap}
+.topbar h2{margin:0;font-size:1.2rem;letter-spacing:-.03em}
+.topbar .blurb{color:var(--ink-3);font-size:.82rem;max-width:64ch;margin-top:3px}
+.tb-r{display:flex;align-items:center;gap:10px}
+.btn{border:1px solid var(--line-2);background:#fff;border-radius:4px;padding:9px 16px;
+  cursor:pointer;font-weight:600;font-size:.85rem;transition:all .15s}
+.btn:hover{border-color:var(--navy)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.primary:hover{background:var(--navy-l)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.btn.ghost{background:none}
+.btn.danger{color:var(--red);border-color:rgba(179,64,47,.4)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.dirty-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;margin-right:7px}
+
+.wrap{padding:28px 34px;max-width:1080px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px;margin-bottom:18px}
+.field{margin-bottom:20px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:600;color:var(--ink-2);margin-bottom:7px}
+.field .help{font-size:.78rem;color:var(--ink-3);margin:-3px 0 8px}
+.field input[type=text],.field input[type=url],.field input[type=email],
+.field input[type=date],.field input[type=time],.field input[type=number],
+.field select,.field textarea{
+  width:100%;padding:10px 12px;border:1px solid var(--line-2);border-radius:4px;background:#fff}
+.field textarea{min-height:110px;resize:vertical;line-height:1.6}
+.field textarea.md{min-height:190px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86rem}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}#app{grid-template-columns:1fr}
+  aside{position:static;height:auto}}
+
+/* image field */
+.img-f{display:flex;gap:16px;align-items:flex-start}
+.img-p{width:132px;height:132px;flex:none;border:1.5px dashed var(--line-2);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff;
+  color:var(--ink-3);font-size:.72rem;text-align:center;padding:8px}
+.img-p img,.img-p video{width:100%;height:100%;object-fit:cover}
+.img-a{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0}
+.img-a .row{display:flex;gap:8px;flex-wrap:wrap}
+.img-a input{width:100%}
+
+/* repeatable list */
+.list-rows{display:flex;flex-direction:column;gap:10px}
+.row-item{border:1px solid var(--line);border-radius:5px;background:#fff;overflow:hidden}
+.row-hd{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;background:#fff}
+.row-hd:hover{background:var(--bg)}
+.row-hd .grip{color:var(--ink-3);cursor:grab;font-size:1rem;line-height:1}
+.row-hd .t{flex:1;font-weight:600;font-size:.92rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row-hd .t.empty{color:var(--ink-3);font-weight:400;font-style:italic}
+.row-hd .x{border:0;background:none;color:var(--ink-3);cursor:pointer;font-size:1.1rem;padding:0 4px}
+.row-hd .x:hover{color:var(--red)}
+.row-b{padding:20px;border-top:1px solid var(--line);background:var(--bg)}
+.row-item.dragging{opacity:.45}
+.row-item.over{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,165,91,.3)}
+
+/* collection list */
+.coll{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+@media(max-width:900px){.coll{grid-template-columns:1fr}}
+.coll-list{display:flex;flex-direction:column;gap:4px;position:sticky;top:104px}
+.coll-list button{text-align:left;background:#fff;border:1px solid var(--line);border-radius:4px;
+  padding:11px 13px;cursor:pointer;font-size:.88rem;display:flex;justify-content:space-between;gap:10px}
+.coll-list button.on{border-color:var(--navy);background:var(--navy);color:#fff}
+.coll-list button .sub{font-size:.72rem;color:var(--ink-3)}
+.coll-list button.on .sub{color:rgba(255,255,255,.6)}
+.empty-note{color:var(--ink-3);font-size:.88rem;padding:18px 0}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(12px);
+  background:var(--navy);color:#fff;padding:12px 20px;border-radius:5px;font-size:.88rem;
+  opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60;max-width:90vw}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.toast.bad{background:var(--red)}
+
+.rev{display:flex;justify-content:space-between;gap:14px;align-items:center;
+  padding:11px 0;border-bottom:1px solid var(--line);font-size:.86rem}
+.rev:last-child{border-bottom:0}
+.rev .when{color:var(--ink-3);font-size:.8rem}
+.banner{background:#fff;border:1px solid var(--gold);border-left-width:4px;border-radius:5px;
+  padding:14px 18px;margin-bottom:18px;font-size:.87rem;color:var(--ink-2)}
+code{background:rgba(0,31,63,.07);padding:1px 5px;border-radius:3px;font-size:.88em}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <form class="lbox" id="loginForm">
+    <h1>Quantum Africa</h1>
+    <p>Admin panel</p>
+    <label for="pw">Password</label>
+    <input id="pw" type="password" autocomplete="current-password" autofocus>
+    <div class="err" id="loginErr"></div>
+    <button class="btn primary" style="width:100%;margin-top:8px" type="submit">Sign in</button>
+  </form>
+</div>
+
+<div id="app" class="hidden">
+  <aside>
+    <div class="brand"><b>Quantum Africa</b><span>Admin</span></div>
+    <nav class="snav" id="snav"></nav>
+    <div class="side-foot">
+      <button type="button" id="revBtn">Revision history</button>
+      <button type="button" id="viewBtn">Open the website</button>
+      <button type="button" id="outBtn">Sign out</button>
+      <span id="savedAt"></span>
+      <span id="pubState"></span>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div>
+        <h2 id="secTitle">—</h2>
+        <div class="blurb" id="secBlurb"></div>
+      </div>
+      <div class="tb-r">
+        <span id="dirty" class="hidden" style="font-size:.82rem;color:var(--ink-2)"><span class="dirty-dot"></span>Unsaved changes</span>
+        <button class="btn ghost" id="revertBtn" disabled>Revert</button>
+        <button class="btn" id="saveBtn" disabled>Save</button>
+        <button class="btn gold" id="pubBtn" title="Send everything you have saved to the live website">Publish to the website</button>
+      </div>
+    </div>
+    <div class="wrap" id="pane"></div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   Quantum Africa admin panel.
+
+   Renders itself from the schema the server publishes, so a new field on the
+   site never needs a change here. Everything is one document: load it, edit a
+   section, save it back. Saving writes a revision, so nothing is ever lost.
+   ===================================================================== */
+
+const API = location.pathname.replace(/\/admin\/?$/, '') || '';
+const $ = s => document.querySelector(s);
+const el = (t, c, h) => { const n = document.createElement(t); if(c) n.className = c;
+  if(h !== undefined) n.innerHTML = h; return n; };
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+let TOKEN = localStorage.getItem('qa_admin_token') || '';
+let SCHEMA = null, DOC = null, CLEAN = null, SECTION = null, ROW = 0;
+
+/* ---------------------------------------------------------------- network */
+async function api(path, opts){
+  const o = Object.assign({headers:{}}, opts || {});
+  o.headers['X-Admin-Session'] = TOKEN;
+  if(o.body && !(o.body instanceof FormData)){
+    o.headers['Content-Type'] = 'application/json';
+    o.body = JSON.stringify(o.body);
+  }
+  const r = await fetch(API + path, o);
+  if(r.status === 401){ signOut(); throw new Error('Session expired — sign in again.'); }
+  if(!r.ok){
+    let msg = r.statusText;
+    try { msg = (await r.json()).detail || msg; } catch(e){}
+    throw new Error(msg);
+  }
+  return r.status === 204 ? null : r.json();
+}
+
+function toast(msg, bad){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.className = 'toast on' + (bad ? ' bad' : '');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(()=> t.className = 'toast', 3200);
+}
+
+/* ---------------------------------------------------------------- session */
+$('#loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const err = $('#loginErr'); err.textContent = '';
+  try{
+    const r = await fetch(API + '/api/admin/login', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({password: $('#pw').value}) });
+    if(!r.ok){
+      const d = await r.json().catch(()=>({}));
+      err.textContent = d.detail || 'Could not sign in.';
+      return;
+    }
+    const d = await r.json();
+    TOKEN = d.token;
+    localStorage.setItem('qa_admin_token', TOKEN);
+    start();
+  }catch(ex){ err.textContent = 'Cannot reach the server.'; }
+});
+
+function signOut(){
+  TOKEN = '';
+  localStorage.removeItem('qa_admin_token');
+  $('#app').classList.add('hidden');
+  $('#login').classList.remove('hidden');
+  $('#pw').value = '';
+}
+$('#outBtn').addEventListener('click', signOut);
+$('#viewBtn').addEventListener('click', ()=> window.open(API + '/preview', '_blank'));
+
+/* ------------------------------------------------------------------ state */
+const clone = o => JSON.parse(JSON.stringify(o));
+const dirty = () => JSON.stringify(DOC) !== JSON.stringify(CLEAN);
+
+function markDirty(){
+  const d = dirty();
+  $('#dirty').classList.toggle('hidden', !d);
+  $('#saveBtn').disabled = !d;
+  $('#revertBtn').disabled = !d;
+}
+
+window.addEventListener('beforeunload', e => {
+  if(dirty()){ e.preventDefault(); e.returnValue = ''; }
+});
+
+/* ------------------------------------------------------------------- boot */
+async function start(){
+  try{
+    SCHEMA = await api('/api/admin/schema');
+    const r = await api('/api/admin/content');
+    DOC = r.content || {};
+    SCHEMA.sections.forEach(s => {
+      if(DOC[s.key] === undefined) DOC[s.key] = s.kind === 'collection' ? [] : {};
+    });
+    CLEAN = clone(DOC);
+    $('#login').classList.add('hidden');
+    $('#app').classList.remove('hidden');
+    buildNav();
+    open(SCHEMA.sections[0].key);
+    refreshPublish();
+  }catch(e){
+    if(TOKEN) toast(e.message, true);
+    signOut();
+  }
+}
+
+function buildNav(){
+  const nav = $('#snav');
+  nav.innerHTML = '';
+  SCHEMA.sections.forEach(s => {
+    const b = el('button', '', `<span>${esc(s.title)}</span>` +
+      (s.kind === 'collection' ? `<span class="n" data-count="${esc(s.key)}"></span>` : ''));
+    b.addEventListener('click', ()=> open(s.key));
+    b.dataset.key = s.key;
+    nav.appendChild(b);
+  });
+  counts();
+}
+function counts(){
+  document.querySelectorAll('[data-count]').forEach(n => {
+    const k = n.dataset.count;
+    n.textContent = (DOC[k] || []).length || '';
+  });
+}
+
+function open(key){
+  SECTION = SCHEMA.sections.find(s => s.key === key);
+  ROW = 0;
+  document.querySelectorAll('#snav button').forEach(b =>
+    b.classList.toggle('on', b.dataset.key === key));
+  $('#secTitle').textContent = SECTION.title;
+  $('#secBlurb').textContent = SECTION.blurb || '';
+  draw();
+}
+
+/* ------------------------------------------------------------------ forms */
+function fieldNode(field, get, set){
+  const f = el('div', 'field');
+  f.appendChild(el('label', '', esc(field.label)));
+  if(field.help) f.appendChild(el('div', 'help', esc(field.help)));
+  const t = field.type;
+  let input;
+
+  if(t === 'textarea' || t === 'markdown'){
+    input = el('textarea');
+    if(t === 'markdown') input.className = 'md';
+    input.value = get() || '';
+    input.addEventListener('input', ()=>{ set(input.value); markDirty(); });
+  }
+  else if(t === 'select'){
+    input = el('select');
+    input.appendChild(el('option', '', ''));
+    (field.options || []).forEach(o => {
+      const opt = el('option', '', esc(o)); opt.value = o; input.appendChild(opt);
+    });
+    input.value = get() || '';
+    input.addEventListener('change', ()=>{ set(input.value); markDirty(); });
+  }
+  else if(t === 'tags'){
+    input = el('input'); input.type = 'text';
+    input.placeholder = 'Separate with commas';
+    input.value = (get() || []).join(', ');
+    input.addEventListener('input', ()=>{
+      set(input.value.split(',').map(s=>s.trim()).filter(Boolean)); markDirty(); });
+  }
+  else if(t === 'image'){
+    f.appendChild(imageField(get, set));
+    return f;
+  }
+  else if(t === 'list'){
+    f.appendChild(listField(field, get, set));
+    return f;
+  }
+  else{
+    input = el('input');
+    input.type = ({url:'url', email:'email', date:'date', time:'time',
+                   number:'number'})[t] || 'text';
+    input.value = get() == null ? '' : get();
+    input.addEventListener('input', ()=>{
+      set(t === 'number' ? (input.value === '' ? null : Number(input.value)) : input.value);
+      markDirty(); });
+  }
+  f.appendChild(input);
+  return f;
+}
+
+function imageField(get, set){
+  const box = el('div', 'img-f');
+  const prev = el('div', 'img-p');
+  const acts = el('div', 'img-a');
+  const url  = el('input'); url.type = 'text'; url.placeholder = 'media/… or a full URL';
+  const row  = el('div', 'row');
+  const pick = el('button', 'btn ghost', 'Upload…'); pick.type = 'button';
+  const del  = el('button', 'btn ghost danger', 'Remove'); del.type = 'button';
+  const file = el('input'); file.type = 'file';
+  file.accept = 'image/png,image/jpeg,image/webp,image/gif,image/svg+xml,application/pdf,video/mp4,video/webm,video/quicktime';
+  file.style.display = 'none';
+
+  const paint = () => {
+    const v = get() || '';
+    const src = v && (v.startsWith('http') ? v : API + '/' + v);
+    if(!v){
+      prev.innerHTML = 'Nothing yet';
+    }else if(/\.(mp4|webm|mov)$/i.test(v)){
+      // a clip — show it, muted, so you can check you picked the right one
+      prev.innerHTML = `<video src="${esc(src)}" muted playsinline preload="metadata"></video>`;
+    }else if(/\.pdf$/i.test(v)){
+      prev.innerHTML = 'PDF attached';
+    }else{
+      prev.innerHTML = `<img src="${esc(src)}" alt="">`;
+    }
+    url.value = v;
+  };
+  url.addEventListener('input', ()=>{ set(url.value); markDirty(); paint(); });
+  pick.addEventListener('click', ()=> file.click());
+  del.addEventListener('click', ()=>{ set(''); markDirty(); paint(); });
+  file.addEventListener('change', async ()=>{
+    if(!file.files[0]) return;
+    const fd = new FormData(); fd.append('file', file.files[0]);
+    pick.disabled = true; pick.textContent = 'Uploading…';
+    try{
+      const r = await api('/api/admin/media', {method:'POST', body: fd});
+      set(r.url); markDirty(); paint();
+      toast('Uploaded ' + r.filename);
+    }catch(e){ toast(e.message, true); }
+    pick.disabled = false; pick.textContent = 'Upload…';
+    file.value = '';
+  });
+
+  row.append(pick, del);
+  acts.append(url, row, file);
+  box.append(prev, acts);
+  paint();
+  return box;
+}
+
+function listField(field, get, set){
+  const wrap = el('div');
+  const rows = el('div', 'list-rows');
+  const add = el('button', 'btn ghost', '+ Add ' + field.label.toLowerCase().replace(/s$/, ''));
+  add.type = 'button';
+
+  const paint = () => {
+    const list = get() || [];
+    rows.innerHTML = '';
+    list.forEach((row, i) => rows.appendChild(rowNode(field, list, row, i, paint, set)));
+    if(!list.length) rows.appendChild(el('div', 'empty-note', 'Nothing here yet.'));
+  };
+  add.addEventListener('click', ()=>{
+    const list = (get() || []).slice();
+    list.push({});
+    set(list); markDirty(); paint();
+    const last = rows.querySelector('.row-item:last-of-type .row-hd');
+    if(last) last.click();
+  });
+  wrap.append(rows, add);
+  paint();
+  return wrap;
+}
+
+function rowNode(field, list, row, i, repaint, set){
+  const item = el('div', 'row-item');
+  item.draggable = true;
+  const label = row[field.label_field] || '';
+  const hd = el('div', 'row-hd', `
+    <span class="grip" title="Drag to reorder">⋮⋮</span>
+    <span class="t ${label ? '' : 'empty'}">${esc(label || 'Untitled')}</span>
+    <button class="x" type="button" title="Delete">×</button>`);
+  const body = el('div', 'row-b hidden');
+
+  hd.addEventListener('click', e => {
+    if(e.target.closest('.x')) return;
+    body.classList.toggle('hidden');
+    if(!body.dataset.built){
+      field.fields.forEach(sub => body.appendChild(
+        fieldNode(sub, ()=> row[sub.key], v => { row[sub.key] = v; set(list.slice());
+          const t = hd.querySelector('.t');
+          const nv = row[field.label_field];
+          t.textContent = nv || 'Untitled';
+          t.className = 't' + (nv ? '' : ' empty');
+        })));
+      body.dataset.built = '1';
+    }
+  });
+  hd.querySelector('.x').addEventListener('click', ()=>{
+    if(!confirm('Delete this entry? You can still undo it from revision history.')) return;
+    const next = list.slice(); next.splice(i, 1);
+    set(next); markDirty(); repaint();
+  });
+
+  item.addEventListener('dragstart', e => {
+    item.classList.add('dragging');
+    e.dataTransfer.setData('text/plain', String(i));
+  });
+  item.addEventListener('dragend', ()=> item.classList.remove('dragging'));
+  item.addEventListener('dragover', e => { e.preventDefault(); item.classList.add('over'); });
+  item.addEventListener('dragleave', ()=> item.classList.remove('over'));
+  item.addEventListener('drop', e => {
+    e.preventDefault(); item.classList.remove('over');
+    const from = Number(e.dataTransfer.getData('text/plain'));
+    if(Number.isNaN(from) || from === i) return;
+    const next = list.slice();
+    next.splice(i, 0, next.splice(from, 1)[0]);
+    set(next); markDirty(); repaint();
+  });
+
+  item.append(hd, body);
+  return item;
+}
+
+/* ------------------------------------------------------------------- draw */
+function draw(){
+  const pane = $('#pane');
+  pane.innerHTML = '';
+  if(!SECTION) return;
+
+  if(SECTION.kind === 'single'){
+    const card = el('div', 'card');
+    const obj = DOC[SECTION.key] = DOC[SECTION.key] || {};
+    SECTION.fields.forEach(f => card.appendChild(
+      fieldNode(f, ()=> obj[f.key], v => { obj[f.key] = v; })));
+    pane.appendChild(card);
+    return;
+  }
+
+  // collection: a list on the left, the selected entry on the right
+  const list = DOC[SECTION.key] = DOC[SECTION.key] || [];
+  const coll = el('div', 'coll');
+  const side = el('div', 'coll-list');
+  const body = el('div');
+
+  const addBtn = el('button', 'btn primary', '+ Add new');
+  addBtn.type = 'button';
+  addBtn.style.marginBottom = '8px';
+  addBtn.addEventListener('click', ()=>{
+    list.push({}); ROW = list.length - 1; markDirty(); counts(); draw();
+  });
+  side.appendChild(addBtn);
+
+  list.forEach((row, i) => {
+    const name = row[SECTION.label_field] || 'Untitled';
+    const sub = row.role || row.type || row.country || row.category || '';
+    const b = el('button', i === ROW ? 'on' : '',
+      `<span>${esc(name)}</span><span class="sub">${esc(sub)}</span>`);
+    b.type = 'button';
+    b.addEventListener('click', ()=>{ ROW = i; draw(); });
+    side.appendChild(b);
+  });
+
+  if(!list.length){
+    body.appendChild(el('div', 'empty-note',
+      'Nothing here yet. Use “Add new” to create the first entry.'));
+  }else{
+    const row = list[Math.min(ROW, list.length - 1)];
+    const card = el('div', 'card');
+    SECTION.fields.forEach(f => card.appendChild(
+      fieldNode(f, ()=> row[f.key], v => { row[f.key] = v; })));
+    const del = el('button', 'btn danger', 'Delete this entry');
+    del.type = 'button';
+    del.addEventListener('click', ()=>{
+      if(!confirm('Delete this entry?')) return;
+      list.splice(ROW, 1); ROW = 0; markDirty(); counts(); draw();
+    });
+    card.appendChild(del);
+    body.appendChild(card);
+  }
+  coll.append(side, body);
+  pane.appendChild(coll);
+}
+
+/* ------------------------------------------------------------------- save */
+$('#saveBtn').addEventListener('click', async ()=>{
+  const b = $('#saveBtn');
+  b.disabled = true; b.textContent = 'Saving…';
+  try{
+    const r = await api('/api/admin/content', {method:'PUT', body:{content: DOC}});
+    DOC = r.content;
+    SCHEMA.sections.forEach(s => {
+      if(DOC[s.key] === undefined) DOC[s.key] = s.kind === 'collection' ? [] : {};
+    });
+    CLEAN = clone(DOC);
+    $('#savedAt').textContent = 'Saved ' + new Date().toLocaleTimeString();
+    counts(); draw(); markDirty();
+    toast('Saved. Press “Publish to the website” to put it live.');
+    refreshPublish();
+  }catch(e){ toast(e.message, true); }
+  b.textContent = 'Save';
+  markDirty();
+});
+
+$('#revertBtn').addEventListener('click', ()=>{
+  if(!confirm('Discard your unsaved changes?')) return;
+  DOC = clone(CLEAN); counts(); draw(); markDirty();
+});
+
+/* --------------------------------------------------------------- publish */
+/* Saving stores the content on this computer. Publishing commits it and pushes,
+   which is what makes the live website change. Keeping them separate means you
+   can edit over several sittings and publish once, when you are ready. */
+async function refreshPublish(){
+  const state = $('#pubState'), btn = $('#pubBtn');
+  try{
+    const r = await api('/api/admin/publish');
+    if(!r.ready){
+      btn.disabled = true;
+      state.textContent = r.reason || 'Publishing is unavailable.';
+      return;
+    }
+    btn.disabled = false;
+    state.textContent = r.count
+      ? `${r.count} change${r.count === 1 ? '' : 's'} waiting to publish`
+      : 'Website is up to date';
+    btn.classList.toggle('gold', r.count > 0);
+    btn.classList.toggle('ghost', r.count === 0);
+  }catch(e){
+    btn.disabled = true;
+    state.textContent = '';
+  }
+}
+
+$('#pubBtn').addEventListener('click', async ()=>{
+  if(dirty() && !confirm('You have unsaved changes. Publish without them?')) return;
+  const b = $('#pubBtn');
+  b.disabled = true; b.textContent = 'Publishing…';
+  try{
+    const note = prompt('Describe this update (optional)', 'Update site content');
+    if(note === null){ b.disabled = false; b.textContent = 'Publish to the website'; return; }
+    const r = await api('/api/admin/publish', {method:'POST', body:{message: note}});
+    if(r.nothing) toast(r.message);
+    else if(r.ok) toast(r.message);
+    else toast(r.error || 'Publish failed', true);
+  }catch(e){ toast(e.message, true); }
+  b.textContent = 'Publish to the website';
+  refreshPublish();
+});
+
+/* --------------------------------------------------------------- history */
+$('#revBtn').addEventListener('click', async ()=>{
+  try{
+    const r = await api('/api/admin/revisions');
+    const pane = $('#pane');
+    $('#secTitle').textContent = 'Revision history';
+    $('#secBlurb').textContent = 'Every save is kept. Restoring one creates a new save, ' +
+      'so nothing is destroyed either way.';
+    document.querySelectorAll('#snav button').forEach(b => b.classList.remove('on'));
+    pane.innerHTML = '';
+    const card = el('div', 'card');
+    if(!r.revisions.length) card.appendChild(el('div', 'empty-note', 'No saves yet.'));
+    r.revisions.forEach((rev, i) => {
+      const line = el('div', 'rev', `
+        <span><b>#${rev.id}</b> ${i === 0 ? '<span style="color:var(--green)">· current</span>' : ''}
+          <span class="when">${esc(new Date(rev.created).toLocaleString())}${rev.note ? ' · ' + esc(rev.note) : ''}</span></span>`);
+      if(i > 0){
+        const b = el('button', 'btn ghost', 'Restore'); b.type = 'button';
+        b.addEventListener('click', async ()=>{
+          if(!confirm('Restore revision #' + rev.id + '?')) return;
+          try{
+            const res = await api('/api/admin/rollback/' + rev.id, {method:'POST'});
+            DOC = res.content; CLEAN = clone(DOC);
+            toast('Restored revision #' + rev.id);
+            counts(); open(SCHEMA.sections[0].key); markDirty();
+          }catch(e){ toast(e.message, true); }
+        });
+        line.appendChild(b);
+      }
+      card.appendChild(line);
+    });
+    pane.appendChild(card);
+  }catch(e){ toast(e.message, true); }
+});
+
+/* ---------------------------------------------------------------- kickoff */
+if(TOKEN) start(); else { $('#login').classList.remove('hidden'); }
+</script>
+</body>
+</html>
