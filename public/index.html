@@ -1170,6 +1170,10 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
   </div>
 </div>
 
+<div id="thanksBanner" style="display:none;background:var(--teal);color:#fff;font-family:var(--f);font-weight:500;padding:12px 0;text-align:center;font-size:.92rem;letter-spacing:.01em">
+  <div class="wrap">Thank you — your message has been received. We will be in touch shortly.</div>
+</div>
+
 <main id="view"></main>
 
 <footer class="site">
@@ -1180,8 +1184,12 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
         <span class="logo"></span>
         <p>Building Africa's quantum workforce through education, research and collaboration.</p>
         <div class="f-news">
-          <input type="email" placeholder="your@email.com" aria-label="Email address">
-          <button class="btn sm teal"><span>Subscribe</span></button>
+          <form data-netlify="true" name="footer-newsletter" method="POST" action="/?thanks=1" netlify-honeypot="bot-field" style="display:flex;gap:8px">
+            <input type="hidden" name="form-name" value="footer-newsletter">
+            <p class="sr" hidden><label>Don't fill: <input name="bot-field"></label></p>
+            <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" style="flex:1;min-width:0">
+            <button class="btn sm teal" type="submit"><span>Subscribe</span></button>
+          </form>
         </div>
         <div class="socials">
           <a href="#/contact" title="LinkedIn">in</a>
@@ -4082,11 +4090,16 @@ ${crumb([{t:'Home',h:'#/'},{t:'News & Articles'}])}
       ${sectionHead('Newsletter','Get it in your inbox','One email a month: what happened, what is coming, and which deadlines are close.')}
     </div>
     <div class="panel">
-      <h5>Subscribe</h5>
-      <div class="field"><label>Email</label><input type="email" placeholder="you@university.edu"></div>
-      <div class="field"><label>Country</label><select><option>Select…</option>${CHAPTERS.map(c=>`<option>${esc(c.name)}</option>`).join('')}<option>Other</option></select></div>
-      <button class="btn teal" type="button">Subscribe <span class="ar" aria-hidden="true">&rarr;</span></button>
-      <p class="xs mt16">Connect this to your existing newsletter tool. No data is collected by this prototype.</p>
+      <form data-netlify="true" name="newsletter" method="POST" action="/?thanks=1" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+        <h5>Subscribe</h5>
+        <div class="field"><label>Email</label><input name="email" type="email" placeholder="you@university.edu"></div>
+        <div class="field"><label>Country</label><select name="country"><option value="">Select…</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">Other</option></select></div>
+        <button class="btn teal" type="submit">Subscribe <span class="ar" aria-hidden="true">&rarr;</span></button>
+        <div class="form-msg mt16" hidden></div>
+        <p class="xs mt16">Your email is handled via Netlify Forms and forwarded to the newsletter team.</p>
+      </form>
     </div>
   </div>
 </div></section>`;
@@ -4127,18 +4140,21 @@ ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
 <section class="sec"><div class="wrap"><div class="side">
   <div>
     <h3>Membership form</h3>
-    <p class="small mt8">This form is a placeholder. In production it posts to a route handler and writes into the CMS or your existing membership tool.</p>
-    <div class="mt24">
+    <p class="small mt8">Tell us who you are and we will point you at the right chapter and people.</p>
+    <form class="mt24" data-netlify="true" name="join" method="POST" action="/?thanks=1" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="join">
+      <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="grid g2">
-        <div class="field"><label>Full name</label><input placeholder="Your name"></div>
-        <div class="field"><label>Email</label><input type="email" placeholder="you@university.edu"></div>
-        <div class="field"><label>Country</label><select><option>Select…</option>${CHAPTERS.map(c=>`<option>${esc(c.name)}</option>`).join('')}<option>Other</option></select></div>
-        <div class="field"><label>Institution</label><input placeholder="University or company"></div>
+        <div class="field"><label>Full name</label><input name="full_name" placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input name="email" type="email" placeholder="you@university.edu"></div>
+        <div class="field"><label>Country</label><select name="country"><option value="">Select…</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">Other</option></select></div>
+        <div class="field"><label>Institution</label><input name="institution" placeholder="University or company"></div>
       </div>
-      <div class="field"><label>I am a…</label><select><option>Student</option><option>Researcher</option><option>Educator</option><option>Industry professional</option><option>Other</option></select></div>
-      <div class="field"><label>What are you looking for?</label><textarea rows="4" placeholder="Learning, research, mentorship, opportunities, starting a chapter…"></textarea></div>
-      <button class="btn teal" type="button">Join Quantum Africa <span class="ar" aria-hidden="true">→</span></button>
-    </div>
+      <div class="field"><label>I am a…</label><select name="role"><option>Student</option><option>Researcher</option><option>Educator</option><option>Industry professional</option><option>Other</option></select></div>
+      <div class="field"><label>What are you looking for?</label><textarea name="message" rows="4" placeholder="Learning, research, mentorship, opportunities, starting a chapter…"></textarea></div>
+      <button class="btn teal" type="submit">Join Quantum Africa <span class="ar" aria-hidden="true">→</span></button>
+      <div class="form-msg mt16" hidden></div>
+    </form>
   </div>
   <aside>
     <div class="panel"><h5>What you get</h5>
@@ -4167,18 +4183,23 @@ ${crumb([{t:'Home',h:'#/'},{t:'Contact'}])}
 </div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div>
-    <div class="grid g2">
-      <div class="field"><label>Name</label><input></div>
-      <div class="field"><label>Email</label><input type="email"></div>
-    </div>
-    <div class="field"><label>Reason</label><select><option>Partnership</option><option>University collaboration</option><option>Media</option><option>Speaking request</option><option>Submit an opportunity</option><option>Other</option></select></div>
-    <div class="field"><label>Message</label><textarea rows="6"></textarea></div>
-    <button class="btn teal" type="button">Send message</button>
+    <form data-netlify="true" name="contact" method="POST" action="/?thanks=1" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+      <div class="grid g2">
+        <div class="field"><label>Name</label><input name="name" placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input name="email" type="email" placeholder="you@example.com"></div>
+      </div>
+      <div class="field"><label>Reason</label><select name="reason"><option>Partnership</option><option>University collaboration</option><option>Media</option><option>Speaking request</option><option>Submit an opportunity</option><option>Other</option></select></div>
+      <div class="field"><label>Message</label><textarea name="message" rows="6" placeholder="How can we help?"></textarea></div>
+      <button class="btn teal" type="submit">Send message</button>
+      <div class="form-msg mt16" hidden></div>
+    </form>
   </div>
   <aside><div class="panel"><h5>Direct</h5><dl class="dl-list">
-    <div class="dl-item"><dt>Email</dt><dd>${pht('email address')}</dd></div>
-    <div class="dl-item"><dt>LinkedIn</dt><dd>${pht('URL')}</dd></div>
-    <div class="dl-item"><dt>Based in</dt><dd>${pht('City, country')}</dd></div>
+    <div class="dl-item"><dt>Email</dt><dd><a href="mailto:contact@quantum-africa.org">contact@quantum-africa.org</a></dd></div>
+    <div class="dl-item"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/company/quantum-africa" target="_blank" rel="noopener">Quantum Africa</a></dd></div>
+    <div class="dl-item"><dt>Based in</dt><dd>Pan-African — chapters across the continent</dd></div>
   </dl></div></aside>
 </div></div></section>`;
 
@@ -4913,6 +4934,69 @@ function initControls(){
 /* ---------- boot ---------- */
 buildNav();
 initControls();
+
+/* ---------- Netlify forms submit handler + mailto fallback ---------- */
+function encodeFD(fd){
+  return [...fd.entries()]
+    .filter(([k]) => k !== 'bot-field')
+    .map(([k,v]) => encodeURIComponent(k)+'='+encodeURIComponent(v))
+    .join('&');
+}
+document.addEventListener('submit', async (e) => {
+  const f = e.target.closest('form[data-netlify]');
+  if (!f) return;
+  e.preventDefault();
+  const formName = f.getAttribute('name') || 'contact';
+  const msg = f.querySelector('.form-msg');
+  const btn = f.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.style.opacity = '.6'; }
+  try {
+    const fd = new FormData(f);
+    fd.set('form-name', formName);
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeFD(fd)
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    if (msg) {
+      msg.hidden = false;
+      msg.className = 'mt16 small tl';
+      msg.style.cssText = 'padding:10px 14px;border-radius:4px;background:color-mix(in srgb,var(--teal) 15%,transparent);color:var(--teal);font-weight:500';
+      msg.textContent = 'Thank you — your message has been received. We will be in touch shortly.';
+    }
+    f.reset();
+  } catch (err) {
+    const data = Object.fromEntries(new FormData(f).entries());
+    delete data['bot-field'];
+    const subject = encodeURIComponent(`[${formName}] from quantum-africa.org`);
+    const bodyLines = Object.entries(data)
+      .filter(([k]) => k !== 'form-name')
+      .map(([k,v]) => `${k}:\n${v}\n`);
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    window.location.href = `mailto:contact@quantum-africa.org?subject=${subject}&body=${body}`;
+    if (msg) {
+      msg.hidden = false;
+      msg.className = 'mt16 small';
+      msg.style.cssText = 'padding:10px 14px;border-radius:4px;background:color-mix(in srgb,var(--gold) 20%,transparent);color:var(--ink)';
+      msg.textContent = 'Your email app has been opened with your message — please press Send there to complete submission.';
+    }
+  } finally {
+    if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+  }
+});
+
+/* ---------- thanks banner (shown after Netlify synchronous-redirect POST) ---------- */
+(function showThanks(){
+  try {
+    const sp = new URLSearchParams(location.search);
+    if (sp.get('thanks') === '1') {
+      const b = document.getElementById('thanksBanner');
+      if (b) b.style.display = 'block';
+    }
+  } catch (_) {}
+})();
+
 function transition(){
   const v = document.getElementById('view');
   const reduced = document.body.classList.contains('no-motion') || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
