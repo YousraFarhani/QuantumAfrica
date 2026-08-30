@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T21:53:58+00:00",
+ "updated": "2026-08-30T21:54:14+00:00",
  "content": {
   "site": {},
   "hero": {
@@ -14,19 +14,7 @@
   "stats": {},
   "highlight": {},
   "about": {},
-  "people": [
-   {
-    "name": "yousra",
-    "group": "Leadership",
-    "role": "Founder",
-    "country": "Algeria",
-    "bio": "ez",
-    "fullBio": "ez",
-    "interests": [
-     "eze"
-    ]
-   }
-  ],
+  "people": [],
   "chapters": [],
   "events": [],
   "projects": [],
