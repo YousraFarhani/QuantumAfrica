@@ -509,7 +509,7 @@ nav.main{display:flex;align-items:center;gap:2px;margin-left:auto}
    ============================================================ */
 .hero{position:relative;background:var(--dark);color:#fff;overflow:hidden;isolation:isolate}
 .hero-stage{position:absolute;inset:0;z-index:0}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.3s ease,transform 8s linear;display:block;transform:scale(1.03)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .85s ease,transform 5s linear;display:block;transform:scale(1.03)}
 .slide.on{opacity:1;transform:scale(1)}
 .slide .art{opacity:.55}
 .hero-scrim{
@@ -1188,8 +1188,7 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
             <input type="hidden" name="form-name" value="footer-newsletter">
             <p class="sr" hidden><label>Don't fill: <input name="bot-field"></label></p>
             <div style="display:flex;gap:8px">
-              <input type="text" name="name" required placeholder="Your name" aria-label="Your name" style="flex:1;min-width:0">
-              <input type="email" name="email" required placeholder="your@email.com" aria-label="Email address" style="flex:1;min-width:0">
+              <input type="email" name="email" required placeholder="your@email.com" aria-label="Email address" style="flex:2;min-width:0">
               <button class="btn sm teal" type="submit"><span>Subscribe</span></button>
             </div>
             <div class="form-msg xs" hidden></div>
@@ -4398,10 +4397,9 @@ function initSlider(){
     const meta = HERO_SLIDES[slideIdx] || {};
     cap.textContent = `Slide ${slideIdx+1} of ${slides.length} — ${meta.caption || meta.t || ''}`;
   }
-  /* A video slide holds the stage until it ends; a photo slide gets ~3.5s
-     (reduced from 6s so the hero feels alive and the gallery reads quickly).
-     Videos are muted and inline, which is what lets them play at all on a
-     phone, and they never play when the visitor has asked for less motion. */
+  /* A video slide holds the stage until it ends; photos get ~2.5s so the
+     hero rotates briskly without racing past readable copy. Videos are
+     muted/inline and respect prefers-reduced-motion. */
   function stopAll(){
     stage.querySelectorAll('[data-hero-video]').forEach(v => { v.pause(); });
   }
@@ -4420,7 +4418,7 @@ function initSlider(){
     stopAll();
     const isVideo = playActive();
     // Fall back to the timer even for video, in case it never fires 'ended'.
-    slideTimer = setInterval(()=>{ go(slideIdx+1); play(); }, isVideo ? 12000 : 3500);
+    slideTimer = setInterval(()=>{ go(slideIdx+1); play(); }, isVideo ? 8000 : 2500);
   }
   stage.querySelectorAll('[data-hero-video]').forEach(v => {
     v.addEventListener('ended', ()=>{
