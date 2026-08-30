@@ -3344,12 +3344,36 @@ document.addEventListener('submit', async (e) => {
   try {
     const fd = new FormData(f);
     fd.set('form-name', formName);
-    const res = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodeFD(fd)
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const body = encodeFD(fd);
+    let res = null;
+    try {
+      res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body
+      });
+    } catch (_) {
+      // static server / offline: "/" POST will fail — fall through to backend.
+      res = null;
+    }
+    const workedNetlify = !!(res && res.ok);
+    if (!workedNetlify) {
+      try {
+        const flat = {};
+        fd.forEach((v, k) => { if (k !== 'bot-field') flat[k] = String(v ?? ''); });
+        const fallbackTo = (typeof ADMIN_API_BASE === 'string' && ADMIN_API_BASE)
+          ? (ADMIN_API_BASE.replace(/\/$/, '') + '/api/forms/submit')
+          : '/api/forms/submit';
+        const fallbackRes = await fetch(fallbackTo, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ form: formName, fields: flat, source: 'spa' })
+        });
+        if (!fallbackRes.ok) throw new Error('Fallback HTTP ' + fallbackRes.status);
+      } catch (fallbackErr) {
+        throw new Error('Network send failed');
+      }
+    }
     if (msg) {
       msg.hidden = false;
       msg.className = 'form-msg mt16 small tl';
@@ -3358,19 +3382,11 @@ document.addEventListener('submit', async (e) => {
     }
     f.reset();
   } catch (err) {
-    const data = Object.fromEntries(new FormData(f).entries());
-    delete data['bot-field'];
-    const subject = encodeURIComponent(`[${formName}] from quantum-africa.org`);
-    const bodyLines = Object.entries(data)
-      .filter(([k]) => k !== 'form-name')
-      .map(([k,v]) => `${k}:\n${v}\n`);
-    const body = encodeURIComponent(bodyLines.join('\n'));
-    window.location.href = `mailto:contact@quantum-africa.org?subject=${subject}&body=${body}`;
     if (msg) {
       msg.hidden = false;
       msg.className = 'form-msg mt16 small';
       msg.style.cssText = 'padding:10px 14px;border-radius:4px;background:color-mix(in srgb,var(--gold) 20%,transparent);color:var(--ink)';
-      msg.textContent = 'Your email app has been opened with your message — please press Send there to complete submission.';
+      msg.textContent = "Could not send right now. Please reload the page and try again, or email contact@quantum-africa.org directly.";
     }
   } finally {
     if (btn) { btn.disabled = false; btn.style.opacity = ''; }

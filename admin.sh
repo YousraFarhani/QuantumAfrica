@@ -48,6 +48,14 @@ fi
 # ---- build the page if it has never been built -----------------------------
 [ -f public/index.html ] || "$PY" site/build.py
 
+# ---- optionally, point Publish at a separate writable git clone -------------
+# When you run ./admin.sh from a source tree that has no .git inside it, set
+# QA_GIT_ROOT to the absolute path of a writable clone (with origin configured)
+# so "Publish to the website" can commit and push for you. Example:
+#   export QA_GIT_ROOT=/tmp/qa_website_deploy
+# (It is safe to leave this line even if the path does not exist — publish.py
+#  falls back to walking up from ./ and using $PWD/.git if present.)
+
 # ---- go -------------------------------------------------------------------
 # Run from the repository root so that public/data, public/media and
 # backend/data all resolve, and point Python at the backend package.
@@ -55,6 +63,8 @@ export PYTHONPATH="backend${PYTHONPATH:+:$PYTHONPATH}"
 export QA_HOST=127.0.0.1
 export QA_PORT="$PORT"
 export QA_REFRESH_ON_START="${QA_REFRESH_ON_START:-0}"   # don't scrape on every launch
+: "${QA_GIT_ROOT:=}"
+export QA_GIT_ROOT
 
 URL="http://127.0.0.1:${PORT}/admin"
 echo

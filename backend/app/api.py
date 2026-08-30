@@ -54,7 +54,6 @@ store = Store()
 # add is mounted here so there is still one app to run.
 from .admin_api import router as admin_router  # noqa: E402
 app.include_router(admin_router)
-
 # Serve the folder the website is published from, so /preview behaves exactly
 # like the deployed site: same page, same data files, same uploaded images.
 import os as _os  # noqa: E402
@@ -148,6 +147,38 @@ def refresh(kind: str = Query('all', pattern='^(all|job|event)$'),
               else {kind: service.refresh(kind, store)})
     service.export(store)
     return result
+
+
+# ------------------------------------------------------------------ forms
+
+from fastapi import Body  # noqa: E402
+from . import forms as _forms  # noqa: E402
+
+
+@app.post('/api/forms/submit')
+def submit_form(payload: dict = Body(...)):
+    """Public endpoint that website forms use when Netlify POST is unreachable.
+
+    Always accepts form name + fields. Guarantees every submission is appended
+    to backend/data/submissions.jsonl and visible in the admin Submissions inbox.
+    When mail transport is configured (QA_SMTP_* or QA_RESEND_*), the same
+    submission is also forwarded as email.
+    """
+    form_name = str(payload.get('form') or payload.get('form-name') or 'contact')
+    fields = dict(payload.get('fields') or {})
+    if not fields:
+        flat = {k: v for k, v in (payload or {}).items()
+                if k not in ('form', 'form-name', 'source')
+                and isinstance(v, (str, int, float, bool)) and v is not None}
+        fields = {k: str(v) for k, v in flat.items()}
+    row = _forms.record(form_name, fields, source=str(payload.get('source') or 'spa'))
+    return {
+        'ok': True,
+        'id': row['id'],
+        'forwarded': bool(row.get('forwarded')),
+        'stored_locally': True,
+        'form': row['form'],
+    }
 
 
 @app.on_event('startup')

@@ -167,6 +167,7 @@ code{background:rgba(0,31,63,.07);padding:1px 5px;border-radius:3px;font-size:.8
     <div class="brand"><b>Quantum Africa</b><span>Admin</span></div>
     <nav class="snav" id="snav"></nav>
     <div class="side-foot">
+      <button type="button" id="subBtn">Form submissions</button>
       <button type="button" id="revBtn">Revision history</button>
       <button type="button" id="viewBtn">Open the website</button>
       <button type="button" id="outBtn">Sign out</button>
@@ -605,9 +606,12 @@ async function refreshPublish(){
     if(!r.ready){
       btn.disabled = true;
       state.textContent = r.reason || 'Publishing is unavailable.';
+      state.title = r.reason || '';
+      state.style.color = 'var(--red)';
       return;
     }
     btn.disabled = false;
+    state.style.color = '';
     state.textContent = r.count
       ? `${r.count} change${r.count === 1 ? '' : 's'} waiting to publish`
       : 'Website is up to date';
@@ -667,6 +671,86 @@ $('#revBtn').addEventListener('click', async ()=>{
       card.appendChild(line);
     });
     pane.appendChild(card);
+  }catch(e){ toast(e.message, true); }
+});
+
+/* ---------------------------------------------------------- submissions */
+$('#subBtn').addEventListener('click', async ()=>{
+  try{
+    const r = await api('/api/admin/submissions');
+    const pane = $('#pane');
+    $('#secTitle').textContent = 'Form submissions';
+    $('#secBlurb').textContent = 'Every contact / join / newsletter submission received. ' +
+      (r.forward_smtp_configured || r.forward_resend_configured
+        ? 'Email forwarding is on — forwarded items are marked.'
+        : 'Email forwarding is OFF — configure QA_SMTP_* or QA_RESEND_* in the environment ' +
+          '(see DEPLOY.md) so these are mailed straight to ' + esc(r.inbox) + '.');
+    document.querySelectorAll('#snav button').forEach(b => b.classList.remove('on'));
+    pane.innerHTML = '';
+
+    const banner = el('div', 'banner');
+    banner.innerHTML = `
+      <div style="display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap">
+        <div>
+          <b>${esc(String(r.count))}</b> submission${r.count === 1 ? '' : 's'} received ·
+          inbox: <b>${esc(r.inbox)}</b> ·
+          SMTP: <b>${r.forward_smtp_configured ? 'on' : 'off'}</b> ·
+          Resend: <b>${r.forward_resend_configured ? 'on' : 'off'}</b>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn ghost" id="subRefresh" type="button">Refresh</button>
+        </div>
+      </div>`;
+    pane.appendChild(banner);
+
+    const list = el('div');
+    if(!r.items.length){
+      list.appendChild(el('div', 'empty-note', 'No submissions yet.'));
+    }
+    r.items.forEach(row => {
+      const card = el('div', 'card');
+      const fields = row.fields || {};
+      const when = new Date(row.created).toLocaleString();
+      const head = el('div', 'rev', `
+        <div>
+          <b style="font-size:1rem">${esc((fields.name || fields.full_name || 'Anonymous'))}</b>
+          ${fields.email ? `· <a href="mailto:${esc(fields.email)}">${esc(fields.email)}</a>` : ''}
+          <div class="when">${esc(row.form)} · ${when}
+            ${row.forwarded ? ' · <span style="color:var(--green)">✓ forwarded by email</span>'
+                             : ' · <span style="color:var(--gold)">stored locally only</span>'}
+          </div>
+        </div>`);
+      const buttons = el('div');
+      const fwd = el('button', 'btn ghost', row.forwarded ? 'Re-send' : 'Send email');
+      fwd.type = 'button';
+      fwd.addEventListener('click', async ()=>{
+        try{
+          const res = await api(`/api/admin/submissions/${encodeURIComponent(row.id)}/forward`, {method:'POST'});
+          toast(res.ok ? 'Forwarded to ' + r.inbox : (res.error || 'Forward failed'), !res.ok);
+          if(res.ok) row.forwarded = true;
+        }catch(e){ toast(e.message, true); }
+      });
+      buttons.append(fwd);
+      head.append(buttons);
+      card.appendChild(head);
+      const body = el('div');
+      body.style.marginTop = '8px';
+      for(const k of Object.keys(fields)){
+        const rowEl = el('div');
+        rowEl.style.cssText = 'display:grid;grid-template-columns:140px 1fr;gap:8px 16px;padding:6px 0;border-top:1px dashed var(--line)';
+        rowEl.appendChild(el('div', '', `<b>${esc(k)}</b>`)).style.color = 'var(--ink-2)';
+        const valCol = el('div');
+        valCol.style.whiteSpace = 'pre-wrap';
+        valCol.textContent = fields[k];
+        rowEl.appendChild(valCol);
+        body.appendChild(rowEl);
+      }
+      card.appendChild(body);
+      list.appendChild(card);
+    });
+    pane.appendChild(list);
+
+    $('#subRefresh').addEventListener('click', ()=> $('#subBtn').click());
   }catch(e){ toast(e.message, true); }
 });
 

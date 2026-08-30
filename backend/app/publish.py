@@ -10,15 +10,65 @@ or anything else you happen to be working on.
 """
 from __future__ import annotations
 
+import json
 import os
 import subprocess
+import urllib.request
 
 PUBLISH_PATHS = ['public/data', 'public/media', 'public/index.html']
 TIMEOUT = 120
 
 
+def _dbg(hypothesis_id, **fields):
+    """Minimal instrumentation report. Non-blocking, safe if Debug Server down."""
+    try:
+        env = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                           '..', '.dbg', 'admin-publish-forms-send.env')
+        url, sid = None, None
+        try:
+            with open(env) as fh:
+                for ln in fh:
+                    k, _, v = ln.strip().partition('=')
+                    if k == 'DEBUG_SERVER_URL':
+                        url = v
+                    elif k == 'DEBUG_SESSION_ID':
+                        sid = v
+        except OSError:
+            return
+        if not url:
+            return
+        payload = {'sessionId': sid, 'hypothesisId': hypothesis_id,
+                   'event': 'publish.dbg', 'data': fields}
+        data = json.dumps(payload).encode()
+        req = urllib.request.Request(url, data=data, method='POST',
+                                     headers={'Content-Type': 'application/json'})
+        try:
+            with urllib.request.urlopen(req, timeout=0.5):
+                pass
+        except OSError:
+            pass
+    except Exception:
+        pass
+
+
+#region debug-point publish-status-resolve
+#endregion debug-point publish-status-resolve
+
+
 def repo_root(start: str | None = None) -> str | None:
-    """The git repository this backend lives inside, if any."""
+    """The git repository this backend lives inside, if any.
+
+    The admin panel usually runs from the repository root (`./admin.sh` does
+    `cd "$(dirname "$0")"` which IS the repo root), so walking up from
+    backend/app/ naturally finds .git. When the admin panel runs from a plain
+    source checkout that has no .git (e.g. unzipped source tree), point at a
+    separate writable clone with `QA_GIT_ROOT` so Publish can still commit.
+    """
+    override = os.environ.get('QA_GIT_ROOT')
+    if override:
+        override = os.path.abspath(os.path.expanduser(override))
+        if os.path.isdir(os.path.join(override, '.git')):
+            return override
     start = start or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     try:
         out = subprocess.run(['git', 'rev-parse', '--show-toplevel'],
@@ -33,30 +83,101 @@ def _git(root, *args, timeout=TIMEOUT):
                           text=True, timeout=timeout)
 
 
+def _sync_public_to_repo(root: str) -> list[str]:
+    """Copy PUBLISH_PATHS from the backend's cwd into the repo root if needed.
+
+    When `QA_GIT_ROOT` points at a separate clone, the clone still needs the
+    freshly-exported content.json, any uploaded media, and a rebuilt index.html
+    from the running admin's cwd. This rsync-lite copy keeps Publish doing the
+    right thing whether the repo is the admin's cwd or a sibling clone.
+    """
+    here = os.getcwd()
+    root_abs = os.path.abspath(root)
+    copied = []
+    for rel in PUBLISH_PATHS:
+        src = os.path.join(here, rel)
+        dst = os.path.join(root_abs, rel)
+        if not os.path.exists(src):
+            continue
+        if os.path.abspath(os.path.dirname(src or '.')) == root_abs:
+            # cwd IS the repo — nothing to sync
+            continue
+        if os.path.isdir(src):
+            import shutil
+            os.makedirs(dst, exist_ok=True)
+            # Mirror-style copy: remove anything in dst not in src, then overwrite
+            for name in os.listdir(dst):
+                target = os.path.join(dst, name)
+                try:
+                    if os.path.isdir(target) and not os.path.islink(target):
+                        shutil.rmtree(target)
+                    else:
+                        os.remove(target)
+                except OSError:
+                    pass
+            for name in os.listdir(src):
+                s = os.path.join(src, name)
+                d = os.path.join(dst, name)
+                if os.path.isdir(s):
+                    shutil.copytree(s, d, dirs_exist_ok=True)
+                else:
+                    shutil.copy2(s, d)
+        else:
+            import shutil
+            os.makedirs(os.path.dirname(dst) or '.', exist_ok=True)
+            shutil.copy2(src, dst)
+        copied.append(rel)
+    return copied
+
+
 def status() -> dict:
     """What Publish would do, without doing it."""
     root = repo_root()
-    if not root:
-        return {'ready': False, 'reason': 'This folder is not a git repository, '
-                                          'so there is nothing to publish to.'}
-    existing = [p for p in PUBLISH_PATHS if os.path.exists(os.path.join(root, p))]
-    changed = _git(root, 'status', '--porcelain', '--', *existing)
-    branch = _git(root, 'rev-parse', '--abbrev-ref', 'HEAD').stdout.strip()
-    remote = _git(root, 'remote', 'get-url', 'origin').stdout.strip()
-    files = [l[3:] for l in changed.stdout.splitlines() if l.strip()]
-    return {
-        'ready': bool(remote),
-        'reason': '' if remote else 'This repository has no "origin" remote, so '
-                                    'there is nowhere to push to.',
+    existing = [p for p in PUBLISH_PATHS if os.path.exists(os.path.join(root, p))] if root else []
+    changed = _git(root, 'status', '--porcelain', '--', *existing) if root else None
+    branch = _git(root, 'rev-parse', '--abbrev-ref', 'HEAD').stdout.strip() if root else ''
+    remote = _git(root, 'remote', 'get-url', 'origin').stdout.strip() if root else ''
+    files = [l[3:] for l in (changed.stdout.splitlines() if changed else []) if l.strip()]
+    if root and os.path.abspath(os.getcwd()) != os.path.abspath(root):
+        # Treat any export-path in the RUNNING cwd (not repo) as "pending sync", so
+        # the button says N changes waiting rather than "Website is up to date".
+        here = os.getcwd()
+        for rel in PUBLISH_PATHS:
+            src = os.path.join(here, rel)
+            dst = os.path.join(root, rel)
+            if os.path.exists(src) and not os.path.exists(dst):
+                if rel not in files:
+                    files.append(rel)
+            elif os.path.isdir(src) and os.path.isdir(dst):
+                # quick timestamp/mtime check
+                if any(
+                    (not os.path.exists(os.path.join(dst, n))) or
+                    (os.path.isfile(os.path.join(src, n)) and os.path.getmtime(os.path.join(src, n)) >
+                     os.path.getmtime(os.path.join(dst, n)) if os.path.isfile(os.path.join(dst, n)) else True)
+                    for n in os.listdir(src)
+                ):
+                    if rel not in files:
+                        files.append(rel)
+    out = {
+        'ready': bool(root and remote),
+        'reason': '' if (root and remote) else (
+            'This folder is not a git repository, so there is nothing to publish to.'
+            if not root else 'This repository has no "origin" remote, so there is nowhere to push to.'),
         'branch': branch, 'remote': remote,
         'changed': files, 'count': len(files),
+        'debug': {'repo_root_resolved': root, 'cwd': os.getcwd(),
+                  'start_abs': os.path.dirname(os.path.dirname(os.path.abspath(__file__)))},
     }
+    _dbg('A-status', out=out)
+    return out
 
 
 def publish(message: str = 'Update site content') -> dict:
     root = repo_root()
     if not root:
         return {'ok': False, 'error': 'Not a git repository.'}
+
+    synced = _sync_public_to_repo(root)
 
     existing = [p for p in PUBLISH_PATHS if os.path.exists(os.path.join(root, p))]
     if not existing:
@@ -87,5 +208,5 @@ def publish(message: str = 'Update site content') -> dict:
                     'Your changes are committed locally and safe.')
         return {'ok': False, 'committed': True, 'error': err + hint}
 
-    return {'ok': True, 'files': staged.stdout.split(),
+    return {'ok': True, 'files': staged.stdout.split(), 'synced': synced,
             'message': 'Published. Netlify will rebuild the site in a minute or two.'}

@@ -141,6 +141,41 @@ def rollback(rev_id: int, _: bool = Depends(require_admin)):
     return {'restored': rev_id, 'content': doc}
 
 
+# ---------------------------------------------------------------- submissions
+@router.get('/api/admin/submissions')
+def admin_submissions(limit: int = 500, _: bool = Depends(require_admin)):
+    from . import forms as _forms
+    items = _forms.list_all(limit=max(1, min(5000, int(limit))))
+    from .config import settings
+    return {
+        'items': items,
+        'count': len(items),
+        'inbox': _forms._to_inbox(),
+        'contact_default': settings.contact,
+        'forward_smtp_configured': bool(os.environ.get('QA_SMTP_HOST')),
+        'forward_resend_configured': bool(os.environ.get('QA_RESEND_KEY')),
+    }
+
+
+@router.post('/api/admin/submissions/{row_id}/forward')
+def forward_submission(row_id: str, _: bool = Depends(require_admin)):
+    """Re-forward a stored submission (e.g. after configuring mail after the fact)."""
+    from . import forms as _forms
+    for r in _forms.list_all(limit=10000):
+        if r.get('id') == row_id:
+            res = _forms.try_forward(r)
+            if res:
+                _forms._mark_forwarded(row_id)
+                return {'ok': True, 'id': row_id, 'forwarded': True}
+            if res is False:
+                return {'ok': False, 'id': row_id, 'error': 'Mail transport failed; transport configured but send failed'}
+            return {'ok': False, 'id': row_id,
+                    'error': 'No mail transport configured.'
+                             ' Set QA_SMTP_* or QA_RESEND_* env vars.'}
+    raise HTTPException(404, 'no such submission')
+
+
+
 # -------------------------------------------------------------------- media
 @router.post('/api/admin/media')
 async def upload(file: UploadFile = File(...), _: bool = Depends(require_admin)):
