@@ -59,7 +59,6 @@ PERSON_FIELDS = [
     F('linkedin', 'LinkedIn', 'url'),
     F('scholar', 'Google Scholar', 'url'),
     F('orcid', 'ORCID', 'url'),
-    F('web', 'Website', 'url'),
 ]
 
 SECTIONS = [
@@ -77,7 +76,7 @@ SECTIONS = [
       F('linkedin', 'LinkedIn', 'url'),
       F('twitter', 'X / Twitter', 'url'),
       F('youtube', 'YouTube', 'url'),
-      F('github', 'GitHub', 'url'),
+      F('instagram', 'Instagram', 'url'),
       F('newsletter', 'Newsletter note', 'text'),
     ],
   },

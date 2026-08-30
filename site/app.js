@@ -578,7 +578,6 @@ const PERSON_LINKS = [
   {k:'linkedin', t:'LinkedIn'},
   {k:'scholar',  t:'Google Scholar'},
   {k:'orcid',    t:'ORCID'},
-  {k:'web',      t:'Website'},
 ];
 
 const PARTNER_CATS = ['Academic','Research','Industry','Education','Strategic'];
@@ -624,7 +623,7 @@ const SVG = {
   linkedin:'<rect x="3" y="3" width="18" height="18" rx="2.6"/><path d="M7.3 10.6V17M7.3 7.3h.01M11.2 17v-3.7a2.15 2.15 0 0 1 4.3 0V17"/>',
   scholar:'<path d="M12 4 2.9 8.4 12 12.8l9.1-4.4z"/><path d="M6.6 10.4v4.9c0 1.5 2.4 2.8 5.4 2.8s5.4-1.3 5.4-2.8v-4.9"/><path d="M21.1 8.4v5.6"/>',
   orcid:'<circle cx="12" cy="12" r="9"/><path d="M9.1 10v7M9.1 7.4h.01M12.9 17v-7h1.9a3.5 3.5 0 0 1 0 7z"/>',
-  web:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.4 2.4 3.6 5.4 3.6 9s-1.2 6.6-3.6 9c-2.4-2.4-3.6-5.4-3.6-9s1.2-6.6 3.6-9z"/>'
+  instagram:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="0.9" fill="currentColor" stroke="none"/>'
 };
 function svgIcon(name, size){
   size = size || 26;
@@ -3127,7 +3126,27 @@ function rebuildFromContent(){
       : (o.deadline < new Date().toISOString().slice(0,10) ? 'Closed' : 'Open'),
     source: 'own', url: o.url || '#/contact', own: true,
   }));
+  hydrateFooterSocials();
   render();
+}
+
+function hydrateFooterSocials(){
+  const root = document.getElementById('footSocials');
+  if(!root) return;
+  root.querySelectorAll('a').forEach(a => {
+    const k = a.dataset.k;
+    if(!k) return;
+    const url = cval('site.' + k);
+    if(url){
+      a.href = String(url);
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+    }else{
+      a.href = '#/contact';
+      a.removeAttribute('target');
+      a.removeAttribute('rel');
+    }
+  });
 }
 
 let OWN_OPPS = [];
@@ -3310,6 +3329,7 @@ function initControls(){
 /* ---------- boot ---------- */
 buildNav();
 initControls();
+hydrateFooterSocials();
 
 /* ---------- Netlify forms submit handler + mailto fallback ---------- */
 function encodeFD(fd){
