@@ -1,7 +1,15 @@
 {
- "updated": "2026-08-30T22:13:19+00:00",
+ "updated": "2026-08-30T22:17:53+00:00",
  "content": {
-  "site": {},
+  "site": {
+   "name": "Quantum Africa",
+   "email": "contact@quantum-africa.org",
+   "address": "Johannesburg - South Africa",
+   "founded": "2023",
+   "linkedin": "https://www.linkedin.com/company/quantumafricaorg",
+   "twitter": "https://x.com/quantum_africa",
+   "youtube": "https://www.youtube.com/@QuantumAfrica-afr"
+  },
   "hero": {
    "statements": [
     {}
