@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T21:56:38+00:00",
+ "updated": "2026-08-30T21:57:37+00:00",
  "content": {
   "site": {},
   "hero": {
@@ -12,6 +12,10 @@
      "image": "media/54e419fc0a87e28c.png",
      "video": "media/90ac7c7f0f18ff81.png",
      "caption": "photo"
+    },
+    {
+     "image": "media/90ac7c7f0f18ff81.png",
+     "caption": "QML4Africa - Nigeria"
     }
    ]
   },
