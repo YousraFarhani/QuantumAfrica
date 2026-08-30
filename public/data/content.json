@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T23:20:15+00:00",
+ "updated": "2026-08-30T23:26:50+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -91,7 +91,23 @@
    "vision": "An Africa with the knowledge, talent, institutions and networks to actively shape the global quantum future.\n\nWe envision a continent where students can access world-class quantum education, researchers can collaborate across borders and internationally, universities can develop strong quantum programmes, and talented Africans can pursue meaningful careers and research opportunities in quantum technology.",
    "philosophy": "We believe Africa's quantum future should be built by African talent, strengthened through global collaboration, and translated into lasting capacity across the continent."
   },
-  "people": [],
+  "people": [
+   {
+    "name": "Yousra Farhani",
+    "group": "Leadership",
+    "role": "Founder",
+    "country": "Algeria",
+    "photo": "media/7faa037d66d1b6c0.png",
+    "bio": "Founder of Quantum Africa, PhD in Quantum Computing at the NQCP, Niels Bohr Institute, Univeristy of Copenhagen.",
+    "interests": [
+     "Fault Tolerant Quantum Computing",
+     "Quantum Compilation",
+     "Quantum Error Correction"
+    ],
+    "linkedin": "https://www.linkedin.com/in/yousra-farhani-7a416219a/?skipRedirect=true",
+    "scholar": "https://scholar.google.com/citations?user=5IVmpHkAAAAJ&hl=fr"
+   }
+  ],
   "chapters": [],
   "events": [],
   "projects": [],
