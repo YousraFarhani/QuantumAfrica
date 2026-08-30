@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T22:17:53+00:00",
+ "updated": "2026-08-30T22:21:46+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -36,7 +36,35 @@
    ]
   },
   "stats": {},
-  "highlight": {},
+  "highlight": {
+   "eyebrow": "Quantum Machine Learning For Africa",
+   "date": "2026-08-06",
+   "place": "Pan Atlantic University, Lagos, Nigeria",
+   "summary": "Our mission is to create real on-the-ground impact by building opportunities and pathways for the next generation of African quantum talent, we proudly delivered the 2nd 𝐐𝐮𝐚𝐧𝐭𝐮𝐦 𝐌𝐚𝐜𝐡𝐢𝐧𝐞 𝐋𝐞𝐚𝐫𝐧𝐢𝐧𝐠 𝐟𝐨𝐫 𝐀𝐟𝐫𝐢𝐜𝐚 (𝐐𝐌𝐋𝟒𝐀𝐟𝐫𝐢𝐜𝐚) Workshop at Deep Learning Indaba 2026 at Pan-Atlantic University (PAU) in Lagos, bringing together participants from more than 40 nationalities across Africa 🇳🇬 .",
+   "gallery": [
+    {
+     "image": "media/90ac7c7f0f18ff81.png"
+    },
+    {
+     "image": "media/ff2e2e668816d6b2.jpg"
+    },
+    {
+     "image": "media/49b7bee9858f86ae.jpg"
+    },
+    {
+     "image": "media/24e9dbbb08f61554.jpg"
+    },
+    {
+     "video": "media/ff2e2e668816d6b2.jpg"
+    },
+    {
+     "image": "media/31630865197c7fb6.jpg"
+    },
+    {
+     "image": "media/241dcb9f0c888665.jpg"
+    }
+   ]
+  },
   "about": {},
   "people": [],
   "chapters": [],
