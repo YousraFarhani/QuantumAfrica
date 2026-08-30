@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T22:12:11+00:00",
+ "updated": "2026-08-30T22:13:19+00:00",
  "content": {
   "site": {},
   "hero": {
@@ -7,6 +7,10 @@
     {}
    ],
    "slides": [
+    {
+     "image": "media/856c43197563ecf6.jpg",
+     "caption": "QML4Africa - Rwnada"
+    },
     {
      "image": "media/54e419fc0a87e28c.png",
      "video": "media/90ac7c7f0f18ff81.png",
@@ -20,10 +24,6 @@
     {
      "image": "media/90ac7c7f0f18ff81.png",
      "caption": "QML4Africa - Nigeria"
-    },
-    {
-     "image": "media/856c43197563ecf6.jpg",
-     "caption": "QML4Africa - Rwnada"
     }
    ]
   },
