@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T23:26:50+00:00",
+ "updated": "2026-08-30T23:29:34+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -106,6 +106,20 @@
     ],
     "linkedin": "https://www.linkedin.com/in/yousra-farhani-7a416219a/?skipRedirect=true",
     "scholar": "https://scholar.google.com/citations?user=5IVmpHkAAAAJ&hl=fr"
+   },
+   {
+    "name": "Walid Elmaouaki",
+    "group": "Leadership",
+    "role": "Co-Founder",
+    "country": "Morocco",
+    "photo": "media/2a847bafe7fb7e10.jpg",
+    "bio": "Co-founder of Quantum Africa, Postdoctoral Researcher at New York University of Abu Dhabi.",
+    "interests": [
+     "Quantum Machine Learning",
+     "Quantum Cyber Security"
+    ],
+    "linkedin": "https://www.linkedin.com/in/walid-el-maouaki-8b6328190/",
+    "scholar": "https://scholar.google.com/citations?user=oFhVfzkAAAAJ&hl=fr"
    }
   ],
   "chapters": [],
