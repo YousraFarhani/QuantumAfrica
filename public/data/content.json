@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T23:29:34+00:00",
+ "updated": "2026-08-30T23:44:03+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -98,7 +98,7 @@
     "role": "Founder",
     "country": "Algeria",
     "photo": "media/7faa037d66d1b6c0.png",
-    "bio": "Founder of Quantum Africa, PhD in Quantum Computing at the NQCP, Niels Bohr Institute, Univeristy of Copenhagen.",
+    "bio": "PhD in Quantum Computing at the NQCP, Niels Bohr Institute, Univeristy of Copenhagen.",
     "interests": [
      "Fault Tolerant Quantum Computing",
      "Quantum Compilation",
@@ -113,7 +113,7 @@
     "role": "Co-Founder",
     "country": "Morocco",
     "photo": "media/2a847bafe7fb7e10.jpg",
-    "bio": "Co-founder of Quantum Africa, Postdoctoral Researcher at New York University of Abu Dhabi.",
+    "bio": "Postdoctoral Researcher at New York University of Abu Dhabi.",
     "interests": [
      "Quantum Machine Learning",
      "Quantum Cyber Security"
