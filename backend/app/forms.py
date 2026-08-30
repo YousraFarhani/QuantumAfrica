@@ -64,9 +64,10 @@ def record(form_name: str, fields: dict, source: str = 'fallback') -> dict:
            'forwarded': False}
     with open(_path(), 'a', encoding='utf-8') as f:
         f.write(json.dumps(row, ensure_ascii=False) + '\n')
-    # Try to forward as email, if the environment has SMTP or Resend/Mailgun.
+    # Try to forward as email, if the environment has SMTP or Resend.
+    # None = nothing configured; False = configured but failed; True = delivered.
     forwarded = try_forward(row)
-    if forwarded is not False:
+    if forwarded is True:
         row['forwarded'] = True
         _mark_forwarded(row['id'])
     return row
@@ -121,7 +122,7 @@ def _mark_forwarded(row_id: str) -> None:
 # ------------------------------------------------------------------ forwarding
 
 def _to_inbox() -> str:
-    return os.environ.get('QA_FORM_INBOX') or settings.contact
+    return os.environ.get('QA_FORM_INBOX') or settings.contact or 'contact@quantum-africa.org'
 
 
 def _smtp_forward(row: dict) -> bool | None:
