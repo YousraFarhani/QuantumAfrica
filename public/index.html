@@ -1194,12 +1194,7 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
             <div class="form-msg xs" hidden></div>
           </form>
         </div>
-        <div class="socials" id="footSocials">
-          <a href="#/contact" title="LinkedIn" data-k="linkedin">in</a>
-          <a href="#/contact" title="X" data-k="twitter">X</a>
-          <a href="#/contact" title="YouTube" data-k="youtube">YT</a>
-          <a href="#/contact" title="Instagram" data-k="instagram">IG</a>
-        </div>
+        <div class="socials" id="footSocials"></div>
       </div>
       <div class="f-col"><h5>Programs</h5>
         <a href="#/education">Education</a><a href="#/tutor">AI Tutor</a>
@@ -2235,7 +2230,9 @@ const SVG = {
   linkedin:'<rect x="3" y="3" width="18" height="18" rx="2.6"/><path d="M7.3 10.6V17M7.3 7.3h.01M11.2 17v-3.7a2.15 2.15 0 0 1 4.3 0V17"/>',
   scholar:'<path d="M12 4 2.9 8.4 12 12.8l9.1-4.4z"/><path d="M6.6 10.4v4.9c0 1.5 2.4 2.8 5.4 2.8s5.4-1.3 5.4-2.8v-4.9"/><path d="M21.1 8.4v5.6"/>',
   orcid:'<circle cx="12" cy="12" r="9"/><path d="M9.1 10v7M9.1 7.4h.01M12.9 17v-7h1.9a3.5 3.5 0 0 1 0 7z"/>',
-  instagram:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="0.9" fill="currentColor" stroke="none"/>'
+  instagram:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="0.9" fill="currentColor" stroke="none"/>',
+  youtube:'<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9.4v5.2l4.5-2.6z"/>',
+  twitter:'<path d="M4 4h3l4 5L16 4h3l-5 6 5.5 7H15l-3.2-4.4L8.5 17H5.5l4.6-5.5z"/>'
 };
 function svgIcon(name, size){
   size = size || 26;
@@ -2803,46 +2800,73 @@ ${highlightSection()}
 </section>`;
 
 /* ---------- ABOUT ---------- */
-PAGES.about = () => `
+PAGES.about = () => {
+  const eyebrow = cval('about.heroEyebrow') || 'About Quantum Africa';
+  const title = cval('about.heroTitle') || 'We build people, not just programmes.';
+  const lede = cval('about.heroLede')
+    || "Quantum Africa exists to build Africa's quantum workforce — through education, research, leadership and global connection.";
+  const whoHtml = cval('about.whoWeAre');
+  const objectives = (function(){
+    const raw = cval('about.objectives');
+    if(Array.isArray(raw) && raw.length){
+      return raw.map(x => `<li>${esc(String(x))}</li>`).join('');
+    }
+    return [
+      'Bring quantum education into African universities',
+      'Connect African students with global opportunities',
+      'Support MSc and PhD pathways in quantum technologies',
+      'Build collaborative research programmes and research networks',
+      'Connect African universities with international institutions',
+      'Support student and researcher mobility',
+      'Develop national chapters across the continent',
+      'Increase African participation in the global quantum ecosystem',
+    ].map(x => `<li>${pht(x)}</li>`).join('');
+  })();
+  const philHead = cval('about.philosophyHeadline') || 'Educate → Research → Connect → Lead';
+  const philBody = cval('about.philosophy');
+  const storyHtml = cval('about.story');
+  const missionHtml = cval('about.mission');
+  const visionHtml = cval('about.vision');
+  return `
 ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 <section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
-  <div class="sec-idx"><span class="lbl">About Quantum Africa</span><i></i></div>
-  <h1 class="mt24">We build people, not just programmes.</h1>
-  <p class="lede">Quantum Africa exists to build Africa's quantum workforce — through education, research, leadership and global connection.</p>
+  <div class="sec-idx"><span class="lbl">${esc(eyebrow)}</span><i></i></div>
+  <h1 class="mt24">${esc(title)}</h1>
+  <p class="lede">${esc(lede)}</p>
 </div></section>
 
 <section class="sec flush" style="padding-top:0">
-  <div class="wrap">${media('field','Wide community photograph','2400×1000 · JPG → assets/about/hero.jpg','wide')}</div>
+  <div class="wrap">${cimg('about.heroImage','Wide community photograph','2400×1000 · JPG → assets/about/hero.jpg','wide','field')}</div>
 </section>
 
 <section class="sec"><div class="wrap"><div class="side">
   <div class="prose">
     <h3>Who we are</h3>
-    <p>Quantum Africa is a pan-African quantum research, education, and innovation organization dedicated to building the next generation of African quantum leaders and strengthening Africa's role in the global quantum ecosystem.</p>
-    <p>We are not simply an online community. We are building an ecosystem — national chapters, university communities, students, researchers, educators, industry professionals, mentors and international partners, connected to each other.</p>
+    ${whoHtml
+      ? String(whoHtml).split(/\n\s*\n/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join('')
+      : `<p>${pht('WHO WE ARE — two or three short paragraphs. What Quantum Africa is, and what it is not.')}</p>`}
     <h3>Our story</h3>
-    <p>${pht('OUR STORY — 3 to 4 paragraphs: how Quantum Africa started, who started it, what the first activity was, and what changed as the community grew. Include founding year and any turning points.')}</p>
+    ${storyHtml
+      ? String(storyHtml).split(/\n\s*\n/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join('')
+      : `<p>${pht('OUR STORY — 3 to 4 paragraphs: how Quantum Africa started, who started it, what the first activity was, and what changed as the community grew. Include founding year and any turning points.')}</p>`}
     <h3>Mission</h3>
-    <p>To democratize access to quantum education, foster collaborative research, develop talent and leadership, and connect African students, researchers, institutions, and professionals with opportunities and partners across the global quantum ecosystem.</p>
+    ${missionHtml
+      ? `<p>${esc(missionHtml)}</p>`
+      : `<p>${pht('To democratize access to quantum education, foster collaborative research, develop talent and leadership, and connect African students, researchers, institutions, and professionals with opportunities and partners across the global quantum ecosystem.')}</p>`}
     <h3>Vision</h3>
-    <p>An Africa whose talent is not left behind in the quantum revolution — with a workforce, a research base and an institutional presence in the global quantum ecosystem.</p>
+    ${visionHtml
+      ? `<p>${esc(visionHtml)}</p>`
+      : `<p>${pht('An Africa whose talent is not left behind in the quantum revolution — with a workforce, a research base and an institutional presence in the global quantum ecosystem.')}</p>`}
     <h3>Objectives</h3>
-    <ul>
-      <li>Bring quantum education into African universities</li>
-      <li>Connect African students with global opportunities</li>
-      <li>Support MSc and PhD pathways in quantum technologies</li>
-      <li>Build collaborative research programmes and research networks</li>
-      <li>Connect African universities with international institutions</li>
-      <li>Support student and researcher mobility</li>
-      <li>Develop national chapters across the continent</li>
-      <li>Increase African participation in the global quantum ecosystem</li>
-    </ul>
+    <ul>${objectives}</ul>
   </div>
   <aside>
     <div class="panel">
       <h5>Our philosophy</h5>
-      <p style="font-family:var(--f);font-weight:600;font-size:1.15rem;letter-spacing:-.02em;line-height:1.4">Educate → Research → Connect → Lead</p>
-      <p class="small mt16">Each stage feeds the next. Someone who joins a webinar can end up leading a chapter.</p>
+      <p style="font-family:var(--f);font-weight:600;font-size:1.15rem;letter-spacing:-.02em;line-height:1.4">${esc(philHead)}</p>
+      <p class="small mt16">${philBody
+        ? esc(philBody)
+        : pht('Each stage feeds the next. Someone who joins a webinar can end up leading a chapter.')}</p>
     </div>
     <div class="panel mt16">
       <h5>At a glance</h5>
@@ -2864,6 +2888,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
   ${sectionHead('People','Leadership and advisors',null,{t:'Full directory',h:'#/people'})}
   <div class="grid g4">${PEOPLE.slice(0,4).map(personCard).join('')}</div>
 </div></section>`;
+};
 
 /* ---------- IMPACT ---------- */
 PAGES.impact = () => `
@@ -4189,68 +4214,72 @@ ${crumb([{t:'Home',h:'#/'},{t:'Contact'}])}
   </dl></div></aside>
 </div></div></section>`;
 
-PAGES.legal = () => `
+function _mdToHtml(md){
+  if(!md) return '';
+  const esc1 = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const out = [];
+  const lines = String(md).replace(/\r\n/g,'\n').split('\n');
+  let para = [];
+  const flushPara = () => {
+    if(para.length){
+      out.push('<p>' + esc1(para.join(' '))
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>') + '</p>');
+      para = [];
+    }
+  };
+  for(const raw of lines){
+    const l = raw.trimEnd();
+    if(!l.trim()){ flushPara(); continue; }
+    const h = /^(#{1,6})\s+(.*)$/.exec(l);
+    if(h){
+      flushPara();
+      const n = h[1].length;
+      out.push(`<h${n+2}>${esc1(h[2]).replace(/`([^`]+)`/g,'<code>$1</code>')}</h${n+2}>`);
+      continue;
+    }
+    if(/^\s*[-*]\s+/.test(l)){
+      flushPara();
+      const rest = l.replace(/^\s*[-*]\s+/,'');
+      out.push('<ul><li>' + esc1(rest).replace(/`([^`]+)`/g,'<code>$1</code>') + '</li></ul>');
+      continue;
+    }
+    if(/^\s*\d+\.\s+/.test(l)){
+      flushPara();
+      const rest = l.replace(/^\s*\d+\.\s+/,'');
+      out.push('<ol><li>' + esc1(rest).replace(/`([^`]+)`/g,'<code>$1</code>') + '</li></ol>');
+      continue;
+    }
+    para.push(l.trim());
+  }
+  flushPara();
+  const html = out.join('\n').replace(/(<\/ul>\s*<ul>)/g,'').replace(/(<\/ol>\s*<ol>)/g,'');
+  return html;
+}
+
+PAGES.legal = () => {
+  const privacy = cval('legal.privacy');
+  const terms = cval('legal.terms');
+  const conduct = cval('legal.conduct');
+  return `
 ${crumb([{t:'Home',h:'#/'},{t:'Legal'}])}
 <section class="sec"><div class="wrap-n">
   <h1 style="font-size:clamp(1.8rem,3vw,2.4rem)">Privacy, Terms &amp; Code of Conduct</h1>
   <div class="prose mt32">
-    <h3>Privacy Policy</h3><p>${pht('PRIVACY POLICY — required before collecting emails. Must cover what is collected, why, how long it is kept, and how to request deletion.')}</p>
-    <h3>Terms of Use</h3><p>${pht('TERMS OF USE')}</p>
-    <h3>Code of Conduct</h3><p>${pht('CODE OF CONDUCT — expected behaviour at events and in community channels, and how to report a problem. Universities and funders will look for this.')}</p>
+    <h3>Privacy Policy</h3>${privacy
+      ? _mdToHtml(privacy)
+      : `<p>${pht('PRIVACY POLICY — required before collecting emails. Must cover what is collected, why, how long it is kept, and how to request deletion.')}</p>`}
+    <h3 class="mt48">Terms of Use</h3>${terms
+      ? _mdToHtml(terms)
+      : `<p>${pht('TERMS OF USE')}</p>`}
+    <h3 class="mt48">Code of Conduct</h3>${conduct
+      ? _mdToHtml(conduct)
+      : `<p>${pht('CODE OF CONDUCT — expected behaviour at events and in community channels, and how to report a problem. Universities and funders will look for this.')}</p>`}
   </div>
 </div></section>`;
-
-/* ---------- STYLE GUIDE ---------- */
-PAGES.styleguide = () => `
-${crumb([{t:'Home',h:'#/'},{t:'Design system'}])}
-<section class="phero"><div class="wrap"><div class="sec-idx"><span class="lbl">Design system</span><i></i></div>
-  <h1 class="mt24">The system this site is built from.</h1>
-  <p class="lede">Midnight Blue is structural, Polished Gold is the signature accent, Teal Green carries secondary actions, and Warm Neutral holds the editorial space \u2014 the Visual Identity Guide, applied.</p>
-</div></section>
-<section class="sec"><div class="wrap">
-  ${sectionHead('Colour','Palette')}
-  <div class="grid g4">
-    ${[['Midnight Blue','#001F3F','Structural — headings, navigation, dark sections, the map'],['Polished Gold','#C9A55B','Signature accent — primary CTAs, rules, premium highlights'],['Teal Green','#007736','Secondary interaction — labels, links, secondary actions'],['Warm Neutral','#F3EFE6','Editorial bands and card surfaces'],
-       ['Gold light','#E2C68C','Accents on midnight blue and black'],['Ink 2','#4A5768','Body copy'],['Ink 3','#8A8F97','Labels and meta'],['Page','#FBF9F4','Warm page ground']
-      ].map(([n,h,u])=>`<div class="card"><div style="height:76px;background:${h};border-bottom:1px solid var(--line)"></div><div style="padding:14px"><div style="font-weight:600;font-size:.88rem">${n}</div><div class="kv">${h}</div><div class="xs mt8">${u}</div></div></div>`).join('')}
-  </div>
-  <div class="mt24"><div style="height:6px;background:var(--grad-line)"></div><p class="xs mt8">Midnight Blue to Polished Gold. The 3px page rule, section numbers and statistics — never a background wash.</p></div>
-
-  <div class="mt48">${sectionHead('Type','Gotham, with Poppins standing in')}
-    <div class="card pad"><div style="font-family:var(--f);font-weight:500;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.04em;line-height:1.02">We are building Africa’s quantum ecosystem.</div>
-      <p class="xs mt8">Poppins 500 — display and headings, matching the logo wordmark.</p></div>
-    <div class="card pad mt16"><p style="max-width:62ch;color:var(--ink-2)">One family carries everything — headings, body copy, labels and figures. Gotham is the brand face; Poppins stands in until the licensed Gotham web fonts are dropped into <code>assets/fonts/</code>, at which point the whole site switches over with no other change.</p>
-      <p class="xs mt8">Gotham 400 — body. Poppins 400 while the files are missing.</p></div>
-    <div class="card pad mt16"><div class="mono" style="font-size:.86rem;color:var(--ink-2);letter-spacing:.04em">DZ · EG · MA · NG · MR · ZM · UG &nbsp; | &nbsp; 12 NOV 2026 · 16:00 GMT+1 &nbsp; | &nbsp; STATUS: ACTIVE</div>
-      <p class="xs mt8">Gotham 600, uppercase, wide tracking — dates, country codes, statuses and every machine-readable value.</p></div>
-  </div>
-
-  <div class="mt48">${sectionHead('Status','The evidence system','Required on every programme, chapter and project. It is what keeps ambition from reading as achievement.')}
-    <div style="display:flex;gap:12px;flex-wrap:wrap"><span class="pill current">Current</span><span class="pill dev">In development</span><span class="pill future">Future vision</span><span class="pill">Status ?</span></div>
-  </div>
-
-  <div class="mt48">${sectionHead('Buttons','Actions')}
-    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-      <button class="btn teal">Primary — gold <span class="ar">→</span></button>
-      <button class="btn">Midnight blue</button>
-      <button class="btn ghost">Tertiary</button>
-      <button class="btn sm ghost">Small</button>
-      <a class="link-a" href="#/styleguide">Text link <span aria-hidden="true">→</span></a>
-    </div>
-  </div>
-
-  <div class="mt48">${sectionHead('Placeholders','Everything you need to supply','Four placeholder types, all deliberately loud. Use the "Highlight placeholders" control at the bottom right to make every one of them jump off the page.')}
-    <div class="grid g3">
-      ${ph('IMAGE','Image slot','Says what the photo should show, its size and where the file goes')}
-      <div class="card" style="padding:22px"><p class="small">Inline text: ${pht('TEXT — what to write here')}</p><p class="small mt16">Avatar:</p><div style="width:70px">${avatar()}</div></div>
-      <div class="card" style="padding:22px"><p class="small">Logo slot:</p><div class="ph-logo mt8">PARTNER LOGO</div><p class="small mt16">Unverified figure:</p><div class="stat" style="border:0;padding:0"><div class="n tbd">[ ?? ]</div><span class="u"></span><div class="l">Countries reached</div></div></div>
-    </div>
-  </div>
-
-  <div class="mt48">${sectionHead('Cards','One shell, eight variants')}
-    <div class="grid g3">${eventCard(EVENTS[0])}${projectCard(PROJECTS[0])}${chapterCard(CHAPTERS[3])}</div>
-  </div>
-</div></section>`;
+};
 
 PAGES.notFound = () => `
 <section class="sec"><div class="wrap center" style="padding:80px 0">
@@ -4745,20 +4774,18 @@ function rebuildFromContent(){
 function hydrateFooterSocials(){
   const root = document.getElementById('footSocials');
   if(!root) return;
-  root.querySelectorAll('a').forEach(a => {
-    const k = a.dataset.k;
-    if(!k) return;
-    const url = cval('site.' + k);
-    if(url){
-      a.href = String(url);
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-    }else{
-      a.href = '#/contact';
-      a.removeAttribute('target');
-      a.removeAttribute('rel');
-    }
-  });
+  const items = [
+    {k:'linkedin',  label:'LinkedIn',  icon:'linkedin'},
+    {k:'twitter',   label:'X',         icon:'twitter'},
+    {k:'youtube',   label:'YouTube',   icon:'youtube'},
+    {k:'instagram', label:'Instagram', icon:'instagram'},
+  ];
+  root.innerHTML = items.map(it => {
+    const url = cval('site.' + it.k);
+    const href = url ? String(url) : '#/contact';
+    const rel = url ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a href="${href}" title="${esc(it.label)}" aria-label="${esc(it.label)}" data-k="${esc(it.k)}"${rel}>${svgIcon(it.icon, 18)}</a>`;
+  }).join('');
 }
 
 let OWN_OPPS = [];
