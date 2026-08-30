@@ -147,6 +147,33 @@ main{padding:0 0 120px;min-width:0}
 .banner{background:#fff;border:1px solid var(--gold);border-left-width:4px;border-radius:5px;
   padding:14px 18px;margin-bottom:18px;font-size:.87rem;color:var(--ink-2)}
 code{background:rgba(0,31,63,.07);padding:1px 5px;border-radius:3px;font-size:.88em}
+
+/* Design system reference page — same palette + typography as the website,
+   rendered inside the admin workbench so an editor can see/use without going
+   to the public site. */
+.ds-grid{display:grid;gap:18px}
+.ds-grid.g3{grid-template-columns:repeat(3,1fr)}
+.ds-grid.g2{grid-template-columns:repeat(2,1fr)}
+.ds-grid.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.ds-grid.g3,.ds-grid.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.ds-grid.g2,.ds-grid.g3,.ds-grid.g4{grid-template-columns:1fr}}
+.ds-swatch{height:76px;border-bottom:1px solid var(--line);border-radius:4px 4px 0 0}
+.ds-chip{display:inline-block;background:rgba(0,31,63,.06);color:var(--ink-2);
+  border-radius:1000px;padding:2px 10px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.ds-gradline{height:6px;background:linear-gradient(90deg,var(--navy),var(--gold))}
+.ds-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86rem;
+  letter-spacing:.04em;color:var(--ink-2)}
+.ds-pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:1000px;
+  font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  border:1px solid rgba(0,31,63,.2);color:var(--ink-2)}
+.ds-pill.current{background:var(--green);color:#fff;border-color:transparent}
+.ds-pill.dev{background:#6D5DA6;color:#fff;border-color:transparent}
+.ds-pill.future{background:var(--gold);color:var(--navy);border-color:transparent}
+.ds-hrow{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-bottom:12px;
+  margin-bottom:22px;border-bottom:1px dashed var(--line)}
+.ds-hrow .lbl{font-size:.7rem;color:var(--ink-3);letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.ds-hrow h2{margin:0;font-size:1.4rem;letter-spacing:-.02em}
+.ds-hrow p{margin:4px 0 0;color:var(--ink-2);max-width:68ch}
 </style>
 </head>
 <body>
@@ -168,6 +195,7 @@ code{background:rgba(0,31,63,.07);padding:1px 5px;border-radius:3px;font-size:.8
     <nav class="snav" id="snav"></nav>
     <div class="side-foot">
       <button type="button" id="subBtn">Form submissions</button>
+      <button type="button" id="dsBtn">Design system</button>
       <button type="button" id="revBtn">Revision history</button>
       <button type="button" id="viewBtn">Open the website</button>
       <button type="button" id="outBtn">Sign out</button>
@@ -751,6 +779,91 @@ $('#subBtn').addEventListener('click', async ()=>{
     pane.appendChild(list);
 
     $('#subRefresh').addEventListener('click', ()=> $('#subBtn').click());
+  }catch(e){ toast(e.message, true); }
+});
+
+/* ------------------------------------------------------ Design system */
+$('#dsBtn').addEventListener('click', () => {
+  try{
+    const pane = $('#pane');
+    $('#secTitle').textContent = 'Design system';
+    $('#secBlurb').textContent = 'The palette, type, status, cards and buttons used on the website.' +
+      ' Reference while editing so new content matches the system.';
+    document.querySelectorAll('#snav button').forEach(b => b.classList.remove('on'));
+    pane.innerHTML = '';
+    const w = document.createElement('div');
+    w.className = 'wrap';
+
+    const sec = (n, t, d) => {
+      const row = document.createElement('div');
+      row.className = 'ds-hrow';
+      row.innerHTML = `<div><div class="lbl">${n}</div><h2>${t}</h2>${d ? `<p>${d}</p>` : ''}</div>`;
+      w.appendChild(row);
+    };
+
+    sec('01 · Palette', 'Colour');
+    const c1 = document.createElement('div');
+    c1.className = 'card';
+    c1.innerHTML = `
+      <div class="ds-grid g4">
+      ${[
+        ['Midnight Blue','var(--navy)','Structural — headings, nav, dark sections, the map'],
+        ['Polished Gold','var(--gold)','Signature — primary CTAs, rules, premium highlights'],
+        ['Teal Green','var(--green)','Secondary — labels, links, secondary actions'],
+        ['Warm Neutral','var(--bg)','Editorial bands and card surfaces'],
+        ['Gold light','var(--gold-l)','Accents on midnight blue and black'],
+        ['Ink 2','var(--ink-2)','Body copy'],
+        ['Ink 3','var(--ink-3)','Labels and meta'],
+        ['Page','var(--card)','Warm page ground — cards and panels'],
+       ].map(([n,h,u])=>`<div class="card" style="padding:0;overflow:hidden">
+          <div class="ds-swatch" style="background:${h}"></div>
+          <div style="padding:12px 14px">
+            <div style="font-weight:600;font-size:.92rem">${n}</div>
+            <div class="ds-mono" style="margin:2px 0 6px">${h.replace('var(--','--').replace(')','')}</div>
+            <div style="font-size:.76rem;color:var(--ink-3)">${u}</div>
+          </div></div>`).join('')}
+      </div>
+      <div class="ds-gradline" style="margin-top:22px"></div>
+      <div style="font-size:.74rem;color:var(--ink-3);margin-top:8px">Midnight Blue → Polished Gold. The 3px gradient rule, section numbers, statistics — never a background wash.</div>`;
+    w.appendChild(c1);
+
+    sec('02 · Type', 'Gotham, with Poppins standing in', 'One family carries everything — headings, body, labels, figures. Gotham is the brand face; Poppins stands in while the licensed web fonts are dropped into assets/fonts/.');
+    const c2 = document.createElement('div');
+    c2.className = 'card';
+    c2.innerHTML = `
+      <div style="font-family:var(--f);font-weight:500;font-size:clamp(1.8rem,3.2vw,3rem);letter-spacing:-.04em;line-height:1.02">We are building Africa\u2019s quantum ecosystem.</div>
+      <div style="font-size:.74rem;color:var(--ink-3);margin-top:8px">Poppins 500 — display + headings, matching the logo wordmark.</div>
+      <p style="max-width:66ch;color:var(--ink-2);margin-top:22px">One family carries everything — headings, body copy, labels and figures. Gotham is the brand face; Poppins stands in until the licensed Gotham web fonts are dropped into <code>assets/fonts/</code>, at which point the whole site switches over with no other change.</p>
+      <div style="font-size:.74rem;color:var(--ink-3);margin-top:4px">Gotham 400 — body. Poppins 400 while the files are missing.</div>
+      <div class="ds-mono" style="margin-top:22px">DZ · EG · MA · NG · MR · ZM · UG  |  12 NOV 2026 · 16:00 GMT+1  |  STATUS: ACTIVE</div>
+      <div style="font-size:.74rem;color:var(--ink-3);margin-top:4px">Gotham 600, uppercase, wide tracking — dates, country codes, statuses and every machine-readable value.</div>`;
+    w.appendChild(c2);
+
+    sec('03 · Status', 'The evidence system', 'Required on every programme, chapter and project. It is what keeps ambition from reading as achievement.');
+    const c3 = document.createElement('div');
+    c3.className = 'card';
+    c3.innerHTML = `
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span class="ds-pill current">Current</span>
+        <span class="ds-pill dev">In development</span>
+        <span class="ds-pill future">Future vision</span>
+        <span class="ds-pill">Status ?</span>
+      </div>`;
+    w.appendChild(c3);
+
+    sec('04 · Buttons', 'Actions');
+    const c4 = document.createElement('div');
+    c4.className = 'card';
+    c4.innerHTML = `
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <button class="btn gold">Primary — gold <span class="ar">→</span></button>
+        <button class="btn primary">Midnight blue</button>
+        <button class="btn ghost">Tertiary</button>
+        <button class="btn ghost" style="padding:6px 12px;font-size:.8rem">Small</button>
+      </div>`;
+    w.appendChild(c4);
+
+    pane.appendChild(w);
   }catch(e){ toast(e.message, true); }
 });
 

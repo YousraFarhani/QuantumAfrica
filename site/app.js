@@ -649,7 +649,7 @@ function ph(kind, title, spec, cls=''){
 }
 const pht = t => `<span class="ph-inline">[ ${esc(t)} ]</span>`;
 const avatar = () => `<div class="ph-avatar">${svgIcon('user',40)}</div>`;
-const statusPill = () => `<span class="pill">${'STATUS ?'}</span>`;
+const statusPill = () => `<span class="pill current">Active</span>`;
 let __sec = 0;
 const sectionHead = (eyebrow, title, lede, cta) => {
   const n = String(++__sec).padStart(2,'0');
@@ -1239,7 +1239,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
         <div class="dl-item"><dt>Members</dt><dd>${cnum('stats.members','400')}+</dd></div>
         <div class="dl-item"><dt>Chapters</dt><dd>${cnum('stats.chapters',7)}</dd></div>
         <div class="dl-item"><dt>Founded</dt><dd>${cx('site.founded', pht('YEAR'))}</dd></div>
-        <div class="dl-item"><dt>Registered in</dt><dd>${cx('site.registered', pht('COUNTRY'))}</dd></div>
+        <div class="dl-item"><dt>Headquarters location</dt><dd>${cx('site.registered', pht('COUNTRY'))}</dd></div>
       </dl>
     </div>
     <div class="panel mt16">
@@ -1389,8 +1389,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}
       ].map(([t,d])=>`<div class="card pad rv"><div class="card-b"><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
   </div>
   <div class="mt48 grid g2">
-    <div class="panel"><h5>Technology</h5><p class="small">${pht('TECHNOLOGY — the model, retrieval approach, content sources and how accuracy is checked. Be specific; this is what a technical partner will read.')}</p></div>
-    <div class="panel"><h5>Roadmap</h5><p class="small">${pht('ROADMAP — what exists now, what is next, and target dates. Mark each item current / in development / planned.')}</p></div>
   </div>
 </div></section>
 
@@ -1525,15 +1523,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
   <div class="phero-meta"><a class="btn sm grad" href="#/join">Join Quantum ${esc(nm)}</a><a class="btn sm ghost" href="#/contact">Contact the chapter</a></div>
 </div></section>
 
-<section class="stats-band"><div class="wrap"><div class="stats">
-  <div class="stat"><div class="n tbd">[ ?? ]</div><div class="l">Members</div></div>
-  <div class="stat"><div class="n tbd">[ ?? ]</div><div class="l">Universities</div></div>
-  <div class="stat"><div class="n tbd">[ ?? ]</div><span class="u"></span><div class="l">Events held</div></div>
-  <div class="stat"><div class="n tbd">[ ?? ]</div><span class="u"></span><div class="l">Research projects</div></div>
-  <div class="stat"><div class="n tbd">[ ?? ]</div><span class="u"></span><div class="l">Partners</div></div>
-  <div class="stat"><div class="n tbd">[ ?? ]</div><div class="l">Founded</div></div>
-</div></div></section>
-
 <section class="sec"><div class="wrap">
   ${sectionHead('Leadership','Who runs this chapter')}
   <div class="grid g4">${PEOPLE.slice(0,4).map(personCard).join('')}</div>
@@ -1548,15 +1537,10 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
 <section class="sec"><div class="wrap">
   <div class="grid g2">
     <div><h3>Universities &amp; institutions</h3><div class="mt16 grid g2">${Array.from({length:4}).map(()=>`<div class="logo-cell" style="height:78px"><span class="mk" style="width:30px;height:30px"></span>LOGO</div>`).join('')}</div></div>
-    <div><h3>Chapter partners</h3><div class="mt16 grid g2">${Array.from({length:4}).map(()=>`<div class="logo-cell" style="height:78px"><span class="mk" style="width:30px;height:30px"></span>LOGO</div>`).join('')}</div></div>
   </div>
   <div class="mt48">
     <h3>Research &amp; education in ${esc(nm)}</h3>
     <div class="grid g3 mt16">${PROJECTS.slice(0,3).map(projectCard).join('')}</div>
-  </div>
-  <div class="mt48 panel">
-    <h5>Photo gallery</h5>
-    <div class="grid g4 mt16">${['circuit','wave','lattice','fringes'].map(k=>media(k,'Chapter photo','1200×800 · JPG','short')).join('')}</div>
   </div>
   <div class="mt48 panel">
     <h5>Chapter social media</h5>
@@ -2697,7 +2681,6 @@ const ROUTES = [
   [/^\/join$/,                     () => PAGES.join()],
   [/^\/contact$/,                  () => PAGES.contact()],
   [/^\/legal$/,                    () => PAGES.legal()],
-  [/^\/styleguide$/,               () => PAGES.styleguide()],
 ];
 
 function currentPath(){
@@ -2753,8 +2736,7 @@ function buildNav(){
     <a class="dl" href="#/universities">For Universities</a>
     <a class="dl" href="#/news">News</a>
     <a class="dl" href="#/impact">Our Impact</a>
-    <a class="dl" href="#/contact">Contact</a>
-    <a class="dl" href="#/styleguide">Design system</a>`;
+    <a class="dl" href="#/contact">Contact</a>`;
 }
 function markActiveNav(path){
   document.querySelectorAll('.nav-btn').forEach(b=>{
@@ -3299,22 +3281,26 @@ function initTyping(){
 
 /* ---------- controls ---------- */
 function initControls(){
-  const phBtn = document.getElementById("phToggle");
-  phBtn.addEventListener("click", ()=>{
-    document.body.classList.toggle('hl-ph');
-    phBtn.classList.toggle("on", document.body.classList.contains("hl-ph"));
-  });
   const th = document.getElementById('themeToggle');
-  th.addEventListener('click', ()=>{
+  const lbl = th && th.querySelector('.lbl');
+  function paintTheme(){
+    const cur = document.documentElement.getAttribute('data-theme');
+    const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = cur ? cur === 'dark' : sysDark;
+    if(lbl){ lbl.textContent = isDark ? 'Light' : 'Dark'; }
+  }
+  paintTheme();
+  th && th.addEventListener('click', ()=>{
     const cur = document.documentElement.getAttribute('data-theme');
     const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const next = cur ? (cur === 'dark' ? 'light' : 'dark') : (sysDark ? 'light' : 'dark');
     document.documentElement.setAttribute('data-theme', next);
     th.classList.toggle('on', true);
+    paintTheme();
   });
   document.getElementById('burger').addEventListener('click', ()=>{
     document.getElementById('drawer').classList.add('open');
-    document.body.style.overflow='hidden';
+    document.body.style.overflow = 'hidden';
   });
   document.getElementById('drawerClose').addEventListener('click', closeDrawer);
   document.getElementById('drawer').addEventListener('click', e=>{ if(e.target.closest('a')) closeDrawer(); });
