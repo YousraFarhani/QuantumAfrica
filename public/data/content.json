@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T22:30:44+00:00",
+ "updated": "2026-08-30T22:34:42+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -13,9 +13,24 @@
   "hero": {
    "statements": [
     {
-     "a": "Africa’s Quantum Future",
-     "b": "Starts Here",
-     "lede": "Quantum Africa is building the people, institutions and partnerships that will shape Africa’s role in the quantum era. Through education, research, talent development and global collaboration, we connect African talent to the knowledge and opportunities needed to lead in quantum technology."
+     "a": "Africa’s Quantum Future ",
+     "b": "Starts Here.",
+     "lede": "Quantum Africa is building the people, institutions and partnerships that will shape Africa’s role in the quantum era. Through education, research, talent development and global collaboration."
+    },
+    {
+     "a": "Building Africa’s Quantum ",
+     "b": "Capacity.",
+     "lede": "We equip African students, educators and researchers with the knowledge, skills and opportunities to shape the quantum future."
+    },
+    {
+     "a": "Connecting Africa to the Quantum ",
+     "b": "World.",
+     "lede": "We connect African talent and institutions with education, research and global opportunities in quantum technology."
+    },
+    {
+     "a": "Advancing Quantum Education Across ",
+     "b": "Africa.",
+     "lede": "Building accessible learning pathways and strengthening the talent, skills and institutions needed for Africa to thrive in the quantum era."
     }
    ],
    "slides": [
