@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-31T17:59:45+00:00",
+ "updated": "2026-08-31T17:59:47+00:00",
  "content": {
   "site": {},
   "hero": {},
@@ -45,8 +45,6 @@
   "pages.news": {},
   "pages.article": {},
   "pages.join": {},
-  "pages.contact": {
-   "heroEyebrow": "CONTACT-ADMIN-TEST-xyz987"
-  }
+  "pages.contact": {}
  }
 }
