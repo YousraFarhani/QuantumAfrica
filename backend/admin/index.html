@@ -403,7 +403,7 @@ function buildNav(){
   const all = SCHEMA.sections.filter(s => !s.hidden);
 
   const SITE_KEYS = ['site','hero','stats','legal','conference','support'];
-  const COLL_KEYS = ['people','chapters','events','projects','articles','opportunities'];
+  const COLL_KEYS = ['people','chapters','events','projects','articles','opportunities','confEditions'];
   const site_wide = all.filter(s => SITE_KEYS.includes(s.key));
   const collections = all.filter(s => COLL_KEYS.includes(s.key));
   const pages = all.filter(s => s.key.startsWith('pages.'));

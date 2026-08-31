@@ -3356,17 +3356,33 @@ function loadContent(){
 /* Collections that feed data structures rather than single fields have to be
    rebuilt before the page is drawn again. */
 function rebuildFromContent(){
+  const _mergeInPlace = (existing, incoming, keyFn) => {
+    if (!Array.isArray(incoming) || incoming.length === 0) {
+      return existing;
+    }
+    const m = new Map();
+    for (const it of incoming) m.set(keyFn(it), it);
+    for (const e of existing) {
+      const k = keyFn(e);
+      if (!m.has(k)) m.set(k, e);
+    }
+    return Array.from(m.values());
+  };
+
   const people = clist('people');
   if(people.length){
     PEOPLE = people.map((p, i) => Object.assign({ slug: p.id || ('p' + (i+1)),
       group: p.group || 'Leadership' }, p));
   }
   const chapters = clist('chapters');
-  if(chapters.length){
-    CHAPTERS = chapters.map(c => Object.assign({
-      slug: (c.name||'chapter').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
-      code: (c.code||'').toLowerCase() || null, flag: c.flag || '?' }, c));
-  }
+  const seededChapters = chapters.length
+    ? chapters.map(c => Object.assign({
+        slug: (c.name||'chapter').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
+        code: (c.code||'').toLowerCase() || null, flag: c.flag || '?' }, c))
+    : CHAPTERS.slice();
+  CHAPTERS = _mergeInPlace(CHAPTERS, seededChapters,
+    c => (c.slug || String(c.code || c.name || '').toLowerCase().trim()));
+
   const events = clist('events');
   if(events.length){
     EVENTS = events.map((e, i) => Object.assign({
@@ -3396,6 +3412,13 @@ function rebuildFromContent(){
   if(Array.isArray(slides) && slides.length){
     HERO_SLIDES = slides.map((sl, i) => Object.assign(
       { t: sl.caption || ('Slide ' + (i+1)), s: '', f: sl.image || '', art: HERO_ART[i % HERO_ART.length] }, sl));
+  }
+  const confEditions = clist('confEditions');
+  if(confEditions.length){
+    CONF = confEditions.map(ed => Object.assign({
+      n: ed.number || '', slug: ed.slug || '', year: ed.year || '', city: ed.city || '',
+      country: ed.country || '', dates: ed.dates || ''
+    }, ed));
   }
   /* Opportunities entered by hand are pinned above the collected feed.
      They are kept in their own list, because the jobs feed and the content

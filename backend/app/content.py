@@ -19,6 +19,7 @@ from contextlib import contextmanager
 
 from . import schema
 from .config import settings
+from .seeds import apply_seeds
 
 SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS revision (
@@ -85,11 +86,13 @@ class ContentStore:
         with self.conn() as c:
             row = c.execute('SELECT doc FROM revision ORDER BY id DESC LIMIT 1').fetchone()
         if not row:
-            return schema.blank_doc()
-        try:
-            return schema.clean(json.loads(row['doc']))
-        except json.JSONDecodeError:
-            return schema.blank_doc()
+            doc = schema.blank_doc()
+        else:
+            try:
+                doc = schema.clean(json.loads(row['doc']))
+            except json.JSONDecodeError:
+                doc = schema.blank_doc()
+        return apply_seeds(doc)
 
     def save(self, doc: dict, author: str = 'admin', note: str = '') -> dict:
         cleaned = schema.clean(doc)

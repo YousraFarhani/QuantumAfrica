@@ -267,9 +267,8 @@ SECTIONS = [
     ],
   },
   {
-    'key': 'conference', 'title': 'Conference series', 'icon': 'award', 'kind': 'single',
-    'blurb': 'Quantum Africa\'s relationship to the series, and photographs per edition. '
-             'Speaker and committee lists come from the official record and are not edited here.',
+    'key': 'conference', 'title': 'Conference series — portraits & photos', 'icon': 'award', 'kind': 'single',
+    'blurb': "Quantum Africa's relationship to the QA series, plus portrait photos and edition photos that overlay on top of the per-edition list. Speaker & committee lists live in the collection 'Conference editions' below.",
     'fields': [
       F('role', "Quantum Africa's role in the series", 'markdown',
         help='Be precise: attend, co-organise, sponsor, run a satellite workshop, '
@@ -286,6 +285,46 @@ SECTIONS = [
         F('photo', 'Portrait', 'image'),
         F('url', 'Profile link', 'url'),
       ]),
+    ],
+  },
+  {
+    'key': 'confEditions', 'title': 'Conference editions', 'icon': 'mic', 'kind': 'collection',
+    'blurb': 'One row per QA conference edition (QA1, QA2, …). All editions, speakers, plenary, committees, dates shown on the Conference series page and individual edition pages are edited here. New QA editions should be added as new rows.',
+    'label_field': 'edition',
+    'fields': [
+      F('edition', 'Edition', help='Short name: QA1, QA2, QA3, … QA7 etc.'),
+      F('slug', 'URL slug', help='Lowercase no spaces: qa1, qa2, qa7. Part of URL: #/conference/qa1'),
+      F('number', 'Edition number', help='Two digits: 01, 02, … 07.'),
+      F('year', 'Year'),
+      F('city', 'City'),
+      F('country', 'Country'),
+      F('dates', 'Dates', help='e.g. 19–24 September 2010.'),
+      F('host', 'Host institution(s)', 'text'),
+      F('website', 'Edition website / programme link', 'url'),
+      F('heroImage', 'Edition hero photo', 'image', help='2400×1000 banner photo of the venue or audience.'),
+      F('theme', 'Theme / motto', help='Optional, used when the edition had an official slogan.'),
+      F('locNote', 'Organising committee note', 'text',
+        help='e.g. All committee members are part of the Quantum Research Group…'),
+      F('locLabel', 'Organising committee label',
+        help='Usually "Organising committee".'),
+      F('invitedLabel', 'Invited speakers label',
+        help='Usually "Invited speakers and topics".'),
+      F('invited', 'Invited speakers', 'list', label_field='name', fields=[
+        F('name', 'Name'), F('affiliation', 'Affiliation'), F('topic', 'Talk title or topic'),
+      ]),
+      F('plenary', 'Plenary speakers', 'list', label_field='name', fields=[
+        F('name', 'Name'), F('affiliation', 'Affiliation'),
+      ]),
+      F('keynote', 'Keynote speakers', 'list', label_field='name', fields=[
+        F('name', 'Name'), F('affiliation', 'Affiliation'),
+      ]),
+      F('ipc', 'International Programme Committee', 'list', label_field='name', fields=[
+        F('name', 'Name'), F('affiliation', 'Affiliation'), F('role', 'Role (optional)'),
+      ]),
+      F('loc', 'Local Organising Committee', 'list', label_field='name', fields=[
+        F('name', 'Name'), F('affiliation', 'Affiliation'), F('role', 'Role (optional, e.g. Chair)'),
+      ]),
+      F('summary', 'Edition write-up / summary', 'markdown'),
     ],
   },
   {
