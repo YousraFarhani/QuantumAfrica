@@ -1,19 +1,12 @@
 {
- "updated": "2026-08-31T14:27:25+00:00",
+ "updated": "2026-08-31T17:57:23+00:00",
  "content": {
   "site": {},
-  "hero": {
-   "slides": [
-    {
-     "image": "media/856c43197563ecf6.jpg",
-     "caption": "QML4Africa - Rwanda"
-    }
-   ]
-  },
+  "hero": {},
   "stats": {},
   "highlight": {},
   "about": {
-   "heroImage": "media/9ad3aba7104f3941.jpg"
+   "heroImage": "media/62f8c1d70029ed15.png"
   },
   "people": [],
   "chapters": [],
@@ -27,7 +20,10 @@
   "support": {},
   "legal": {},
   "pages.home": {},
-  "pages.about": {},
+  "pages.about": {
+   "heroEyebrow": "ADMIN-PUBLISH-TEST-v1",
+   "heroImage": "media/90ac7c7f0f18ff81.png"
+  },
   "pages.impact": {},
   "pages.education": {},
   "pages.tutor": {},
