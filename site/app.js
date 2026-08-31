@@ -1635,6 +1635,21 @@ ${crumb([{t:'Home',h:'#/'},{t:'Community',h:'#/chapters'},{t:'Chapters'}])}
 PAGES.chapterDetail = (slug) => {
   const c = CHAPTERS.find(x=>x.slug===slug) || CHAPTERS[0];
   const nm = c.name;
+  const chapterPeople = PEOPLE.filter(p=>{
+    const pc = ((p.chapter||'')+'').replace(/\s+/g,'').toLowerCase();
+    const cc = (nm+'').replace(/\s+/g,'').toLowerCase();
+    return pc && pc === cc;
+  });
+  const fallbackLeads = PEOPLE.filter(p=>(p.group||'')==='Chapter leads').slice(0,4);
+  const showPeople = chapterPeople.length ? chapterPeople : fallbackLeads;
+  const leadBlock = (c.lead||c.leadRole) ? `
+  <div class="panel mt24">
+    <h5>${cx('pages.chapterDetail.namedLeadHead', 'Chapter lead')}</h5>
+    ${c.lead ? `<p><strong>${esc(c.lead)}</strong>${c.leadRole ? ' — '+esc(c.leadRole) : ''}</p>` : ''}
+    ${c.leadRole && !c.lead ? `<p>${esc(c.leadRole)}</p>` : ''}
+    ${c.email ? `<p class="small mt8"><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></p>` : ''}
+  </div>` : '';
+  const description = (c.description && (c.description+'').trim()) ? pht(esc(c.description)) : pht(cx('pages.chapterDetail.heroLede', 'CHAPTER DESCRIPTION — 3 to 4 sentences: when the chapter formed, what it focuses on, which universities are involved, and what it is working towards'));
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
 <section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.chapterDetail.heroImage','Chapter hero — team or event photo','2400×1000 · JPG → assets/chapters/'+c.slug+'/hero.jpg','wide','network')}</div></section>
@@ -1645,7 +1660,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
     ${statusPill()}
   </div>
   <h1 class="mt16">Quantum ${esc(nm)}</h1>
-  <p class="lede">${pht(cx('pages.chapterDetail.heroLede', 'CHAPTER DESCRIPTION — 3 to 4 sentences: when the chapter formed, what it focuses on, which universities are involved, and what it is working towards'))}</p>
+  <p class="lede">${description}</p>
   <div class="phero-meta"><a class="btn sm grad" href="#/join">${cx('pages.chapterDetail.heroBtn1', 'Join Quantum')} ${esc(nm)}</a><a class="btn sm ghost" href="#/contact">${cx('pages.chapterDetail.heroBtn2', 'Contact the chapter')}</a></div>
 </div></section>
 
@@ -1654,7 +1669,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
     cx('pages.chapterDetail.leadEyebrow', 'Leadership'),
     cx('pages.chapterDetail.leadTitle', 'Who runs this chapter')
   )}
-  <div class="grid g4">${PEOPLE.slice(0,4).map(personCard).join('')}</div>
+  ${leadBlock}
+  <div class="grid g4 mt24">${showPeople.length ? showPeople.map(personCard).join('') : '<p class="small">'+pht(cx('pages.chapterDetail.emptyLeadNote', 'Add chapter leads in the admin panel under Team by setting a person\'s Group to "Chapter leads" and their Chapter field to this country.'))+'</p>'}</div>
   <div class="mt48">${cimg('pages.chapterDetail.teamImage','Chapter team photo','1600×900 · JPG','wide','network')}</div>
 </div></section>
 
