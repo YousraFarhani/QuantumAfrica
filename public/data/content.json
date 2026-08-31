@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-31T17:59:47+00:00",
+ "updated": "2026-08-31T18:02:19+00:00",
  "content": {
   "site": {},
   "hero": {},
@@ -21,6 +21,7 @@
   "legal": {},
   "pages.home": {},
   "pages.about": {
+   "heroEyebrow": "PUBLISH-VERIFY-31919",
    "heroImage": "media/90ac7c7f0f18ff81.png"
   },
   "pages.impact": {},
