@@ -2703,7 +2703,7 @@ ${highlightSection()}
         </div>
         <p class="small mt24"><span class="pill dev">${cx('pages.home.tutorStatusPill', 'In development')}</span></p>
       </div>
-      <div>${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage'))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
+      <div>${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage')))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
     </div>
   </div>
 </section>
@@ -3841,7 +3841,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Pledge your support'}])}
         <div class="dl-item"><dt>${cx('pages.support.splitStuLbl','Student costs')}</dt><dd>${cval('support.splitStudents')!=='' ? cval('support.splitStudents')+'%' : pht(cx('pages.support.splitStuPh','%'))}</dd></div>
         <div class="dl-item"><dt>${cx('pages.support.splitOpsLbl','Operations')}</dt><dd>${cval('support.splitOperations')!=='' ? cval('support.splitOperations')+'%' : pht(cx('pages.support.splitOpsPh','%'))}</dd></div>
       </dl>
-      <p class="xs mt16">${pht(cx('pages.support.splitNote', 'Publish a real breakdown, or remove this panel. An invented split is worse than none.')))}</p>
+      <p class="xs mt16">${pht(cx('pages.support.splitNote', 'Publish a real breakdown, or remove this panel. An invented split is worse than none.'))}</p>
     </div>
     <div class="panel mt16"><h5>${cx('pages.support.panelPartnerHead','Partnering instead?')}</h5>
       <a class="link-a" href="#/partners" style="display:flex">${cx('pages.support.panelPartnerLink','Institutional partnerships')} <span class="ar" aria-hidden="true">&rarr;</span></a>
