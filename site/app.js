@@ -625,7 +625,8 @@ const SVG = {
   orcid:'<circle cx="12" cy="12" r="9"/><path d="M9.1 10v7M9.1 7.4h.01M12.9 17v-7h1.9a3.5 3.5 0 0 1 0 7z"/>',
   instagram:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="0.9" fill="currentColor" stroke="none"/>',
   youtube:'<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9.4v5.2l4.5-2.6z"/>',
-  twitter:'<path d="M4 4h3l4 5L16 4h3l-5 6 5.5 7H15l-3.2-4.4L8.5 17H5.5l4.6-5.5z"/>'
+  twitter:'<path d="M4 4h3l4 5L16 4h3l-5 6 5.5 7H15l-3.2-4.4L8.5 17H5.5l4.6-5.5z"/>',
+  email:'<rect x="2.8" y="5" width="18.4" height="14" rx="2"/><path d="M4.2 7l7.8 5.6L19.8 7"/>'
 };
 function svgIcon(name, size){
   size = size || 26;
@@ -1033,12 +1034,12 @@ PAGES.home = () => `
   <div class="hero-scrim"></div>
   <div class="hero-inner">
     <div class="wrap">
-      <div class="hero-eye fade-seq" data-seq="0">Quantum research · education · innovation, built across Africa</div>
+      <div class="hero-eye fade-seq" data-seq="0">${cx('pages.home.heroEyebrow', 'Quantum research · education · innovation, built across Africa')}</div>
       <h1><span id="typeA"></span><span id="typeB" class="tl-p"></span><span class="caret" id="caret" aria-hidden="true"></span></h1>
       <p class="lede fade-seq" id="heroLede" data-seq="1">${esc(HERO_LINES[0].p)}</p>
       <div class="hero-cta fade-seq" data-seq="2">
-        <a class="btn teal" href="#/education">See what we build <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn inv ghost" href="#/join">Join Quantum Africa</a>
+        <a class="btn teal" href="#/education">${cx('pages.home.ctaPrimary', 'See what we build')} <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn inv ghost" href="#/join">${cx('pages.home.ctaSecondary', 'Join Quantum Africa')}</a>
       </div>
     </div>
   </div>
@@ -1068,7 +1069,11 @@ ${highlightSection()}
 
 <section class="sec">
   <div class="wrap">
-    ${sectionHead('Our work','From Learning to Leadership','One pathway. Most people move through all four.')}
+    ${sectionHead(
+      cx('pages.home.pillarEyebrow', 'Our work'),
+      cx('pages.home.pillarTitle', 'From Learning to Leadership'),
+      cx('pages.home.pillarLede', 'One pathway. Most people move through all four.')
+    )}
     <div class="grid g4">
       ${pillarCard('01','Educate','Webinars, workshops, resources and the AI Tutor.','educate','Education','#/education')}
       ${pillarCard('02','Research','Open, collaborative projects with published code.','research','Research','#/research')}
@@ -1082,16 +1087,16 @@ ${highlightSection()}
   <div class="wrap">
     <div class="split">
       <div>
-        <div class="sec-idx"><span class="lbl">Featured program</span><i></i></div>
-        <h2 class="mt16">Meet the Quantum AI Tutor</h2>
-        <p class="lede mt16">Learn quantum computing. For free. A guided, conversational way in — built by Quantum Africa, open to anyone.</p>
+        <div class="sec-idx"><span class="lbl">${cx('pages.home.tutorEyebrow', 'Featured program')}</span><i></i></div>
+        <h2 class="mt16">${cx('pages.home.tutorTitle', 'Meet the Quantum AI Tutor')}</h2>
+        <p class="lede mt16">${cx('pages.home.tutorLede', 'Learn quantum computing. For free. A guided, conversational way in — built by Quantum Africa, open to anyone.')}</p>
         <div class="hero-cta">
-          <a class="btn teal" href="#/tutor">Try the Quantum AI Tutor <span class="ar" aria-hidden="true">→</span></a>
-          <a class="btn inv ghost" href="#/tutor">How it works</a>
+          <a class="btn teal" href="#/tutor">${cx('pages.home.tutorCtaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
+          <a class="btn inv ghost" href="#/tutor">${cx('pages.home.tutorCtaSecondary', 'How it works')}</a>
         </div>
-        <p class="small mt24"><span class="pill dev">In development</span></p>
+        <p class="small mt24"><span class="pill dev">${cx('pages.home.tutorStatusPill', 'In development')}</span></p>
       </div>
-      <div>${tutorMock()}</div>
+      <div>${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage'))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
     </div>
   </div>
 </section>
@@ -1099,14 +1104,24 @@ ${highlightSection()}
 <div class="pattern-band">${patternPanel('','light')}</div>
 <section class="sec">
   <div class="wrap">
-    ${sectionHead('Chapters','Building Quantum Communities Across Africa','Local leadership, local activity, one network.',{t:'Explore our chapters',h:'#/chapters'})}
+    ${sectionHead(
+      cx('pages.home.chaptersEyebrow', 'Chapters'),
+      cx('pages.home.chaptersTitle', 'Building Quantum Communities Across Africa'),
+      cx('pages.home.chaptersLede', 'Local leadership, local activity, one network.'),
+      {t:cx('pages.home.chaptersCta', 'Explore our chapters'),h:'#/chapters'}
+    )}
     <div class="map-wrap">${africaMap()}${chapterList()}</div>
   </div>
 </section>
 
 <section class="sec tint">
   <div class="wrap">
-    ${sectionHead('Education','Learn quantum, wherever you are','From a one-hour webinar to a full university programme.',{t:'Explore quantum education',h:'#/education'})}
+    ${sectionHead(
+      cx('pages.home.educationEyebrow', 'Education'),
+      cx('pages.home.educationTitle', 'Learn quantum, wherever you are'),
+      cx('pages.home.educationLede', 'From a one-hour webinar to a full university programme.'),
+      {t:cx('pages.home.educationCta', 'Explore quantum education'),h:'#/education'}
+    )}
     <div class="grid g3">
       ${[['Quantum Africa Webinars','Experts from around the world, live.','current','wave'],
          ['Workshops — QML4Africa','Hands-on, two editions delivered.','current','circuit'],
@@ -1127,36 +1142,61 @@ ${highlightSection()}
 
 <section class="sec">
   <div class="wrap">
-    ${sectionHead('Research','Open research, built in the open','Students, researchers and professionals, building in the open.',{t:'Explore research',h:'#/research'})}
+    ${sectionHead(
+      cx('pages.home.researchEyebrow', 'Research'),
+      cx('pages.home.researchTitle', 'Open research, built in the open'),
+      cx('pages.home.researchLede', 'Students, researchers and professionals, building in the open.'),
+      {t:cx('pages.home.researchCta', 'Explore research'),h:'#/research'}
+    )}
     <div class="grid g4">${PROJECTS.map(projectCard).join('')}</div>
   </div>
 </section>
 
 <section class="sec tint">
   <div class="wrap">
-    ${sectionHead('Opportunities','Your Quantum Journey Starts Here','PhDs, postdocs, masters programmes and industry roles, pulled daily from the main quantum job boards. Anything in Africa is pushed to the top.',{t:'Explore opportunities',h:'#/opportunities'})}
+    ${sectionHead(
+      cx('pages.home.opportunitiesEyebrow', 'Opportunities'),
+      cx('pages.home.opportunitiesTitle', 'Your Quantum Journey Starts Here'),
+      cx('pages.home.opportunitiesLede', 'PhDs, postdocs, masters programmes and industry roles, pulled daily from the main quantum job boards. Anything in Africa is pushed to the top.'),
+      {t:cx('pages.home.opportunitiesCta', 'Explore opportunities'),h:'#/opportunities'}
+    )}
     <div class="opps" id="opHome">${oppPick(5).map(oppRow).join('')}</div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    ${sectionHead('Events','What is happening next','Across the network.',{t:'View all events',h:'#/events'})}
+    ${sectionHead(
+      cx('pages.home.eventsEyebrow', 'Events'),
+      cx('pages.home.eventsTitle', 'What is happening next'),
+      cx('pages.home.eventsLede', 'Across the network.'),
+      {t:cx('pages.home.eventsCta', 'View all events'),h:'#/events'}
+    )}
     <div class="grid g3">${EVENTS.filter(e=>e.when==='upcoming').map((e,i)=>eventCard(e,i)).join('')}</div>
   </div>
 </section>
 
 <section class="sec tint">
   <div class="wrap">
-    ${sectionHead('Partners','Working with institutions across Africa and beyond','Real, active collaborations only.',{t:'Become a partner',h:'#/partners'})}
+    ${sectionHead(
+      cx('pages.home.partnersEyebrow', 'Partners'),
+      cx('pages.home.partnersTitle', 'Working with institutions across Africa and beyond'),
+      cx('pages.home.partnersLede', 'Real, active collaborations only.'),
+      {t:cx('pages.home.partnersCta', 'Become a partner'),h:'#/partners'}
+    )}
     <div class="logo-wall">${Array.from({length:8}).map(()=>`<div class="logo-cell rv"><span class="mk"></span>PARTNER LOGO</div>`).join('')}</div>
-    <p class="xs mt24">Supply logo files and a one-line description of each collaboration. Grouped by academic · research · industry · education · strategic.</p>
+    <p class="xs mt24">${cx('pages.home.partnersNote', 'Supply logo files and a one-line description of each collaboration. Grouped by academic · research · industry · education · strategic.')}</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    ${sectionHead('Community','Voices from the network','Named members, real institutions.',{t:'Read member stories',h:'#/news'})}
+    ${sectionHead(
+      cx('pages.home.communityEyebrow', 'Community'),
+      cx('pages.home.communityTitle', 'Voices from the network'),
+      cx('pages.home.communityLede', 'Named members, real institutions.'),
+      {t:cx('pages.home.communityCta', 'Read member stories'),h:'#/news'}
+    )}
     <div class="grid g3">
       ${Array.from({length:3}).map(()=>`<div class="quote rv"><span class="qm" aria-hidden="true">“</span>
         <p>${pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p>
@@ -1168,7 +1208,12 @@ ${highlightSection()}
 
 <section class="sec hair">
   <div class="wrap">
-    ${sectionHead('News & articles','Latest from the network','Updates, chapter reports and member stories.',{t:'All articles',h:'#/news'})}
+    ${sectionHead(
+      cx('pages.home.newsEyebrow', 'News & articles'),
+      cx('pages.home.newsTitle', 'Latest from the network'),
+      cx('pages.home.newsLede', 'Updates, chapter reports and member stories.'),
+      {t:cx('pages.home.newsCta', 'All articles'),h:'#/news'}
+    )}
     <div class="news-lead">
       ${articleFeature(ARTICLES[0])}
       <div>
@@ -1182,25 +1227,24 @@ ${highlightSection()}
 <section class="cta-band">
   ${ringMark('cta-ring')}
   <div class="wrap">
-    <div class="hero-eye">Get involved</div>
-    <h2 class="mt24">Be Part of Africa's Quantum Future.</h2>
+    <div class="hero-eye">${cx('pages.home.ctaBandEyebrow', 'Get involved')}</div>
+    <h2 class="mt24">${cx('pages.home.ctaBandTitle', "Be Part of Africa's Quantum Future.")}</h2>
     <div class="btns">
-      <a class="btn teal" href="#/join">Join Quantum Africa</a>
-      <a class="btn inv ghost" href="#/partners">Partner With Us</a>
-      <a class="btn inv ghost" href="#/contact">Support Our Mission</a>
+      <a class="btn teal" href="#/join">${cx('pages.home.ctaBandBtn1', 'Join Quantum Africa')}</a>
+      <a class="btn inv ghost" href="#/partners">${cx('pages.home.ctaBandBtn2', 'Partner With Us')}</a>
+      <a class="btn inv ghost" href="#/contact">${cx('pages.home.ctaBandBtn3', 'Support Our Mission')}</a>
     </div>
   </div>
 </section>`;
 
 /* ---------- ABOUT ---------- */
 PAGES.about = () => {
-  const eyebrow = cval('about.heroEyebrow') || 'About Quantum Africa';
-  const title = cval('about.heroTitle') || 'We build people, not just programmes.';
-  const lede = cval('about.heroLede')
-    || "Quantum Africa exists to build Africa's quantum workforce — through education, research, leadership and global connection.";
-  const whoHtml = cval('about.whoWeAre');
+  const eyebrow = cx('pages.about.heroEyebrow', 'About Quantum Africa');
+  const title = cx('pages.about.heroTitle', 'We build people, not just programmes.');
+  const lede = cx('pages.about.heroLede',
+    "Quantum Africa exists to build Africa's quantum workforce — through education, research, leadership and global connection.");
   const objectives = (function(){
-    const raw = cval('about.objectives');
+    const raw = cval('pages.about.objectivesList');
     if(Array.isArray(raw) && raw.length){
       return raw.map(x => `<li>${esc(String(x))}</li>`).join('');
     }
@@ -1215,11 +1259,12 @@ PAGES.about = () => {
       'Increase African participation in the global quantum ecosystem',
     ].map(x => `<li>${pht(x)}</li>`).join('');
   })();
-  const philHead = cval('about.philosophyHeadline') || 'Educate → Research → Connect → Lead';
-  const philBody = cval('about.philosophy');
-  const storyHtml = cval('about.story');
-  const missionHtml = cval('about.mission');
-  const visionHtml = cval('about.vision');
+  const philHead = cx('pages.about.philosophyHeadline', 'Educate → Research → Connect → Lead');
+  const whoHtml = cval('pages.about.whoWeAreBody');
+  const storyHtml = cval('pages.about.storyBody');
+  const missionHtml = cval('pages.about.missionBody');
+  const visionHtml = cval('pages.about.visionBody');
+  const philBody = cval('pages.about.philosophyBody');
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 <section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
@@ -1229,56 +1274,61 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 </div></section>
 
 <section class="sec flush" style="padding-top:0">
-  <div class="wrap">${cimg('about.heroImage','Wide community photograph','2400×1000 · JPG → assets/about/hero.jpg','wide','field')}</div>
+  <div class="wrap">${cimg('pages.about.heroImage','Wide community photograph','2400×1000 · JPG → assets/about/hero.jpg','wide','field')}</div>
 </section>
 
 <section class="sec"><div class="wrap"><div class="side">
   <div class="prose">
-    <h3>Who we are</h3>
+    <h3>${cx('pages.about.whoWeAreHead', 'Who we are')}</h3>
     ${whoHtml
       ? String(whoHtml).split(/\n\s*\n/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join('')
       : `<p>${pht('WHO WE ARE — two or three short paragraphs. What Quantum Africa is, and what it is not.')}</p>`}
-    <h3>Our story</h3>
+    <h3>${cx('pages.about.storyHead', 'Our story')}</h3>
     ${storyHtml
       ? String(storyHtml).split(/\n\s*\n/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join('')
       : `<p>${pht('OUR STORY — 3 to 4 paragraphs: how Quantum Africa started, who started it, what the first activity was, and what changed as the community grew. Include founding year and any turning points.')}</p>`}
-    <h3>Mission</h3>
+    <h3>${cx('pages.about.missionHead', 'Mission')}</h3>
     ${missionHtml
       ? `<p>${esc(missionHtml)}</p>`
       : `<p>${pht('To democratize access to quantum education, foster collaborative research, develop talent and leadership, and connect African students, researchers, institutions, and professionals with opportunities and partners across the global quantum ecosystem.')}</p>`}
-    <h3>Vision</h3>
+    <h3>${cx('pages.about.visionHead', 'Vision')}</h3>
     ${visionHtml
       ? `<p>${esc(visionHtml)}</p>`
       : `<p>${pht('An Africa whose talent is not left behind in the quantum revolution — with a workforce, a research base and an institutional presence in the global quantum ecosystem.')}</p>`}
-    <h3>Objectives</h3>
+    <h3>${cx('pages.about.objectivesHead', 'Objectives')}</h3>
     <ul>${objectives}</ul>
   </div>
   <aside>
     <div class="panel">
-      <h5>Our philosophy</h5>
+      <h5>${cx('pages.about.philosophyPanelHead', 'Our philosophy')}</h5>
       <p style="font-family:var(--f);font-weight:600;font-size:1.15rem;letter-spacing:-.02em;line-height:1.4">${esc(philHead)}</p>
       <p class="small mt16">${philBody
         ? esc(philBody)
         : pht('Each stage feeds the next. Someone who joins a webinar can end up leading a chapter.')}</p>
     </div>
     <div class="panel mt16">
-      <h5>At a glance</h5>
+      <h5>${cx('pages.about.glancePanelHead', 'At a glance')}</h5>
       <dl class="dl-list">
         <div class="dl-item"><dt>Members</dt><dd>${cnum('stats.members','400')}+</dd></div>
         <div class="dl-item"><dt>Chapters</dt><dd>${cnum('stats.chapters',7)}</dd></div>
         <div class="dl-item"><dt>Founded</dt><dd>${cx('site.founded', pht('YEAR'))}</dd></div>
-        <div class="dl-item"><dt>Headquarters location</dt><dd>${cx('site.registered', pht('COUNTRY'))}</dd></div>
+        <div class="dl-item"><dt>Location</dt><dd>${cx('site.registered', pht('COUNTRY'))}</dd></div>
       </dl>
     </div>
     <div class="panel mt16">
-      <h5>Documents</h5>
-      <p class="small">${cx('about.documents', pht('Annual report, strategy document or one-pager PDF — upload and link here'))}</p>
+      <h5>${cx('pages.about.documentsPanelHead', 'Documents')}</h5>
+      <p class="small">${cx('pages.about.documentsNote', pht('Annual report, strategy document or one-pager PDF — upload and link here'))}</p>
     </div>
   </aside>
 </div></div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('People','Leadership and advisors',null,{t:'Full directory',h:'#/people'})}
+  ${sectionHead(
+    cx('pages.about.peopleEyebrow', 'People'),
+    cx('pages.about.peopleTitle', 'Leadership and advisors'),
+    null,
+    {t:cx('pages.about.peopleCta', 'Full directory'),h:'#/people'}
+  )}
   <div class="grid g4">${PEOPLE.slice(0,4).map(personCard).join('')}</div>
 </div></section>`;
 };
@@ -1287,49 +1337,57 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 PAGES.impact = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Our impact</span><i></i></div>
-  <h1>What we have actually done.</h1>
-  <p class="lede">Verified figures only. Anything uncounted is marked, never estimated.</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.impact.heroEyebrow', 'Our impact')}</span><i></i></div>
+  <h1>${cx('pages.impact.heroTitle', 'What we have actually done.')}</h1>
+  <p class="lede">${cx('pages.impact.heroLede', 'Verified figures only. Anything uncounted is marked, never estimated.')}</p>
 </div></section>
 
 <section class="sec flush"><div class="wrap">
   <div class="bignum">
-    ${[[cnum('stats.members',400),'+','Community members','Across the continent and the diaspora.'],
-       [cnum('stats.chapters',7),'','National chapters','Across North, West, East and Southern Africa.'],
-       [cnum('stats.projects',4),'','Research projects','All open to new contributors.'],
-       [cnum('stats.countries',52),'','Countries reached','Across the continent and the diaspora.'],
-       [cnum('stats.events',10),'','Events held','Webinars, workshops and chapter events.'],
-       [cval('stats.partners'),'','Partner institutions','Institutions with a signed agreement.']]
+    ${[[cnum('stats.members',400),'+',cx('pages.impact.kpi1Key','Community members'),cx('pages.impact.kpi1Desc','Across the continent and the diaspora.')],
+       [cnum('stats.chapters',7),'',cx('pages.impact.kpi2Key','National chapters'),cx('pages.impact.kpi2Desc','Across North, West, East and Southern Africa.')],
+       [cnum('stats.projects',4),'',cx('pages.impact.kpi3Key','Research projects'),cx('pages.impact.kpi3Desc','All open to new contributors.')],
+       [cnum('stats.countries',52),'',cx('pages.impact.kpi4Key','Countries reached'),cx('pages.impact.kpi4Desc','Across the continent and the diaspora.')],
+       [cnum('stats.events',10),'',cx('pages.impact.kpi5Key','Events held'),cx('pages.impact.kpi5Desc','Webinars, workshops and chapter events.')],
+       [cval('stats.partners'),'',cx('pages.impact.kpi6Key','Partner institutions'),cx('pages.impact.kpi6Desc','Institutions with a signed agreement.')]]
       .map(([n,sfx,k,d])=>`<div class="bigcell rv">${n===''
         ? `<span class="v tbd">[ ?? ]</span>`
-        : `<span class="v" data-count="${n}"${sfx?` data-suffix="${sfx}"`:''}>0</span>`}<span class="k">${k}</span><span class="d">${n===''?pht('supply the figure'):d}</span></div>`).join('')}
+        : `<span class="v" data-count="${n}"${sfx?` data-suffix="${sfx}"`:''}>0</span>`}<span class="k">${k}</span><span class="d">${n===''?pht(cx('pages.impact.kpiSupply', 'supply the figure')):d}</span></div>`).join('')}
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Detail','Where the numbers come from','Each area needs its own count and the period it covers.')}
+  ${sectionHead(
+    cx('pages.impact.detailEyebrow', 'Detail'),
+    cx('pages.impact.detailTitle', 'Where the numbers come from'),
+    cx('pages.impact.detailLede', 'Each area needs its own count and the period it covers.')
+  )}
   <div class="tw"><table>
-    <thead><tr><th>Area</th><th>What we count</th><th>Figure</th></tr></thead>
+    <thead><tr><th>${cx('pages.impact.detailCol1', 'Area')}</th><th>${cx('pages.impact.detailCol2', 'What we count')}</th><th>${cx('pages.impact.detailCol3', 'Figure')}</th></tr></thead>
     <tbody>
-      <tr><td>Community</td><td>Members, countries represented, active chapter participants</td><td>400+ members</td></tr>
-      <tr><td>Education</td><td>Webinars delivered, workshop participants, hours taught, resources published</td><td>${pht('supply')}</td></tr>
-      <tr><td>Research</td><td>Active projects, contributors, repositories, publications</td><td>4 projects</td></tr>
-      <tr><td>Chapters</td><td>Chapters launched, universities engaged, chapter-run events</td><td>7 chapters</td></tr>
-      <tr><td>Events</td><td>Total events, attendees, speakers, speaker countries</td><td>10 events</td></tr>
-      <tr><td>Partnerships</td><td>Partner institutions, joint activities, opportunities circulated</td><td>${pht('supply')}</td></tr>
+      <tr><td>${cx('pages.impact.row1Area', 'Community')}</td><td>${cx('pages.impact.row1Count', 'Members, countries represented, active chapter participants')}</td><td>${cx('pages.impact.row1Fig', '400+ members')}</td></tr>
+      <tr><td>${cx('pages.impact.row2Area', 'Education')}</td><td>${cx('pages.impact.row2Count', 'Webinars delivered, workshop participants, hours taught, resources published')}</td><td>${pht(cx('pages.impact.row2Fig', 'supply'))}</td></tr>
+      <tr><td>${cx('pages.impact.row3Area', 'Research')}</td><td>${cx('pages.impact.row3Count', 'Active projects, contributors, repositories, publications')}</td><td>${cx('pages.impact.row3Fig', '4 projects')}</td></tr>
+      <tr><td>${cx('pages.impact.row4Area', 'Chapters')}</td><td>${cx('pages.impact.row4Count', 'Chapters launched, universities engaged, chapter-run events')}</td><td>${cx('pages.impact.row4Fig', '7 chapters')}</td></tr>
+      <tr><td>${cx('pages.impact.row5Area', 'Events')}</td><td>${cx('pages.impact.row5Count', 'Total events, attendees, speakers, speaker countries')}</td><td>${cx('pages.impact.row5Fig', '10 events')}</td></tr>
+      <tr><td>${cx('pages.impact.row6Area', 'Partnerships')}</td><td>${cx('pages.impact.row6Count', 'Partner institutions, joint activities, opportunities circulated')}</td><td>${pht(cx('pages.impact.row6Fig', 'supply'))}</td></tr>
     </tbody>
   </table></div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Stories','Impact in individual terms','Numbers give scale. One trajectory gives meaning.')}
-  <div class="grid g3">${['bloch','network','circuit'].map(k=>`<a class="card rv" href="#/news/a3">
-    <div class="card-media">${media(k,'Portrait of the person this story is about','1600×900 · JPG')}</div>
-    <div class="card-b"><div class="news-meta"><span class="t">Member story</span></div>
-      <h4>${pht('Impact story headline')}</h4><p>${pht('Who, what they did, where they are now')}</p></div></a>`).join('')}</div>
+  ${sectionHead(
+    cx('pages.impact.storiesEyebrow', 'Stories'),
+    cx('pages.impact.storiesTitle', 'Impact in individual terms'),
+    cx('pages.impact.storiesLede', 'Numbers give scale. One trajectory gives meaning.')
+  )}
+  <div class="grid g3">${['bloch','network','circuit'].map((k,i)=>`<a class="card rv" href="#/news/a3">
+    <div class="card-media">${cimg('pages.impact.storyImage'+(i+1), 'Portrait of the person this story is about', '1600×900 · JPG', '', k)}</div>
+    <div class="card-b"><div class="news-meta"><span class="t">${cx('pages.impact.storyMeta', 'Member story')}</span></div>
+      <h4>${pht(cx('pages.impact.storyHeadline'+(i+1), 'Impact story headline'))}</h4><p>${pht(cx('pages.impact.storyCopy'+(i+1), 'Who, what they did, where they are now'))}</p></div></a>`).join('')}</div>
   <div class="mt48 grid g2">
-    <div class="panel"><h5>Annual report</h5><p class="small">${pht('Upload the PDF and a cover image')}</p></div>
-    <div class="panel"><h5>Methodology</h5><p class="small">${pht('How each figure is counted, and over what period')}</p></div>
+    <div class="panel"><h5>${cx('pages.impact.reportHead', 'Annual report')}</h5><p class="small">${pht(cx('pages.impact.reportNote', 'Upload the PDF and a cover image'))}</p></div>
+    <div class="panel"><h5>${cx('pages.impact.methodHead', 'Methodology')}</h5><p class="small">${pht(cx('pages.impact.methodNote', 'How each figure is counted, and over what period'))}</p></div>
   </div>
 </div></section>`;
 
@@ -1337,27 +1395,36 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
 PAGES.education = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Programs · Quantum Education</span><i></i></div>
-  <h1 class="mt24">Quantum education, made reachable.</h1>
-  <p class="lede">A student with a laptop can start today. A university can build a programme on the same foundation.</p>
-  <div class="phero-meta"><span class="pill current">Webinars &amp; workshops running</span><span class="pill dev">Tutor &amp; resources in development</span><span class="pill future">University programmes planned</span></div>
+  <div class="sec-idx"><span class="lbl">${cx('pages.education.heroEyebrow', 'Programs · Quantum Education')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.education.heroTitle', 'Quantum education, made reachable.')}</h1>
+  <p class="lede">${cx('pages.education.heroLede', 'A student with a laptop can start today. A university can build a programme on the same foundation.')}</p>
+  <div class="phero-meta">
+    <span class="pill current">${cx('pages.education.pillRunning', 'Webinars &amp; workshops running')}</span>
+    <span class="pill dev">${cx('pages.education.pillDev', 'Tutor &amp; resources in development')}</span>
+    <span class="pill future">${cx('pages.education.pillPlanned', 'University programmes planned')}</span>
+  </div>
 </div></section>
 <section class="sec"><div class="wrap">
   <div class="grid g2">
-    ${[['Quantum Africa Webinars','A recurring online series where experts from around the world speak to the community about quantum computing, quantum technologies, applications, research, careers, policy and the future of the field.','current','#/events'],
-       ['Quantum Machine Learning 4 Africa','A hands-on workshop series on quantum machine learning. Two editions delivered.','current','#/events/workshops'],
-       ['Quantum AI Tutor','A free AI-powered tutor for learning quantum computing at your own pace, with structured learning pathways.','dev','#/tutor'],
-       ['Learning Resources','A curated library — courses, notebooks, reading lists, tools and recordings, filterable by topic and level.','dev','#/education'],
-       ['Mentorship','Connecting students with researchers and professionals for guidance on study, research and careers.','future','#/join'],
-       ['University Programs','Structured quantum education inside African universities: curriculum support, faculty training, student chapters.','future','#/universities']
+    ${[[cx('pages.education.p1Title','Quantum Africa Webinars'),cx('pages.education.p1Desc','A recurring online series where experts from around the world speak to the community about quantum computing, quantum technologies, applications, research, careers, policy and the future of the field.'),'current','#/events'],
+       [cx('pages.education.p2Title','Quantum Machine Learning 4 Africa'),cx('pages.education.p2Desc','A hands-on workshop series on quantum machine learning. Two editions delivered.'),'current','#/events/workshops'],
+       [cx('pages.education.p3Title','Quantum AI Tutor'),cx('pages.education.p3Desc','A free AI-powered tutor for learning quantum computing at your own pace, with structured learning pathways.'),'dev','#/tutor'],
+       [cx('pages.education.p4Title','Learning Resources'),cx('pages.education.p4Desc','A curated library — courses, notebooks, reading lists, tools and recordings, filterable by topic and level.'),'dev','#/education'],
+       [cx('pages.education.p5Title','Mentorship'),cx('pages.education.p5Desc','Connecting students with researchers and professionals for guidance on study, research and careers.'),'future','#/join'],
+       [cx('pages.education.p6Title','University Programs'),cx('pages.education.p6Desc','Structured quantum education inside African universities: curriculum support, faculty training, student chapters.'),'future','#/universities']
       ].map(([t,d,s,h])=>`<a class="card pad rv" href="${h}"><div class="card-b" style="padding:0">
-        <div class="card-meta"><span class="pill ${s}">${s==='current'?'Current':s==='dev'?'In development':'Future vision'}</span></div>
+        <div class="card-meta"><span class="pill ${s}">${s==='current'?cx('pages.education.statusCurrent','Current'):s==='dev'?cx('pages.education.statusDev','In development'):cx('pages.education.statusFuture','Future vision')}</span></div>
         <h3>${esc(t)}</h3><p>${esc(d)}</p>
-        <div class="card-foot"><span class="link-a">Explore <span aria-hidden="true">→</span></span></div></div></a>`).join('')}
+        <div class="card-foot"><span class="link-a">${cx('pages.education.cardExplore','Explore')} <span aria-hidden="true">→</span></span></div></div></a>`).join('')}
   </div>
 </div></section>
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Archive','Every session, kept','Each webinar and workshop gets a permanent page with its abstract, speaker, recording and photographs. This archive is the largest source of searchable pages on the site.',{t:'Browse events',h:'#/events'})}
+  ${sectionHead(
+    cx('pages.education.archiveEyebrow', 'Archive'),
+    cx('pages.education.archiveTitle', 'Every session, kept'),
+    cx('pages.education.archiveLede', 'Each webinar and workshop gets a permanent page with its abstract, speaker, recording and photographs. This archive is the largest source of searchable pages on the site.'),
+    {t:cx('pages.education.archiveCta', 'Browse events'),h:'#/events'}
+  )}
   <div class="grid g3">${EVENTS.slice(0,3).map((e,i)=>eventCard(e,i)).join('')}</div>
 </div></section>`;
 
@@ -1368,53 +1435,62 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}
   <div class="wrap">
   <div class="split">
     <div>
-      <div class="sec-idx"><span class="lbl">Quantum Africa · Flagship project</span><i></i></div>
-      <h1 class="mt24">Learn quantum computing.<br>For free. With your AI tutor.</h1>
-      <p class="lede mt24">A free tutor built by Quantum Africa. From first principles to running circuits, at your own pace.</p>
+      <div class="sec-idx"><span class="lbl">${cx('pages.tutor.heroEyebrow', 'Quantum Africa · Flagship project')}</span><i></i></div>
+      <h1 class="mt24">${cx('pages.tutor.heroTitle', 'Learn quantum computing.<br>For free. With your AI tutor.')}</h1>
+      <p class="lede mt24">${cx('pages.tutor.heroLede', 'A free tutor built by Quantum Africa. From first principles to running circuits, at your own pace.')}</p>
       <div class="hero-cta">
-        <a class="btn teal" href="#/join">Try the Quantum AI Tutor <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn inv ghost" href="#/tutor">See how it works</a>
+        <a class="btn teal" href="#/join">${cx('pages.tutor.ctaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn inv ghost" href="#/tutor">${cx('pages.tutor.ctaSecondary', 'See how it works')}</a>
       </div>
-      <p class="mt24"><span class="pill dev">In development</span> <span class="xs" style="color:rgba(255,255,255,.55)">Link the CTA to the live product when it is ready.</span></p>
+      <p class="mt24"><span class="pill dev">${cx('pages.tutor.devPill', 'In development')}</span> <span class="xs" style="color:rgba(255,255,255,.55)">${cx('pages.tutor.devNote', 'Link the CTA to the live product when it is ready.')}</span></p>
     </div>
-    <div>${tutorMock()}</div>
+    <div>${cimg('pages.tutor.heroMockImage','Tutor mockup','PNG · any width ≥1200px','','bloch') || tutorMock()}</div>
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Who it is for','Built for the person who has no one to ask')}
+  ${sectionHead(
+    cx('pages.tutor.audienceEyebrow', 'Who it is for'),
+    cx('pages.tutor.audienceTitle', 'Built for the person who has no one to ask')
+  )}
   <div class="grid g4">
-    ${[['Students','Learning quantum alongside a physics, maths or computing degree — or entirely outside one.'],
-       ['Self-learners','No university course available locally, and no lab to walk into.'],
-       ['Educators','Preparing to teach quantum for the first time, and needing a reliable explainer.'],
-       ['Professionals','Moving into quantum from software, telecoms, finance or engineering.']
+    ${[[cx('pages.tutor.a1Title','Students'),cx('pages.tutor.a1Desc','Learning quantum alongside a physics, maths or computing degree — or entirely outside one.')],
+       [cx('pages.tutor.a2Title','Self-learners'),cx('pages.tutor.a2Desc','No university course available locally, and no lab to walk into.')],
+       [cx('pages.tutor.a3Title','Educators'),cx('pages.tutor.a3Desc','Preparing to teach quantum for the first time, and needing a reliable explainer.')],
+       [cx('pages.tutor.a4Title','Professionals'),cx('pages.tutor.a4Desc','Moving into quantum from software, telecoms, finance or engineering.')]
       ].map(([t,d])=>`<div class="pillar rv"><h3 style="font-size:1.2rem">${esc(t)}</h3><p>${esc(d)}</p></div>`).join('')}
   </div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('How it works','Four steps')}
+  ${sectionHead(
+    cx('pages.tutor.howEyebrow', 'How it works'),
+    cx('pages.tutor.howTitle', 'Four steps')
+  )}
   <div class="grid g2" style="gap:0 48px">
     <div>
-      ${[['Ask anything','Start from a question, a piece of code, or a topic. The tutor meets you where you are.'],
-         ['Follow a pathway','Structured learning pathways take you from qubits and superposition through gates, circuits and algorithms.'],
-         ['Practise','Worked examples and exercises with feedback, rather than a wall of text.'],
-         ['Go further','When you are ready, the tutor points you at Quantum Africa research projects, events and opportunities.']
+      ${[[cx('pages.tutor.s1Title','Ask anything'),cx('pages.tutor.s1Desc','Start from a question, a piece of code, or a topic. The tutor meets you where you are.')],
+         [cx('pages.tutor.s2Title','Follow a pathway'),cx('pages.tutor.s2Desc','Structured learning pathways take you from qubits and superposition through gates, circuits and algorithms.')],
+         [cx('pages.tutor.s3Title','Practise'),cx('pages.tutor.s3Desc','Worked examples and exercises with feedback, rather than a wall of text.')],
+         [cx('pages.tutor.s4Title','Go further'),cx('pages.tutor.s4Desc','When you are ready, the tutor points you at Quantum Africa research projects, events and opportunities.')]
         ].map(([t,d],i)=>`<div class="step"><span class="n">0${i+1}</span><div><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
     </div>
-    <div>${media('bloch','Two or three real interface captures — conversation, pathway, exercise','PNG · any width ≥1200px','tall')}</div>
+    <div>${cimg('pages.tutor.interfaceImage','Two or three real interface captures — conversation, pathway, exercise','PNG · any width ≥1200px','tall','bloch')}</div>
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Features','What it does')}
+  ${sectionHead(
+    cx('pages.tutor.featEyebrow', 'Features'),
+    cx('pages.tutor.featTitle', 'What it does')
+  )}
   <div class="grid g3">
-    ${[['Conversational learning','Explanations that adapt to the question asked, not a fixed syllabus.'],
-       ['Learning pathways','Beginner, intermediate and applied tracks with clear prerequisites.'],
-       ['Code support','Help reading and writing circuit code, with worked examples.'],
-       ['Free access','No paywall. Access for anyone, anywhere.'],
-       ['Built for African learners','Designed around low bandwidth and self-study, and open to multilingual support.'],
-       ['Connected to the ecosystem','Links out to Quantum Africa events, projects and opportunities.']
+    ${[[cx('pages.tutor.f1Title','Conversational learning'),cx('pages.tutor.f1Desc','Explanations that adapt to the question asked, not a fixed syllabus.')],
+       [cx('pages.tutor.f2Title','Learning pathways'),cx('pages.tutor.f2Desc','Beginner, intermediate and applied tracks with clear prerequisites.')],
+       [cx('pages.tutor.f3Title','Code support'),cx('pages.tutor.f3Desc','Help reading and writing circuit code, with worked examples.')],
+       [cx('pages.tutor.f4Title','Free access'),cx('pages.tutor.f4Desc','No paywall. Access for anyone, anywhere.')],
+       [cx('pages.tutor.f5Title','Built for African learners'),cx('pages.tutor.f5Desc','Designed around low bandwidth and self-study, and open to multilingual support.')],
+       [cx('pages.tutor.f6Title','Connected to the ecosystem'),cx('pages.tutor.f6Desc','Links out to Quantum Africa events, projects and opportunities.')]
       ].map(([t,d])=>`<div class="card pad rv"><div class="card-b"><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
   </div>
   <div class="mt48 grid g2">
@@ -1424,31 +1500,37 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}
 <section class="cta-band">
   ${ringMark('cta-ring')}
   <div class="wrap">
-  <h2>Start learning quantum computing today.</h2>
-  <div class="btns"><a class="btn teal" href="#/join">Try the Quantum AI Tutor</a><a class="btn inv ghost" href="#/universities">Bring it to your university</a></div>
+  <h2>${cx('pages.tutor.ctaBandTitle', 'Start learning quantum computing today.')}</h2>
+  <div class="btns"><a class="btn teal" href="#/join">${cx('pages.tutor.ctaBandBtn1', 'Try the Quantum AI Tutor')}</a><a class="btn inv ghost" href="#/universities">${cx('pages.tutor.ctaBandBtn2', 'Bring it to your university')}</a></div>
 </div></section>`;
 
 /* ---------- RESEARCH INDEX ---------- */
 PAGES.research = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Research &amp; innovation</span><i></i></div>
-  <h1>Collaborate. Research. Build.</h1>
-  <p class="lede">Projects are open to new contributors, and code is published where possible.</p>
-  <div class="phero-meta"><a class="btn sm" href="#/join">Join a project <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn sm ghost" href="#/researchers">For researchers</a></div>
+  <div class="sec-idx"><span class="lbl">${cx('pages.research.heroEyebrow', 'Research &amp; innovation')}</span><i></i></div>
+  <h1>${cx('pages.research.heroTitle', 'Collaborate. Research. Build.')}</h1>
+  <p class="lede">${cx('pages.research.heroLede', 'Projects are open to new contributors, and code is published where possible.')}</p>
+  <div class="phero-meta">
+    <a class="btn sm" href="#/join">${cx('pages.research.heroBtn1', 'Join a project')} <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <a class="btn sm ghost" href="#/researchers">${cx('pages.research.heroBtn2', 'For researchers')}</a>
+  </div>
 </div></section>
 
 <section class="sec deep">
   ${ringMark('cta-ring')}
   <div class="wrap">
-    ${sectionHead('Active projects','Four projects running now')}
+    ${sectionHead(
+      cx('pages.research.projectsEyebrow', 'Active projects'),
+      cx('pages.research.projectsTitle', 'Four projects running now')
+    )}
     <div class="blist">
       ${PROJECTS.map((p,i)=>`<a class="brow rv" href="#/research/${p.slug}">
         <span class="bn">0${i+1}</span>
         <span class="bmeta">
           <h3>${esc(p.title)}</h3>
-          <span class="pill current">Active</span>
-          <span class="kv" style="color:rgba(255,255,255,.55)">${esc(p.area)} &nbsp;·&nbsp; Lead ${pht('name')}</span>
+          <span class="pill current">${cx('pages.research.statusActive', 'Active')}</span>
+          <span class="kv" style="color:rgba(255,255,255,.55)">${esc(p.area)} &nbsp;·&nbsp; ${cx('pages.research.leadLabel', 'Lead')} ${pht(cx('pages.research.leadName', 'name'))}</span>
         </span>
         <span class="bfig">${art(p.art)}</span>
       </a>`).join('')}
@@ -1457,20 +1539,27 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
 </section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Outputs','Publications, code and openings')}
+  ${sectionHead(
+    cx('pages.research.outEyebrow', 'Outputs'),
+    cx('pages.research.outTitle', 'Publications, code and openings')
+  )}
   <div class="grid g3">
-    <div class="card pad rv"><div class="card-b"><h4>Publications</h4><p>${pht('Papers, preprints, DOIs — empty until there are real entries')}</p></div></div>
-    <div class="card pad rv"><div class="card-b"><h4>Open source</h4><p>Public repositories from Quantum Africa projects. ${pht('GitHub organisation URL')}</p></div></div>
-    <div class="card pad rv"><div class="card-b"><h4>Open roles</h4><p>Contributor, student researcher, mentor.<a class="link-a mt16" href="#/join" style="display:inline-flex">Get involved <span class="ar" aria-hidden="true">&rarr;</span></a></p></div></div>
+    <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out1Head', 'Publications')}</h4><p>${pht(cx('pages.research.out1Body', 'Papers, preprints, DOIs — empty until there are real entries'))}</p></div></div>
+    <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out2Head', 'Open source')}</h4><p>${cx('pages.research.out2BodyPrefix', 'Public repositories from Quantum Africa projects.')} ${pht(cx('pages.research.out2Body', 'GitHub organisation URL'))}</p></div></div>
+    <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out3Head', 'Open roles')}</h4><p>${cx('pages.research.out3BodyPrefix', 'Contributor, student researcher, mentor.')}<a class="link-a mt16" href="#/join" style="display:inline-flex">${cx('pages.research.out3Cta', 'Get involved')} <span class="ar" aria-hidden="true">&rarr;</span></a></p></div></div>
   </div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
   <div class="split">
-    <div>${sectionHead('Propose','Bring us a project','If you have a project that needs collaborators, students or compute, tell us about it.')}
-      <a class="btn" href="#/contact">Propose a project <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <div>${sectionHead(
+      cx('pages.research.propEyebrow', 'Propose'),
+      cx('pages.research.propTitle', 'Bring us a project'),
+      cx('pages.research.propLede', 'If you have a project that needs collaborators, students or compute, tell us about it.')
+    )}
+      <a class="btn" href="#/contact">${cx('pages.research.propBtn', 'Propose a project')} <span class="ar" aria-hidden="true">&rarr;</span></a>
     </div>
-    <div>${media('lightcone','Optional: a photo of the team at work','1600×900 · JPG','tall')}</div>
+    <div>${cimg('pages.research.propImage','Optional: a photo of the team at work','1600×900 · JPG','tall','lightcone')}</div>
   </div>
 </div></section>`;
 
@@ -1480,36 +1569,41 @@ PAGES.researchDetail = (slug) => {
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Research',h:'#/research'},{t:p.title}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Research project</span><i></i></div>
+  <div class="sec-idx"><span class="lbl">${cx('pages.researchDetail.heroEyebrow', 'Research project')}</span><i></i></div>
   <h1 class="mt24" style="font-size:clamp(2rem,4vw,3.2rem)">${esc(p.title)}</h1>
   <p class="lede">${esc(p.short)}</p>
-  <div class="phero-meta"><span class="pill current">Active</span><span class="tag">${esc(p.area)}</span>${p.tech.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
+  <div class="phero-meta"><span class="pill current">${cx('pages.researchDetail.statusActive', 'Active')}</span><span class="tag">${esc(p.area)}</span>${p.tech.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
 </div></section>
-<section class="sec flush" style="padding-top:0"><div class="wrap">${media(p.art||'circuit','Optional project photo. The generated figure is the default.','2400×1000 · SVG or PNG','wide')}</div></section>
+<section class="sec flush" style="padding-top:0"><div class="wrap">${cimg('pages.researchDetail.heroImage','Optional project photo. The generated figure is the default.','2400×1000 · SVG or PNG','wide',p.art||'circuit')}</div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div class="prose">
-    <h3>Description</h3><p>${esc(p.short)}</p>
-    <p>${pht('EXTENDED DESCRIPTION — 2 to 3 paragraphs written by the project lead')}</p>
-    <h3>Objectives</h3><ul>${Array.from({length:3}).map(()=>`<li>${pht('Objective')}</li>`).join('')}</ul>
-    <h3>Join this project</h3>
-    <p>This project is open to new contributors. ${pht('Skills needed and time commitment')}</p>
-    <a class="btn" href="#/join">Join this project <span class="ar" aria-hidden="true">→</span></a>
+    <h3>${cx('pages.researchDetail.descHead', 'Description')}</h3><p>${esc(p.short)}</p>
+    <p>${pht(cx('pages.researchDetail.descExtended', 'EXTENDED DESCRIPTION — 2 to 3 paragraphs written by the project lead'))}</p>
+    <h3>${cx('pages.researchDetail.objHead', 'Objectives')}</h3><ul>${Array.from({length:3}).map((_,i)=>`<li>${pht(cx('pages.researchDetail.obj'+(i+1), 'Objective'))}</li>`).join('')}</ul>
+    <h3>${cx('pages.researchDetail.joinHead', 'Join this project')}</h3>
+    <p>${cx('pages.researchDetail.joinPrefix', 'This project is open to new contributors.')} ${pht(cx('pages.researchDetail.joinBody', 'Skills needed and time commitment'))}</p>
+    <a class="btn" href="#/join">${cx('pages.researchDetail.joinBtn', 'Join this project')} <span class="ar" aria-hidden="true">→</span></a>
   </div>
   <aside>
-    <div class="panel"><h5>Project</h5><dl class="dl-list">
-      <div class="dl-item"><dt>Area</dt><dd>${esc(p.area)}</dd></div>
-      <div class="dl-item"><dt>Status</dt><dd>Active</dd></div>
-      <div class="dl-item"><dt>Started</dt><dd>${pht('DATE')}</dd></div>
-      <div class="dl-item"><dt>Repository</dt><dd>${pht('GitHub URL')}</dd></div>
-      <div class="dl-item"><dt>Publication</dt><dd>${pht('DOI / link')}</dd></div>
+    <div class="panel"><h5>${cx('pages.researchDetail.projPanelHead', 'Project')}</h5><dl class="dl-list">
+      <div class="dl-item"><dt>${cx('pages.researchDetail.areaLabel', 'Area')}</dt><dd>${esc(p.area)}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.researchDetail.statusLabel', 'Status')}</dt><dd>${cx('pages.researchDetail.statusActive', 'Active')}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.researchDetail.startedLabel', 'Started')}</dt><dd>${pht(cx('pages.researchDetail.startedValue', 'DATE'))}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.researchDetail.repoLabel', 'Repository')}</dt><dd>${pht(cx('pages.researchDetail.repoValue', 'GitHub URL'))}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.researchDetail.pubLabel', 'Publication')}</dt><dd>${pht(cx('pages.researchDetail.pubValue', 'DOI / link'))}</dd></div>
     </dl></div>
-    <div class="panel mt16"><h5>Contributors</h5>
-      ${Array.from({length:3}).map(()=>`<div class="dl-item"><dt style="text-transform:none;letter-spacing:0;font-family:inherit;font-size:.85rem;color:var(--ink-2)">${pht('Name')}</dt><dd class="xs">${pht('Role')}</dd></div>`).join('')}
+    <div class="panel mt16"><h5>${cx('pages.researchDetail.contribPanelHead', 'Contributors')}</h5>
+      ${Array.from({length:3}).map((_,i)=>`<div class="dl-item"><dt style="text-transform:none;letter-spacing:0;font-family:inherit;font-size:.85rem;color:var(--ink-2)">${pht(cx('pages.researchDetail.contribName'+(i+1), 'Name'))}</dt><dd class="xs">${pht(cx('pages.researchDetail.contribRole'+(i+1), 'Role'))}</dd></div>`).join('')}
     </div>
   </aside>
 </div></div></section>
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('More research','Other projects',null,{t:'All projects',h:'#/research'})}
+  ${sectionHead(
+    cx('pages.researchDetail.moreEyebrow', 'More research'),
+    cx('pages.researchDetail.moreTitle', 'Other projects'),
+    null,
+    {t:cx('pages.researchDetail.moreCta', 'All projects'),h:'#/research'}
+  )}
   <div class="grid g3">${PROJECTS.filter(x=>x.slug!==p.slug).slice(0,3).map(projectCard).join('')}</div>
 </div></section>`;
 };
@@ -1518,20 +1612,23 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research',h:'#/research'},{t:p.title}])}
 PAGES.chapters = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Community',h:'#/chapters'},{t:'Chapters'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Community · Chapters</span><i></i></div>
-  <h1 class="mt24">Building Quantum Communities Across Africa</h1>
-  <p class="lede">How Quantum Africa becomes local — own leadership, own events, own universities.</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.chapters.heroEyebrow', 'Community · Chapters')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.chapters.heroTitle', 'Building Quantum Communities Across Africa')}</h1>
+  <p class="lede">${cx('pages.chapters.heroLede', 'How Quantum Africa becomes local — own leadership, own events, own universities.')}</p>
 </div></section>
 <section class="sec"><div class="wrap">
   <div class="map-wrap">${africaMap()}${chapterList()}</div>
 </div></section>
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('All chapters','Seven chapters, one network')}
+  ${sectionHead(
+    cx('pages.chapters.allEyebrow', 'All chapters'),
+    cx('pages.chapters.allTitle', 'Seven chapters, one network')
+  )}
   <div class="grid g3">${CHAPTERS.map(chapterCard).join('')}</div>
   <div class="mt48 panel">
-    <h5>Start a chapter</h5>
-    <p class="small">Quantum Africa is developing chapters across the continent. If there is no chapter in your country and you want to start one, we will help.</p>
-    <a class="btn sm mt16" href="#/join">Start a chapter <span class="ar" aria-hidden="true">→</span></a>
+    <h5>${cx('pages.chapters.startPanelHead', 'Start a chapter')}</h5>
+    <p class="small">${cx('pages.chapters.startPanelBody', 'Quantum Africa is developing chapters across the continent. If there is no chapter in your country and you want to start one, we will help.')}</p>
+    <a class="btn sm mt16" href="#/join">${cx('pages.chapters.startPanelBtn', 'Start a chapter')} <span class="ar" aria-hidden="true">→</span></a>
   </div>
 </div></section>`;
 
@@ -1540,45 +1637,58 @@ PAGES.chapterDetail = (slug) => {
   const nm = c.name;
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
-<section class="sec flush" style="padding:0"><div class="wrap">${media('network','Chapter hero — team or event photo','2400×1000 · JPG → assets/chapters/'+c.slug+'/hero.jpg','wide')}</div></section>
+<section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.chapterDetail.heroImage','Chapter hero — team or event photo','2400×1000 · JPG → assets/chapters/'+c.slug+'/hero.jpg','wide','network')}</div></section>
 <section class="phero" style="padding-top:34px">${countryWatermark(c.code,'wm-chapter')}<div class="wrap">
   <div class="row" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
     <span class="fl" style="width:56px;height:38px;border:1.5px dashed color-mix(in srgb,var(--ph) 45%,transparent);border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:var(--f);font-size:1.1rem;color:var(--ph)" aria-hidden="true">${c.flag||'?'}</span>
-    <span class="tag">National chapter · ${c.code ? c.code.toUpperCase() : '—'}</span>
+    <span class="tag">${cx('pages.chapterDetail.nationalTagPrefix', 'National chapter')} · ${c.code ? c.code.toUpperCase() : '—'}</span>
     ${statusPill()}
   </div>
   <h1 class="mt16">Quantum ${esc(nm)}</h1>
-  <p class="lede">${pht('CHAPTER DESCRIPTION — 3 to 4 sentences: when the chapter formed, what it focuses on, which universities are involved, and what it is working towards')}</p>
-  <div class="phero-meta"><a class="btn sm grad" href="#/join">Join Quantum ${esc(nm)}</a><a class="btn sm ghost" href="#/contact">Contact the chapter</a></div>
+  <p class="lede">${pht(cx('pages.chapterDetail.heroLede', 'CHAPTER DESCRIPTION — 3 to 4 sentences: when the chapter formed, what it focuses on, which universities are involved, and what it is working towards'))}</p>
+  <div class="phero-meta"><a class="btn sm grad" href="#/join">${cx('pages.chapterDetail.heroBtn1', 'Join Quantum')} ${esc(nm)}</a><a class="btn sm ghost" href="#/contact">${cx('pages.chapterDetail.heroBtn2', 'Contact the chapter')}</a></div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Leadership','Who runs this chapter')}
+  ${sectionHead(
+    cx('pages.chapterDetail.leadEyebrow', 'Leadership'),
+    cx('pages.chapterDetail.leadTitle', 'Who runs this chapter')
+  )}
   <div class="grid g4">${PEOPLE.slice(0,4).map(personCard).join('')}</div>
-  <div class="mt48">${media('network','Chapter team photo','1600×900 · JPG','wide')}</div>
+  <div class="mt48">${cimg('pages.chapterDetail.teamImage','Chapter team photo','1600×900 · JPG','wide','network')}</div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Activity','Events and programmes',null,{t:'All events',h:'#/events'})}
+  ${sectionHead(
+    cx('pages.chapterDetail.actEyebrow', 'Activity'),
+    cx('pages.chapterDetail.actTitle', 'Events and programmes'),
+    null,
+    {t:cx('pages.chapterDetail.actCta', 'All events'),h:'#/events'}
+  )}
   <div class="grid g3">${EVENTS.slice(0,3).map((e,i)=>eventCard(e,i)).join('')}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
   <div class="grid g2">
-    <div><h3>Universities &amp; institutions</h3><div class="mt16 grid g2">${Array.from({length:4}).map(()=>`<div class="logo-cell" style="height:78px"><span class="mk" style="width:30px;height:30px"></span>LOGO</div>`).join('')}</div></div>
+    <div><h3>${cx('pages.chapterDetail.univHead', 'Universities &amp; institutions')}</h3><div class="mt16 grid g2">${Array.from({length:4}).map(()=>`<div class="logo-cell" style="height:78px"><span class="mk" style="width:30px;height:30px"></span>LOGO</div>`).join('')}</div></div>
   </div>
   <div class="mt48">
-    <h3>Research &amp; education in ${esc(nm)}</h3>
+    <h3>${cx('pages.chapterDetail.reHead', 'Research &amp; education in')} ${esc(nm)}</h3>
     <div class="grid g3 mt16">${PROJECTS.slice(0,3).map(projectCard).join('')}</div>
   </div>
   <div class="mt48 panel">
-    <h5>Chapter social media</h5>
-    <p class="small">${pht('LinkedIn')} · ${pht('X')} · ${pht('Instagram')} · ${pht('WhatsApp / Telegram group')}</p>
+    <h5>${cx('pages.chapterDetail.socialHead', 'Chapter social media')}</h5>
+    <p class="small">${pht(cx('pages.chapterDetail.socialLi', 'LinkedIn'))} · ${pht(cx('pages.chapterDetail.socialX', 'X'))} · ${pht(cx('pages.chapterDetail.socialIg', 'Instagram'))} · ${pht(cx('pages.chapterDetail.socialChat', 'WhatsApp / Telegram group'))}</p>
   </div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Network','Other chapters',null,{t:'All chapters',h:'#/chapters'})}
+  ${sectionHead(
+    cx('pages.chapterDetail.netEyebrow', 'Network'),
+    cx('pages.chapterDetail.netTitle', 'Other chapters'),
+    null,
+    {t:cx('pages.chapterDetail.netCta', 'All chapters'),h:'#/chapters'}
+  )}
   <div class="grid g4">${CHAPTERS.filter(x=>x.slug!==c.slug).slice(0,4).map(chapterCard).join('')}</div>
 </div></section>`;
 };
@@ -1587,50 +1697,53 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
 PAGES.events = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Events'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Events</span><i></i></div>
-  <h1>Webinars, workshops and chapter events.</h1>
-  <p class="lede">Every session keeps a permanent page — abstract, speaker, recording, photographs.</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.events.heroEyebrow', 'Events')}</span><i></i></div>
+  <h1>${cx('pages.events.heroTitle', 'Webinars, workshops and chapter events.')}</h1>
+  <p class="lede">${cx('pages.events.heroLede', 'Every session keeps a permanent page — abstract, speaker, recording, photographs.')}</p>
 </div></section>
 
 <section class="sec flush"><div class="wrap">
   <div class="news-lead">
     <a class="feature rv" href="#/events/${EVENTS[0].slug}">
-      <div class="card-media">${media('bloch','Speaker portrait or event photograph for the next session','2400×1350 · JPG')}</div>
+      <div class="card-media">${cimg('pages.events.featureImage','Speaker portrait or event photograph for the next session','2400×1350 · JPG','','bloch')}</div>
       <div class="fb">
-        <div class="news-meta"><span class="t">Next up · ${esc(EVENTS[0].type)}</span><span>${pht('DATE')}</span><span>${pht('TIME GMT')}</span></div>
-        <h3>${pht('Next session title')}</h3>
-        <p>${pht('Abstract — three or four sentences on what the session covers and why it matters')}</p>
-        <span class="link-a">Register <span class="ar" aria-hidden="true">&rarr;</span></span>
+        <div class="news-meta"><span class="t">${cx('pages.events.nextUpPrefix', 'Next up')} · ${esc(EVENTS[0].type)}</span><span>${pht(cx('pages.events.nextUpDate', 'DATE'))}</span><span>${pht(cx('pages.events.nextUpTime', 'TIME GMT'))}</span></div>
+        <h3>${pht(cx('pages.events.nextUpTitle', 'Next session title'))}</h3>
+        <p>${pht(cx('pages.events.nextUpAbstract', 'Abstract — three or four sentences on what the session covers and why it matters'))}</p>
+        <span class="link-a">${cx('pages.events.nextUpCta', 'Register')} <span class="ar" aria-hidden="true">&rarr;</span></span>
       </div>
     </a>
     <div>
-      <div class="sec-idx" style="margin-bottom:10px"><span class="lbl">Also coming up</span><i></i></div>
+      <div class="sec-idx" style="margin-bottom:10px"><span class="lbl">${cx('pages.events.alsoLbl', 'Also coming up')}</span><i></i></div>
       <div class="news-side">
         ${EVENTS.filter(e=>e.when==='upcoming').slice(1).concat(EVENTS.filter(e=>e.when==='past').slice(0,2)).map(e=>`<a class="news-row rv" href="#/events/${e.slug}">
-          <div class="news-meta"><span class="t">${esc(e.type)}</span><span>${pht('DATE')}</span></div>
+          <div class="news-meta"><span class="t">${esc(e.type)}</span><span>${pht(cx('pages.events.rowDate', 'DATE'))}</span></div>
           <h4>${pht(e.n)}</h4></a>`).join('')}
       </div>
-      <div class="news-more"><a class="btn ghost sm" href="#/join">Get the invitations <span class="ar" aria-hidden="true">&rarr;</span></a></div>
+      <div class="news-more"><a class="btn ghost sm" href="#/join">${cx('pages.events.inviteBtn', 'Get the invitations')} <span class="ar" aria-hidden="true">&rarr;</span></a></div>
     </div>
   </div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Archive','Every session we have run')}
+  ${sectionHead(
+    cx('pages.events.archiveEyebrow', 'Archive'),
+    cx('pages.events.archiveTitle', 'Every session we have run')
+  )}
   <div class="filters" data-filter="events">
-    <div class="fgroup"><span class="fl">When</span>
-      ${['All','Upcoming','Past'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="when" data-v="${a.toLowerCase()}">${a}</button>`).join('')}
+    <div class="fgroup"><span class="fl">${cx('pages.events.flWhen', 'When')}</span>
+      ${['All','Upcoming','Past'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="when" data-v="${a.toLowerCase()}">${cx('pages.events.chipWhen'+a, a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">Type</span>
-      ${['All','Webinar','Workshop','Conference','Chapter event'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="type" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
+    <div class="fgroup"><span class="fl">${cx('pages.events.flType', 'Type')}</span>
+      ${['All','Webinar','Workshop','Conference','Chapter event'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="type" data-v="${esc(a)}">${cx('pages.events.chipType'+(i), a)}</button>`).join('')}
     </div>
   </div>
-  <div class="result-n" id="evCount">${EVENTS.length} events</div>
+  <div class="result-n" id="evCount">${EVENTS.length} ${cx('pages.events.resultSuffix', 'events')}</div>
   <div class="grid g3" id="evGrid">${EVENTS.map((e,i)=>eventCard(e,i)).join('')}</div>
   <div class="panel mt48">
-    <h5>Looking for conferences elsewhere?</h5>
-    <p class="small">Quantum conferences, workshops and summer schools worldwide are collected on the Opportunities page, alongside PhDs, postdocs and industry roles.</p>
-    <a class="btn sm mt16" href="#/opportunities">See what is coming up <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <h5>${cx('pages.events.elsewhereHead', 'Looking for conferences elsewhere?')}</h5>
+    <p class="small">${cx('pages.events.elsewhereBody', 'Quantum conferences, workshops and summer schools worldwide are collected on the Opportunities page, alongside PhDs, postdocs and industry roles.')}</p>
+    <a class="btn sm mt16" href="#/opportunities">${cx('pages.events.elsewhereBtn', 'See what is coming up')} <span class="ar" aria-hidden="true">&rarr;</span></a>
   </div>
 </div></section>
 
@@ -1640,45 +1753,50 @@ PAGES.eventDetail = (slug) => {
   const e = EVENTS.find(x=>x.slug===slug) || EVENTS[0];
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:e.type}])}
-<section class="sec flush" style="padding:0"><div class="wrap">${media('bloch','Event hero — speaker portrait or event photograph','2400×1000 · JPG','wide')}</div></section>
+<section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.eventDetail.heroImage','Event hero — speaker portrait or event photograph','2400×1000 · JPG','wide','bloch')}</div></section>
 <section class="phero" style="padding-top:34px"><div class="wrap">
-  <div class="phero-meta" style="margin:0 0 18px"><span class="tag">${esc(e.type)}</span>${e.series?`<span class="pill current">${esc(e.series)} · Edition ${esc(e.edition)}</span>`:`<span class="pill ${e.when==='upcoming'?'current':'future'}">${e.when}</span>`}</div>
+  <div class="phero-meta" style="margin:0 0 18px"><span class="tag">${esc(e.type)}</span>${e.series?`<span class="pill current">${esc(e.series)} · ${cx('pages.eventDetail.editionPrefix','Edition')} ${esc(e.edition)}</span>`:`<span class="pill ${e.when==='upcoming'?'current':'future'}">${e.when}</span>`}</div>
   <h1 style="font-size:clamp(2rem,4vw,3.2rem)">${e.title ? esc(e.title) : pht(e.n)}</h1>
-  ${e.series?`<p class="small mt16"><a class="link-a" href="#/events/workshops">Back to the ${esc(e.series)} series <span class="ar" aria-hidden="true">&rarr;</span></a></p>`:''}
-  <p class="lede">${pht('ABSTRACT — 3 to 5 sentences describing the session, written so that someone outside the field understands why it matters')}</p>
+  ${e.series?`<p class="small mt16"><a class="link-a" href="#/events/workshops">${cx('pages.eventDetail.backSeriesPrefix', 'Back to the')} ${esc(e.series)} ${cx('pages.eventDetail.backSeriesSuffix', 'series')} <span class="ar" aria-hidden="true">&rarr;</span></a></p>`:''}
+  <p class="lede">${pht(cx('pages.eventDetail.abstract', 'ABSTRACT — 3 to 5 sentences describing the session, written so that someone outside the field understands why it matters'))}</p>
 </div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div class="prose">
-    <h3>About this session</h3><p>${pht('FULL DESCRIPTION')}</p>
-    <h3>Agenda</h3>
-    <div class="rows">${Array.from({length:4}).map(()=>`<div class="row-i" style="grid-template-columns:110px 1fr"><span class="dl">${pht('TIME')}</span><span><h4>${pht('Agenda item')}</h4></span></div>`).join('')}</div>
-    <h3>Speakers</h3>
+    <h3>${cx('pages.eventDetail.aboutHead', 'About this session')}</h3><p>${pht(cx('pages.eventDetail.aboutBody', 'FULL DESCRIPTION'))}</p>
+    <h3>${cx('pages.eventDetail.agendaHead', 'Agenda')}</h3>
+    <div class="rows">${Array.from({length:4}).map((_,i)=>`<div class="row-i" style="grid-template-columns:110px 1fr"><span class="dl">${pht(cx('pages.eventDetail.agendaTime'+(i+1), 'TIME'))}</span><span><h4>${pht(cx('pages.eventDetail.agendaItem'+(i+1), 'Agenda item'))}</h4></span></div>`).join('')}</div>
+    <h3>${cx('pages.eventDetail.speakersHead', 'Speakers')}</h3>
     <div class="grid g3" style="margin-bottom:16px">${PEOPLE.slice(0,3).map(personCard).join('')}</div>
-    <h3>Photos &amp; recording</h3>
-    <div class="grid g3">${['circuit','network','wave'].map(k=>media(k,'Event photo','1200×800 · JPG','short')).join('')}</div>
-    <div class="mt16">${media('fringes','Recording embed — YouTube or Vimeo URL','Paste the video URL in the CMS','short')}</div>
-    <h3>Outcomes</h3><p>${pht('OUTCOMES — attendance, what came out of it, follow-on activity. Only for past events.')}</p>
-    <h3>Resources</h3><p>${pht('Slides, notebooks, reading list — upload files or link')}</p>
+    <h3>${cx('pages.eventDetail.photosHead', 'Photos &amp; recording')}</h3>
+    <div class="grid g3">${['circuit','network','wave'].map((k,i)=>cimg('pages.eventDetail.photo'+(i+1),'Event photo','1200×800 · JPG','short',k)).join('')}</div>
+    <div class="mt16">${cimg('pages.eventDetail.recordingImage','Recording embed — YouTube or Vimeo URL','Paste the video URL in the CMS','short','fringes')}</div>
+    <h3>${cx('pages.eventDetail.outcomesHead', 'Outcomes')}</h3><p>${pht(cx('pages.eventDetail.outcomesBody', 'OUTCOMES — attendance, what came out of it, follow-on activity. Only for past events.'))}</p>
+    <h3>${cx('pages.eventDetail.resHead', 'Resources')}</h3><p>${pht(cx('pages.eventDetail.resBody', 'Slides, notebooks, reading list — upload files or link'))}</p>
   </div>
   <aside>
     <div class="panel">
-      <h5>Details</h5>
+      <h5>${cx('pages.eventDetail.detailsHead', 'Details')}</h5>
       <dl class="dl-list">
-        <div class="dl-item"><dt>Date</dt><dd>${pht('DD MMM YYYY')}</dd></div>
-        <div class="dl-item"><dt>Time</dt><dd>${pht('HH:MM–HH:MM GMT')}</dd></div>
-        <div class="dl-item"><dt>Location</dt><dd>${pht('Online / venue')}</dd></div>
-        <div class="dl-item"><dt>Language</dt><dd>${pht('English')}</dd></div>
-        <div class="dl-item"><dt>Cost</dt><dd>Free</dd></div>
+        <div class="dl-item"><dt>${cx('pages.eventDetail.dateLabel', 'Date')}</dt><dd>${pht(cx('pages.eventDetail.dateValue', 'DD MMM YYYY'))}</dd></div>
+        <div class="dl-item"><dt>${cx('pages.eventDetail.timeLabel', 'Time')}</dt><dd>${pht(cx('pages.eventDetail.timeValue', 'HH:MM–HH:MM GMT'))}</dd></div>
+        <div class="dl-item"><dt>${cx('pages.eventDetail.locLabel', 'Location')}</dt><dd>${pht(cx('pages.eventDetail.locValue', 'Online / venue'))}</dd></div>
+        <div class="dl-item"><dt>${cx('pages.eventDetail.langLabel', 'Language')}</dt><dd>${pht(cx('pages.eventDetail.langValue', 'English'))}</dd></div>
+        <div class="dl-item"><dt>${cx('pages.eventDetail.costLabel', 'Cost')}</dt><dd>${cx('pages.eventDetail.costValue', 'Free')}</dd></div>
       </dl>
-      <a class="btn teal mt16" href="#/join" style="width:100%;justify-content:center">${e.when==='upcoming'?'Register':'Watch recording'}</a>
-      <p class="xs mt8">Registration goes to your existing tool (Luma, Zoom or Google Forms) — the event record just stores the URL.</p>
+      <a class="btn teal mt16" href="#/join" style="width:100%;justify-content:center">${e.when==='upcoming'?cx('pages.eventDetail.btnRegister','Register'):cx('pages.eventDetail.btnWatch','Watch recording')}</a>
+      <p class="xs mt8">${cx('pages.eventDetail.regNote', 'Registration goes to your existing tool (Luma, Zoom or Google Forms) — the event record just stores the URL.')}</p>
     </div>
-    <div class="panel mt16"><h5>Organisers</h5><p class="small">${pht('Organising team / chapter')}</p></div>
-    <div class="panel mt16"><h5>Partners</h5><div class="grid g2" style="gap:8px">${Array.from({length:2}).map(()=>`<div class="logo-cell" style="height:58px;font-size:.55rem"><span class="mk" style="width:22px;height:22px"></span>LOGO</div>`).join('')}</div></div>
+    <div class="panel mt16"><h5>${cx('pages.eventDetail.orgHead', 'Organisers')}</h5><p class="small">${pht(cx('pages.eventDetail.orgBody', 'Organising team / chapter'))}</p></div>
+    <div class="panel mt16"><h5>${cx('pages.eventDetail.partnersHead', 'Partners')}</h5><div class="grid g2" style="gap:8px">${Array.from({length:2}).map(()=>`<div class="logo-cell" style="height:58px;font-size:.55rem"><span class="mk" style="width:22px;height:22px"></span>LOGO</div>`).join('')}</div></div>
   </aside>
 </div></div></section>
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('More','Related events',null,{t:'All events',h:'#/events'})}
+  ${sectionHead(
+    cx('pages.eventDetail.moreEyebrow', 'More'),
+    cx('pages.eventDetail.moreTitle', 'Related events'),
+    null,
+    {t:cx('pages.eventDetail.moreCta', 'All events'),h:'#/events'}
+  )}
   <div class="grid g3">${EVENTS.filter(x=>x.slug!==e.slug).slice(0,3).map((e,i)=>eventCard(e,i)).join('')}</div>
 </div></section>`;
 };
@@ -1690,71 +1808,79 @@ PAGES.workshops = () => {
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Workshop series</span><i></i></div>
-  <h1>Quantum Machine Learning 4 Africa</h1>
-  <p class="lede">A hands-on workshop series bringing quantum machine learning to African students and researchers. Two editions delivered.</p>
-  <div class="phero-meta"><a class="btn teal" href="#/join">Join the next edition <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/events">All events</a></div>
+  <div class="sec-idx"><span class="lbl">${cx('pages.workshops.heroEyebrow', 'Workshop series')}</span><i></i></div>
+  <h1>${cx('pages.workshops.heroTitle', 'Quantum Machine Learning 4 Africa')}</h1>
+  <p class="lede">${cx('pages.workshops.heroLede', 'A hands-on workshop series bringing quantum machine learning to African students and researchers. Two editions delivered.')}</p>
+  <div class="phero-meta"><a class="btn teal" href="#/join">${cx('pages.workshops.heroBtn1', 'Join the next edition')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/events">${cx('pages.workshops.heroBtn2', 'All events')}</a></div>
   ${africaWatermark('wm-hero')}
 </div></section>
 
 <section class="sec flush"><div class="wrap">
   <div class="series-bar">
-    <span>Series <b>QML4Africa</b></span>
-    <span>Editions delivered <b>2</b></span>
-    <span>Format <b>${pht('online / in person')}</b></span>
-    <span>Participants <b>${pht('total')}</b></span>
-    <span>Partners <b>${pht('count')}</b></span>
+    <span>${cx('pages.workshops.barLbl1','Series')} <b>QML4Africa</b></span>
+    <span>${cx('pages.workshops.barLbl2','Editions delivered')} <b>${cx('pages.workshops.barVal2','2')}</b></span>
+    <span>${cx('pages.workshops.barLbl3','Format')} <b>${pht(cx('pages.workshops.barVal3','online / in person'))}</b></span>
+    <span>${cx('pages.workshops.barLbl4','Participants')} <b>${pht(cx('pages.workshops.barVal4','total'))}</b></span>
+    <span>${cx('pages.workshops.barLbl5','Partners')} <b>${pht(cx('pages.workshops.barVal5','count'))}</b></span>
   </div>
   <div class="editions">
-    ${eds.map(e=>`<a class="edition rv" href="#/events/${e.slug}">
+    ${eds.map((e,i)=>`<a class="edition rv" href="#/events/${e.slug}">
       ${patternPanel('soft')}
       <span class="en">${esc(e.edition)}</span>
       <h3>${esc(e.title.replace('Quantum Machine Learning 4 Africa — ',''))}</h3>
-      <p>${pht('One or two sentences on what this edition covered and who it was for')}</p>
+      <p>${pht(cx('pages.workshops.editionCopy'+(i+1), 'One or two sentences on what this edition covered and who it was for'))}</p>
       <span class="efoot">
-        <span class="pill current">Delivered</span>
-        <span class="kv" style="color:rgba(255,255,255,.6)">${pht('DATES')}</span>
-        <span class="link-a">Edition page <span class="ar" aria-hidden="true">&rarr;</span></span>
+        <span class="pill current">${cx('pages.workshops.editionDelivered', 'Delivered')}</span>
+        <span class="kv" style="color:rgba(255,255,255,.6)">${pht(cx('pages.workshops.editionDates'+(i+1), 'DATES'))}</span>
+        <span class="link-a">${cx('pages.workshops.editionPage', 'Edition page')} <span class="ar" aria-hidden="true">&rarr;</span></span>
       </span>
     </a>`).join('')}
     <div class="edition planned rv">
       ${patternPanel('soft','light')}
       <span class="en">03</span>
-      <h3>Third edition</h3>
-      <p>${pht('Confirm whether a third edition is planned, and when. Remove this panel if not.')}</p>
-      <span class="efoot"><span class="pill future">Planned</span>
-        <a class="link-a" href="#/join">Register interest <span class="ar" aria-hidden="true">&rarr;</span></a></span>
+      <h3>${cx('pages.workshops.planTitle', 'Third edition')}</h3>
+      <p>${pht(cx('pages.workshops.planBody', 'Confirm whether a third edition is planned, and when. Remove this panel if not.'))}</p>
+      <span class="efoot"><span class="pill future">${cx('pages.workshops.planPill', 'Planned')}</span>
+        <a class="link-a" href="#/join">${cx('pages.workshops.planCta', 'Register interest')} <span class="ar" aria-hidden="true">&rarr;</span></a></span>
     </div>
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('The series','What QML4Africa is','A practical route into quantum machine learning for people who already have the maths and the code, and need the quantum.')}
+  ${sectionHead(
+    cx('pages.workshops.seriesEyebrow', 'The series'),
+    cx('pages.workshops.seriesTitle', 'What QML4Africa is'),
+    cx('pages.workshops.seriesLede', 'A practical route into quantum machine learning for people who already have the maths and the code, and need the quantum.')
+  )}
   <div class="grid g3">
-    ${[['Who it is for','Students and researchers in physics, mathematics, computing and data science.'],
-       ['What it covers',null],
-       ['What you leave with',null]
+    ${[[cx('pages.workshops.card1Title','Who it is for'),cx('pages.workshops.card1Body','Students and researchers in physics, mathematics, computing and data science.')],
+       [cx('pages.workshops.card2Title','What it covers'),null],
+       [cx('pages.workshops.card3Title','What you leave with'),null]
       ].map(([t,d])=>`<div class="card pad rv"><div class="card-b">
-        <h4>${esc(t)}</h4><p>${d ? esc(d) : pht('Supply this — three or four lines')}</p></div></div>`).join('')}
+        <h4>${esc(t)}</h4><p>${d ? esc(d) : pht(cx('pages.workshops.cardBody', 'Supply this — three or four lines'))}</p></div></div>`).join('')}
   </div>
   <div class="mt48 grid g2">
-    <div class="panel"><h5>Organisers &amp; partners</h5><p class="small">${pht('Who ran each edition, and which institutions co-hosted')}</p></div>
-    <div class="panel"><h5>Recordings &amp; materials</h5><p class="small">${pht('Video links, slides and notebooks for each edition')}</p></div>
+    <div class="panel"><h5>${cx('pages.workshops.panel1Head', 'Organisers &amp; partners')}</h5><p class="small">${pht(cx('pages.workshops.panel1Body', 'Who ran each edition, and which institutions co-hosted'))}</p></div>
+    <div class="panel"><h5>${cx('pages.workshops.panel2Head', 'Recordings &amp; materials')}</h5><p class="small">${pht(cx('pages.workshops.panel2Body', 'Video links, slides and notebooks for each edition'))}</p></div>
   </div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Gallery','From the workshops','Replace these with photographs from each edition.')}
-  <div class="grid g4">${['circuit','kernel','lattice','network'].map(k=>media(k,'Workshop photograph','1600×900 · JPG','short')).join('')}</div>
+  ${sectionHead(
+    cx('pages.workshops.galleryEyebrow', 'Gallery'),
+    cx('pages.workshops.galleryTitle', 'From the workshops'),
+    cx('pages.workshops.galleryLede', 'Replace these with photographs from each edition.')
+  )}
+  <div class="grid g4">${['circuit','kernel','lattice','network'].map((k,i)=>cimg('pages.workshops.galleryImage'+(i+1),'Workshop photograph','1600×900 · JPG','short',k)).join('')}</div>
 </div></section>
 
 <section class="cta-band">
   ${patternPanel('soft')}
   ${africaWatermark('wm-cta')}
   ${ringMark('cta-ring')}
-  <div class="wrap"><div class="hero-eye">Bring it to your campus</div>
-    <h2 class="mt24">Host the next QML4Africa.</h2>
-    <div class="btns"><a class="btn teal" href="#/universities">University partnerships <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/contact">Get in touch</a></div>
+  <div class="wrap"><div class="hero-eye">${cx('pages.workshops.ctaBandEyebrow', 'Bring it to your campus')}</div>
+    <h2 class="mt24">${cx('pages.workshops.ctaBandTitle', 'Host the next QML4Africa.')}</h2>
+    <div class="btns"><a class="btn teal" href="#/universities">${cx('pages.workshops.ctaBandBtn1', 'University partnerships')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/contact">${cx('pages.workshops.ctaBandBtn2', 'Get in touch')}</a></div>
   </div>
 </section>`;
 };
@@ -1805,19 +1931,23 @@ PAGES.conference = () => {
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
 <section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
-  <div class="sec-idx"><span class="lbl">Conference series</span><i></i></div>
-  <h1>Quantum Africa</h1>
-  <p class="lede">Bringing the best quantum research to Africa. Seven editions since 2010, in South Africa, Morocco, Tunisia and Rwanda.</p>
-  <div class="phero-meta"><a class="btn teal" href="#/conference/qa7">Quantum Africa 7 <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/join">Register interest in the next edition</a></div>
+  <div class="sec-idx"><span class="lbl">${cx('pages.conference.heroEyebrow', 'Conference series')}</span><i></i></div>
+  <h1>${cx('pages.conference.heroTitle', 'Quantum Africa')}</h1>
+  <p class="lede">${cx('pages.conference.heroLede', 'Bringing the best quantum research to Africa. Seven editions since 2010, in South Africa, Morocco, Tunisia and Rwanda.')}</p>
+  <div class="phero-meta"><a class="btn teal" href="#/conference/qa7">${cx('pages.conference.heroBtn1', 'Quantum Africa 7')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/join">${cx('pages.conference.heroBtn2', 'Register interest in the next edition')}</a></div>
 </div></section>
 
 <section class="sec flush"><div class="wrap">
-  <blockquote class="conf-quote">Quantum Africa is a conference series dedicated to promoting quantum science and technology across the continent. Held in various African countries, the series fosters collaboration both within Africa and with the global scientific community.
-    <cite>quantumafrica.org</cite></blockquote>
+  <blockquote class="conf-quote">${cx('pages.conference.quoteBody', 'Quantum Africa is a conference series dedicated to promoting quantum science and technology across the continent. Held in various African countries, the series fosters collaboration both within Africa and with the global scientific community.')}
+    <cite>${cx('pages.conference.quoteCite', 'quantumafrica.org')}</cite></blockquote>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Editions','Seven editions, four countries','Every edition since the series began in Durban in 2010. Each page carries the committees and speakers exactly as the series publishes them.')}
+  ${sectionHead(
+    cx('pages.conference.edEyebrow', 'Editions'),
+    cx('pages.conference.edTitle', 'Seven editions, four countries'),
+    cx('pages.conference.edLede', 'Every edition since the series began in Durban in 2010. Each page carries the committees and speakers exactly as the series publishes them.')
+  )}
   <div class="tl">
     ${CONF.map(c=>`<a class="tl-i ${c.latest?'now':''}" href="#/conference/${c.slug}">
       <span class="dot"></span>
@@ -1828,7 +1958,10 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
     </a>`).join('')}
   </div>
   <div class="stats mt48">
-    ${[[ '7','Editions'],['4','Host countries'],['15','Years'],[String(total),'People on record']]
+    ${[[ cx('pages.conference.stat1N','7'),cx('pages.conference.stat1L','Editions')],
+       [cx('pages.conference.stat2N','4'),cx('pages.conference.stat2L','Host countries')],
+       [cx('pages.conference.stat3N','15'),cx('pages.conference.stat3L','Years')],
+       [String(total),cx('pages.conference.stat4L','People on record')]]
       .map(([n,l])=>`<div class="stat rv"><span class="n" data-count="${n}">${n}</span><span class="l">${l}</span></div>`).join('')}
   </div>
 </div></section>
@@ -1837,24 +1970,28 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
   ${patternPanel('soft')}
   ${ringMark('cta-ring')}
   <div class="wrap">
-    <div class="sec-idx"><span class="n">—</span><span class="lbl">Latest edition</span><i></i></div>
+    <div class="sec-idx"><span class="n">—</span><span class="lbl">${cx('pages.conference.latestLbl', 'Latest edition')}</span><i></i></div>
     <div class="conf-hero">
       <div>
-        <h2>Quantum Africa 7</h2>
+        <h2>${cx('pages.conference.latestTitle', 'Quantum Africa 7')}</h2>
         <p class="lede mt16">${esc(latest.city)}, ${esc(latest.country)} · ${esc(latest.dates)}</p>
         <p class="small mt16">${esc(latest.venue)}</p>
         <div class="hero-cta">
-          <a class="btn teal" href="#/conference/qa7">Edition page <span class="ar" aria-hidden="true">&rarr;</span></a>
-          <a class="btn inv ghost" href="#/contact">Ask about QA8</a>
+          <a class="btn teal" href="#/conference/qa7">${cx('pages.conference.latestBtn1', 'Edition page')} <span class="ar" aria-hidden="true">&rarr;</span></a>
+          <a class="btn inv ghost" href="#/contact">${cx('pages.conference.latestBtn2', 'Ask about QA8')}</a>
         </div>
       </div>
-      <div>${media('network','Photograph from Quantum Africa 7','2400×1350 · JPG','tall')}</div>
+      <div>${cimg('pages.conference.latestImage','Photograph from Quantum Africa 7','2400×1350 · JPG','tall','network')}</div>
     </div>
   </div>
 </section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Speakers','Who has spoken at Quantum Africa','A selection across the seven editions. Every edition page carries its full line-up.')}
+  ${sectionHead(
+    cx('pages.conference.spkEyebrow', 'Speakers'),
+    cx('pages.conference.spkTitle', 'Who has spoken at Quantum Africa'),
+    cx('pages.conference.spkLede', 'A selection across the seven editions. Every edition page carries its full line-up.')
+  )}
   ${nameGrid([
     {n:'Serge Haroche', a:'Collège de France & École Normale Supérieure · QA1 and QA3'},
     {n:'Artur Ekert', a:'University of Oxford · QA1 and QA2'},
@@ -1876,18 +2013,22 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Governance','Steering committee','The committee that carries the series between editions, as published by Quantum Africa.')}
+  ${sectionHead(
+    cx('pages.conference.govEyebrow', 'Governance'),
+    cx('pages.conference.govTitle', 'Steering committee'),
+    cx('pages.conference.govLede', 'The committee that carries the series between editions, as published by Quantum Africa.')
+  )}
   ${nameGrid(CONF_SC)}
-  <h4 class="mt48" style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">Former steering committee members</h4>
+  <h4 class="mt48" style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">${cx('pages.conference.formerScLbl', 'Former steering committee members')}</h4>
   <div class="mt16">${nameGrid(CONF_SC_PAST)}</div>
   <div class="mt48 grid g2">
     <div class="panel">
-      <h5>What the series covers</h5>
-      <p class="small">Quantum science and technology across the continent — strengthening Africa’s role in quantum research and development, encouraging cross-border partnerships, and raising awareness among African stakeholders of the opportunities in the field.</p>
+      <h5>${cx('pages.conference.panel1Head', 'What the series covers')}</h5>
+      <p class="small">${cx('pages.conference.panel1Body', 'Quantum science and technology across the continent — strengthening Africa’s role in quantum research and development, encouraging cross-border partnerships, and raising awareness among African stakeholders of the opportunities in the field.')}</p>
     </div>
     <div class="panel">
-      <h5>Quantum Africa’s role</h5>
-      <p class="small">${cx('conference.role', pht('STATE THE RELATIONSHIP — the series is run by its own steering committee. Say precisely what Quantum Africa does: attend, co-organise, sponsor, run a satellite workshop, sit on the committee. Do not imply ownership.'))}</p>
+      <h5>${cx('pages.conference.panel2Head', 'Quantum Africa’s role')}</h5>
+      <p class="small">${cx('pages.conference.role', pht('STATE THE RELATIONSHIP — the series is run by its own steering committee. Say precisely what Quantum Africa does: attend, co-organise, sponsor, run a satellite workshop, sit on the committee. Do not imply ownership.'))}</p>
     </div>
   </div>
 </div></section>
@@ -1895,9 +2036,9 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
 <section class="cta-band">
   ${patternPanel('soft')}
   ${africaWatermark('wm-cta')}
-  <div class="wrap"><div class="hero-eye">Next edition</div>
-    <h2 class="mt24">Be there for Quantum Africa 8.</h2>
-    <div class="btns"><a class="btn teal" href="#/join">Register your interest <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/contact">Propose a host institution</a></div>
+  <div class="wrap"><div class="hero-eye">${cx('pages.conference.ctaBandEyebrow', 'Next edition')}</div>
+    <h2 class="mt24">${cx('pages.conference.ctaBandTitle', 'Be there for Quantum Africa 8.')}</h2>
+    <div class="btns"><a class="btn teal" href="#/join">${cx('pages.conference.ctaBandBtn1', 'Register your interest')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/contact">${cx('pages.conference.ctaBandBtn2', 'Propose a host institution')}</a></div>
   </div>
 </section>`;
 };
@@ -1910,24 +2051,32 @@ PAGES.confEdition = (slug) => {
     + (c.invitedGroups ? c.invitedGroups.reduce((t,g)=>t+g.list.length,0) : 0);
   const block = (key, label, title, note, cls) => c[key] ? `
 <section class="sec ${cls||''}"><div class="wrap">
-  ${sectionHead(label, title, note)}
+  ${sectionHead(
+    cx('pages.confEdition.'+key+'Label', label),
+    cx('pages.confEdition.'+key+'Title', title),
+    note?cx('pages.confEdition.'+key+'Note', note):null
+  )}
   ${nameGrid(c[key], c[key].length > 18 ? 'compact' : '', {photo: key === 'keynote' ? 'sm' : false})}
 </div></section>` : '';
   const groups = c.invitedGroups ? `
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Invited','Invited speakers', `${c.invitedGroups.reduce((t,g)=>t+g.list.length,0)} invited speakers, from industry and academia.`)}
+  ${sectionHead(
+    cx('pages.confEdition.groupsLabel', 'Invited'),
+    cx('pages.confEdition.groupsTitle', 'Invited speakers'),
+    cx('pages.confEdition.groupsLede', `${c.invitedGroups.reduce((t,g)=>t+g.list.length,0)} invited speakers, from industry and academia.`)
+  )}
   ${c.invitedGroups.map(g=>`
     <h4 class="grp-h">${esc(g.label)}</h4>
     ${nameGrid(g.list, g.list.length > 18 ? 'compact' : '', {photo:'sm'})}`).join('')}
 </div></section>` : '';
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Conference',h:'#/conference'},{t:'QA'+num}])}
-<section class="sec flush" style="padding:0"><div class="wrap">${media('lattice','Photograph from this edition','2400×1000 · JPG','wide')}</div></section>
+<section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.confEdition.heroImage','Photograph from this edition','2400×1000 · JPG','wide','lattice')}</div></section>
 <section class="phero" style="padding-top:34px"><div class="wrap">
   <div class="phero-meta" style="margin:0 0 16px">
-    <span class="tag">Edition ${esc(c.n)}</span>
-    <span class="pill ${c.latest?'current':'future'}">${c.latest?'Most recent':'Past edition'}</span>
-    <span class="pill current">${people} people on record</span>
+    <span class="tag">${cx('pages.confEdition.editionPrefix', 'Edition')} ${esc(c.n)}</span>
+    <span class="pill ${c.latest?'current':'future'}">${c.latest?cx('pages.confEdition.statusRecent','Most recent'):cx('pages.confEdition.statusPast','Past edition')}</span>
+    <span class="pill current">${people} ${cx('pages.confEdition.peopleSuffix', 'people on record')}</span>
   </div>
   <h1 style="font-size:clamp(2rem,4vw,3.2rem)">Quantum Africa ${num}</h1>
   <p class="lede">${esc(c.city)}, ${cCountry(c.country)} · ${esc(c.dates)}</p>
@@ -1938,7 +2087,7 @@ ${c.plenary?`
 <section class="sec inv">
   ${patternPanel('soft')}
   <div class="wrap">
-    <div class="sec-idx"><span class="n">—</span><span class="lbl">Plenary speakers</span><i></i></div>
+    <div class="sec-idx"><span class="n">—</span><span class="lbl">${cx('pages.confEdition.plenaryLbl', 'Plenary speakers')}</span><i></i></div>
     ${nameGrid(c.plenary,'big',{photo:'lg'})}
   </div>
 </section>`:''}
@@ -1948,7 +2097,7 @@ ${c.invited?`
 <section class="sec inv">
   ${patternPanel('soft')}
   <div class="wrap">
-    <div class="sec-idx"><span class="n">—</span><span class="lbl">${esc(c.invitedLabel||'Invited speakers')}</span><i></i></div>
+    <div class="sec-idx"><span class="n">—</span><span class="lbl">${esc(c.invitedLabel||cx('pages.confEdition.invitedLbl','Invited speakers'))}</span><i></i></div>
     ${nameGrid(c.invited, '', {photo:'sm'})}
   </div>
 </section>`:''}
@@ -1957,48 +2106,60 @@ ${block('steering','Committee','Steering committee','As listed on this edition�
 ${block('ipc','Committee','Programme committee',null,'')}
 ${c.loc?`
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Committee', c.locLabel||'Organising committee', c.locNote || (c.loc.length>20?`${c.loc.length} members.`:null))}
+  ${sectionHead(
+    cx('pages.confEdition.locLabel', 'Committee'),
+    cx('pages.confEdition.locTitle', c.locLabel||'Organising committee'),
+    c.locNote?cx('pages.confEdition.locNote',c.locNote):(c.loc.length>20?cx('pages.confEdition.locNote2',`${c.loc.length} members.`):null)
+  )}
   ${nameGrid(c.loc, c.loc.length > 18 ? 'compact' : '')}
 </div></section>`:''}
 
 ${c.sponsors?`
 <section class="sec"><div class="wrap">
-  ${sectionHead('Sponsors','Supported by')}
+  ${sectionHead(
+    cx('pages.confEdition.sponsorLabel', 'Sponsors'),
+    cx('pages.confEdition.sponsorTitle', 'Supported by')
+  )}
   <div class="logo-wall">${c.sponsors.map(x=>`<div class="logo-cell"><span class="mk"></span>${esc(x)}</div>`).join('')}</div>
 </div></section>`:''}
 
 <section class="sec"><div class="wrap"><div class="side">
   <div class="prose">
-    <h3>About this edition</h3>
-    <p>Quantum Africa ${num} was held in ${esc(c.city)}, ${cCountry(c.country)}, ${esc(c.dates)}.</p>
-    <h3>Programme</h3><p>${pht('Session titles, talk titles and schedule')}</p>
-    <h3>Photographs</h3>
-    <div class="grid g3 mt16">${['circuit','wave','network'].map(k=>media(k,'Conference photograph','1200×800 · JPG','short')).join('')}</div>
-    <h3>Portraits and profiles</h3>
-    <p>${pht('Every speaker and committee member above has an empty portrait slot and an empty profile link. Supply a 600×600 JPG and a URL — personal page, university page, ORCID or Google Scholar — per person. Use only photographs you have permission to publish.')}</p>
+    <h3>${cx('pages.confEdition.aboutHead', 'About this edition')}</h3>
+    <p>${cx('pages.confEdition.aboutPrefix1', 'Quantum Africa')} ${num} ${cx('pages.confEdition.aboutPrefix2', 'was held in')} ${esc(c.city)}, ${cCountry(c.country)}, ${esc(c.dates)}.</p>
+    <h3>${cx('pages.confEdition.progHead', 'Programme')}</h3><p>${pht(cx('pages.confEdition.progBody', 'Session titles, talk titles and schedule'))}</p>
+    <h3>${cx('pages.confEdition.photosHead', 'Photographs')}</h3>
+    <div class="grid g3 mt16">${['circuit','wave','network'].map((k,i)=>cimg('pages.confEdition.photo'+(i+1),'Conference photograph','1200×800 · JPG','short',k)).join('')}</div>
+    <h3>${cx('pages.confEdition.portraitsHead', 'Portraits and profiles')}</h3>
+    <p>${pht(cx('pages.confEdition.portraitsBody', 'Every speaker and committee member above has an empty portrait slot and an empty profile link. Supply a 600×600 JPG and a URL — personal page, university page, ORCID or Google Scholar — per person. Use only photographs you have permission to publish.'))}</p>
   </div>
   <aside>
-    <div class="panel"><h5>At a glance</h5><dl class="dl-list">
-      <div class="dl-item"><dt>Edition</dt><dd>QA${num}</dd></div>
-      <div class="dl-item"><dt>Dates</dt><dd>${esc(c.dates)}</dd></div>
-      <div class="dl-item"><dt>City</dt><dd>${esc(c.city)}</dd></div>
-      <div class="dl-item"><dt>Country</dt><dd>${cCountry(c.country)}</dd></div>
-      ${c.host?`<div class="dl-item"><dt>Host</dt><dd>${esc(c.host)}</dd></div>`:''}
-      ${c.plenary?`<div class="dl-item"><dt>Plenary</dt><dd>${c.plenary.length}</dd></div>`:''}
-      ${c.keynote?`<div class="dl-item"><dt>Keynotes</dt><dd>${c.keynote.length}</dd></div>`:''}
-      ${c.invited?`<div class="dl-item"><dt>Invited</dt><dd>${c.invited.length}</dd></div>`:''}
-      ${c.invitedGroups?`<div class="dl-item"><dt>Invited</dt><dd>${c.invitedGroups.reduce((t,g)=>t+g.list.length,0)}</dd></div>`:''}
-      ${c.ipc?`<div class="dl-item"><dt>Programme cttee</dt><dd>${c.ipc.length}</dd></div>`:''}
-      ${c.loc?`<div class="dl-item"><dt>Organisers</dt><dd>${c.loc.length}</dd></div>`:''}
+    <div class="panel"><h5>${cx('pages.confEdition.glanceHead', 'At a glance')}</h5><dl class="dl-list">
+      <div class="dl-item"><dt>${cx('pages.confEdition.gEdition', 'Edition')}</dt><dd>QA${num}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.confEdition.gDates', 'Dates')}</dt><dd>${esc(c.dates)}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.confEdition.gCity', 'City')}</dt><dd>${esc(c.city)}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.confEdition.gCountry', 'Country')}</dt><dd>${cCountry(c.country)}</dd></div>
+      ${c.host?`<div class="dl-item"><dt>${cx('pages.confEdition.gHost', 'Host')}</dt><dd>${esc(c.host)}</dd></div>`:''}
+      ${c.plenary?`<div class="dl-item"><dt>${cx('pages.confEdition.gPlenary', 'Plenary')}</dt><dd>${c.plenary.length}</dd></div>`:''}
+      ${c.keynote?`<div class="dl-item"><dt>${cx('pages.confEdition.gKeynotes', 'Keynotes')}</dt><dd>${c.keynote.length}</dd></div>`:''}
+      ${c.invited?`<div class="dl-item"><dt>${cx('pages.confEdition.gInvited', 'Invited')}</dt><dd>${c.invited.length}</dd></div>`:''}
+      ${c.invitedGroups?`<div class="dl-item"><dt>${cx('pages.confEdition.gInvited2', 'Invited')}</dt><dd>${c.invitedGroups.reduce((t,g)=>t+g.list.length,0)}</dd></div>`:''}
+      ${c.ipc?`<div class="dl-item"><dt>${cx('pages.confEdition.gIpc', 'Programme cttee')}</dt><dd>${c.ipc.length}</dd></div>`:''}
+      ${c.loc?`<div class="dl-item"><dt>${cx('pages.confEdition.gLoc', 'Organisers')}</dt><dd>${c.loc.length}</dd></div>`:''}
     </dl></div>
-    <div class="panel mt16"><h5>The series</h5>
-      <a class="link-a" href="#/conference" style="display:flex">All seven editions <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <div class="panel mt16"><h5>${cx('pages.confEdition.seriesHead', 'The series')}</h5>
+      <a class="link-a" href="#/conference" style="display:flex">${cx('pages.confEdition.seriesLink', 'All seven editions')} <span class="ar" aria-hidden="true">&rarr;</span></a>
     </div>
   </aside>
 </div></div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Series','Other editions',null,{t:'Full timeline',h:'#/conference'})}
+  ${sectionHead(
+    cx('pages.confEdition.seriesEyebrow', 'Series'),
+    cx('pages.confEdition.seriesTitle', 'Other editions'),
+    null,
+    {t:cx('pages.confEdition.seriesCta', 'Full timeline'),h:'#/conference'}
+  )}
   <div class="rows">
     ${CONF.filter(x=>x.slug!==c.slug).map(x=>`<a class="row-i" href="#/conference/${x.slug}">
       <span class="dl">${esc(x.year)}</span>
@@ -2013,20 +2174,24 @@ ${c.sponsors?`
 PAGES.support = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Pledge your support'}])}
 <section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
-  <div class="sec-idx"><span class="lbl">Support us</span><i></i></div>
-  <h1 class="mt24">Pledge your support.</h1>
-  <p class="lede">Quantum Africa runs on people who decide to help. There is more than one way to do that, and not all of them cost money.</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.support.heroEyebrow', 'Support us')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.support.heroTitle', 'Pledge your support.')}</h1>
+  <p class="lede">${cx('pages.support.heroLede', 'Quantum Africa runs on people who decide to help. There is more than one way to do that, and not all of them cost money.')}</p>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Ways in','Pick the one that fits','Every pledge is a conversation first. Tell us what you can offer and we will come back to you about what it would actually involve.')}
+  ${sectionHead(
+    cx('pages.support.waysEyebrow', 'Ways in'),
+    cx('pages.support.waysTitle', 'Pick the one that fits'),
+    cx('pages.support.waysLede', 'Every pledge is a conversation first. Tell us what you can offer and we will come back to you about what it would actually involve.')
+  )}
   <div class="grid g3">
-    ${[['01','Fund a programme','Underwrite a workshop, a cohort of students, or a year of the AI Tutor.','Organisations and individuals'],
-       ['02','Sponsor a student','Cover a conference fee, travel, or the cost of a masters application.','Individuals'],
-       ['03','Host or co-organise','Bring a school or workshop to your campus. We bring the programme and the network.','Universities'],
-       ['04','Mentor','An hour a month with a student or early-career researcher.','Researchers and professionals'],
-       ['05','Teach','Give a webinar, run a session, or review our teaching material.','Anyone with something to teach'],
-       ['06','Open a door','Introduce us to a lab, a funder, a company or a ministry.','Anyone'],
+    ${[['01',cx('pages.support.way1Title','Fund a programme'),cx('pages.support.way1Body','Underwrite a workshop, a cohort of students, or a year of the AI Tutor.'),cx('pages.support.way1Who','Organisations and individuals')],
+       ['02',cx('pages.support.way2Title','Sponsor a student'),cx('pages.support.way2Body','Cover a conference fee, travel, or the cost of a masters application.'),cx('pages.support.way2Who','Individuals')],
+       ['03',cx('pages.support.way3Title','Host or co-organise'),cx('pages.support.way3Body','Bring a school or workshop to your campus. We bring the programme and the network.'),cx('pages.support.way3Who','Universities')],
+       ['04',cx('pages.support.way4Title','Mentor'),cx('pages.support.way4Body','An hour a month with a student or early-career researcher.'),cx('pages.support.way4Who','Researchers and professionals')],
+       ['05',cx('pages.support.way5Title','Teach'),cx('pages.support.way5Body','Give a webinar, run a session, or review our teaching material.'),cx('pages.support.way5Who','Anyone with something to teach')],
+       ['06',cx('pages.support.way6Title','Open a door'),cx('pages.support.way6Body','Introduce us to a lab, a funder, a company or a ministry.'),cx('pages.support.way6Who','Anyone')],
       ].map(([n,t,d,who])=>`<div class="pillar rv">
         <span class="pi">${n}</span>
         <h3 style="font-size:1.22rem">${esc(t)}</h3>
@@ -2038,41 +2203,41 @@ ${crumb([{t:'Home',h:'#/'},{t:'Pledge your support'}])}
 
 <section class="sec tint"><div class="wrap"><div class="side">
   <div class="prose">
-    <h3>Make a pledge</h3>
-    <p>Fill this in and someone will reply personally. Nothing is published without your agreement.</p>
+    <h3>${cx('pages.support.pledgeHead', 'Make a pledge')}</h3>
+    <p>${cx('pages.support.pledgeIntro', 'Fill this in and someone will reply personally. Nothing is published without your agreement.')}</p>
     <div class="form mt24">
       <div class="grid g2">
-        <div class="field"><label>Your name</label><input placeholder="Name"></div>
-        <div class="field"><label>Email</label><input placeholder="you@example.com"></div>
+        <div class="field"><label>${cx('pages.support.fNameLbl','Your name')}</label><input placeholder="${cx('pages.support.fNamePh','Name')}"></div>
+        <div class="field"><label>${cx('pages.support.fEmailLbl','Email')}</label><input placeholder="${cx('pages.support.fEmailPh','you@example.com')}"></div>
       </div>
       <div class="grid g2">
-        <div class="field"><label>Organisation <span class="opt">optional</span></label><input placeholder="University, company or none"></div>
-        <div class="field"><label>Country</label><select><option>Select…</option>${CHAPTERS.map(c=>`<option>${esc(c.name)}</option>`).join('')}<option>Other</option></select></div>
+        <div class="field"><label>${cx('pages.support.fOrgLbl','Organisation')} <span class="opt">${cx('pages.support.fOrgOpt','optional')}</span></label><input placeholder="${cx('pages.support.fOrgPh','University, company or none')}"></div>
+        <div class="field"><label>${cx('pages.support.fCountryLbl','Country')}</label><select><option>${cx('pages.support.fCountryPh','Select…')}</option>${CHAPTERS.map(c=>`<option>${esc(c.name)}</option>`).join('')}<option>${cx('pages.support.fCountryOther','Other')}</option></select></div>
       </div>
-      <div class="field"><label>What are you offering?</label>
-        <select><option>Select…</option>
-          ${['Funding a programme','Sponsoring a student','Hosting or co-organising','Mentoring','Teaching or speaking','An introduction','Something else'].map(o=>`<option>${esc(o)}</option>`).join('')}
+      <div class="field"><label>${cx('pages.support.fOfferLbl','What are you offering?')}</label>
+        <select><option>${cx('pages.support.fOfferPh','Select…')}</option>
+          ${[cx('pages.support.fOffer1','Funding a programme'),cx('pages.support.fOffer2','Sponsoring a student'),cx('pages.support.fOffer3','Hosting or co-organising'),cx('pages.support.fOffer4','Mentoring'),cx('pages.support.fOffer5','Teaching or speaking'),cx('pages.support.fOffer6','An introduction'),cx('pages.support.fOffer7','Something else')].map(o=>`<option>${esc(o)}</option>`).join('')}
         </select>
       </div>
-      <div class="field"><label>Tell us more</label><textarea rows="4" placeholder="What you have in mind, and any constraints we should know about."></textarea></div>
-      <button class="btn teal">Send my pledge <span class="ar" aria-hidden="true">&rarr;</span></button>
-      <p class="xs mt16">${pht('WIRE THIS FORM UP — endpoint, autoresponder and where submissions land. Until then it does nothing.')}</p>
+      <div class="field"><label>${cx('pages.support.fMoreLbl','Tell us more')}</label><textarea rows="4" placeholder="${cx('pages.support.fMorePh','What you have in mind, and any constraints we should know about.')}"></textarea></div>
+      <button class="btn teal">${cx('pages.support.fSubmit','Send my pledge')} <span class="ar" aria-hidden="true">&rarr;</span></button>
+      <p class="xs mt16">${pht(cx('pages.support.fNote', 'WIRE THIS FORM UP — endpoint, autoresponder and where submissions land. Until then it does nothing.'))}</p>
     </div>
   </div>
   <aside>
-    <div class="panel"><h5>Giving money</h5>
-      <p class="small">${cx('support.donation', pht('DONATION DETAILS — bank account, payment link, registered status and any tax position. Do not publish a donate button until this is real and the legal entity is confirmed.'))}</p>
+    <div class="panel"><h5>${cx('pages.support.panelMoneyHead','Giving money')}</h5>
+      <p class="small">${cx('pages.support.donation', pht(cx('pages.support.donationNote','DONATION DETAILS — bank account, payment link, registered status and any tax position. Do not publish a donate button until this is real and the legal entity is confirmed.')))}</p>
     </div>
-    <div class="panel mt16"><h5>Where support goes</h5>
+    <div class="panel mt16"><h5>${cx('pages.support.panelSplitHead','Where support goes')}</h5>
       <dl class="dl-list">
-        <div class="dl-item"><dt>Programmes</dt><dd>${cval('support.splitProgrammes')!=='' ? cval('support.splitProgrammes')+'%' : pht('%')}</dd></div>
-        <div class="dl-item"><dt>Student costs</dt><dd>${cval('support.splitStudents')!=='' ? cval('support.splitStudents')+'%' : pht('%')}</dd></div>
-        <div class="dl-item"><dt>Operations</dt><dd>${cval('support.splitOperations')!=='' ? cval('support.splitOperations')+'%' : pht('%')}</dd></div>
+        <div class="dl-item"><dt>${cx('pages.support.splitProgLbl','Programmes')}</dt><dd>${cval('support.splitProgrammes')!=='' ? cval('support.splitProgrammes')+'%' : pht(cx('pages.support.splitProgPh','%'))}</dd></div>
+        <div class="dl-item"><dt>${cx('pages.support.splitStuLbl','Student costs')}</dt><dd>${cval('support.splitStudents')!=='' ? cval('support.splitStudents')+'%' : pht(cx('pages.support.splitStuPh','%'))}</dd></div>
+        <div class="dl-item"><dt>${cx('pages.support.splitOpsLbl','Operations')}</dt><dd>${cval('support.splitOperations')!=='' ? cval('support.splitOperations')+'%' : pht(cx('pages.support.splitOpsPh','%'))}</dd></div>
       </dl>
-      <p class="xs mt16">${pht('Publish a real breakdown, or remove this panel. An invented split is worse than none.')}</p>
+      <p class="xs mt16">${pht(cx('pages.support.splitNote', 'Publish a real breakdown, or remove this panel. An invented split is worse than none.')))}</p>
     </div>
-    <div class="panel mt16"><h5>Partnering instead?</h5>
-      <a class="link-a" href="#/partners" style="display:flex">Institutional partnerships <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <div class="panel mt16"><h5>${cx('pages.support.panelPartnerHead','Partnering instead?')}</h5>
+      <a class="link-a" href="#/partners" style="display:flex">${cx('pages.support.panelPartnerLink','Institutional partnerships')} <span class="ar" aria-hidden="true">&rarr;</span></a>
     </div>
   </aside>
 </div></div></section>
@@ -2080,9 +2245,9 @@ ${crumb([{t:'Home',h:'#/'},{t:'Pledge your support'}])}
 <section class="cta-band">
   ${patternPanel('soft')}
   ${africaWatermark('wm-cta')}
-  <div class="wrap"><div class="hero-eye">Thank you</div>
-    <h2 class="mt24">Every pledge is a door<br>opening for someone.</h2>
-    <div class="btns"><a class="btn teal" href="#/contact">Talk to us first <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/impact">See what we have done</a></div>
+  <div class="wrap"><div class="hero-eye">${cx('pages.support.ctaBandEyebrow', 'Thank you')}</div>
+    <h2 class="mt24">${cx('pages.support.ctaBandTitle', 'Every pledge is a door<br>opening for someone.')}</h2>
+    <div class="btns"><a class="btn teal" href="#/contact">${cx('pages.support.ctaBandBtn1', 'Talk to us first')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/impact">${cx('pages.support.ctaBandBtn2', 'See what we have done')}</a></div>
   </div>
 </section>`;
 
@@ -2094,101 +2259,109 @@ PAGES.opportunities = () => {
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Opportunities</span><i></i></div>
-  <h1 class="mt24">Your Quantum Journey Starts Here</h1>
-  <p class="lede">Every quantum PhD, postdoc, masters and industry role we can find, in one list — with anything based in Africa pushed to the top.</p>
-  <p class="feed-note" id="opFeed">Loading the latest listings…</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.opportunities.heroEyebrow', 'Opportunities')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.opportunities.heroTitle', 'Your Quantum Journey Starts Here')}</h1>
+  <p class="lede">${cx('pages.opportunities.heroLede', 'Every quantum PhD, postdoc, masters and industry role we can find, in one list — with anything based in Africa pushed to the top.')}</p>
+  <p class="feed-note" id="opFeed">${cx('pages.opportunities.feedLoading', 'Loading the latest listings…')}</p>
 </div></section>
 
 <section class="sec flush" style="padding-bottom:0"><div class="wrap">
   <div class="af-panel">
     <div class="af-head">
-      <span class="af-b lg">Africa</span>
+      <span class="af-b lg">${cx('pages.opportunities.afBadge', 'Africa')}</span>
       <div>
-        <h3>Based in Africa</h3>
-        <p class="small">Positions hosted at African institutions. These are rare — that is exactly why they sit here rather than buried in the list.</p>
+        <h3>${cx('pages.opportunities.afHead', 'Based in Africa')}</h3>
+        <p class="small">${cx('pages.opportunities.afBody', 'Positions hosted at African institutions. These are rare — that is exactly why they sit here rather than buried in the list.')}</p>
       </div>
     </div>
     ${africa.length
       ? `<div class="opps">${africa.map(oppRow).join('')}</div>`
-      : `<div class="af-empty"><h4>Nothing on the boards right now</h4><p class="small">No African-hosted position is currently listed on any of the three sources. The feed checks again every morning.</p></div>`}
+      : `<div class="af-empty"><h4>${cx('pages.opportunities.afEmptyHead', 'Nothing on the boards right now')}</h4><p class="small">${cx('pages.opportunities.afEmptyBody', 'No African-hosted position is currently listed on any of the three sources. The feed checks again every morning.')}</p></div>`}
     ${africa.length && !africa.some(o=>o.status!=='Closed')
-      ? `<p class="xs mt16">All African listings in the current feed have passed their deadline. They stay visible so you can see who is hiring in quantum on the continent, and approach the group directly.</p>` : ''}
+      ? `<p class="xs mt16">${cx('pages.opportunities.afExpiredNote', 'All African listings in the current feed have passed their deadline. They stay visible so you can see who is hiring in quantum on the continent, and approach the group directly.')}</p>` : ''}
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('All listings','Search everything','Filters combine — pick a type, a region and a status together, or type a keyword.')}
+  ${sectionHead(
+    cx('pages.opportunities.allEyebrow', 'All listings'),
+    cx('pages.opportunities.allTitle', 'Search everything'),
+    cx('pages.opportunities.allLede', 'Filters combine — pick a type, a region and a status together, or type a keyword.')
+  )}
   <div class="filters opp-filters" data-filter="opps">
-    <div class="fgroup wide"><span class="fl">Search</span>
-      <input class="opp-q" id="opQ" type="search" placeholder="Title, institution, city, country…" autocomplete="off">
+    <div class="fgroup wide"><span class="fl">${cx('pages.opportunities.flSearch', 'Search')}</span>
+      <input class="opp-q" id="opQ" type="search" placeholder="${cx('pages.opportunities.phSearch', 'Title, institution, city, country…')}" autocomplete="off">
     </div>
-    <div class="fgroup"><span class="fl">Region</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.flRegion', 'Region')}</span>
       ${['All','Africa','Rest of world'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="reg" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">Type</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.flType', 'Type')}</span>
       ${['All'].concat(OPP_TYPES).map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="type" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">Status</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.flStatus', 'Status')}</span>
       ${['All','Open','Closing soon','Closed'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="st" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">Source</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.flSource', 'Source')}</span>
       ${['All'].concat(Object.keys(OPP_SOURCES).map(k=>OPP_SOURCES[k].name)).map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="src" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">Sort</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.flSort', 'Sort')}</span>
       ${['Africa first','Deadline','A–Z'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="sort" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
   </div>
   <div class="opp-bar">
-    <div class="result-n" id="opCount">${allOpps().length} listings</div>
-    <button class="chip clear" id="opClear">Clear filters</button>
+    <div class="result-n" id="opCount">${allOpps().length} ${cx('pages.opportunities.resultSuffix', 'listings')}</div>
+    <button class="chip clear" id="opClear">${cx('pages.opportunities.clearFilters', 'Clear filters')}</button>
   </div>
   <div class="opps" id="opRows">${allOpps().map(oppRow).join('')}</div>
 
   <div class="grid g2 mt48">
     <div class="panel">
-      <h5>Where this comes from</h5>
-      <p class="small">Listings are collected automatically from ${Object.keys(OPP_SOURCES).map(k=>`<a class="link-a in" href="${esc(OPP_SOURCES[k].url)}" target="_blank" rel="noopener noreferrer">${esc(OPP_SOURCES[k].name)}</a>`).join(', ')}. Quantum Africa does not administer any of them — every card links straight to the original posting, where you apply.</p>
+      <h5>${cx('pages.opportunities.panel1Head', 'Where this comes from')}</h5>
+      <p class="small">${cx('pages.opportunities.panel1Prefix', 'Listings are collected automatically from')} ${Object.keys(OPP_SOURCES).map(k=>`<a class="link-a in" href="${esc(OPP_SOURCES[k].url)}" target="_blank" rel="noopener noreferrer">${esc(OPP_SOURCES[k].name)}</a>`).join(', ')}. ${cx('pages.opportunities.panel1Suffix', 'Quantum Africa does not administer any of them — every card links straight to the original posting, where you apply.')}</p>
     </div>
     <div class="panel">
-      <h5>Submit an opportunity</h5>
-      <p class="small">Running a programme open to African applicants, or hiring in quantum on the continent? Send it to us and it goes in the list — the boards above rarely carry African positions.</p>
-      <a class="btn sm mt16" href="#/contact">Submit an opportunity <span class="ar" aria-hidden="true">&rarr;</span></a>
+      <h5>${cx('pages.opportunities.panel2Head', 'Submit an opportunity')}</h5>
+      <p class="small">${cx('pages.opportunities.panel2Body', 'Running a programme open to African applicants, or hiring in quantum on the continent? Send it to us and it goes in the list — the boards above rarely carry African positions.')}</p>
+      <a class="btn sm mt16" href="#/contact">${cx('pages.opportunities.panel2Btn', 'Submit an opportunity')} <span class="ar" aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Worldwide','Conferences, workshops and summer schools','The same collection, for events rather than posts: gathered from the quantum community calendars, linking straight to the organisers. Anything hosted in Africa sits at the top.')}
-  <p class="feed-note" id="evFeed">Loading the calendar…</p>
+  ${sectionHead(
+    cx('pages.opportunities.wwEyebrow', 'Worldwide'),
+    cx('pages.opportunities.wwTitle', 'Conferences, workshops and summer schools'),
+    cx('pages.opportunities.wwLede', 'The same collection, for events rather than posts: gathered from the quantum community calendars, linking straight to the organisers. Anything hosted in Africa sits at the top.')
+  )}
+  <p class="feed-note" id="evFeed">${cx('pages.opportunities.calLoading', 'Loading the calendar…')}</p>
 
   <div class="filters opp-filters mt24" data-filter="evtfeed">
-    <div class="fgroup wide"><span class="fl">Search</span>
-      <input class="opp-q" id="evQ" type="search" placeholder="Event, city, country…" autocomplete="off">
+    <div class="fgroup wide"><span class="fl">${cx('pages.opportunities.evFlSearch', 'Search')}</span>
+      <input class="opp-q" id="evQ" type="search" placeholder="${cx('pages.opportunities.evPhSearch', 'Event, city, country…')}" autocomplete="off">
     </div>
-    <div class="fgroup"><span class="fl">Region</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.evFlRegion', 'Region')}</span>
       ${['All','Africa','Online','Rest of world'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="reg" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">Type</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.evFlType', 'Type')}</span>
       ${['All'].concat(EVT_TYPES).map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="type" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">When</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.evFlWhen', 'When')}</span>
       ${['Upcoming','Running now','Past','All'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="when" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">Sort</span>
+    <div class="fgroup"><span class="fl">${cx('pages.opportunities.evFlSort', 'Sort')}</span>
       ${['Africa first','Date','A–Z'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="sort" data-v="${esc(a)}">${esc(a)}</button>`).join('')}
     </div>
   </div>
   <div class="opp-bar">
     <div class="result-n" id="evfCount"></div>
-    <button class="chip clear" id="evClear">Clear filters</button>
+    <button class="chip clear" id="evClear">${cx('pages.opportunities.evClearFilters', 'Clear filters')}</button>
   </div>
   <div class="opps" id="evfRows"></div>
 
   <div class="panel mt48">
-    <h5>Running something in Africa?</h5>
-    <p class="small">These calendars carry very few African events. If your department, chapter or partner is hosting a school, workshop or conference on the continent, send it to us — it goes straight in, above everything else on this list.</p>
-    <a class="btn sm mt16" href="#/contact">Submit an event <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <h5>${cx('pages.opportunities.afEventHead', 'Running something in Africa?')}</h5>
+    <p class="small">${cx('pages.opportunities.afEventBody', 'These calendars carry very few African events. If your department, chapter or partner is hosting a school, workshop or conference on the continent, send it to us — it goes straight in, above everything else on this list.')}</p>
+    <a class="btn sm mt16" href="#/contact">${cx('pages.opportunities.afEventBtn', 'Submit an event')} <span class="ar" aria-hidden="true">&rarr;</span></a>
   </div>
 </div></section>`;
 };
@@ -2273,9 +2446,9 @@ function personCard(p){
 PAGES.people = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Team'}])}
 <section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
-  <div class="sec-idx"><span class="lbl">Team</span><i></i></div>
-  <h1 class="mt24">The people behind<br>Quantum Africa.</h1>
-  <p class="lede">A network is only its people. Everyone here writes their own entry — we do not describe anyone on their behalf.</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.people.heroEyebrow', 'Team')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.people.heroTitle', 'The people behind<br>Quantum Africa.')}</h1>
+  <p class="lede">${cx('pages.people.heroLede', 'A network is only its people. Everyone here writes their own entry — we do not describe anyone on their behalf.')}</p>
 </div></section>
 
 ${PEOPLE_GROUPS.map(([g, note], gi) => `
@@ -2285,25 +2458,29 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
 </div></section>`).join('')}
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Everyone else','The wider community','Leadership is a handful of people. The network is four hundred and counting.')}
+  ${sectionHead(
+    cx('pages.people.wideEyebrow', 'Everyone else'),
+    cx('pages.people.wideTitle', 'The wider community'),
+    cx('pages.people.wideLede', 'Leadership is a handful of people. The network is four hundred and counting.')
+  )}
   <div class="grid g3">
-    ${[['400+','Members','Across the continent and the diaspora.'],
-       ['7','Chapters','Each with its own team.'],
-       ['52','Countries reached','Members, attendees and collaborators.']
+    ${[[cx('pages.people.p1N','400+'),cx('pages.people.p1K','Members'),cx('pages.people.p1D','Across the continent and the diaspora.')],
+       [cx('pages.people.p2N','7'),cx('pages.people.p2K','Chapters'),cx('pages.people.p2D','Each with its own team.')],
+       [cx('pages.people.p3N','52'),cx('pages.people.p3K','Countries reached'),cx('pages.people.p3D','Members, attendees and collaborators.')]
       ].map(([n,k,d])=>`<div class="pillar rv"><span class="pi">${esc(n)}</span><h3 style="font-size:1.22rem">${esc(k)}</h3><p>${esc(d)}</p></div>`).join('')}
   </div>
   <div class="panel mt48">
-    <h5>Member directory</h5>
-    <p class="small">Members who opt in appear in a searchable directory with their country, institution and research interests. ${pht('Opt-in only — needs a consent field in the CMS and a privacy note before it goes live.')}</p>
+    <h5>${cx('pages.people.dirHead', 'Member directory')}</h5>
+    <p class="small">${cx('pages.people.dirPrefix', 'Members who opt in appear in a searchable directory with their country, institution and research interests.')} ${pht(cx('pages.people.dirNote', 'Opt-in only — needs a consent field in the CMS and a privacy note before it goes live.'))}</p>
   </div>
 </div></section>
 
 <section class="cta-band">
   ${patternPanel('soft')}
   ${africaWatermark('wm-cta')}
-  <div class="wrap"><div class="hero-eye">Join them</div>
-    <h2 class="mt24">There is room here<br>for what you do.</h2>
-    <div class="btns"><a class="btn teal" href="#/join">Join Quantum Africa <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/support">Pledge your support</a></div>
+  <div class="wrap"><div class="hero-eye">${cx('pages.people.ctaBandEyebrow', 'Join them')}</div>
+    <h2 class="mt24">${cx('pages.people.ctaBandTitle', 'There is room here<br>for what you do.')}</h2>
+    <div class="btns"><a class="btn teal" href="#/join">${cx('pages.people.ctaBandBtn1', 'Join Quantum Africa')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/support">${cx('pages.people.ctaBandBtn2', 'Pledge your support')}</a></div>
   </div>
 </section>`;
 
@@ -2311,73 +2488,83 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
 PAGES.partners = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Partners'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Partners</span><i></i></div>
-  <h1 class="mt24">Partner With Quantum Africa</h1>
-  <p class="lede">Institutions building Africa's quantum workforce with us.</p>
-  <div class="phero-meta"><a class="btn teal sm" href="#/contact">Let's collaborate</a></div>
+  <div class="sec-idx"><span class="lbl">${cx('pages.partners.heroEyebrow', 'Partners')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.partners.heroTitle', 'Partner With Quantum Africa')}</h1>
+  <p class="lede">${cx('pages.partners.heroLede', "Institutions building Africa's quantum workforce with us.")}</p>
+  <div class="phero-meta"><a class="btn teal sm" href="#/contact">${cx('pages.partners.heroBtn', "Let's collaborate")}</a></div>
 </div></section>
 ${PARTNER_CATS.map(cat=>`
 <section class="sec"><div class="wrap">
   ${sectionHead(cat,cat+' partners')}
-  <div class="grid g4">${Array.from({length:4}).map(()=>`<div class="card pad rv"><div class="ph-logo">PARTNER LOGO</div><div class="card-b" style="padding:16px 0 0"><h4>${pht('Partner name')}</h4><p>${pht('One line on the collaboration')}</p></div></div>`).join('')}</div>
+  <div class="grid g4">${Array.from({length:4}).map(()=>`<div class="card pad rv"><div class="ph-logo">PARTNER LOGO</div><div class="card-b" style="padding:16px 0 0"><h4>${pht(cx('pages.partners.cardName','Partner name'))}</h4><p>${pht(cx('pages.partners.cardBody','One line on the collaboration'))}</p></div></div>`).join('')}</div>
 </div></section>`).join('')}
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Become a partner','Six ways to work with us')}
+  ${sectionHead(
+    cx('pages.partners.becomeEyebrow', 'Become a partner'),
+    cx('pages.partners.becomeTitle', 'Six ways to work with us')
+  )}
   <div class="grid g3">
-    ${[['Universities','Workshops, faculty training, student bootcamps, guest lectures, curriculum support and student chapters.'],
-       ['Research institutions','Joint research projects, co-supervision, shared infrastructure and researcher mobility.'],
-       ['Industry','Talent pipelines, internships, technical talks, tooling access and sponsored research.'],
-       ['Governments','National quantum readiness, workforce development and policy input.'],
-       ['Foundations','Funding education, research and chapter development with measurable outcomes.'],
-       ['International organisations','Connecting African talent to global programmes, conferences and networks.']
+    ${[[cx('pages.partners.w1Title','Universities'),cx('pages.partners.w1Body','Workshops, faculty training, student bootcamps, guest lectures, curriculum support and student chapters.')],
+       [cx('pages.partners.w2Title','Research institutions'),cx('pages.partners.w2Body','Joint research projects, co-supervision, shared infrastructure and researcher mobility.')],
+       [cx('pages.partners.w3Title','Industry'),cx('pages.partners.w3Body','Talent pipelines, internships, technical talks, tooling access and sponsored research.')],
+       [cx('pages.partners.w4Title','Governments'),cx('pages.partners.w4Body','National quantum readiness, workforce development and policy input.')],
+       [cx('pages.partners.w5Title','Foundations'),cx('pages.partners.w5Body','Funding education, research and chapter development with measurable outcomes.')],
+       [cx('pages.partners.w6Title','International organisations'),cx('pages.partners.w6Body','Connecting African talent to global programmes, conferences and networks.')]
       ].map(([t,d])=>`<div class="card pad rv"><div class="card-b"><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
   </div>
 </div></section>
 <section class="cta-band">
   ${ringMark('cta-ring')}
-  <div class="wrap"><h2>Let&rsquo;s collaborate.</h2>
-  <div class="btns"><a class="btn teal" href="#/contact">Start a conversation</a><a class="btn inv ghost" href="#/universities">For universities</a></div>
+  <div class="wrap"><h2>${cx('pages.partners.ctaBandTitle','Let&rsquo;s collaborate.')}</h2>
+  <div class="btns"><a class="btn teal" href="#/contact">${cx('pages.partners.ctaBandBtn1','Start a conversation')}</a><a class="btn inv ghost" href="#/universities">${cx('pages.partners.ctaBandBtn2','For universities')}</a></div>
 </div></section>`;
 
 /* ---------- FOR UNIVERSITIES ---------- */
 PAGES.universities = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'For Universities'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">For universities</span><i></i></div>
-  <h1 class="mt24">Partner With Quantum Africa</h1>
-  <p class="lede">Quantum education, research and opportunities for your students — without building a programme from scratch.</p>
-  <div class="phero-meta"><a class="btn teal sm" href="#/contact">Start a university partnership</a><a class="btn sm ghost" href="#/education">See our programmes</a></div>
+  <div class="sec-idx"><span class="lbl">${cx('pages.universities.heroEyebrow', 'For universities')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.universities.heroTitle', 'Partner With Quantum Africa')}</h1>
+  <p class="lede">${cx('pages.universities.heroLede', 'Quantum education, research and opportunities for your students — without building a programme from scratch.')}</p>
+  <div class="phero-meta"><a class="btn teal sm" href="#/contact">${cx('pages.universities.heroBtn1', 'Start a university partnership')}</a><a class="btn sm ghost" href="#/education">${cx('pages.universities.heroBtn2', 'See our programmes')}</a></div>
 </div></section>
-<section class="sec flush" style="padding-top:0"><div class="wrap">${media('lattice','Workshop at a university campus','2400×1000 · JPG','wide')}</div></section>
+<section class="sec flush" style="padding-top:0"><div class="wrap">${cimg('pages.universities.heroImage','Workshop at a university campus','2400×1000 · JPG','wide','lattice')}</div></section>
 <section class="sec"><div class="wrap">
-  ${sectionHead('Why partner','Quantum is arriving faster than curricula can change','The foundations are already there. The route into quantum is not. That is the gap we work in.')}
+  ${sectionHead(
+    cx('pages.universities.whyEyebrow', 'Why partner'),
+    cx('pages.universities.whyTitle', 'Quantum is arriving faster than curricula can change'),
+    cx('pages.universities.whyLede', 'The foundations are already there. The route into quantum is not. That is the gap we work in.')
+  )}
   <div class="grid g3">
-    ${[['Quantum computing workshops','Delivered on your campus or online, for students and staff.','current'],
-       ['Faculty training','Preparing your lecturers to teach quantum topics with confidence.','dev'],
-       ['Student bootcamps','Intensive short programmes taking students from zero to running circuits.','dev'],
-       ['Guest lectures','Speakers from the global quantum ecosystem into your classroom.','current'],
-       ['Curriculum support','Help designing quantum modules and choosing teaching materials.','future'],
-       ['Research collaboration','Joint projects, co-supervision and access to our research network.','current'],
-       ['Student chapters','A Quantum Africa chapter on your campus, run by your students.','current'],
-       ['Quantum AI Tutor access','Free access for your students as a learning companion.','dev'],
-       ['International connections','Introductions to institutions, conferences and programmes abroad.','future']
+    ${[[cx('pages.universities.o1Title','Quantum computing workshops'),cx('pages.universities.o1Body','Delivered on your campus or online, for students and staff.'),'current'],
+       [cx('pages.universities.o2Title','Faculty training'),cx('pages.universities.o2Body','Preparing your lecturers to teach quantum topics with confidence.'),'dev'],
+       [cx('pages.universities.o3Title','Student bootcamps'),cx('pages.universities.o3Body','Intensive short programmes taking students from zero to running circuits.'),'dev'],
+       [cx('pages.universities.o4Title','Guest lectures'),cx('pages.universities.o4Body','Speakers from the global quantum ecosystem into your classroom.'),'current'],
+       [cx('pages.universities.o5Title','Curriculum support'),cx('pages.universities.o5Body','Help designing quantum modules and choosing teaching materials.'),'future'],
+       [cx('pages.universities.o6Title','Research collaboration'),cx('pages.universities.o6Body','Joint projects, co-supervision and access to our research network.'),'current'],
+       [cx('pages.universities.o7Title','Student chapters'),cx('pages.universities.o7Body','A Quantum Africa chapter on your campus, run by your students.'),'current'],
+       [cx('pages.universities.o8Title','Quantum AI Tutor access'),cx('pages.universities.o8Body','Free access for your students as a learning companion.'),'dev'],
+       [cx('pages.universities.o9Title','International connections'),cx('pages.universities.o9Body','Introductions to institutions, conferences and programmes abroad.'),'future']
       ].map(([t,d,s])=>`<div class="card pad rv"><div class="card-b">
-        <div class="card-meta"><span class="pill ${s}">${s==='current'?'Current':s==='dev'?'In development':'Future vision'}</span></div>
+        <div class="card-meta"><span class="pill ${s}">${s==='current'?cx('pages.universities.statusCurrent','Current'):s==='dev'?cx('pages.universities.statusDev','In development'):cx('pages.universities.statusFuture','Future vision')}</span></div>
         <h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
   </div>
 </div></section>
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('How it starts','From first conversation to first workshop')}
-  ${[['Get in touch','Tell us your department, your students and what you are trying to build.'],
-     ['Scoping call','We work out what is realistic in your first year — usually a workshop and a student chapter.'],
-     ['Pilot activity','A first workshop or lecture series on your campus, co-organised with your staff.'],
-     ['Ongoing partnership','Student chapter, research collaboration, faculty training and access to the wider network.']
+  ${sectionHead(
+    cx('pages.universities.howEyebrow', 'How it starts'),
+    cx('pages.universities.howTitle', 'From first conversation to first workshop')
+  )}
+  ${[[cx('pages.universities.s1Title','Get in touch'),cx('pages.universities.s1Body','Tell us your department, your students and what you are trying to build.')],
+     [cx('pages.universities.s2Title','Scoping call'),cx('pages.universities.s2Body','We work out what is realistic in your first year — usually a workshop and a student chapter.')],
+     [cx('pages.universities.s3Title','Pilot activity'),cx('pages.universities.s3Body','A first workshop or lecture series on your campus, co-organised with your staff.')],
+     [cx('pages.universities.s4Title','Ongoing partnership'),cx('pages.universities.s4Body','Student chapter, research collaboration, faculty training and access to the wider network.')]
     ].map(([t,d],i)=>`<div class="step"><span class="n">0${i+1}</span><div><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
 </div></section>
 <section class="cta-band">
   ${ringMark('cta-ring')}
-  <div class="wrap"><h2>Start a university partnership.</h2>
-  <div class="btns"><a class="btn teal" href="#/contact">Start a university partnership</a></div>
+  <div class="wrap"><h2>${cx('pages.universities.ctaBandTitle', 'Start a university partnership.')}</h2>
+  <div class="btns"><a class="btn teal" href="#/contact">${cx('pages.universities.ctaBandBtn1', 'Start a university partnership')}</a></div>
 </div></section>`;
 
 /* ---------- FOR STUDENTS ---------- */
@@ -2386,48 +2573,57 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Students'}])}
 <section class="sec inv flush" style="padding:clamp(56px,7vw,92px) 0">
   ${ringMark('cta-ring')}
   <div class="wrap">
-    <div class="sec-idx"><span class="lbl">For students</span><i></i></div>
-    <h1 style="max-width:14ch">Start Your Quantum Journey</h1>
-    <p class="lede mt24">No lab, no supervisor, no course required. Pick what you are looking for.</p>
+    <div class="sec-idx"><span class="lbl">${cx('pages.students.heroEyebrow', 'For students')}</span><i></i></div>
+    <h1 style="max-width:14ch">${cx('pages.students.heroTitle', 'Start Your Quantum Journey')}</h1>
+    <p class="lede mt24">${cx('pages.students.heroLede', 'No lab, no supervisor, no course required. Pick what you are looking for.')}</p>
   </div>
 </section>
 
 <section class="sec flush" style="padding-top:clamp(48px,6vw,80px)"><div class="wrap">
   <div class="chooser">
-    ${[['01','Learn','Start with the AI Tutor, then webinars and workshops.','#/education'],
-       ['02','Research','Join an open project as a contributor.','#/research'],
-       ['03','Internship','Placements open to African students.','#/opportunities'],
-       ['04','Scholarship','MSc, PhD and funding, filtered for eligibility.','#/opportunities'],
-       ['05','Mentorship','Guidance from people already in the field.','#/join'],
-       ['06','Community','Join your chapter — or start one.','#/chapters']
+    ${[[cx('pages.students.c1N','01'),cx('pages.students.c1Title','Learn'),cx('pages.students.c1Desc','Start with the AI Tutor, then webinars and workshops.'),'#/education'],
+       [cx('pages.students.c2N','02'),cx('pages.students.c2Title','Research'),cx('pages.students.c2Desc','Join an open project as a contributor.'),'#/research'],
+       [cx('pages.students.c3N','03'),cx('pages.students.c3Title','Internship'),cx('pages.students.c3Desc','Placements open to African students.'),'#/opportunities'],
+       [cx('pages.students.c4N','04'),cx('pages.students.c4Title','Scholarship'),cx('pages.students.c4Desc','MSc, PhD and funding, filtered for eligibility.'),'#/opportunities'],
+       [cx('pages.students.c5N','05'),cx('pages.students.c5Title','Mentorship'),cx('pages.students.c5Desc','Guidance from people already in the field.'),'#/join'],
+       [cx('pages.students.c6N','06'),cx('pages.students.c6Title','Community'),cx('pages.students.c6Desc','Join your chapter — or start one.'),'#/chapters']
       ].map(([n,t,d,h])=>`<a class="choice rv" href="${h}">
-        <span class="n">${n}</span><h3>${esc(t)}</h3><p>${esc(d)}</p>
-        <span class="go">Go <span class="ar" aria-hidden="true">&rarr;</span></span>
+        <span class="n">${esc(n)}</span><h3>${esc(t)}</h3><p>${esc(d)}</p>
+        <span class="go">${cx('pages.students.chooserGoLabel', 'Go')} <span class="ar" aria-hidden="true">&rarr;</span></span>
       </a>`).join('')}
   </div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Reality check','What you actually need','Curiosity, some linear algebra, and an internet connection. That is the entry bar.')}
+  ${sectionHead(
+    cx('pages.students.realityEyebrow', 'Reality check'),
+    cx('pages.students.realityTitle', 'What you actually need'),
+    cx('pages.students.realityLede', 'Curiosity, some linear algebra, and an internet connection. That is the entry bar.')
+  )}
   <div class="grid g3">
-    ${[['No prior quantum','Every programme starts from first principles.'],
-       ['Any discipline','Physics, maths and computing help. They are not required to begin.'],
-       ['Free','Nothing Quantum Africa runs costs students money.']
+    ${[[cx('pages.students.r1Title','No prior quantum'),cx('pages.students.r1Desc','Every programme starts from first principles.')],
+       [cx('pages.students.r2Title','Any discipline'),cx('pages.students.r2Desc','Physics, maths and computing help. They are not required to begin.')],
+       [cx('pages.students.r3Title','Free'),cx('pages.students.r3Desc','Nothing Quantum Africa runs costs students money.')]
       ].map(([t,d])=>`<div class="pillar rv"><h3 style="font-size:1.25rem">${esc(t)}</h3><p>${esc(d)}</p></div>`).join('')}
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  ${sectionHead('Voices','Students already doing this',null,{t:'Member stories',h:'#/news'})}
-  <div class="grid g3">${[0,1,2].map(()=>`<div class="quote rv"><p>${pht('Student quote')}</p>
-    <div class="who">${avatar()}<span class="xs">${pht('Name')} · ${pht('University')} · ${pht('Country')}</span></div></div>`).join('')}</div>
+  ${sectionHead(
+    cx('pages.students.voicesEyebrow', 'Voices'),
+    cx('pages.students.voicesTitle', 'Students already doing this'),
+    null,
+    {t:cx('pages.students.voicesCta', 'Member stories'),h:'#/news'}
+  )}
+  <div class="grid g3">${[0,1,2].map(()=>`<div class="quote rv"><p>${cx('pages.students.voicesQuotePlaceholder', pht('Student quote'))}</p>
+    <div class="who">${avatar()}<span class="xs">${cx('pages.students.voicesWhoPlaceholder', pht('Name') + ' · ' + pht('University') + ' · ' + pht('Country'))}</span></div></div>`).join('')}</div>
 </div></section>
 
 <section class="cta-band">
   ${ringMark('cta-ring')}
-  <div class="wrap"><div class="hero-eye">Get started</div>
-    <h2 class="mt24">Join 400+ people already in the community.</h2>
-    <div class="btns"><a class="btn teal" href="#/join">Join Quantum Africa <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/education">Browse programmes</a></div>
+  <div class="wrap"><div class="hero-eye">${cx('pages.students.ctaBandEyebrow', 'Get started')}</div>
+    <h2 class="mt24">${cx('pages.students.ctaBandTitle', 'Join 400+ people already in the community.')}</h2>
+    <div class="btns"><a class="btn teal" href="#/join">${cx('pages.students.ctaBandBtn1', 'Join Quantum Africa')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/education">${cx('pages.students.ctaBandBtn2', 'Browse programmes')}</a></div>
   </div>
 </section>`;
 
@@ -2435,35 +2631,40 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Students'}])}
 PAGES.researchers = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'For Researchers'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">For researchers</span><i></i></div>
-  <h1 class="mt24">Collaborate. Research. Build.</h1>
-  <p class="lede">Open projects, open code. Bring one, join one, or supervise students through one.</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.researchers.heroEyebrow', 'For researchers')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.researchers.heroTitle', 'Collaborate. Research. Build.')}</h1>
+  <p class="lede">${cx('pages.researchers.heroLede', 'Open projects, open code. Bring one, join one, or supervise students through one.')}</p>
 </div></section>
 <section class="sec"><div class="wrap">
-  ${sectionHead('Projects','Current research',null,{t:'All projects',h:'#/research'})}
+  ${sectionHead(
+    cx('pages.researchers.projectsEyebrow', 'Projects'),
+    cx('pages.researchers.projectsTitle', 'Current research'),
+    null,
+    {t:cx('pages.researchers.projectsCta', 'All projects'),h:'#/research'}
+  )}
   <div class="grid g2">${PROJECTS.map(projectCard).join('')}</div>
 </div></section>
 <section class="sec tint"><div class="wrap">
   <div class="grid g4">
-    ${[['Open source','Publish code and analysis publicly so results are reproducible and reusable.'],
-       ['Research opportunities','Positions, collaborations and calls circulated to the network.'],
-       ['Mentorship','Supervise or co-supervise students working on quantum topics.'],
-       ['Publications','Papers, preprints and conference contributions from the community.']
+    ${[[cx('pages.researchers.p1Title','Open source'),cx('pages.researchers.p1Desc','Publish code and analysis publicly so results are reproducible and reusable.')],
+       [cx('pages.researchers.p2Title','Research opportunities'),cx('pages.researchers.p2Desc','Positions, collaborations and calls circulated to the network.')],
+       [cx('pages.researchers.p3Title','Mentorship'),cx('pages.researchers.p3Desc','Supervise or co-supervise students working on quantum topics.')],
+       [cx('pages.researchers.p4Title','Publications'),cx('pages.researchers.p4Desc','Papers, preprints and conference contributions from the community.')]
       ].map(([t,d])=>`<div class="pillar rv"><h3 style="font-size:1.2rem">${esc(t)}</h3><p>${esc(d)}</p></div>`).join('')}
   </div>
 </div></section>
 <section class="cta-band">
   ${ringMark('cta-ring')}
-  <div class="wrap"><h2>Propose a research collaboration.</h2>
-  <div class="btns"><a class="btn teal" href="#/contact">Get in touch</a><a class="btn inv ghost" href="#/research">Browse projects</a></div></div></section>`;
+  <div class="wrap"><h2>${cx('pages.researchers.ctaBandTitle', 'Propose a research collaboration.')}</h2>
+  <div class="btns"><a class="btn teal" href="#/contact">${cx('pages.researchers.ctaBandBtn1', 'Get in touch')}</a><a class="btn inv ghost" href="#/research">${cx('pages.researchers.ctaBandBtn2', 'Browse projects')}</a></div></div></section>`;
 
 /* ---------- NEWS ---------- */
 PAGES.news = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'News & Articles'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">News &amp; articles</span><i></i></div>
-  <h1>What the network is doing.</h1>
-  <p class="lede">News, chapter updates, member stories and reports.</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.news.heroEyebrow', 'News &amp; articles')}</span><i></i></div>
+  <h1>${cx('pages.news.heroTitle', 'What the network is doing.')}</h1>
+  <p class="lede">${cx('pages.news.heroLede', 'News, chapter updates, member stories and reports.')}</p>
 </div></section>
 
 <section class="sec"><div class="wrap">
@@ -2474,35 +2675,42 @@ ${crumb([{t:'Home',h:'#/'},{t:'News & Articles'}])}
 </div></section>
 
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('Archive','Every article')}
+  ${sectionHead(
+    cx('pages.news.archiveEyebrow', 'Archive'),
+    cx('pages.news.archiveTitle', 'Every article')
+  )}
   <div class="filters">
-    <div class="fgroup"><span class="fl">Type</span>
-      ${['All','News','Chapter update','Member story','Report'].map((a,i)=>`<button class="chip ${i===0?'on':''}">${esc(a)}</button>`).join('')}
+    <div class="fgroup"><span class="fl">${cx('pages.news.filterTypeLabel', 'Type')}</span>
+      ${[cx('pages.news.typeAll','All'),cx('pages.news.typeNews','News'),cx('pages.news.typeChapter','Chapter update'),cx('pages.news.typeMember','Member story'),cx('pages.news.typeReport','Report')].map((a,i)=>`<button class="chip ${i===0?'on':''}">${esc(a)}</button>`).join('')}
     </div>
-    <div class="fgroup"><span class="fl">Chapter</span>
-      ${['All'].concat(CHAPTERS.map(c=>c.name)).map((a,i)=>`<button class="chip ${i===0?'on':''}">${esc(a)}</button>`).join('')}
+    <div class="fgroup"><span class="fl">${cx('pages.news.filterChapterLabel', 'Chapter')}</span>
+      ${[cx('pages.news.chapterAll','All')].concat(CHAPTERS.map(c=>c.name)).map((a,i)=>`<button class="chip ${i===0?'on':''}">${esc(a)}</button>`).join('')}
     </div>
   </div>
-  <div class="result-n">${ARTICLES.length} articles</div>
+  <div class="result-n">${ARTICLES.length} ${cx('pages.news.resultLabel', 'articles')}</div>
   <div class="grid g3">${ARTICLES.map(articleCard).join('')}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
   <div class="split">
     <div>
-      ${sectionHead('Newsletter','Get it in your inbox','One email a month: what happened, what is coming, and which deadlines are close.')}
+      ${sectionHead(
+        cx('pages.news.newsletterEyebrow', 'Newsletter'),
+        cx('pages.news.newsletterTitle', 'Get it in your inbox'),
+        cx('pages.news.newsletterLede', 'One email a month: what happened, what is coming, and which deadlines are close.')
+      )}
     </div>
     <div class="panel">
       <form data-netlify="true" name="newsletter" method="POST" action="/?thanks=1" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="newsletter">
         <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
-        <h5>Subscribe</h5>
-        <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
-        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@university.edu"></div>
-        <div class="field"><label>Country</label><select name="country" required><option value="">Select…</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">Other</option></select></div>
-        <button class="btn teal" type="submit">Subscribe <span class="ar" aria-hidden="true">&rarr;</span></button>
+        <h5>${cx('pages.news.newsletterFormHead', 'Subscribe')}</h5>
+        <div class="field"><label>${cx('pages.news.newsletterNameLabel', 'Name')}</label><input name="name" required placeholder="${cx('pages.news.newsletterNamePlaceholder', 'Your name')}"></div>
+        <div class="field"><label>${cx('pages.news.newsletterEmailLabel', 'Email')}</label><input name="email" type="email" required placeholder="${cx('pages.news.newsletterEmailPlaceholder', 'you@university.edu')}"></div>
+        <div class="field"><label>${cx('pages.news.newsletterCountryLabel', 'Country')}</label><select name="country" required><option value="">${cx('pages.news.countryPlaceholder', 'Select…')}</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">${cx('pages.news.countryOther', 'Other')}</option></select></div>
+        <button class="btn teal" type="submit">${cx('pages.news.newsletterSubmitBtn', 'Subscribe')} <span class="ar" aria-hidden="true">&rarr;</span></button>
         <div class="form-msg mt16" hidden></div>
-        <p class="xs mt16">Your email is handled via Netlify Forms and forwarded to the newsletter team.</p>
+        <p class="xs mt16">${cx('pages.news.newsletterPrivacyNote', 'Your email is handled via Netlify Forms and forwarded to the newsletter team.')}</p>
       </form>
     </div>
   </div>
@@ -2510,26 +2718,31 @@ ${crumb([{t:'Home',h:'#/'},{t:'News & Articles'}])}
 
 PAGES.article = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:'Article'}])}
-<section class="sec flush" style="padding:0"><div class="wrap">${media('network','Article hero image','2400×1000 · JPG','wide')}</div></section>
+<section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.article.heroImage', cx('pages.article.heroImageAlt', 'Article hero image'), '2400×1000 · JPG', 'wide', 'network')}</div></section>
 <section class="sec"><div class="wrap-n">
-  <div class="news-meta" style="margin-bottom:20px"><span class="t">${pht('Type')}</span><span>${pht('DATE')}</span><span>${pht('READ TIME')}</span></div>
-  <h1 style="font-size:clamp(1.9rem,3.4vw,2.9rem)">${pht('Article headline')}</h1>
-  <p class="lede mt16">${pht('Standfirst — one or two sentences')}</p>
+  <div class="news-meta" style="margin-bottom:20px"><span class="t">${cx('pages.article.metaTypePlaceholder', pht('Type'))}</span><span>${cx('pages.article.metaDatePlaceholder', pht('DATE'))}</span><span>${cx('pages.article.metaReadPlaceholder', pht('READ TIME'))}</span></div>
+  <h1 style="font-size:clamp(1.9rem,3.4vw,2.9rem)">${cx('pages.article.headlinePlaceholder', pht('Article headline'))}</h1>
+  <p class="lede mt16">${cx('pages.article.standfirstPlaceholder', pht('Standfirst — one or two sentences'))}</p>
   <div class="prose mt32">
-    <p>${pht('BODY — the full article, written by the chapter or the author and edited in the CMS.')}</p>
-    <p>${pht('BODY continued')}</p>
-    <h3>${pht('Subheading')}</h3>
-    <p>${pht('BODY continued')}</p>
+    <p>${cx('pages.article.bodyPlaceholder1', pht('BODY — the full article, written by the chapter or the author and edited in the CMS.'))}</p>
+    <p>${cx('pages.article.bodyPlaceholder2', pht('BODY continued'))}</p>
+    <h3>${cx('pages.article.subheadPlaceholder', pht('Subheading'))}</h3>
+    <p>${cx('pages.article.bodyPlaceholder3', pht('BODY continued'))}</p>
   </div>
-  <div class="panel mt48"><h5>Author</h5>
+  <div class="panel mt48"><h5>${cx('pages.article.authorPanelHead', 'Author')}</h5>
     <div class="person" style="flex-direction:row;align-items:center;gap:14px">
       <div style="width:48px;flex:none">${avatar()}</div>
-      <div><div class="nm" style="font-size:.9rem">${pht('Name')}</div><div class="xs">${pht('Role')} · ${pht('Chapter')}</div></div>
+      <div><div class="nm" style="font-size:.9rem">${cx('pages.article.authorNamePlaceholder', pht('Name'))}</div><div class="xs">${cx('pages.article.authorRolePlaceholder', pht('Role'))} · ${cx('pages.article.authorChapterPlaceholder', pht('Chapter'))}</div></div>
     </div>
   </div>
 </div></section>
 <section class="sec tint"><div class="wrap">
-  ${sectionHead('More','Related articles',null,{t:'All articles',h:'#/news'})}
+  ${sectionHead(
+    cx('pages.article.moreEyebrow', 'More'),
+    cx('pages.article.moreTitle', 'Related articles'),
+    null,
+    {t:cx('pages.article.moreCta', 'All articles'),h:'#/news'}
+  )}
   <div class="grid g3">${ARTICLES.slice(1,4).map(articleCard).join('')}</div>
 </div></section>`;
 
@@ -2537,43 +2750,43 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:'Article'}])}
 PAGES.join = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">Join</span><i></i></div>
-  <h1 class="mt24">Be Part of Africa's Quantum Future.</h1>
-  <p class="lede">Free. Tell us who you are and we will point you at the right chapter and people.</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.join.heroEyebrow', 'Join')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.join.heroTitle', "Be Part of Africa's Quantum Future.")}</h1>
+  <p class="lede">${cx('pages.join.heroLede', 'Free. Tell us who you are and we will point you at the right chapter and people.')}</p>
 </div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div>
-    <h3>Membership form</h3>
-    <p class="small mt8">Tell us who you are and we will point you at the right chapter and people.</p>
+    <h3>${cx('pages.join.formHead', 'Membership form')}</h3>
+    <p class="small mt8">${cx('pages.join.formIntro', 'Tell us who you are and we will point you at the right chapter and people.')}</p>
     <form class="mt24" data-netlify="true" name="join" method="POST" action="/?thanks=1" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="join">
       <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="grid g2">
-        <div class="field"><label>Full name</label><input name="full_name" required placeholder="Your name"></div>
-        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@university.edu"></div>
-        <div class="field"><label>Country</label><select name="country" required><option value="">Select…</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">Other</option></select></div>
-        <div class="field"><label>Institution</label><input name="institution" placeholder="University or company"></div>
+        <div class="field"><label>${cx('pages.join.formNameLabel', 'Full name')}</label><input name="full_name" required placeholder="${cx('pages.join.formNamePlaceholder', 'Your name')}"></div>
+        <div class="field"><label>${cx('pages.join.formEmailLabel', 'Email')}</label><input name="email" type="email" required placeholder="${cx('pages.join.formEmailPlaceholder', 'you@university.edu')}"></div>
+        <div class="field"><label>${cx('pages.join.formCountryLabel', 'Country')}</label><select name="country" required><option value="">${cx('pages.join.formCountryPlaceholder', 'Select…')}</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">${cx('pages.join.countryOther', 'Other')}</option></select></div>
+        <div class="field"><label>${cx('pages.join.formInstitutionLabel', 'Institution')}</label><input name="institution" placeholder="${cx('pages.join.formInstitutionPlaceholder', 'University or company')}"></div>
       </div>
-      <div class="field"><label>I am a…</label><select name="role" required><option>Student</option><option>Researcher</option><option>Educator</option><option>Industry professional</option><option>Other</option></select></div>
-      <div class="field"><label>What are you looking for?</label><textarea name="message" rows="4" placeholder="Learning, research, mentorship, opportunities, starting a chapter…"></textarea></div>
-      <button class="btn teal" type="submit">Join Quantum Africa <span class="ar" aria-hidden="true">→</span></button>
+      <div class="field"><label>${cx('pages.join.formRoleLabel', 'I am a…')}</label><select name="role" required><option>${cx('pages.join.roleStudent', 'Student')}</option><option>${cx('pages.join.roleResearcher', 'Researcher')}</option><option>${cx('pages.join.roleEducator', 'Educator')}</option><option>${cx('pages.join.roleIndustry', 'Industry professional')}</option><option>${cx('pages.join.roleOther', 'Other')}</option></select></div>
+      <div class="field"><label>${cx('pages.join.formLookingLabel', 'What are you looking for?')}</label><textarea name="message" rows="4" placeholder="${cx('pages.join.formLookingPlaceholder', 'Learning, research, mentorship, opportunities, starting a chapter…')}"></textarea></div>
+      <button class="btn teal" type="submit">${cx('pages.join.formSubmitBtn', 'Join Quantum Africa')} <span class="ar" aria-hidden="true">→</span></button>
       <div class="form-msg mt16" hidden></div>
     </form>
   </div>
   <aside>
-    <div class="panel"><h5>What you get</h5>
+    <div class="panel"><h5>${cx('pages.join.getHead', 'What you get')}</h5>
       <ul style="margin:0;padding-left:18px;font-size:.88rem;color:var(--ink-2);line-height:1.9">
-        <li>Invitations to every webinar and workshop</li>
-        <li>Opportunities circulated before deadlines</li>
-        <li>Access to open research projects</li>
-        <li>Your national chapter's community</li>
-        <li>The Quantum AI Tutor when it launches</li>
+        <li>${cx('pages.join.getItem1', 'Invitations to every webinar and workshop')}</li>
+        <li>${cx('pages.join.getItem2', 'Opportunities circulated before deadlines')}</li>
+        <li>${cx('pages.join.getItem3', 'Access to open research projects')}</li>
+        <li>${cx('pages.join.getItem4', "Your national chapter's community")}</li>
+        <li>${cx('pages.join.getItem5', 'The Quantum AI Tutor when it launches')}</li>
       </ul>
     </div>
-    <div class="panel mt16"><h5>Other ways in</h5>
-      <a class="link-a" href="#/partners" style="display:flex;margin-bottom:12px">Partner with us <span aria-hidden="true">→</span></a>
-      <a class="link-a" href="#/universities" style="display:flex;margin-bottom:12px">Bring us to your university <span aria-hidden="true">→</span></a>
-      <a class="link-a" href="#/chapters" style="display:flex">Start a chapter <span aria-hidden="true">→</span></a>
+    <div class="panel mt16"><h5>${cx('pages.join.otherHead', 'Other ways in')}</h5>
+      <a class="link-a" href="#/partners" style="display:flex;margin-bottom:12px">${cx('pages.join.otherLink1', 'Partner with us')} <span aria-hidden="true">→</span></a>
+      <a class="link-a" href="#/universities" style="display:flex;margin-bottom:12px">${cx('pages.join.otherLink2', 'Bring us to your university')} <span aria-hidden="true">→</span></a>
+      <a class="link-a" href="#/chapters" style="display:flex">${cx('pages.join.otherLink3', 'Start a chapter')} <span aria-hidden="true">→</span></a>
     </div>
   </aside>
 </div></div></section>`;
@@ -2581,9 +2794,9 @@ ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
 /* ---------- CONTACT / LEGAL ---------- */
 PAGES.contact = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Contact'}])}
-<section class="phero"><div class="wrap"><div class="sec-idx"><span class="lbl">Contact</span><i></i></div>
-  <h1 class="mt24">Get in touch.</h1>
-  <p class="lede">Partnerships, media, speaking requests or questions.</p>
+<section class="phero"><div class="wrap"><div class="sec-idx"><span class="lbl">${cx('pages.contact.heroEyebrow', 'Contact')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.contact.heroTitle', 'Get in touch.')}</h1>
+  <p class="lede">${cx('pages.contact.heroLede', 'Partnerships, media, speaking requests or questions.')}</p>
 </div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div>
@@ -2591,19 +2804,19 @@ ${crumb([{t:'Home',h:'#/'},{t:'Contact'}])}
       <input type="hidden" name="form-name" value="contact">
       <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="grid g2">
-        <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
-        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label>${cx('pages.contact.formNameLabel', 'Name')}</label><input name="name" required placeholder="${cx('pages.contact.formNamePlaceholder', 'Your name')}"></div>
+        <div class="field"><label>${cx('pages.contact.formEmailLabel', 'Email')}</label><input name="email" type="email" required placeholder="${cx('pages.contact.formEmailPlaceholder', 'you@example.com')}"></div>
       </div>
-      <div class="field"><label>Reason</label><select name="reason" required><option>Partnership</option><option>University collaboration</option><option>Media</option><option>Speaking request</option><option>Submit an opportunity</option><option>Other</option></select></div>
-      <div class="field"><label>Message</label><textarea name="message" rows="6" required placeholder="How can we help?"></textarea></div>
-      <button class="btn teal" type="submit">Send message</button>
+      <div class="field"><label>${cx('pages.contact.formReasonLabel', 'Reason')}</label><select name="reason" required><option>${cx('pages.contact.reasonPartnership', 'Partnership')}</option><option>${cx('pages.contact.reasonUniversity', 'University collaboration')}</option><option>${cx('pages.contact.reasonMedia', 'Media')}</option><option>${cx('pages.contact.reasonSpeaking', 'Speaking request')}</option><option>${cx('pages.contact.reasonOpportunity', 'Submit an opportunity')}</option><option>${cx('pages.contact.reasonOther', 'Other')}</option></select></div>
+      <div class="field"><label>${cx('pages.contact.formMessageLabel', 'Message')}</label><textarea name="message" rows="6" required placeholder="${cx('pages.contact.formMessagePlaceholder', 'How can we help?')}"></textarea></div>
+      <button class="btn teal" type="submit">${cx('pages.contact.formSubmitBtn', 'Send message')}</button>
       <div class="form-msg mt16" hidden></div>
     </form>
   </div>
-  <aside><div class="panel"><h5>Direct</h5><dl class="dl-list">
-    <div class="dl-item"><dt>Email</dt><dd><a href="mailto:contact@quantum-africa.org">contact@quantum-africa.org</a></dd></div>
-    <div class="dl-item"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/company/quantum-africa" target="_blank" rel="noopener">Quantum Africa</a></dd></div>
-    <div class="dl-item"><dt>Based in</dt><dd>Pan-African — chapters across the continent</dd></div>
+  <aside><div class="panel"><h5>${cx('pages.contact.directHead', 'Direct')}</h5><dl class="dl-list">
+    <div class="dl-item"><dt>${cx('pages.contact.directEmailLabel', 'Email')}</dt><dd><a href="mailto:${cx('pages.contact.directEmailValue', 'contact@quantum-africa.org')}">${cx('pages.contact.directEmailValue', 'contact@quantum-africa.org')}</a></dd></div>
+    <div class="dl-item"><dt>${cx('pages.contact.directLinkedinLabel', 'LinkedIn')}</dt><dd><a href="https://www.linkedin.com/company/quantum-africa" target="_blank" rel="noopener">${cx('pages.contact.directLinkedinValue', 'Quantum Africa')}</a></dd></div>
+    <div class="dl-item"><dt>${cx('pages.contact.directBasedLabel', 'Based in')}</dt><dd>${cx('pages.contact.directBasedValue', 'Pan-African — chapters across the continent')}</dd></div>
   </dl></div></aside>
 </div></div></section>`;
 
@@ -3167,14 +3380,16 @@ function rebuildFromContent(){
 function hydrateFooterSocials(){
   const root = document.getElementById('footSocials');
   if(!root) return;
+  const defEmail = cval('site.footerEmail') || cval('site.email');
   const items = [
     {k:'linkedin',  label:'LinkedIn',  icon:'linkedin'},
     {k:'twitter',   label:'X',         icon:'twitter'},
     {k:'youtube',   label:'YouTube',   icon:'youtube'},
     {k:'instagram', label:'Instagram', icon:'instagram'},
+    {k:'__email',   label:'Email',     icon:'email',   url: defEmail},
   ];
   root.innerHTML = items.map(it => {
-    const url = cval('site.' + it.k);
+    const url = it.url || cval('site.' + it.k);
     const href = url ? String(url) : '#/contact';
     const rel = url ? ' target="_blank" rel="noopener noreferrer"' : '';
     return `<a href="${href}" title="${esc(it.label)}" aria-label="${esc(it.label)}" data-k="${esc(it.k)}"${rel}>${svgIcon(it.icon, 18)}</a>`;
