@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-30T23:47:04+00:00",
+ "updated": "2026-08-31T09:04:30+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -96,7 +96,6 @@
     "name": "Yousra Farhani",
     "group": "Leadership",
     "role": "Founder",
-    "country": "Algeria",
     "photo": "media/7faa037d66d1b6c0.png",
     "bio": "PhD in Quantum Computing at NQCP, Niels Bohr Institute, University of Copenhagen.",
     "interests": [
@@ -111,7 +110,6 @@
     "name": "Walid Elmaouaki",
     "group": "Leadership",
     "role": "Co-Founder",
-    "country": "Morocco",
     "photo": "media/2a847bafe7fb7e10.jpg",
     "bio": "Postdoctoral Researcher at New York University of Abu Dhabi.",
     "interests": [
