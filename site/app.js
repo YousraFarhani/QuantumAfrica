@@ -571,8 +571,8 @@ let PEOPLE = [
 ];
 const PEOPLE_GROUPS = [
   ['Leadership',   'The people who run Quantum Africa day to day.'],
-  ['Advisors',     'Researchers and practitioners who steer the work without running it.'],
-  ['Chapter leads','One per country, each building their own community.'],
+  ['Advisors',     ''],
+  ['Chapter leads',''],
 ];
 const PERSON_LINKS = [
   {k:'linkedin', t:'LinkedIn'},
@@ -2461,7 +2461,7 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
   ${sectionHead(
     cx('pages.people.wideEyebrow', 'Everyone else'),
     cx('pages.people.wideTitle', 'The wider community'),
-    cx('pages.people.wideLede', 'Leadership is a handful of people. The network is four hundred and counting.')
+    cx('pages.people.wideLede', '')
   )}
   <div class="grid g3">
     ${[[cx('pages.people.p1N','400+'),cx('pages.people.p1K','Members'),cx('pages.people.p1D','Across the continent and the diaspora.')],
@@ -2471,7 +2471,7 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
   </div>
   <div class="panel mt48">
     <h5>${cx('pages.people.dirHead', 'Member directory')}</h5>
-    <p class="small">${cx('pages.people.dirPrefix', 'Members who opt in appear in a searchable directory with their country, institution and research interests.')} ${pht(cx('pages.people.dirNote', 'Opt-in only — needs a consent field in the CMS and a privacy note before it goes live.'))}</p>
+    <p class="small">${cx('pages.people.dirPrefix', 'Members who opt in appear in a searchable directory with their country, institution and research interests.')}</p>
   </div>
 </div></section>
 
