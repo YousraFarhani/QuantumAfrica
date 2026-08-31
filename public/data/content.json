@@ -1,8 +1,15 @@
 {
- "updated": "2026-08-31T14:25:23+00:00",
+ "updated": "2026-08-31T14:27:25+00:00",
  "content": {
   "site": {},
-  "hero": {},
+  "hero": {
+   "slides": [
+    {
+     "image": "media/856c43197563ecf6.jpg",
+     "caption": "QML4Africa - Rwanda"
+    }
+   ]
+  },
   "stats": {},
   "highlight": {},
   "about": {
