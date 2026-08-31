@@ -48,6 +48,10 @@ aside{background:var(--navy);color:#fff;padding:22px 0;position:sticky;top:0;hei
 .brand b{display:block;font-weight:700;font-size:1rem;letter-spacing:-.02em}
 .brand span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l)}
 .snav{display:flex;flex-direction:column;gap:1px;padding:0 10px}
+.snav .grp{padding:14px 12px 6px;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-l);font-weight:600;user-select:none}
+.snav .grp:first-child{padding-top:2px}
+.snav .sep{height:1px;background:rgba(255,255,255,.1);margin:4px 0}
 .snav button{display:flex;align-items:center;justify-content:space-between;gap:10px;
   width:100%;text-align:left;background:none;border:0;border-radius:4px;padding:10px 12px;
   color:rgba(255,255,255,.72);cursor:pointer;font-size:.9rem;transition:background .15s,color .15s}
@@ -98,6 +102,18 @@ main{padding:0 0 120px;min-width:0}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 @media(max-width:760px){.grid2{grid-template-columns:1fr}#app{grid-template-columns:1fr}
   aside{position:static;height:auto}}
+
+/* modal dialogs (replace window.confirm/prompt so they work inside iframe & popup blockers) */
+.modal{position:fixed;inset:0;background:rgba(0,22,46,.55);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;z-index:100;padding:24px}
+.modal .m-box{width:min(460px,100%);background:var(--card);border-radius:8px;padding:26px 24px;
+  box-shadow:0 30px 80px -20px rgba(0,22,46,.6)}
+.modal h3{margin:0 0 10px;font-size:1.1rem;letter-spacing:-.02em}
+.modal p{margin:0 0 18px;color:var(--ink-2);font-size:.9rem;line-height:1.55;white-space:pre-wrap}
+.modal input[type=text]{width:100%;padding:11px 13px;border:1px solid var(--line-2);border-radius:4px;background:#fff;
+  font-size:.92rem;margin-bottom:18px}
+.modal input[type=text]:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.modal .m-actions{display:flex;justify-content:flex-end;gap:10px}
 
 /* image field */
 .img-f{display:flex;gap:16px;align-items:flex-start}
@@ -268,6 +284,53 @@ function toast(msg, bad){
   toast._t = setTimeout(()=> t.className = 'toast', 3200);
 }
 
+/* ------- in-DOM confirm / prompt so iframe + popup blocker contexts work ------ */
+function qa_confirm(message, okLabel, cancelLabel){
+  return new Promise(resolve => {
+    const m = el('div','modal');
+    const box = el('div','m-box');
+    box.appendChild(el('h3','','Confirm'));
+    box.appendChild(el('p','',esc(message)));
+    const row = el('div','m-actions');
+    const cancel = el('button','btn ghost',cancelLabel || 'Cancel');
+    const ok = el('button','btn primary',okLabel || 'OK');
+    row.appendChild(cancel); row.appendChild(ok);
+    box.appendChild(row); m.appendChild(box); document.body.appendChild(m);
+    ok.focus();
+    const close = v => { try{ document.body.removeChild(m); }catch(_){} resolve(v); };
+    cancel.addEventListener('click', ()=> close(false));
+    ok.addEventListener('click', ()=> close(true));
+    m.addEventListener('click', e => { if(e.target === m) close(false); });
+    const kh = e => { if(e.key === 'Enter'){ e.preventDefault(); close(true); }
+      else if(e.key === 'Escape'){ e.preventDefault(); close(false); } };
+    document.addEventListener('keydown', kh, {once:true});
+  });
+}
+function qa_prompt(message, initialValue, okLabel, cancelLabel){
+  return new Promise(resolve => {
+    const m = el('div','modal');
+    const box = el('div','m-box');
+    box.appendChild(el('h3','','Describe this update'));
+    box.appendChild(el('p','',esc(message)));
+    const input = el('input'); input.type = 'text'; input.value = initialValue == null ? '' : String(initialValue);
+    box.appendChild(input);
+    const row = el('div','m-actions');
+    const cancel = el('button','btn ghost',cancelLabel || 'Cancel');
+    const ok = el('button','btn gold',okLabel || 'Publish');
+    row.appendChild(cancel); row.appendChild(ok);
+    box.appendChild(row); m.appendChild(box); document.body.appendChild(m);
+    setTimeout(()=>{ input.focus(); input.select(); },10);
+    const close = v => { try{ document.body.removeChild(m); }catch(_){} resolve(v); };
+    cancel.addEventListener('click', ()=> close(null));
+    ok.addEventListener('click', ()=> close(input.value));
+    m.addEventListener('click', e => { if(e.target === m) close(null); });
+    input.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){ e.preventDefault(); close(input.value); }
+      else if(e.key === 'Escape'){ e.preventDefault(); close(null); }
+    });
+  });
+}
+
 /* ---------------------------------------------------------------- session */
 $('#loginForm').addEventListener('submit', async e => {
   e.preventDefault();
@@ -337,13 +400,33 @@ async function start(){
 function buildNav(){
   const nav = $('#snav');
   nav.innerHTML = '';
-  SCHEMA.sections.forEach(s => {
-    const b = el('button', '', `<span>${esc(s.title)}</span>` +
-      (s.kind === 'collection' ? `<span class="n" data-count="${esc(s.key)}"></span>` : ''));
-    b.addEventListener('click', ()=> open(s.key));
-    b.dataset.key = s.key;
-    nav.appendChild(b);
-  });
+  const all = SCHEMA.sections.filter(s => !s.hidden);
+
+  const SITE_KEYS = ['site','hero','stats','legal','conference','support'];
+  const COLL_KEYS = ['people','chapters','events','projects','articles','opportunities'];
+  const site_wide = all.filter(s => SITE_KEYS.includes(s.key));
+  const collections = all.filter(s => COLL_KEYS.includes(s.key));
+  const pages = all.filter(s => s.key.startsWith('pages.'));
+
+  const group = (label, items) => {
+    if(!items.length) return;
+    const h = el('div','grp',label);
+    nav.appendChild(h);
+    items.forEach(s => {
+      const rows = s.kind === 'collection';
+      const b = el('button', '', `<span>${esc(s.title)}</span>` +
+        (rows ? `<span class="n" data-count="${esc(s.key)}"></span>` : ''));
+      b.addEventListener('click', ()=> open(s.key));
+      b.dataset.key = s.key;
+      nav.appendChild(b);
+    });
+    nav.appendChild(el('div','sep'));
+  };
+
+  group('Site-wide settings', site_wide);
+  group('Collections', collections);
+  group('Pages (copy & hero images)', pages.sort((a,b)=>a.title.localeCompare(b.title)));
+
   counts();
 }
 function counts(){
@@ -512,8 +595,8 @@ function rowNode(field, list, row, i, repaint, set){
       body.dataset.built = '1';
     }
   });
-  hd.querySelector('.x').addEventListener('click', ()=>{
-    if(!confirm('Delete this entry? You can still undo it from revision history.')) return;
+  hd.querySelector('.x').addEventListener('click', async ()=>{
+    if(!await qa_confirm('Delete this entry? You can still undo it from revision history.')) return;
     const next = list.slice(); next.splice(i, 1);
     set(next); markDirty(); repaint();
   });
@@ -587,8 +670,8 @@ function draw(){
       fieldNode(f, ()=> row[f.key], v => { row[f.key] = v; })));
     const del = el('button', 'btn danger', 'Delete this entry');
     del.type = 'button';
-    del.addEventListener('click', ()=>{
-      if(!confirm('Delete this entry?')) return;
+    del.addEventListener('click', async ()=>{
+      if(!await qa_confirm('Delete this entry?')) return;
       list.splice(ROW, 1); ROW = 0; markDirty(); counts(); draw();
     });
     card.appendChild(del);
@@ -618,8 +701,8 @@ $('#saveBtn').addEventListener('click', async ()=>{
   markDirty();
 });
 
-$('#revertBtn').addEventListener('click', ()=>{
-  if(!confirm('Discard your unsaved changes?')) return;
+$('#revertBtn').addEventListener('click', async ()=>{
+  if(!await qa_confirm('Discard your unsaved changes?')) return;
   DOC = clone(CLEAN); counts(); draw(); markDirty();
 });
 
@@ -652,11 +735,11 @@ async function refreshPublish(){
 }
 
 $('#pubBtn').addEventListener('click', async ()=>{
-  if(dirty() && !confirm('You have unsaved changes. Publish without them?')) return;
+  if(dirty() && !await qa_confirm('You have unsaved changes. Publish without them?')) return;
   const b = $('#pubBtn');
   b.disabled = true; b.textContent = 'Publishing…';
   try{
-    const note = prompt('Describe this update (optional)', 'Update site content');
+    const note = await qa_prompt('Describe this update (optional)', 'Update site content');
     if(note === null){ b.disabled = false; b.textContent = 'Publish to the website'; return; }
     const r = await api('/api/admin/publish', {method:'POST', body:{message: note}});
     if(r.nothing) toast(r.message);
@@ -686,7 +769,7 @@ $('#revBtn').addEventListener('click', async ()=>{
       if(i > 0){
         const b = el('button', 'btn ghost', 'Restore'); b.type = 'button';
         b.addEventListener('click', async ()=>{
-          if(!confirm('Restore revision #' + rev.id + '?')) return;
+          if(!await qa_confirm('Restore revision #' + rev.id + '?')) return;
           try{
             const res = await api('/api/admin/rollback/' + rev.id, {method:'POST'});
             DOC = res.content; CLEAN = clone(DOC);

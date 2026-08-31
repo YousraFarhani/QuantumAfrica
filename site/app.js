@@ -1239,12 +1239,24 @@ ${highlightSection()}
 
 /* ---------- ABOUT ---------- */
 PAGES.about = () => {
-  const eyebrow = cx('pages.about.heroEyebrow', 'About Quantum Africa');
-  const title = cx('pages.about.heroTitle', 'We build people, not just programmes.');
-  const lede = cx('pages.about.heroLede',
+  const fall = (key, fallback) => {
+    const a = cval('pages.about.' + key);
+    if(a !== '' && a != null) return a;
+    const b = cval('about.' + key);
+    if(b !== '' && b != null) return b;
+    return (fallback === undefined ? '' : fallback);
+  };
+  const eyebrow = cx('pages.about.heroEyebrow',
+              (cval('about.heroEyebrow') || 'About Quantum Africa'));
+  const title   = cx('pages.about.heroTitle',
+              (cval('about.heroTitle')   || 'We build people, not just programmes.'));
+  const lede    = fall('heroLede',
     "Quantum Africa exists to build Africa's quantum workforce — through education, research, leadership and global connection.");
   const objectives = (function(){
-    const raw = cval('pages.about.objectivesList');
+    let raw = cval('pages.about.objectivesList');
+    if(!(Array.isArray(raw) && raw.length)){
+      raw = cval('about.objectives');
+    }
     if(Array.isArray(raw) && raw.length){
       return raw.map(x => `<li>${esc(String(x))}</li>`).join('');
     }
@@ -1259,12 +1271,17 @@ PAGES.about = () => {
       'Increase African participation in the global quantum ecosystem',
     ].map(x => `<li>${pht(x)}</li>`).join('');
   })();
-  const philHead = cx('pages.about.philosophyHeadline', 'Educate → Research → Connect → Lead');
-  const whoHtml = cval('pages.about.whoWeAreBody');
-  const storyHtml = cval('pages.about.storyBody');
-  const missionHtml = cval('pages.about.missionBody');
-  const visionHtml = cval('pages.about.visionBody');
-  const philBody = cval('pages.about.philosophyBody');
+  const philHead = cx('pages.about.philosophyHeadline',
+                 cval('about.philosophyHeadline') || 'Educate → Research → Connect → Lead');
+  const whoHtml   = cval('pages.about.whoWeAreBody') || cval('about.whoWeAre');
+  const storyHtml = cval('pages.about.storyBody')    || cval('about.story');
+  const missionHtml = cval('pages.about.missionBody') || cval('about.mission');
+  const visionHtml  = cval('pages.about.visionBody')  || cval('about.vision');
+  const philBody    = cval('pages.about.philosophyBody') || cval('about.philosophy');
+  const heroImagePath = cval('pages.about.heroImage') || cval('about.heroImage');
+  const heroImageHtml = heroImagePath
+    ? `<div class="slot filled"><img src="${esc(mediaUrl(heroImagePath))}" alt="Wide community photograph" loading="lazy"></div>`
+    : cimg('pages.about.heroImage','Wide community photograph','2400×1000 · JPG → assets/about/hero.jpg','wide','field');
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 <section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
@@ -1274,7 +1291,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 </div></section>
 
 <section class="sec flush" style="padding-top:0">
-  <div class="wrap">${cimg('pages.about.heroImage','Wide community photograph','2400×1000 · JPG → assets/about/hero.jpg','wide','field')}</div>
+  <div class="wrap">${heroImageHtml}</div>
 </section>
 
 <section class="sec"><div class="wrap"><div class="side">
@@ -1317,7 +1334,10 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
     </div>
     <div class="panel mt16">
       <h5>${cx('pages.about.documentsPanelHead', 'Documents')}</h5>
-      <p class="small">${cx('pages.about.documentsNote', pht('Annual report, strategy document or one-pager PDF — upload and link here'))}</p>
+      <p class="small">${cx('pages.about.documentsNote',
+                        cval('about.documents')
+                          ? cval('about.documents')
+                          : pht('Annual report, strategy document or one-pager PDF — upload and link here'))}</p>
     </div>
   </aside>
 </div></div></section>

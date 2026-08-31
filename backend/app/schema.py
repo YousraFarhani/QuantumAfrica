@@ -115,7 +115,7 @@ SECTIONS = [
     ],
   },
   {
-    'key': 'highlight', 'title': 'Front page highlight', 'icon': 'star', 'kind': 'single',
+    'key': 'highlight', 'title': 'Front page highlight', 'icon': 'star', 'kind': 'single', 'hidden': True,
     'blurb': 'The thing you most want people to see when they arrive — usually your '
              'latest event. Photos and videos together in one carousel.',
     'fields': [
@@ -134,8 +134,8 @@ SECTIONS = [
     ],
   },
   {
-    'key': 'about', 'title': 'About', 'icon': 'doc', 'kind': 'single',
-    'blurb': 'Everything on the About page — hero, story, mission, vision, objectives, documents, leadership summary.',
+    'key': 'about', 'title': 'About', 'icon': 'doc', 'kind': 'single', 'hidden': True,
+    'blurb': 'Legacy section. All About page edits now live under Page: About — use that instead.',
     'fields': [
       F('heroEyebrow', 'Hero eyebrow', help='Small label above the headline, e.g. “About Quantum Africa”.'),
       F('heroTitle', 'Hero headline', help='The big sentence at the top of the page.'),
@@ -219,7 +219,7 @@ SECTIONS = [
     ],
   },
   {
-    'key': 'partners', 'title': 'Partners', 'icon': 'link', 'kind': 'collection',
+    'key': 'partners', 'title': 'Partners', 'icon': 'link', 'kind': 'collection', 'hidden': True,
     'blurb': 'Only organisations with a real agreement. Do not list logos you have not cleared.',
     'label_field': 'name',
     'fields': [
@@ -289,8 +289,8 @@ SECTIONS = [
     ],
   },
   {
-    'key': 'tutor', 'title': 'AI Tutor', 'icon': 'chat', 'kind': 'single',
-    'blurb': 'The Quantum AI Tutor page.',
+    'key': 'tutor', 'title': 'AI Tutor', 'icon': 'chat', 'kind': 'single', 'hidden': True,
+    'blurb': 'Legacy section. All AI Tutor page edits now live under Page: AI Tutor.',
     'fields': [
       F('intro', 'Introduction', 'markdown'),
       F('status', 'Status', 'select', options=['In development', 'Beta', 'Live']),
