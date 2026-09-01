@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-31T14:24:05+00:00",
+ "updated": "2026-09-01T10:06:50+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "event",
  "sources": {
@@ -20,7 +20,7 @@
   }
  },
  "errors": {},
- "count": 52,
+ "count": 44,
  "africa": 0,
  "items": [
   {
@@ -37,7 +37,7 @@
    "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/quantum-science-and-technology-msc-university-nottingham",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "9c7b3ccdbc",
@@ -53,7 +53,7 @@
    "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/5th-european-summer-school-quantum-ai",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "2acc5796ce",
@@ -69,7 +69,7 @@
    "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/iop-photon-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "43c495e8f3",
@@ -85,7 +85,7 @@
    "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/q-camp-quantum-summer-school-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "02b1e477f3",
@@ -101,7 +101,7 @@
    "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/qalypso-2026-quantum-optimisation-techniques-physics-computation",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "fd27f783ec",
@@ -117,7 +117,7 @@
    "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/silicon-quantum-electronics-workshop-2026-international-conference-spin-shuttling-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "56be6711c7",
@@ -133,7 +133,7 @@
    "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/tqc-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "e92ec09e6e",
@@ -146,10 +146,10 @@
    "online": false,
    "africa": false,
    "type": "Workshop",
-   "status": "Upcoming",
+   "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/workshop-dynamics-entanglement-isaac-newton-institute-mathematical-sciences-cambridge",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "d2a31c3a2c",
@@ -165,7 +165,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/aussois-workshop-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "930bca52a9",
@@ -181,7 +181,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/quantum-roundabout-1",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "801b1661f0",
@@ -197,7 +197,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/ai-circuit-synthesis-optimization-and-discovery-ieee-quantum-week-workshop",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "90380194aa",
@@ -213,7 +213,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/central-european-quantum-information-processing-workshop",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "1132e741f7",
@@ -229,7 +229,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/fundamental-science-quantum-computers-and-simulators",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "4fa2869296",
@@ -245,7 +245,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/recent-progress-many-body-theories-milan-sept-14-18-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "00d642ea50",
@@ -261,7 +261,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/vcq-summer-school-2026-reaching-quantum-advantage-foundations-applications",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "8d3ae794ca",
@@ -277,7 +277,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/new-frontiers-quantum-enhanced-sensing-and-metrology",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "72d214247e",
@@ -293,7 +293,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/frontiers-quantum-information-science-20",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "bd15c61dc3",
@@ -309,7 +309,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/ml4q-workshop-quantum-computing-qudits",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "94bf55d773",
@@ -325,7 +325,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/workshop-structure-quantum-theory-21-24-september-2026-m%C3%BCnster-germany",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "951401a4b9",
@@ -341,7 +341,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/international-workshop-quantum-computing-privacy-and-security",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "5935f7fed2",
@@ -357,7 +357,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/online-conference-quantum-optics-and-related-topics-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "404ebee382",
@@ -373,7 +373,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/ml4q-summerschool-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "85ee88c641",
@@ -389,7 +389,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/dissipation-assisted-quantum-technologies",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "6bcee47070",
@@ -405,7 +405,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/nanophotonics-and-micronano-optics-international-conference-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "a913425af5",
@@ -421,7 +421,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/input-output-insight-inference-black-boxes-contextuality-bell-inequalities-and-beyond",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "0ca9b269f9",
@@ -437,7 +437,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/inqa-2026-conference",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "c38bdb4f43",
@@ -453,7 +453,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/barcelona-blood-brain-barrier-conference-b4-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "8104d8e1b1",
@@ -469,7 +469,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/quidiqua-4-quasiprobability-distributions-quantum-mechanics-optics-and-information",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "697c1fdbc7",
@@ -485,7 +485,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/tensors-geometry-optimization-and-applications-1",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "11ecc3a14d",
@@ -501,7 +501,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/rims-international-symposium-mathematics-quantum-information-science",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "c7ec309845",
@@ -517,7 +517,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/xv-conference-quantum-foundations-foundations-quantum-technologies",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "a01f1f91d9",
@@ -533,7 +533,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/8th-international-workshop-resource-estimation-immediately-after-ieee-quantum-week",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "802965f6e8",
@@ -549,39 +549,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/qoart-online-seminar-2-sep-2026-400-pm-msk-mathematical-foundations-modeling-methods-and",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "da3e6bd64a",
-   "kind": "event",
-   "title": "[QOART Seminar | 11 Aug 2026, 4:00 PM (MSK)] Isospectral Quantum Billiards as Generators of Distributive Logic Algebras (Continuation)",
-   "start": null,
-   "end": null,
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Seminar",
-   "status": "Upcoming",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/qoart-seminar-11-aug-2026-400-pm-msk-isospectral-quantum-billiards-generators",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "a99eadcc0d",
-   "kind": "event",
-   "title": "[QOART Seminar | 4 Aug 2026, 4:00 PM (MSK)] Isospectral Quantum Billiards as Generators of Distributive Logic Algebras",
-   "start": null,
-   "end": null,
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Seminar",
-   "status": "Upcoming",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/qoart-seminar-4-aug-2026-400-pm-msk-isospectral-quantum-billiards-generators-distributive",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "9ccf031ec1",
@@ -597,7 +565,7 @@
    "status": "Upcoming",
    "source": "qjoblist",
    "url": "https://qalypso.squarespace.com/",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "7710a2320a",
@@ -613,7 +581,7 @@
    "status": "Upcoming",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/workshop-signal-processing-quantum-technologies",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "27cacef77e",
@@ -629,7 +597,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://www.edinburghscience.co.uk/event/the-quantum-zone/",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "1babb2d3b0",
@@ -645,7 +613,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://aifactory.lu/ai-events/scynergy-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "9bf5f94052",
@@ -661,7 +629,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://www.iao.fraunhofer.de/en/events-calendar/fullstaqd-community-workshop.html",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "7e8e3fd1fa",
@@ -677,7 +645,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://www.benasque.org/2026atomtronics/",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "621ed56673",
@@ -693,7 +661,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://sequoia-project.eu/",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "8afbc4f1c2",
@@ -709,7 +677,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://q2b.qcware.com/conference/2026-tokyo",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "07a9d07eab",
@@ -725,7 +693,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://events.economist.com/commercialising-quantum/",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "7e1fb4ab38",
@@ -741,7 +709,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://www.alphaevents.com/events-quantumtechus",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   },
   {
    "id": "33ae5f8a4a",
@@ -757,103 +725,7 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://www.iao.fraunhofer.de/en/events-calendar/symposium-FTQC4Nsc.html",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "2753f52fc0",
-   "kind": "event",
-   "title": "Quantum Thermodynamics Conference 2026",
-   "start": "2026-08-10",
-   "end": "2026-08-14",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/quantum-thermodynamics-conference-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "114faa2562",
-   "kind": "event",
-   "title": "Workshop on Gravitational Quantum Physics and Metrology",
-   "start": "2026-08-10",
-   "end": "2026-08-13",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Workshop",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/workshop-gravitational-quantum-physics-and-metrology",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "ed7c4baabd",
-   "kind": "event",
-   "title": "Quantum AI 2026 Conference",
-   "start": "2026-08-14",
-   "end": "2026-08-16",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/quantum-ai-2026-conference",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "f910fac055",
-   "kind": "event",
-   "title": "Quantum Key Distribution Summer School 2026",
-   "start": "2026-08-16",
-   "end": "2026-08-21",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Summer school",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/quantum-key-distribution-summer-school-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "bf63be7ae9",
-   "kind": "event",
-   "title": "The 23rd International Conference on Quantum Physics and Logic",
-   "start": "2026-08-17",
-   "end": "2026-08-21",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/23rd-international-conference-quantum-physics-and-logic",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "76109d2e30",
-   "kind": "event",
-   "title": "2026 Young Quantum Information Scientists conference, Vienna",
-   "start": "2026-08-24",
-   "end": "2026-08-28",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/2026-young-quantum-information-scientists-conference-vienna",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "first_seen": "2026-09-01T10:06:50+00:00"
   }
  ]
 }

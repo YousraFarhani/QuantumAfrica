@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-31T14:23:35+00:00",
+ "updated": "2026-09-01T10:06:18+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "job",
  "sources": {
@@ -22,7 +22,7 @@
  "errors": {
   "qjobs": "RobotsDisallowed: https://quantum.jobs/"
  },
- "count": 67,
+ "count": 65,
  "africa": 2,
  "items": [
   {
@@ -38,7 +38,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoc-position-topological-insulator-based-majorana-devices-university-cologne",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "2873675129",
@@ -53,112 +53,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/msc-quantum-science-and-technology-fst-al-hoceima-abdelmalek-essaadi-university",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "3c174d0cab",
-   "kind": "job",
-   "title": "Doctoral Researcher in quantum computing and algorithms for Life Science applications",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Industry",
-   "deadline": "2026-08-31",
-   "status": "Closing soon",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/doctoral-researcher-quantum-computing-and-algorithms-life-science-applications",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "e660b25dc8",
-   "kind": "job",
-   "title": "Open Postdoc Positions in “Many-Body Open Quantum Systems” (Okinawa, Japan)",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Postdoc",
-   "deadline": "2026-08-31",
-   "status": "Closing soon",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/open-postdoc-positions-many-body-open-quantum-systems-okinawa-japan",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "c47161fce9",
-   "kind": "job",
-   "title": "PhD position (f/m/d) in quantum information or quantum metrology",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "PhD",
-   "deadline": "2026-08-31",
-   "status": "Closing soon",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/phd-position-fmd-quantum-information-or-quantum-metrology",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "7e8511d92b",
-   "kind": "job",
-   "title": "Postdoctoral researcher in quantum algorithms and optimization for Life Science applications",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Postdoc",
-   "deadline": "2026-08-31",
-   "status": "Closing soon",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/postdoctoral-researcher-quantum-algorithms-and-optimization-life-science-applications",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "d07980d60f",
-   "kind": "job",
-   "title": "Postdoctoral Researcher in Theoretical Quantum Information Science (QEC & Photonic Quantum Computing, KAIST, South Korea)",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Postdoc",
-   "deadline": "2026-08-31",
-   "status": "Closing soon",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/postdoctoral-researcher-theoretical-quantum-information-science-qec-photonic-quantum",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "8bae3aede3",
-   "kind": "job",
-   "title": "University Professorship (W3) “Experimental Physics II” - Experimental solid state physics and quantum technologies",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Faculty",
-   "deadline": "2026-08-31",
-   "status": "Closing soon",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/university-professorship-w3-experimental-physics-ii-experimental-solid-state-physics-and",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "574119ac8b",
-   "kind": "job",
-   "title": "W3 Professorship Experimental Physics of Quantum Technologies (m/f/x; Reference no. W2885))",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Faculty",
-   "deadline": "2026-08-31",
-   "status": "Closing soon",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/w3-professorship-experimental-physics-quantum-technologies-mfx-reference-no-w2885",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "e2bb777087",
@@ -173,7 +68,7 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/university-professorship-solid-state-quantum-phenomena",
-   "first_seen": "2026-08-31T14:21:20+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "4491caaf41",
@@ -188,7 +83,7 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-quantum-error-correction-quantum-networks",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "1d7a22bb90",
@@ -203,7 +98,7 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-quantum-computing-and-continuous-variables",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "7b721eb76c",
@@ -218,7 +113,7 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/computational-post-doc-position-ai-quantum-sensing",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "e87d1dc34f",
@@ -233,7 +128,7 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-research-associate-experimental-quantum-sensing-ai-driven-nuclear-spin-control",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "cfc7c325bc",
@@ -248,7 +143,7 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-position-theoretical-quantum-nanomechanics-laboratoire-ondes-et-mati%C3%A8re",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "579c4776a1",
@@ -263,7 +158,7 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-positions-quantum-physics-and-machine-learning",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "c1b1f3523e",
@@ -278,7 +173,7 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-researcher-staff-scientist-theoretical-quantum-physics",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "abca346d5c",
@@ -293,7 +188,22 @@
    "status": "Closing soon",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-quantum-information-and-quantum-communication-theory-t%C3%A9l%C3%A9com-sudparis-institut",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
+  },
+  {
+   "id": "f54eb8f115",
+   "kind": "job",
+   "title": "PhD Position in Theoretical Physics | Mechanical Quantum Sensors for Fundamental Physics",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "PhD",
+   "deadline": "2026-09-15",
+   "status": "Closing soon",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/phd-position-theoretical-physics-mechanical-quantum-sensors-fundamental-physics",
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "51f4323ee8",
@@ -308,7 +218,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/junior-professor-w1-tenure-track-w3-theoretical-solid-state-physics",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "e67c93a30a",
@@ -323,7 +233,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/cifre-phd-topic-molecular-chemistry-variational-quantum-algorithms-and-applications-study",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "4d0f9f4cea",
@@ -338,7 +248,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/open-call-two-r1-researcher-positions-research-assistant-phd-candidate-fmx-eucentral",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "bc6a71dacd",
@@ -353,7 +263,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-researcher-theoretical-quantum-information-science-university-jyv%C3%A4skyl%C3%A4",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "104b900b24",
@@ -368,7 +278,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/two-postdoc-positions-qit-ugda%C5%84sk",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "715faae413",
@@ -383,22 +293,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoc-opening-experimental-polariton-photonics-neuromorphic-computing-warsaw-poland",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "db3a590f4d",
-   "kind": "job",
-   "title": "Open Faculty Positions at CQuERE, TCG CREST, Kolkata (India)",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Faculty",
-   "deadline": "2026-10-15",
-   "status": "Open",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/open-faculty-positions-cquere-tcg-crest-kolkata-india-1",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "54d97c83fb",
@@ -413,7 +308,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/research-associate-quantum-computation-imperial-college-london",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "f23e47551d",
@@ -428,7 +323,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-position-quantum-computing-quantum-machine-learning-yukawa-institute",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "b15bc32a09",
@@ -443,7 +338,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/3-5-phd-positions-quantum-computing-and-artificial-intelligence-nus-singapore",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "c01e830d2e",
@@ -458,7 +353,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoc-openings-quantum-computing-and-artificial-intelligence-national-university",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "b8252c3cd0",
@@ -473,7 +368,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-controlling-errors-quantum-computers-imperial-college-2",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "503facc2e7",
@@ -488,7 +383,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-fellow-deploying-geometrically-designed-algorithms-1",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "fa2fec55ea",
@@ -503,7 +398,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoc-positions-ultracold-atom-experiment-university-milan-italy",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "cd1ea6f225",
@@ -518,7 +413,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-positions-post-quantum-cryptography",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "7361afe131",
@@ -533,7 +428,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-research-fellow-experimental-quantum-nanomechanics-postech-south-korea",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "ad8d846470",
@@ -548,7 +443,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/research-scientist-theory-qec-implementations",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "6d3d914dd2",
@@ -563,7 +458,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/research-scientist-theory-quantum-algorithms",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "ab7de121de",
@@ -578,7 +473,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/device-backend-technician-quantum-ai",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "260638368e",
@@ -593,7 +488,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/junior-fabrication-engineer",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "a6751a6f2d",
@@ -608,7 +503,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/photonic-layout-engineer-26xif",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "86caba2448",
@@ -623,7 +518,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/quantum-computational-science-specialist",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "9a30dad75a",
@@ -638,7 +533,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/quantum-design-engineer-2869",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "e18dca209d",
@@ -653,7 +548,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/quantum-measurement-engineer-hmc4i",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "ffff8bfaf5",
@@ -668,7 +563,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/r-d-fabrication-engineer",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "c06bed7337",
@@ -683,7 +578,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/research-intern-phd-summer-2027-2ssd",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "5c983f8b4d",
@@ -698,7 +593,7 @@
    "status": "Open",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/senior-postdoctoral-position-quantum-error-correction-berlin",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "119068b787",
@@ -713,37 +608,7 @@
    "status": "Open",
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/systems-yield-engineer-quantum-ai",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "b66554db54",
-   "kind": "job",
-   "title": "Professorship in Quantum Information at Ruhr-University Bochum",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Faculty",
-   "deadline": "2026-06-23",
-   "status": "Closed",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/professorship-quantum-information-ruhr-university-bochum",
-   "first_seen": "2026-08-31T14:10:43+00:00"
-  },
-  {
-   "id": "27120b9906",
-   "kind": "job",
-   "title": "3 year PhD Position in Quantum Information at TU Darmstadt, Germany",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "PhD",
-   "deadline": "2026-06-27",
-   "status": "Closed",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/3-year-phd-position-quantum-information-tu-darmstadt-germany",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "ebfc48ee04",
@@ -758,7 +623,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-researcher-quantum-information-and-certification-center-theoretical-physics-1",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "614316be5f",
@@ -773,7 +638,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-quantum-information-theory-quantum-learning-quantum-communication-quantum",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "e4e8154297",
@@ -788,7 +653,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoc-phd-position-quantum-information-theory-siegengermany-3",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "1c0aea53ac",
@@ -803,7 +668,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-quantum-information-open-quantum-systems-quantum-control-quantum",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "d5e6dd3580",
@@ -818,7 +683,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-position-quantum-information-open-quantum-systems-quantum-control-quantum",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "9966ea84ff",
@@ -833,7 +698,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-level-researcher-large-language-model-training-optimization-and-scientific",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "a92f4b389f",
@@ -848,7 +713,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-level-researcher-quantum-computing-benchmarking-and-hybrid-quantum-classical-systems",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "c3b4715069",
@@ -863,7 +728,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-spin-systems-quantum-information-processing-and-sensing-university-parma",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "7297046253",
@@ -878,7 +743,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/student-research-and-technical-associate-position-position-quantum-information-and",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "60bf9e1ffc",
@@ -893,7 +758,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-proposal-energetic-cost-fault-tolerant-quantum-computing",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "8af43594f6",
@@ -908,7 +773,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/3-postdocs-3-doctoral-students-distributed-quantum-algorithms",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "3df225a2a9",
@@ -923,7 +788,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-fmd-quantum-information-or-quantum-computing-ruhr-university-bochum-germany",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "303b44208b",
@@ -938,7 +803,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-learning-characterizing-and-testing-bosonic-quantum-computers-university",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "9459de6b14",
@@ -953,7 +818,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/research-assistant-and-phd-candidate-quantum-sensing-theory-qi2-warsaw",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "cdc951f9bb",
@@ -968,7 +833,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoc-positions-apctp-south-korea",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "65a131f5c7",
@@ -983,7 +848,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-position-developing-solid-state-quantum-network-components",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "dd74a832e1",
@@ -998,7 +863,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/research-fellow-quantum-simulation-algorithms-ibm-q-hardware",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "d56c19d486",
@@ -1013,7 +878,7 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoctoral-position-university-college-dublin",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
   },
   {
    "id": "9fdb1689b4",
@@ -1028,7 +893,112 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/research-fellow-experimental-quantum-foundations",
-   "first_seen": "2026-08-31T14:10:43+00:00"
+   "first_seen": "2026-09-01T10:06:18+00:00"
+  },
+  {
+   "id": "3c174d0cab",
+   "kind": "job",
+   "title": "Doctoral Researcher in quantum computing and algorithms for Life Science applications",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Industry",
+   "deadline": "2026-08-31",
+   "status": "Closed",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/doctoral-researcher-quantum-computing-and-algorithms-life-science-applications",
+   "first_seen": "2026-09-01T10:06:18+00:00"
+  },
+  {
+   "id": "e660b25dc8",
+   "kind": "job",
+   "title": "Open Postdoc Positions in “Many-Body Open Quantum Systems” (Okinawa, Japan)",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Postdoc",
+   "deadline": "2026-08-31",
+   "status": "Closed",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/open-postdoc-positions-many-body-open-quantum-systems-okinawa-japan",
+   "first_seen": "2026-09-01T10:06:18+00:00"
+  },
+  {
+   "id": "c47161fce9",
+   "kind": "job",
+   "title": "PhD position (f/m/d) in quantum information or quantum metrology",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "PhD",
+   "deadline": "2026-08-31",
+   "status": "Closed",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/phd-position-fmd-quantum-information-or-quantum-metrology",
+   "first_seen": "2026-09-01T10:06:18+00:00"
+  },
+  {
+   "id": "7e8511d92b",
+   "kind": "job",
+   "title": "Postdoctoral researcher in quantum algorithms and optimization for Life Science applications",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Postdoc",
+   "deadline": "2026-08-31",
+   "status": "Closed",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/postdoctoral-researcher-quantum-algorithms-and-optimization-life-science-applications",
+   "first_seen": "2026-09-01T10:06:18+00:00"
+  },
+  {
+   "id": "d07980d60f",
+   "kind": "job",
+   "title": "Postdoctoral Researcher in Theoretical Quantum Information Science (QEC & Photonic Quantum Computing, KAIST, South Korea)",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Postdoc",
+   "deadline": "2026-08-31",
+   "status": "Closed",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/postdoctoral-researcher-theoretical-quantum-information-science-qec-photonic-quantum",
+   "first_seen": "2026-09-01T10:06:18+00:00"
+  },
+  {
+   "id": "8bae3aede3",
+   "kind": "job",
+   "title": "University Professorship (W3) “Experimental Physics II” - Experimental solid state physics and quantum technologies",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Faculty",
+   "deadline": "2026-08-31",
+   "status": "Closed",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/university-professorship-w3-experimental-physics-ii-experimental-solid-state-physics-and",
+   "first_seen": "2026-09-01T10:06:18+00:00"
+  },
+  {
+   "id": "574119ac8b",
+   "kind": "job",
+   "title": "W3 Professorship Experimental Physics of Quantum Technologies (m/f/x; Reference no. W2885))",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Faculty",
+   "deadline": "2026-08-31",
+   "status": "Closed",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/w3-professorship-experimental-physics-quantum-technologies-mfx-reference-no-w2885",
+   "first_seen": "2026-09-01T10:06:18+00:00"
   }
  ]
 }
