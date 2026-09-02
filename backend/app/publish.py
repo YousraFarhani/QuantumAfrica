@@ -198,30 +198,34 @@ def publish(message: str = 'Update site content') -> dict:
         return {'ok': False, 'error': commit.stderr.strip() or commit.stdout.strip()
                 or 'git commit failed'}
 
-    # Make local main fast-forward-able: pull (fetch + rebase) any commits on
-    # origin/main that this local clone hasn't seen yet (e.g. pushed from a
-    # different machine or triggered externally). Without this the admin gets
-    # "! [rejected] main -> main (fetch first)" every time someone else pushed.
+    # Make local main fast-forward-able: merge any commits on origin/main that
+    # this local clone hasn't seen yet (e.g. pushed from another machine, from
+    # CI, or from a Netlify-side listing refresh). Without this the admin gets
+    # "! [rejected] main -> main (fetch first)" every time origin/main moved
+    # forward since the admin backend last fetched.
+    #
+    # Strategy: "-X ours" merge so the content + media the admin just edited
+    # always wins any line-level conflict with remote auto-generated listing
+    # refreshes (events.json / opportunities.json / content.json). Remote
+    # listing commits that don't overlap with the admin's edited files are
+    # simply merged in as-is.
     _git(root, 'fetch', 'origin', 'main', timeout=120)
     ahead_ls = _git(root, 'rev-list', '--left-right', '--count', 'origin/main...HEAD')
     try:
-        left, right = [int(x) for x in ahead_ls.stdout.strip().split()]
+        left_behind_remote, _ = [int(x) for x in ahead_ls.stdout.strip().split()]
     except (ValueError, AttributeError):
-        left, right = 0, 0
-    if left > 0:
-        rb = _git(root, 'rebase', 'origin/main', timeout=TIMEOUT)
-        if rb.returncode != 0:
-            # Rebase failed (conflict in tracked files we're about to overwrite
-            # anyway). Reset+apply our local commit the simple way.
-            _git(root, 'rebase', '--abort')
-            # Try a second approach: merge with strategy-option "ours" for
-            # admin local, so admin's content commit wins.
-            mg = _git(root, '-c', 'user.name=Quantum Africa Admin',
-                      '-c', 'user.email=admin@quantum-africa.localhost',
-                      'merge', '--no-edit', '-X', 'ours', 'origin/main',
-                      timeout=TIMEOUT)
-            if mg.returncode != 0:
-                _git(root, 'merge', '--abort')
+        left_behind_remote = 0
+    if left_behind_remote > 0:
+        mg = _git(root,
+                  '-c', 'user.name=Quantum Africa Admin',
+                  '-c', 'user.email=admin@quantum-africa.localhost',
+                  'merge', '--no-edit', '-X', 'ours', 'origin/main',
+                  timeout=TIMEOUT)
+        if mg.returncode != 0:
+            # Merge failed hard (very rare, e.g. content.json structural
+            # conflict). Back out: drop the failed merge state and fall
+            # back to force-with-lease so admin never gets stuck mid-flow.
+            _git(root, 'merge', '--abort')
 
     push = _git(root, 'push', 'origin', 'main')
     if push.returncode != 0:
