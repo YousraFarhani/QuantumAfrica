@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-02T21:36:07+00:00",
+ "updated": "2026-09-02T21:49:49+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa"
@@ -10,7 +10,9 @@
    "chapters": 7,
    "countries": 52,
    "events": 10,
-   "projects": 26
+   "projects": 26,
+   "partners": 14,
+   "note": "Audited HTTP PUT simulated admin browser save after paths fix"
   },
   "highlight": {},
   "about": {
