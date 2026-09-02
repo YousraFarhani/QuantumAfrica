@@ -18,6 +18,15 @@ import urllib.request
 PUBLISH_PATHS = ['public/data', 'public/media', 'public/index.html']
 TIMEOUT = 120
 
+# All filesystem paths are anchored to the repository root so behaviour is
+# identical regardless of where the server was launched from.
+_BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPO_ROOT = os.path.dirname(_BACKEND_DIR)
+
+
+def _repo_path(*parts: str) -> str:
+    return os.path.normpath(os.path.join(REPO_ROOT, *parts))
+
 
 def _dbg(hypothesis_id, **fields):
     """Minimal instrumentation report. Non-blocking, safe if Debug Server down."""
@@ -84,23 +93,24 @@ def _git(root, *args, timeout=TIMEOUT):
 
 
 def _sync_public_to_repo(root: str) -> list[str]:
-    """Copy PUBLISH_PATHS from the backend's cwd into the repo root if needed.
+    """Copy PUBLISH_PATHS from where the backend actually exports to ``root``.
 
-    When `QA_GIT_ROOT` points at a separate clone, the clone still needs the
-    freshly-exported content.json, any uploaded media, and a rebuilt index.html
-    from the running admin's cwd. This rsync-lite copy keeps Publish doing the
-    right thing whether the repo is the admin's cwd or a sibling clone.
+    The content store always writes exports to the repository-root-absolute
+    paths (``REPO_ROOT/public/…``). That means when the admin panel runs from
+    the documented ``backend/`` subdirectory, ``os.getcwd()`` is one level
+    deeper and a naive ``$cwd/public/data`` lookup pointed at the wrong
+    folder. Reading from the *resolved* absolute repo paths here means the
+    sync stage no longer depends on which directory launched the server.
     """
-    here = os.getcwd()
     root_abs = os.path.abspath(root)
     copied = []
     for rel in PUBLISH_PATHS:
-        src = os.path.join(here, rel)
+        src = _repo_path(rel)
         dst = os.path.join(root_abs, rel)
         if not os.path.exists(src):
             continue
-        if os.path.abspath(os.path.dirname(src or '.')) == root_abs:
-            # cwd IS the repo — nothing to sync
+        if os.path.abspath(src) == os.path.abspath(dst):
+            # src IS dst (both are the repo root public folder already)
             continue
         if os.path.isdir(src):
             import shutil
@@ -133,29 +143,39 @@ def _sync_public_to_repo(root: str) -> list[str]:
 def status() -> dict:
     """What Publish would do, without doing it."""
     root = repo_root()
-    existing = [p for p in PUBLISH_PATHS if os.path.exists(os.path.join(root, p))] if root else []
+    existing = [p for p in PUBLISH_PATHS if os.path.exists(_repo_path(p))] if root else []
     changed = _git(root, 'status', '--porcelain', '--', *existing) if root else None
     branch = _git(root, 'rev-parse', '--abbrev-ref', 'HEAD').stdout.strip() if root else ''
     remote = _git(root, 'remote', 'get-url', 'origin').stdout.strip() if root else ''
     files = [l[3:] for l in (changed.stdout.splitlines() if changed else []) if l.strip()]
-    if root and os.path.abspath(os.getcwd()) != os.path.abspath(root):
-        # Treat any export-path in the RUNNING cwd (not repo) as "pending sync", so
-        # the button says N changes waiting rather than "Website is up to date".
-        here = os.getcwd()
+    if root:
+        # Pending sync: compare the canonical export paths (REPO_ROOT/public/…)
+        # with the resolved git-repo public/*. When they point at the same
+        # folder this is a no-op, but if QA_GIT_ROOT points at a separate
+        # clone we still want to flag outdated files before the user clicks
+        # Publish.
+        root_abs = os.path.abspath(root)
         for rel in PUBLISH_PATHS:
-            src = os.path.join(here, rel)
-            dst = os.path.join(root, rel)
+            src = _repo_path(rel)
+            dst = os.path.join(root_abs, rel)
+            if os.path.abspath(src) == os.path.abspath(dst):
+                continue
             if os.path.exists(src) and not os.path.exists(dst):
                 if rel not in files:
                     files.append(rel)
             elif os.path.isdir(src) and os.path.isdir(dst):
-                # quick timestamp/mtime check
                 if any(
                     (not os.path.exists(os.path.join(dst, n))) or
-                    (os.path.isfile(os.path.join(src, n)) and os.path.getmtime(os.path.join(src, n)) >
-                     os.path.getmtime(os.path.join(dst, n)) if os.path.isfile(os.path.join(dst, n)) else True)
+                    (os.path.isfile(os.path.join(src, n)) and
+                     (not os.path.isfile(os.path.join(dst, n)) or
+                      os.path.getmtime(os.path.join(src, n)) >
+                      os.path.getmtime(os.path.join(dst, n))))
                     for n in os.listdir(src)
                 ):
+                    if rel not in files:
+                        files.append(rel)
+            elif os.path.isfile(src) and os.path.isfile(dst):
+                if os.path.getmtime(src) > os.path.getmtime(dst):
                     if rel not in files:
                         files.append(rel)
     out = {
@@ -166,6 +186,7 @@ def status() -> dict:
         'branch': branch, 'remote': remote,
         'changed': files, 'count': len(files),
         'debug': {'repo_root_resolved': root, 'cwd': os.getcwd(),
+                  'canonical_public': _repo_path('public'),
                   'start_abs': os.path.dirname(os.path.dirname(os.path.abspath(__file__)))},
     }
     _dbg('A-status', out=out)
@@ -179,7 +200,7 @@ def publish(message: str = 'Update site content') -> dict:
 
     synced = _sync_public_to_repo(root)
 
-    existing = [p for p in PUBLISH_PATHS if os.path.exists(os.path.join(root, p))]
+    existing = [p for p in PUBLISH_PATHS if os.path.exists(_repo_path(p))]
     if not existing:
         return {'ok': False, 'error': 'Nothing to publish yet.'}
 

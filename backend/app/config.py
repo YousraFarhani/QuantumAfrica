@@ -5,6 +5,22 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass, field
 
+BACKEND_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPO_ROOT = os.path.dirname(BACKEND_ROOT)
+
+
+def _abs(rel_or_abs: str) -> str:
+    """Turn a repository-relative path (or absolute path) into an absolute path.
+
+    This keeps paths stable regardless of what the caller's current working
+    directory happens to be. Paths that are already absolute are returned
+    unchanged; relative paths are resolved against the repository root
+    (``quantum-africa/``, two levels up from this file).
+    """
+    if os.path.isabs(rel_or_abs):
+        return rel_or_abs
+    return os.path.normpath(os.path.join(REPO_ROOT, rel_or_abs))
+
 
 def _env(name: str, default):
     v = os.environ.get(name)
@@ -31,12 +47,11 @@ class Settings:
     contact: str = _env('QA_CONTACT', 'hello@quantum-africa.org')
     site: str = _env('QA_SITE', 'https://quantum-africa.org')
 
-    # Storage and output
-    # Inside the repository these default to the folder Netlify publishes, so
-    # editing content writes straight into the site.
-    db_path: str = _env('QA_DB', 'backend/data/feed.sqlite3')
-    export_dir: str = _env('QA_EXPORT_DIR', 'public/data')
-    media_dir: str = _env('QA_MEDIA_DIR', 'public/media')
+    # Storage and output. Always resolved relative to the repository root so
+    # running the server from ``backend/`` vs the repo root is identical.
+    db_path: str = _abs(_env('QA_DB', 'backend/data/feed.sqlite3'))
+    export_dir: str = _abs(_env('QA_EXPORT_DIR', 'public/data'))
+    media_dir: str = _abs(_env('QA_MEDIA_DIR', 'public/media'))
 
     # HTTP manners
     http_timeout: int = _env('QA_HTTP_TIMEOUT', 30)
