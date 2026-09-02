@@ -1,21 +1,560 @@
 {
- "updated": "2026-08-31T18:11:34+00:00",
+ "updated": "2026-09-02T20:26:28+00:00",
  "content": {
   "site": {},
   "hero": {},
-  "stats": {},
+  "stats": {
+   "members": 350
+  },
   "highlight": {},
   "about": {
    "heroImage": "media/62f8c1d70029ed15.png"
   },
-  "people": [],
-  "chapters": [],
+  "people": [
+   {
+    "group": "Leadership"
+   },
+   {
+    "group": "Leadership"
+   },
+   {
+    "group": "Leadership"
+   },
+   {
+    "group": "Advisors"
+   },
+   {
+    "group": "Advisors"
+   },
+   {
+    "group": "Chapter leads"
+   },
+   {
+    "group": "Chapter leads"
+   },
+   {
+    "group": "Chapter leads"
+   }
+  ],
+  "chapters": [
+   {
+    "name": "Algeria",
+    "code": "dz",
+    "flag": "🇩🇿",
+    "status": "Active",
+    "members": 0
+   },
+   {
+    "name": "Egypt",
+    "code": "eg",
+    "flag": "🇪🇬",
+    "status": "Active",
+    "members": 0
+   },
+   {
+    "name": "Morocco",
+    "code": "ma",
+    "flag": "🇲🇦",
+    "status": "Active",
+    "members": 0
+   },
+   {
+    "name": "Nigeria",
+    "code": "ng",
+    "flag": "🇳🇬",
+    "status": "Active",
+    "members": 0
+   },
+   {
+    "name": "Mauritania",
+    "code": "mr",
+    "flag": "🇲🇷",
+    "status": "Active",
+    "members": 0
+   },
+   {
+    "name": "Zambia",
+    "code": "zm",
+    "flag": "🇿🇲",
+    "status": "Active",
+    "members": 0
+   },
+   {
+    "name": "Uganda",
+    "code": "ug",
+    "flag": "🇺🇬",
+    "status": "Active",
+    "members": 0
+   }
+  ],
   "events": [],
-  "projects": [],
+  "projects": [
+   {
+    "slug": "pr1",
+    "title": "",
+    "area": "",
+    "short": "",
+    "description": "",
+    "objectives": [],
+    "tech": [],
+    "repo": "",
+    "publication": "",
+    "started": "",
+    "needs": "",
+    "image": "",
+    "contributors": []
+   },
+   {
+    "slug": "pr2",
+    "title": "",
+    "area": "",
+    "short": "",
+    "description": "",
+    "objectives": [],
+    "tech": [],
+    "repo": "",
+    "publication": "",
+    "started": "",
+    "needs": "",
+    "image": "",
+    "contributors": []
+   },
+   {
+    "slug": "pr3",
+    "title": "",
+    "area": "",
+    "short": "",
+    "description": "",
+    "objectives": [],
+    "tech": [],
+    "repo": "",
+    "publication": "",
+    "started": "",
+    "needs": "",
+    "image": "",
+    "contributors": []
+   },
+   {
+    "slug": "pr4",
+    "title": "",
+    "area": "",
+    "short": "",
+    "description": "",
+    "objectives": [],
+    "tech": [],
+    "repo": "",
+    "publication": "",
+    "started": "",
+    "needs": "",
+    "image": "",
+    "contributors": []
+   }
+  ],
   "partners": [],
-  "articles": [],
+  "articles": [
+   {
+    "type": "News",
+    "read": "4 min"
+   },
+   {
+    "type": "Chapter update",
+    "read": "3 min"
+   },
+   {
+    "type": "Member story",
+    "read": "6 min"
+   }
+  ],
   "opportunities": [],
   "conference": {},
+  "confEditions": [
+   {
+    "edition": "QA1",
+    "slug": "qa1",
+    "number": "01",
+    "year": "2010",
+    "city": "Durban",
+    "country": "South Africa",
+    "dates": "19–24 September 2010",
+    "host": "University of KwaZulu-Natal",
+    "locNote": "All committee members are part of the Quantum Research Group, School of Physics, University of KwaZulu-Natal.",
+    "locLabel": "Organising committee",
+    "invitedLabel": "Invited speakers and topics",
+    "invited": [
+     {
+      "name": "Hans Briegel",
+      "affiliation": "University of Innsbruck, Innsbruck, Austria",
+      "topic": "Quantum effects in biology"
+     },
+     {
+      "name": "Andreas Buchleitner",
+      "affiliation": "University of Freiburg, Freiburg, Germany",
+      "topic": "Transport, disorder, and entanglement"
+     },
+     {
+      "name": "Tommaso Calarco",
+      "affiliation": "University of Ulm, Ulm, Germany",
+      "topic": "To be announced"
+     },
+     {
+      "name": "Lajos Diósi",
+      "affiliation": "Research Institute for Particle and Nuclear Physics, Budapest, Hungary",
+      "topic": "Quantum information loss by frame averaging"
+     },
+     {
+      "name": "Artur Ekert",
+      "affiliation": "University of Oxford, Oxford, United Kingdom",
+      "topic": "Less reality, more security"
+     },
+     {
+      "name": "Serge Haroche",
+      "affiliation": "Collège de France & École Normale Supérieure, Paris, France",
+      "topic": "Manipulation and control of non-classical field states in cavity QED"
+     },
+     {
+      "name": "Arne Kastberg",
+      "affiliation": "University of Nice – CNRS, Nice, France",
+      "topic": "Quantum information with cold atoms and photons"
+     },
+     {
+      "name": "Sir Peter Knight",
+      "affiliation": "Imperial College London, United Kingdom",
+      "topic": "Quantum state engineering and the simulation of nature"
+     },
+     {
+      "name": "Hermann Uys",
+      "affiliation": "National Institute of Standards and Technology, Boulder, Colorado, USA",
+      "topic": "Toward spin squeezing of trapped beryllium ions"
+     }
+    ],
+    "loc": [
+     {
+      "name": "Francesco Petruccione",
+      "role": "Conference chair"
+     },
+     {
+      "name": "Thomas Konrad",
+      "role": "Conference secretary"
+     },
+     {
+      "name": "Elena Brüning"
+     },
+     {
+      "name": "Asif Mirza"
+     },
+     {
+      "name": "Mervin Moodley"
+     },
+     {
+      "name": "Michael Nock"
+     },
+     {
+      "name": "Michael Porrmann"
+     },
+     {
+      "name": "Moritz Rehn"
+     },
+     {
+      "name": "Ilya Sinayskiy"
+     }
+    ]
+   },
+   {
+    "edition": "QA2",
+    "slug": "qa2",
+    "number": "02",
+    "year": "2012",
+    "city": "Northern Drakensburg",
+    "country": "South Africa",
+    "dates": "3–7 September 2012",
+    "locLabel": "Organising committee",
+    "plenary": [
+     {
+      "name": "Luiz Davidovich",
+      "affiliation": "Federal University of Rio de Janeiro, Brazil"
+     },
+     {
+      "name": "Artur Ekert",
+      "affiliation": "National University of Singapore / University of Oxford, UK"
+     },
+     {
+      "name": "Nicolas Gisin",
+      "affiliation": "University of Geneva, Switzerland"
+     },
+     {
+      "name": "Fedor Jelezko",
+      "affiliation": "Ulm University, Germany"
+     },
+     {
+      "name": "Miles Padgett",
+      "affiliation": "University of Glasgow, UK"
+     }
+    ],
+    "keynote": [
+     {
+      "name": "Angelo Bassi",
+      "affiliation": "University of Trieste, Italy"
+     },
+     {
+      "name": "Andreas Buchleitner",
+      "affiliation": "University of Freiburg, Germany"
+     },
+     {
+      "name": "Marco Genovese",
+      "affiliation": "INRiM, Torino, Italy"
+     },
+     {
+      "name": "Beatrix Hiesmayr",
+      "affiliation": "University of Vienna, Austria"
+     },
+     {
+      "name": "Wolfgang Loeffler",
+      "affiliation": "Leiden University, Netherlands"
+     },
+     {
+      "name": "Norbert Lütkenhaus",
+      "affiliation": "University of Waterloo, Canada"
+     },
+     {
+      "name": "Michele Mosca",
+      "affiliation": "University of Waterloo, Canada"
+     },
+     {
+      "name": "Juan Pablo Paz",
+      "affiliation": "University of Buenos Aires, Argentina"
+     },
+     {
+      "name": "Timothy Ralph",
+      "affiliation": "University of Queensland, Australia"
+     },
+     {
+      "name": "Luis Sánchez Soto",
+      "affiliation": "Complutense University of Madrid, Spain"
+     },
+     {
+      "name": "Wolfgang Schleich",
+      "affiliation": "Ulm University, Germany"
+     },
+     {
+      "name": "Simone Severini",
+      "affiliation": "University College London, UK"
+     },
+     {
+      "name": "Paolo Villoresi",
+      "affiliation": "University of Padova, Italy"
+     }
+    ],
+    "loc": [
+     {
+      "name": "Francesco Petruccione",
+      "affiliation": "NITheP KZN & University of KwaZulu-Natal",
+      "role": "Chair"
+     },
+     {
+      "name": "Elena Bruning",
+      "affiliation": "University of KwaZulu-Natal"
+     },
+     {
+      "name": "Thomas Konrad",
+      "affiliation": "University of KwaZulu-Natal"
+     },
+     {
+      "name": "Ilya Sinayskiy",
+      "affiliation": "NITheP KZN"
+     },
+     {
+      "name": "Sile Nic Chormaic",
+      "affiliation": "University of KwaZulu-Natal"
+     },
+     {
+      "name": "Stef Roux",
+      "affiliation": "National Laser Centre, CSIR"
+     },
+     {
+      "name": "Hermann Uys",
+      "affiliation": "National Laser Centre, CSIR"
+     }
+    ]
+   },
+   {
+    "edition": "QA3",
+    "slug": "qa3",
+    "number": "03",
+    "year": "2014",
+    "city": "Rabat",
+    "country": "Morocco",
+    "dates": "22–26 September 2014",
+    "host": "Mohamed V-Agdal University",
+    "locLabel": "Organising committee",
+    "plenary": [
+     {
+      "name": "Serge Haroche",
+      "affiliation": "Collège de France & École Normale Supérieure, Paris, France"
+     },
+     {
+      "name": "Fedor Jelezko",
+      "affiliation": "University of Ulm, Germany"
+     },
+     {
+      "name": "Greg Scholes",
+      "affiliation": "Princeton University, USA"
+     }
+    ],
+    "keynote": [
+     {
+      "name": "Markus Aspelmeyer",
+      "affiliation": "University of Vienna, Austria"
+     },
+     {
+      "name": "Rainer Blatt",
+      "affiliation": "University of Innsbruck / IQOQI, Austria"
+     },
+     {
+      "name": "Nilanjana Datta",
+      "affiliation": "University of Cambridge, UK"
+     },
+     {
+      "name": "Mark Hillery",
+      "affiliation": "City University of New York, USA"
+     },
+     {
+      "name": "Tjaart Krüger",
+      "affiliation": "University of Pretoria, South Africa"
+     },
+     {
+      "name": "Alexandra Olaya-Castro",
+      "affiliation": "University College London, UK"
+     },
+     {
+      "name": "Bruno Robert",
+      "affiliation": "CEA Saclay, France"
+     },
+     {
+      "name": "Christine Silberhorn",
+      "affiliation": "Paderborn University, Germany"
+     },
+     {
+      "name": "Peter Zoller",
+      "affiliation": "University of Innsbruck / IQOQI, Austria"
+     }
+    ],
+    "ipc": [
+     {
+      "name": "Martin Plenio",
+      "affiliation": "University of Ulm, Germany",
+      "role": "Chair"
+     },
+     {
+      "name": "Alain Aspect",
+      "affiliation": "Institut d’Optique, Paris, France"
+     },
+     {
+      "name": "Angelo Bassi",
+      "affiliation": "University of Trieste, Italy"
+     },
+     {
+      "name": "Michael Berry",
+      "affiliation": "University of Bristol, UK"
+     },
+     {
+      "name": "Mohamed Bourennane",
+      "affiliation": "University of Stockholm, Sweden"
+     },
+     {
+      "name": "Luiz Davidovich",
+      "affiliation": "Federal University of Rio de Janeiro, Brazil"
+     },
+     {
+      "name": "Jiangfeng Du",
+      "affiliation": "University of Science and Technology of China, Hefei, China"
+     },
+     {
+      "name": "Morad El Baz",
+      "affiliation": "Mohamed V-Agdal University, Rabat, Morocco"
+     },
+     {
+      "name": "Fesseha Kassahun",
+      "affiliation": "University of Addis Ababa, Ethiopia"
+     },
+     {
+      "name": "Abdel-Shafy Fahmy Obada",
+      "affiliation": "Al-Azhar University, Cairo, Egypt"
+     },
+     {
+      "name": "Gerard Milburn",
+      "affiliation": "The University of Queensland, Australia"
+     },
+     {
+      "name": "Michele Mosca",
+      "affiliation": "University of Waterloo, Ontario, Canada"
+     },
+     {
+      "name": "Mio Murao",
+      "affiliation": "The University of Tokyo, Japan"
+     },
+     {
+      "name": "Terry Rudolph",
+      "affiliation": "Imperial College, London, UK"
+     },
+     {
+      "name": "Herman Uys",
+      "affiliation": "Council for Scientific and Industrial Research, Pretoria, South Africa"
+     },
+     {
+      "name": "Rienk van Grondelle",
+      "affiliation": "VU University, Amsterdam, The Netherlands"
+     }
+    ],
+    "loc": [
+     {
+      "name": "Yassine Hassouni",
+      "affiliation": "Mohamed V-Agdal University, Rabat, Morocco",
+      "role": "Chair"
+     },
+     {
+      "name": "Asmae Arbaoui",
+      "affiliation": "Mohamed V-Agdal University, Rabat, Morocco",
+      "role": "Communications"
+     },
+     {
+      "name": "Aziz Bouchene",
+      "affiliation": "Paul Sabatier University, Toulouse, France"
+     },
+     {
+      "name": "Daniel Braun",
+      "affiliation": "Institut für Theoretische Physik, Universität Tübingen, Germany"
+     }
+    ]
+   },
+   {
+    "edition": "QA4",
+    "slug": "qa4",
+    "number": "04",
+    "year": "2016",
+    "locLabel": "Organising committee"
+   },
+   {
+    "edition": "QA5",
+    "slug": "qa5",
+    "number": "05",
+    "year": "2018",
+    "locLabel": "Organising committee"
+   },
+   {
+    "edition": "QA6",
+    "slug": "qa6",
+    "number": "06",
+    "year": "2022",
+    "locLabel": "Organising committee"
+   },
+   {
+    "edition": "QA7",
+    "slug": "qa7",
+    "number": "07",
+    "year": "2024",
+    "locLabel": "Organising committee"
+   }
+  ],
   "tutor": {},
   "support": {},
   "legal": {},

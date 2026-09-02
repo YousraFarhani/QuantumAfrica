@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-31T14:24:05+00:00",
+ "updated": "2026-09-02T19:53:36+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "event",
  "sources": {
@@ -20,7 +20,7 @@
   }
  },
  "errors": {},
- "count": 52,
+ "count": 44,
  "africa": 0,
  "items": [
   {
@@ -146,7 +146,7 @@
    "online": false,
    "africa": false,
    "type": "Workshop",
-   "status": "Upcoming",
+   "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/workshop-dynamics-entanglement-isaac-newton-institute-mathematical-sciences-cambridge",
    "first_seen": "2026-08-31T14:11:14+00:00"
@@ -536,9 +536,9 @@
    "first_seen": "2026-08-31T14:11:14+00:00"
   },
   {
-   "id": "802965f6e8",
+   "id": "747c30e107",
    "kind": "event",
-   "title": "[QOART Online Seminar | 2 Sep 2026, 4:00 PM (MSK)] Mathematical foundations, modeling methods, and applications of high-dimensional open quantum systems",
+   "title": "[QOART Online Seminar | 8 Sep 2026, 3:00 PM (MSK)] Mathematical foundations, modeling methods, and applications of high-dimensional open quantum systems",
    "start": null,
    "end": null,
    "city": "",
@@ -548,40 +548,8 @@
    "type": "Seminar",
    "status": "Upcoming",
    "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/qoart-online-seminar-2-sep-2026-400-pm-msk-mathematical-foundations-modeling-methods-and",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "da3e6bd64a",
-   "kind": "event",
-   "title": "[QOART Seminar | 11 Aug 2026, 4:00 PM (MSK)] Isospectral Quantum Billiards as Generators of Distributive Logic Algebras (Continuation)",
-   "start": null,
-   "end": null,
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Seminar",
-   "status": "Upcoming",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/qoart-seminar-11-aug-2026-400-pm-msk-isospectral-quantum-billiards-generators",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "a99eadcc0d",
-   "kind": "event",
-   "title": "[QOART Seminar | 4 Aug 2026, 4:00 PM (MSK)] Isospectral Quantum Billiards as Generators of Distributive Logic Algebras",
-   "start": null,
-   "end": null,
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Seminar",
-   "status": "Upcoming",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/qoart-seminar-4-aug-2026-400-pm-msk-isospectral-quantum-billiards-generators-distributive",
-   "first_seen": "2026-08-31T14:11:14+00:00"
+   "url": "https://www.quantiki.org/conference/qoart-online-seminar-8-sep-2026-300-pm-msk-mathematical-foundations-modeling-methods-and",
+   "first_seen": "2026-09-02T19:53:36+00:00"
   },
   {
    "id": "9ccf031ec1",
@@ -757,102 +725,6 @@
    "status": "Past",
    "source": "qjoblist",
    "url": "https://www.iao.fraunhofer.de/en/events-calendar/symposium-FTQC4Nsc.html",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "2753f52fc0",
-   "kind": "event",
-   "title": "Quantum Thermodynamics Conference 2026",
-   "start": "2026-08-10",
-   "end": "2026-08-14",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/quantum-thermodynamics-conference-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "114faa2562",
-   "kind": "event",
-   "title": "Workshop on Gravitational Quantum Physics and Metrology",
-   "start": "2026-08-10",
-   "end": "2026-08-13",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Workshop",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/workshop-gravitational-quantum-physics-and-metrology",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "ed7c4baabd",
-   "kind": "event",
-   "title": "Quantum AI 2026 Conference",
-   "start": "2026-08-14",
-   "end": "2026-08-16",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/quantum-ai-2026-conference",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "f910fac055",
-   "kind": "event",
-   "title": "Quantum Key Distribution Summer School 2026",
-   "start": "2026-08-16",
-   "end": "2026-08-21",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Summer school",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/quantum-key-distribution-summer-school-2026",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "bf63be7ae9",
-   "kind": "event",
-   "title": "The 23rd International Conference on Quantum Physics and Logic",
-   "start": "2026-08-17",
-   "end": "2026-08-21",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/23rd-international-conference-quantum-physics-and-logic",
-   "first_seen": "2026-08-31T14:11:14+00:00"
-  },
-  {
-   "id": "76109d2e30",
-   "kind": "event",
-   "title": "2026 Young Quantum Information Scientists conference, Vienna",
-   "start": "2026-08-24",
-   "end": "2026-08-28",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Past",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/2026-young-quantum-information-scientists-conference-vienna",
    "first_seen": "2026-08-31T14:11:14+00:00"
   }
  ]
