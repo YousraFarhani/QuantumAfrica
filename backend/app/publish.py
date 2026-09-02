@@ -198,7 +198,32 @@ def publish(message: str = 'Update site content') -> dict:
         return {'ok': False, 'error': commit.stderr.strip() or commit.stdout.strip()
                 or 'git commit failed'}
 
-    push = _git(root, 'push')
+    # Make local main fast-forward-able: pull (fetch + rebase) any commits on
+    # origin/main that this local clone hasn't seen yet (e.g. pushed from a
+    # different machine or triggered externally). Without this the admin gets
+    # "! [rejected] main -> main (fetch first)" every time someone else pushed.
+    _git(root, 'fetch', 'origin', 'main', timeout=120)
+    ahead_ls = _git(root, 'rev-list', '--left-right', '--count', 'origin/main...HEAD')
+    try:
+        left, right = [int(x) for x in ahead_ls.stdout.strip().split()]
+    except (ValueError, AttributeError):
+        left, right = 0, 0
+    if left > 0:
+        rb = _git(root, 'rebase', 'origin/main', timeout=TIMEOUT)
+        if rb.returncode != 0:
+            # Rebase failed (conflict in tracked files we're about to overwrite
+            # anyway). Reset+apply our local commit the simple way.
+            _git(root, 'rebase', '--abort')
+            # Try a second approach: merge with strategy-option "ours" for
+            # admin local, so admin's content commit wins.
+            mg = _git(root, '-c', 'user.name=Quantum Africa Admin',
+                      '-c', 'user.email=admin@quantum-africa.localhost',
+                      'merge', '--no-edit', '-X', 'ours', 'origin/main',
+                      timeout=TIMEOUT)
+            if mg.returncode != 0:
+                _git(root, 'merge', '--abort')
+
+    push = _git(root, 'push', 'origin', 'main')
     if push.returncode != 0:
         err = (push.stderr or push.stdout).strip()
         hint = ''
@@ -206,6 +231,9 @@ def publish(message: str = 'Update site content') -> dict:
             hint = (' — git could not authenticate. Sign in once with the GitHub '
                     'CLI (`gh auth login`) or set up an SSH key, then try again. '
                     'Your changes are committed locally and safe.')
+        elif 'fetch first' in err.lower() or 'non-fast-forward' in err.lower() or 'rejected' in err:
+            hint = (' — the remote has new commits that could not be auto-merged. '
+                    'Run `git pull --rebase origin main` locally once then try publishing again.')
         return {'ok': False, 'committed': True, 'error': err + hint}
 
     return {'ok': True, 'files': staged.stdout.split(), 'synced': synced,
