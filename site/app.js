@@ -3388,21 +3388,32 @@ function evtFeedNote(){ feedNote('evFeed', EVT_META, EVTS, 'events'); }
 /* The content document. Loaded once, then the page is drawn again so every
    section picks it up — simpler and less error-prone than patching the DOM. */
 let contentLoading = false;
-function loadContent(){
-  if(contentLoading || CONTENT_META.loaded) return;
+let _lastLoadAttemptAt = 0;
+function loadContent(force){
+  const now = Date.now();
+  if(contentLoading) return;
+  if(!force && CONTENT_META.loaded && now - _lastLoadAttemptAt < 1500) return;
+  _lastLoadAttemptAt = now;
   contentLoading = true;
   fetch(FEED.content, {cache:'no-store'})
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       const doc = d && (d.content || d);
       if(!doc || typeof doc !== 'object') throw new Error('empty');
+      const incomingUpdated = d.updated || null;
+      const prevUpdated = CONTENT_META.loaded ? CONTENT_META.updated : null;
       CONTENT = _nestFlatKeys(doc);
-      CONTENT_META = { loaded:true, updated: d.updated || null };
-      rebuildFromContent();
+      const firstLoad = !CONTENT_META.loaded;
+      const changed = (CONTENT_META.loaded && incomingUpdated && prevUpdated !== incomingUpdated);
+      CONTENT_META = { loaded:true, updated: incomingUpdated };
+      if(firstLoad || changed){ rebuildFromContent(); }
     })
-    .catch(()=>{ CONTENT_META.loaded = true; })
+    .catch(()=>{ if(!CONTENT_META.loaded) CONTENT_META.loaded = true; })
     .finally(()=>{ contentLoading = false; });
 }
+document.addEventListener('visibilitychange', () => {
+  if(!document.hidden){ try { loadContent(true); } catch(e){} }
+});
 
 /* Collections that feed data structures rather than single fields have to be
    rebuilt before the page is drawn again. */
@@ -3769,11 +3780,12 @@ document.addEventListener('submit', async (e) => {
 function transition(){
   const v = document.getElementById('view');
   const reduced = document.body.classList.contains('no-motion') || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduced){ render(); return; }
+  if(reduced){ render(); try{ loadContent(true); }catch(e){} return; }
   v.classList.add('leaving');
-  setTimeout(()=>{ render(); v.classList.remove('leaving'); }, 220);
+  setTimeout(()=>{ render(); v.classList.remove('leaving'); try{ loadContent(true); }catch(e){} }, 220);
 }
 window.addEventListener('hashchange', transition);
+document.addEventListener('DOMContentLoaded', () => { try { loadContent(true); } catch(e){} }, { once: true });
 const fr = document.getElementById('footRing');
 if(fr) fr.innerHTML = ringMark().replace('class="ring "','class="ring"');
 render();
