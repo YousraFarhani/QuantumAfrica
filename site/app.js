@@ -516,13 +516,58 @@ const EVT_FEED = __EVENTS_JSON__;
 let CONTENT = {};
 let CONTENT_META = { loaded:false, updated:null };
 
-function cval(path){
-  let node = CONTENT;
-  for(const key of String(path).split('.')){
-    if(node == null) return '';
-    node = Array.isArray(node) ? node[Number(key)] : node[key];
+/* cval/cx/cnum/clist support BOTH nested CONTENT.pages.about.heroImage
+   AND flat dotted top-level keys CONTENT["pages.about"].heroImage.
+   The CMS schema writes section keys like "pages.home" as flat string keys
+   but the site renders them as dotted split-paths. Accept both shapes
+   transparently so older content.json exports and newer ones all render.
+   Also the fetch-response normalises everything to nested on import. */
+function _walk(node, parts){
+  for(let i = 0; i < parts.length; i++){
+    if(node == null) return undefined;
+    const k = parts[i];
+    if(!Array.isArray(node) && typeof node === 'object'){
+      // Try exact key first (common), then longest dotted prefix covering
+      // all remaining parts concatenated with "." (fallback for flat keys).
+      if(k in node){
+        node = node[k];
+        continue;
+      }
+      const flat = parts.slice(i).join('.');
+      if(flat in node){
+        return node[flat];
+      }
+    }
+    node = Array.isArray(node) ? node[Number(k)] : node[k];
   }
-  return node == null ? '' : node;
+  return node;
+}
+function _nestFlatKeys(doc){
+  if(!doc || typeof doc !== 'object' || Array.isArray(doc)) return doc;
+  const out = {};
+  for(const key of Object.keys(doc)){
+    const val = doc[key];
+    if(typeof key === 'string' && key.indexOf('.') !== -1){
+      const parts = key.split('.');
+      let cur = out;
+      for(let i = 0; i < parts.length - 1; i++){
+        const p = parts[i];
+        if(!(p in cur) || typeof cur[p] !== 'object' || Array.isArray(cur[p])) cur[p] = {};
+        cur = cur[p];
+      }
+      cur[parts[parts.length - 1]] = val;
+      // Also keep flat key for legacy clist('pages.home') / CONTENT['pages.home'] access.
+      out[key] = val;
+    } else {
+      out[key] = val;
+    }
+  }
+  return out;
+}
+
+function cval(path){
+  const v = _walk(CONTENT, String(path).split('.'));
+  return v == null ? '' : v;
 }
 function cx(path, fallback){
   const v = cval(path);
@@ -534,8 +579,14 @@ function cnum(path, fallback){
   return (v === '' || v == null) ? fallback : v;
 }
 function clist(key){
-  const v = CONTENT[key];
-  return Array.isArray(v) ? v : [];
+  const byFlat = CONTENT[key];
+  if(Array.isArray(byFlat)) return byFlat;
+  const parts = String(key).split('.');
+  if(parts.length > 1){
+    const nested = _walk(CONTENT, parts);
+    if(Array.isArray(nested)) return nested;
+  }
+  return [];
 }
 /* An uploaded image, rendered into the same slot the placeholder uses, so the
    layout does not move when a picture finally arrives. */
@@ -3345,7 +3396,7 @@ function loadContent(){
     .then(d => {
       const doc = d && (d.content || d);
       if(!doc || typeof doc !== 'object') throw new Error('empty');
-      CONTENT = doc;
+      CONTENT = _nestFlatKeys(doc);
       CONTENT_META = { loaded:true, updated: d.updated || null };
       rebuildFromContent();
     })
