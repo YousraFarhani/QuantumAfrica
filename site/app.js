@@ -1384,21 +1384,18 @@ PAGES.about = () => {
   const philBody    = cval('pages.about.philosophyBody') || cval('about.philosophy');
   const heroImagePath = cval('pages.about.heroImage') || cval('about.heroImage');
   const heroImageHtml = heroImagePath
-    ? `<div class="slot filled" style="aspect-ratio:9/4;overflow:hidden;border-radius:8px"><img src="${esc(mediaUrl(heroImagePath))}" alt="Wide community photograph" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
-    : cimg('pages.about.heroImage','Wide community photograph','1000×600 · JPG → assets/about/hero.jpg','wide','field');
+    ? `<div class="slot filled" style="aspect-ratio:16/5;overflow:hidden;border-radius:8px;margin-top:28px"><img src="${esc(mediaUrl(heroImagePath))}" alt="Wide community photograph" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
+    : `<div style="margin-top:28px">${cimg('pages.about.heroImage','Wide community photograph','2400×750 · JPG → assets/about/hero.jpg','wide','field')}</div>`;
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
-<section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
+<section class="phero" style="padding-bottom:36px">${africaWatermark('wm-hero')}<div class="wrap">
   <div class="sec-idx"><span class="lbl">${esc(eyebrow)}</span><i></i></div>
   <h1 class="mt24">${esc(title)}</h1>
   <p class="lede">${esc(lede)}</p>
+  ${heroImageHtml}
 </div></section>
 
-<section class="sec" style="padding-top:10px">
-  <div class="wrap" style="max-width:640px;margin:0 auto">${heroImageHtml}</div>
-</section>
-
-<section class="sec"><div class="wrap"><div class="side">
+<section class="sec" style="padding-top:24px"><div class="wrap"><div class="side">
   <div class="prose">
     <h3>${cx('pages.about.whoWeAreHead', 'Who we are')}</h3>
     ${whoHtml
