@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T15:01:40+00:00",
+ "updated": "2026-09-03T15:02:59+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -46,6 +46,10 @@
     },
     {
      "video": "media/54e419fc0a87e28c.png",
+     "caption": "Quantum Africa"
+    },
+    {
+     "image": "media/24e9dbbb08f61554.jpg",
      "caption": "Quantum Africa"
     }
    ]
