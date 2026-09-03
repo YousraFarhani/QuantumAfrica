@@ -1386,7 +1386,7 @@ PAGES.about = () => {
   const heroImagePath = cval('pages.about.heroImage') || cval('about.heroImage');
   const heroImageHtml = heroImagePath
     ? `<div class="slot filled"><img src="${esc(mediaUrl(heroImagePath))}" alt="Wide community photograph" loading="lazy"></div>`
-    : cimg('pages.about.heroImage','Wide community photograph','2400×1000 · JPG → assets/about/hero.jpg','wide','field');
+    : cimg('pages.about.heroImage','Wide community photograph','1000×600 · JPG → assets/about/hero.jpg','wide','field');
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 <section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
@@ -3154,7 +3154,7 @@ function initSlider(){
     stopAll();
     const isVideo = playActive();
     // Fall back to the timer even for video, in case it never fires 'ended'.
-    slideTimer = setInterval(()=>{ go(slideIdx+1); play(); }, isVideo ? 4500 : 1400);
+    slideTimer = setInterval(()=>{ go(slideIdx+1); play(); }, isVideo ? 6000 : 3000);
   }
   stage.querySelectorAll('[data-hero-video]').forEach(v => {
     v.addEventListener('ended', ()=>{
