@@ -1660,6 +1660,15 @@ def _clean_value(field, value):
     return str(value)
 
 
+def _default_for_type(t):
+    """Return the typed empty default for a given field type."""
+    if t in ('tags', 'list'):
+        return []
+    if t == 'number':
+        return None
+    return ''
+
+
 def _clean_group(fields, data):
     out = {}
     for f in fields:
@@ -1667,6 +1676,10 @@ def _clean_group(fields, data):
             v = _clean_value(f, data[f['key']])
             if v not in (None, '', []):
                 out[f['key']] = v
+            else:
+                out[f['key']] = _default_for_type(f['type'])
+        else:
+            out[f['key']] = _default_for_type(f['type'])
     # ids let the site keep a stable identity across renames
     if 'id' in data and data['id']:
         out['id'] = str(data['id'])

@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T20:52:31+00:00",
+ "updated": "2026-09-03T21:14:52+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -69,19 +69,66 @@
   },
   "people": [
    {
-    "group": "Leadership"
+    "name": "Yousra Farhani",
+    "group": "Leadership",
+    "role": "Founder",
+    "institution": "PhD in Quantum Computing at Niels Bohr Institute, NQCP, University of Copenhagen",
+    "photo": "media/2ed89ea2fe4af44c.png",
+    "bio": "Founder of Quantum Africa, and PhD in Quantum Computing at Niels Bohr Institute, NQCP, University of Copenhagen.",
+    "fullBio": "Founder of Quantum Africa, and PhD in Quantum Computing at Niels Bohr Institute, NQCP, University of Copenhagen.",
+    "interests": [
+     "Fault-tolerant Quantum Computing",
+     "Quantum Compilation",
+     "Quantum Error Correction"
+    ],
+    "linkedin": "https://www.linkedin.com/in/yousra-farhani-7a416219a/",
+    "orcid": "https://orcid.org/0009-0000-2315-609X"
    },
    {
-    "group": "Leadership"
+    "name": "Walid Elmaouki",
+    "group": "Leadership",
+    "role": "Co-founder",
+    "institution": "New York University of Abu Dhabi",
+    "photo": "media/483d60563979fc02.webp",
+    "bio": "Co-founder of Quantum Africa, Postdoc Researcher @ NYUAD, PhD in Quantum Computing from University Hassan II",
+    "fullBio": "Co-founder of Quantum Africa, Postdoc Researcher @ NYUAD, PhD in Quantum Computing from University Hassan II",
+    "interests": [
+     "Quantum Machine Learning",
+     "Quantum computing"
+    ],
+    "linkedin": "https://www.linkedin.com/in/walid-el-maouaki-8b6328190/",
+    "scholar": "https://scholar.google.com/citations?user=oFhVfzkAAAAJ&hl=fr",
+    "orcid": "https://orcid.org/0009-0004-2339-5401"
    },
    {
-    "group": "Leadership"
+    "name": "Gamal Moneep",
+    "group": "Leadership",
+    "role": "HR Manager",
+    "photo": "media/b188b7ed575451f0.png",
+    "bio": "HR Manager at Quantum Africa, IBM Qiskit advocate, Deep Learning & AI Engineer",
+    "fullBio": "HR Manager at Quantum Africa, IBM Qiskit advocate, Deep Learning & AI Engineer",
+    "chapter": "Quantum Egypt",
+    "linkedin": "https://www.linkedin.com/in/gamal-moneep/"
    },
    {
-    "group": "Advisors"
+    "name": "Rahma Boughale",
+    "group": "Chapter leads",
+    "role": "Mauritania Chapter Lead",
+    "institution": "University of Tunis el Manar",
+    "country": "Mauritania",
+    "photo": "media/e426ab053b0aa52c.jpg",
+    "bio": "Chapter Lead of Quantum Mauritania, PhD student in computer science at the University of Tunis el Manar",
+    "fullBio": "Chapter Lead of Quantum Mauritania, PhD student in computer science at the University of Tunis el Manar",
+    "linkedin": "https://www.linkedin.com/in/rahma-boughale-8b2350209/"
    },
    {
-    "group": "Advisors"
+    "name": "Ismail DIOP",
+    "group": "Chapter leads",
+    "role": "Mauritania Chapter Lead",
+    "country": "Mauritania",
+    "photo": "media/70968188b6ec8649.jpg",
+    "bio": "Quantum Mauritania Chapter Lead, Computer Science Engineer and Machine Learning Researcher",
+    "fullBio": "Quantum Mauritania Chapter Lead, Computer Science Engineer and Machine Learning Researcher"
    },
    {
     "group": "Chapter leads"

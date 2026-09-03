@@ -1247,7 +1247,6 @@ ${highlightSection()}
           <a class="btn teal" href="#/tutor">${cx('pages.home.tutorCtaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
           <a class="btn inv ghost" href="#/tutor">${cx('pages.home.tutorCtaSecondary', 'How it works')}</a>
         </div>
-        <p class="small mt24"><span class="pill dev">${cx('pages.home.tutorStatusPill', 'In development')}</span></p>
       </div>
       <div>${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage')))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
     </div>
@@ -1548,11 +1547,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'
   <div class="sec-idx"><span class="lbl">${cx('pages.education.heroEyebrow', 'Programs · Quantum Education')}</span><i></i></div>
   <h1 class="mt24">${cx('pages.education.heroTitle', 'Making Quantum Education Accessible Across Africa.')}</h1>
   <p class="lede">${cx('pages.education.heroLede', 'Providing students and universities with the knowledge, resources, and pathways needed to learn, teach, and advance in quantum science and technology.')}</p>
-  <div class="phero-meta">
-    <span class="pill current">${cx('pages.education.pillRunning', 'Webinars &amp; workshops running')}</span>
-    <span class="pill dev">${cx('pages.education.pillDev', 'Tutor &amp; resources in development')}</span>
-    <span class="pill future">${cx('pages.education.pillPlanned', 'University programmes planned')}</span>
-  </div>
 </div></section>
 <section class="sec"><div class="wrap">
   <div class="grid g2">
@@ -1591,7 +1585,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}
         <a class="btn teal" href="#/join">${cx('pages.tutor.ctaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
         <a class="btn inv ghost" href="#/tutor">${cx('pages.tutor.ctaSecondary', 'See how it works')}</a>
       </div>
-      <p class="mt24"><span class="pill dev">${cx('pages.tutor.devPill', 'In development')}</span> <span class="xs" style="color:rgba(255,255,255,.55)">${cx('pages.tutor.devNote', 'Link the CTA to the live product when it is ready.')}</span></p>
     </div>
     <div>${cimg('pages.tutor.heroMockImage','Tutor mockup','PNG · any width ≥1200px','','bloch') || tutorMock()}</div>
   </div>
@@ -2701,7 +2694,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Universities'}])}
        [cx('pages.universities.o8Title','Quantum AI Tutor access'),cx('pages.universities.o8Body','Free access for your students as a learning companion.'),'dev'],
        [cx('pages.universities.o9Title','International connections'),cx('pages.universities.o9Body','Introductions to institutions, conferences and programmes abroad.'),'future']
       ].map(([t,d,s])=>`<div class="card pad rv"><div class="card-b">
-        <div class="card-meta"><span class="pill ${s}">${s==='current'?cx('pages.universities.statusCurrent','Current'):s==='dev'?cx('pages.universities.statusDev','In development'):cx('pages.universities.statusFuture','Future vision')}</span></div>
         <h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
   </div>
 </div></section>
@@ -3588,6 +3580,9 @@ function rebuildFromContent(){
   }));
   render();
   try { hydrateFooterSocials(); } catch(e){}
+  try { initReveal(); } catch(e){}
+  try { if(window.innerWidth>0){ document.querySelectorAll('[data-count]').forEach(el=>{ runCounters(el); }); } } catch(e){}
+  try { initTyping(); } catch(e){}
 }
 
 function hydrateFooterSocials(){
@@ -3680,9 +3675,10 @@ function runCounters(scope){
   const els = (scope.querySelectorAll ? scope.querySelectorAll('[data-count]') : []);
   const list = scope.hasAttribute && scope.hasAttribute('data-count') ? [scope] : [...els];
   list.forEach(el=>{
-    if(el.dataset.done) return;
-    el.dataset.done = '1';
     const to = parseFloat(el.dataset.count), suf = el.dataset.suffix || '';
+    const key = '_doneTo';
+    if(el[key] !== undefined && el[key] == to){ return; }
+    el[key] = to;
     if(document.body.classList.contains('no-motion') || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       el.textContent = to + suf; return;
     }
