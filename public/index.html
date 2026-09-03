@@ -2493,7 +2493,7 @@ function articleRow(a){
 }
 function articleFeature(a){
   return `<a class="feature rv" href="#/news/${a.slug}">
-    <div class="card-media">${artImage(a, '2400×1350 · JPG')}</div>
+    <div class="card-media">${artImage(a, '1000×600 · JPG')}</div>
     <div class="fb">
       <div class="news-meta"><span class="t">Featured · ${esc(a.type||'News')}</span><span>${artDate(a)}</span>${a.read?`<span>${esc(a.read)}</span>`:''}</div>
       <h3>${a.title ? esc(a.title) : pht('Lead article headline — the piece you most want read')}</h3>
