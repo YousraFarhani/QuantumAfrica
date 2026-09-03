@@ -2569,7 +2569,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Team'}])}
 <section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.people.heroEyebrow', 'Team')}</span><i></i></div>
   <h1 class="mt24">${cx('pages.people.heroTitle', 'The people behind<br>Quantum Africa.')}</h1>
-  <p class="lede">${cx('pages.people.heroLede', 'A network is only its people. Everyone here writes their own entry — we do not describe anyone on their behalf.')}</p>
+  <p class="lede">${cx('pages.people.heroLede', 'A network is only its people. Everyone here writes their own entry ')}</p>
 </div></section>
 
 ${PEOPLE_GROUPS.map(([g, note], gi) => `
