@@ -1,8 +1,17 @@
 {
- "updated": "2026-09-03T14:17:49+00:00",
+ "updated": "2026-09-03T14:33:40+00:00",
  "content": {
   "site": {
-   "name": "Quantum Africa"
+   "name": "Quantum Africa",
+   "email": "contact@quantum-africa.org",
+   "address": "Merriman Avenue, Stellenbosch, Western Cape, 7600, South Africa",
+   "founded": "2024",
+   "registered": "South Africa",
+   "linkedin": "http://linkedin.com/company/quantumafricaorg",
+   "twitter": "https://x.com/quantum_africa",
+   "youtube": "https://www.youtube.com/@QuantumAfrica-afr",
+   "instagram": "https://www.instagram.com/quantum__africa/",
+   "footerEmail": "contact@quantum-africa.org"
   },
   "hero": {},
   "stats": {
