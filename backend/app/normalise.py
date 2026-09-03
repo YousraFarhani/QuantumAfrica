@@ -66,17 +66,27 @@ def is_africa(*fields) -> bool:
 
     Checks country first, then city and institution names, so a posting whose
     country field is empty still gets caught by "Stellenbosch" or "Ibn Tofail".
+
+    Every hint is matched on word boundaries (or with a short list of allowed
+    punctuation immediately around it) so short hints like "Oran" don't fire
+    inside unrelated words like "Majo**rana**".
     """
     text = _blob(*fields)
     for country in AFRICA_COUNTRIES:
         if re.search(r'\b' + re.escape(country) + r'\b', text):
             return True
     for hint in AFRICA_HINTS:
-        if hint not in text:
+        # Hints can legitimately appear with internal punctuation ("Al-hoceima",
+        # "Côte d'Ivoire"), so a simple `hint in text` was fine — except it
+        # matches substrings inside unrelated words ("Oran" inside "Majorana").
+        # Fix: require the hint to start/end at a word boundary OR at the
+        # punctuation / whitespace we already have around proper nouns.
+        pattern = r'(?<![a-z])' + re.escape(hint) + r'(?![a-z])'
+        if not re.search(pattern, text):
             continue
         skip = False
-        for word, pattern in FALSE_FRIENDS:
-            if hint == word and pattern.search(text):
+        for word, fpattern in FALSE_FRIENDS:
+            if hint == word and fpattern.search(text):
                 skip = True
         if not skip:
             return True

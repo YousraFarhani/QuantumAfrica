@@ -57,16 +57,67 @@ def jobs(f, today: dt.date | None = None, pages: int | None = None):
 # Pulling those out is what lets the Africa tagger see them.
 _TAIL = re.compile(r',\s*([^,]{3,60})\s*,\s*([A-Z][A-Za-z .\'-]{3,40})\s*$')
 
+# Alternative pattern: "... at the University of X [, ...]" / "... at ETH Zurich ..."
+# OR "… (University of X)" at the end of a title.
+# Used on many recent Quantiki postings where the trailing comma form is not present.
+# Groups: 1 = institution, 2 = extra (optional city/country after comma)
+_AT = re.compile(
+    r'\bat\s+(?:the\s+)?'
+    r'([^,.—–\-()]{0,80}?\b(?:'
+    r'Universit|Institute|College|Laborator|Centre|Center|School|Polytechnic|'
+    r'ETH|EPFL|CERN|MIT|Caltech|Stanford|Harvard|Oxford|Cambridge'
+    r')[^,.—–\-()]{0,40})'
+    r'(?:\s*[,./—–]\s*([^,.—–()]{2,50}))?'
+    r'(?=\s*[,./—–\-)]|\s*$|\s*\()',
+    re.I)
+
+# Fallback: grab an institution out of a trailing parenthesis.
+_PAREN_INST = re.compile(
+    r'\(\s*([^()]{0,80}?\b(?:'
+    r'Universit|Institute|College|Laborator|Centre|Center|School|Polytechnic|'
+    r'ETH|EPFL|CERN|MIT|Caltech|Stanford|Harvard|Oxford|Cambridge'
+    r')[^()]{0,40})\s*\)\s*$',
+    re.I)
+
+
+def _strip_leading_article(s: str) -> str:
+    s = (s or '').strip()
+    for prefix in ('the ', 'The ', 'THE '):
+        if s.startswith(prefix):
+            s = s[len(prefix):].strip()
+    return s
+
 
 def _split_location(title: str):
+    org, city, country = '', '', ''
+    # First, try the classic trailing comma form: ", Institution, Country"
     m = _TAIL.search(title)
+    if m:
+        org_or_city, country = m.group(1).strip(), m.group(2).strip()
+        if re.search(r'universit|institute|college|laborator|centre|center|school',
+                     org_or_city, re.I):
+            return _strip_leading_article(org_or_city), '', country
+        return '', org_or_city, country
+    # Fallback: the "… at [The] University/Institute of … [, City/Country?]"
+    # form that many recent German/non-Anglophone Quantiki postings use.
+    m = _AT.search(title)
     if not m:
-        return '', '', ''
-    org_or_city, country = m.group(1).strip(), m.group(2).strip()
-    if re.search(r'universit|institute|college|laborator|centre|center|school',
-                 org_or_city, re.I):
-        return org_or_city, '', country
-    return '', org_or_city, country
+        m = _PAREN_INST.search(title)
+    if m:
+        inst = _strip_leading_article(m.group(1).strip().rstrip(' ,.—–'))
+        tail = (m.group(2) or '').strip() if m.lastindex and m.lastindex >= 2 else ''
+        tc, tco = '', ''
+        if tail:
+            parts = [p.strip() for p in re.split(r'\s*,\s*', tail) if p.strip()]
+            if len(parts) == 1:
+                tco = parts[0]
+            elif len(parts) >= 2:
+                tc, tco = parts[-2], parts[-1]
+        org = inst
+        city = tc
+        country = tco
+        return org, city, country
+    return org, city, country
 
 
 def events(f, today: dt.date | None = None, months: int | None = None):

@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T14:47:02+00:00",
+ "updated": "2026-09-03T15:43:30+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "job",
  "sources": {
@@ -23,23 +23,8 @@
   "qjobs": "RobotsDisallowed: https://quantum.jobs/"
  },
  "count": 66,
- "africa": 2,
+ "africa": 1,
  "items": [
-  {
-   "id": "a42d4f0001",
-   "kind": "job",
-   "title": "Postdoc position in topological-insulator-based Majorana devices at the University of Cologne",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": true,
-   "type": "Postdoc",
-   "deadline": "2026-07-30",
-   "status": "Closed",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/postdoc-position-topological-insulator-based-majorana-devices-university-cologne",
-   "first_seen": "2026-08-30T05:16:53+00:00"
-  },
   {
    "id": "2873675129",
    "kind": "job",
@@ -254,7 +239,7 @@
    "id": "bc6a71dacd",
    "kind": "job",
    "title": "Postdoctoral Researcher in Theoretical Quantum Information Science (University of Jyväskylä, Finland)",
-   "org": "",
+   "org": "University of Jyväskylä, Finland",
    "city": "",
    "country": "",
    "africa": false,
@@ -404,7 +389,7 @@
    "id": "b8252c3cd0",
    "kind": "job",
    "title": "PhD in Controlling Errors in Quantum Computers at Imperial College",
-   "org": "",
+   "org": "Imperial College",
    "city": "",
    "country": "",
    "africa": false,
@@ -761,6 +746,21 @@
    "first_seen": "2026-08-30T05:16:53+00:00"
   },
   {
+   "id": "a42d4f0001",
+   "kind": "job",
+   "title": "Postdoc position in topological-insulator-based Majorana devices at the University of Cologne",
+   "org": "University of Cologne",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Postdoc",
+   "deadline": "2026-07-30",
+   "status": "Closed",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/postdoc-position-topological-insulator-based-majorana-devices-university-cologne",
+   "first_seen": "2026-08-30T05:16:53+00:00"
+  },
+  {
    "id": "8af43594f6",
    "kind": "job",
    "title": "3 postdocs + 3 doctoral students on distributed quantum algorithms",
@@ -794,7 +794,7 @@
    "id": "303b44208b",
    "kind": "job",
    "title": "PhD position: learning, characterizing, and testing bosonic quantum computers (University of Cologne)",
-   "org": "",
+   "org": "University of Cologne",
    "city": "",
    "country": "",
    "africa": false,
