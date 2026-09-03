@@ -46,6 +46,7 @@ def main():
 
     opps = load('opportunities.json', {'updated': None, 'items': [], 'sources': {}})
     evts = load('events.json', {'updated': None, 'items': [], 'sources': {}})
+    content = load('content.json', {'updated': None, 'content': {}})
 
     for token, png in (('__LOGO_GOLD__', 'logo-gold.png'),
                        ('__LOGO_GOLD_W__', 'logo-gold-w.png'),
@@ -65,7 +66,11 @@ def main():
                       json.dumps(opps, separators=(',', ':'), ensure_ascii=False))
     app = app.replace('__EVENTS_JSON__',
                       json.dumps(evts, separators=(',', ':'), ensure_ascii=False))
-    assert '__OPPORTUNITIES_JSON__' not in app and '__EVENTS_JSON__' not in app
+    app = app.replace('__CONTENT_JSON__',
+                      json.dumps(content, separators=(',', ':'), ensure_ascii=False))
+    assert ('__OPPORTUNITIES_JSON__' not in app
+            and '__EVENTS_JSON__' not in app
+            and '__CONTENT_JSON__' not in app)
 
     out = shell + '\n<script>\n' + data + art + '\n' + app + '\n</script>\n'
     os.makedirs(PUBLIC, exist_ok=True)

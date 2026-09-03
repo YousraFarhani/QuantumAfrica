@@ -499,6 +499,7 @@ let PROJECTS = [
    feed/fetch_opportunities.py; if that is unavailable it keeps this snapshot. */
 const OPP_FEED = __OPPORTUNITIES_JSON__;
 const EVT_FEED = __EVENTS_JSON__;
+const CONTENT_INLINE = __CONTENT_JSON__;
 
 (function _bootstrap(){
   // Ensure first paint + loadContent complete both pass through the footer
@@ -545,6 +546,7 @@ const EVT_FEED = __EVENTS_JSON__;
    clist(key)          a collection, or [] */
 let CONTENT = {};
 let CONTENT_META = { loaded:false, updated:null };
+let _contentInlineUsed = false;
 
 /* cval/cx/cnum/clist support BOTH nested CONTENT.pages.about.heroImage
    AND flat dotted top-level keys CONTENT["pages.about"].heroImage.
@@ -610,6 +612,16 @@ function cnum(path, fallback){
   const v = (typeof raw === 'string') ? raw.trim() : raw;
   if(v === '' || v == null) return fallback;
   return v;
+}
+
+if(typeof CONTENT_INLINE !== 'undefined' && CONTENT_INLINE && typeof CONTENT_INLINE === 'object'){
+  const d = CONTENT_INLINE;
+  const doc = d && (d.content || d);
+  if(doc && typeof doc === 'object'){
+    CONTENT = _nestFlatKeys(doc);
+    CONTENT_META = { loaded:true, updated: d.updated || null };
+    _contentInlineUsed = true;
+  }
 }
 
 function _isMail(value){
@@ -975,9 +987,11 @@ function highlightItem(m, i){
   const k = mKind(m);
   const poster = mPoster(m);
   const label = mLabel(m, i);
+  const isFirst = i === 0;
   if(k === 'video'){
     return `<figure class="hl-item" data-i="${i}" data-kind="video">
-      <video controls preload="none" playsinline ${poster ? `poster="${esc(poster)}"` : ''}
+      <video controls ${isFirst ? 'autoplay muted playsinline loop preload="metadata"' : 'playsinline preload="none"'}
+             ${poster ? `poster="${esc(poster)}"` : ''}
              src="${esc(mediaUrl(m.video))}"></video>
       ${m.caption ? `<figcaption>${esc(m.caption)}${m.credit ? ` <span class="cr">${esc(m.credit)}</span>` : ''}</figcaption>` : ''}
     </figure>`;
@@ -1063,7 +1077,14 @@ function initHighlight(){
         if(v) v.pause();
         // Leaving an embed unloads it, so nothing keeps running out of sight.
         const f = el.querySelector('iframe');
-        if(f) f.replaceWith(el._facade);
+        if(f && el._facade) f.replaceWith(el._facade);
+      } else {
+        const v = el.querySelector('video');
+        if(v){
+          v.muted = true;
+          const p = v.play();
+          if(p && typeof p.catch === 'function') p.catch(()=>{});
+        }
       }
     });
     thumbs.forEach((t, n) => t.classList.toggle('on', n === at));
@@ -1119,6 +1140,24 @@ function initHighlight(){
   });
 
   show(0);
+
+  const firstEl = items[0];
+  if(firstEl && firstEl.dataset.kind === 'embed'){
+    const btn = firstEl.querySelector('.hl-play');
+    if(btn){
+      const src = firstEl.dataset.src;
+      if(src){
+        firstEl._facade = btn;
+        const f = document.createElement('iframe');
+        f.src = src;
+        f.title = btn.getAttribute('aria-label') || 'Video';
+        f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen';
+        f.allowFullscreen = true;
+        f.referrerPolicy = 'no-referrer-when-downgrade';
+        btn.replaceWith(f);
+      }
+    }
+  }
 }
 
 /* ---------- HOME ---------- */
@@ -1203,7 +1242,7 @@ ${highlightSection()}
       <div>
         <div class="sec-idx"><span class="lbl">${cx('pages.home.tutorEyebrow', 'Featured program')}</span><i></i></div>
         <h2 class="mt16">${cx('pages.home.tutorTitle', 'Meet the Quantum AI Tutor')}</h2>
-        <p class="lede mt16">${cx('pages.home.tutorLede', 'Learn quantum computing. For free. A guided, conversational way in — built by Quantum Africa, open to anyone.')}</p>
+        <p class="lede mt16">${cx('pages.home.tutorLede', 'Learn quantum computing. For free. A guided, conversational way in , built by Quantum Africa, open to anyone.')}</p>
         <div class="hero-cta">
           <a class="btn teal" href="#/tutor">${cx('pages.home.tutorCtaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
           <a class="btn inv ghost" href="#/tutor">${cx('pages.home.tutorCtaSecondary', 'How it works')}</a>
@@ -2509,9 +2548,9 @@ function vimeoId(u){
 }
 function embedSrc(u){
   const y = ytId(u);
-  if(y) return `https://www.youtube-nocookie.com/embed/${y}?autoplay=1&rel=0`;
+  if(y) return `https://www.youtube-nocookie.com/embed/${y}?autoplay=1&mute=1&playsinline=1&rel=0`;
   const v = vimeoId(u);
-  if(v) return `https://player.vimeo.com/video/${v}?autoplay=1`;
+  if(v) return `https://player.vimeo.com/video/${v}?autoplay=1&muted=1&playsinline=1`;
   return '';
 }
 /* The still we show before anyone presses play: the picture you uploaded, or
@@ -3425,6 +3464,24 @@ function loadContent(force){
   if(contentLoading) return;
   if(!force && CONTENT_META.loaded && now - _lastLoadAttemptAt < 1500) return;
   _lastLoadAttemptAt = now;
+
+  if(!_contentInlineUsed && CONTENT_INLINE && typeof CONTENT_INLINE === 'object'){
+    _contentInlineUsed = true;
+    const d = CONTENT_INLINE;
+    const doc = d && (d.content || d);
+    if(doc && typeof doc === 'object'){
+      const incomingUpdated = d.updated || null;
+      const prevUpdated = CONTENT_META.loaded ? CONTENT_META.updated : null;
+      CONTENT = _nestFlatKeys(doc);
+      const firstLoad = !CONTENT_META.loaded;
+      const changed = (CONTENT_META.loaded && incomingUpdated && prevUpdated !== incomingUpdated);
+      CONTENT_META = { loaded:true, updated: incomingUpdated };
+      if(firstLoad || changed){ try { rebuildFromContent(); } catch(e){} }
+      else { try { hydrateFooterSocials(); } catch(e){} }
+    }
+    return;
+  }
+
   contentLoading = true;
   fetch(FEED.content, {cache:'no-store'})
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
@@ -3440,8 +3497,6 @@ function loadContent(force){
       if(firstLoad || changed){
         rebuildFromContent();
       } else {
-        // Content unchanged, but (re)wire the footer icons anyway in case they
-        // were rendered before CONTENT.site was populated on the first load.
         try { hydrateFooterSocials(); } catch(e){}
       }
     })
