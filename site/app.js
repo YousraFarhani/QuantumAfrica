@@ -1176,7 +1176,7 @@ ${highlightSection()}
     ${sectionHead(
       cx('pages.home.pillarEyebrow', 'Our work'),
       cx('pages.home.pillarTitle', 'From Learning to Leadership'),
-      cx('pages.home.pillarLede', 'One pathway. Most people move through all four.')
+      cx('pages.home.pillarLede', '')
     )}
     <div class="grid g4">
       ${pillarCard('01','Educate','Webinars, workshops, resources and the AI Tutor.','educate','Education','#/education')}
@@ -1468,7 +1468,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
 
 <section class="sec flush"><div class="wrap">
   <div class="bignum">
-    ${[[cnum('stats.members',400),'+',cx('pages.impact.kpi1Key','Community members'),cx('pages.impact.kpi1Desc','Across the continent and the diaspora.')],
+    ${[[cnum('stats.members',350),'+',cx('pages.impact.kpi1Key','Community members'),cx('pages.impact.kpi1Desc','Across the continent and the diaspora.')],
        [cnum('stats.chapters',7),'',cx('pages.impact.kpi2Key','National chapters'),cx('pages.impact.kpi2Desc','Across North, West, East and Southern Africa.')],
        [cnum('stats.projects',4),'',cx('pages.impact.kpi3Key','Research projects'),cx('pages.impact.kpi3Desc','All open to new contributors.')],
        [cnum('stats.countries',52),'',cx('pages.impact.kpi4Key','Countries reached'),cx('pages.impact.kpi4Desc','Across the continent and the diaspora.')],
