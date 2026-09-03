@@ -674,7 +674,7 @@ let PEOPLE = [
   {slug:'p6', group:'Chapter leads'},{slug:'p7', group:'Chapter leads'},{slug:'p8', group:'Chapter leads'},
 ];
 const PEOPLE_GROUPS = [
-  ['Leadership',   'The people who run Quantum Africa day to day.'],
+  ['Leadership',   ''],
   ['Advisors',     ''],
   ['Chapter leads',''],
 ];
@@ -941,7 +941,7 @@ function africaMap(){
       <span><i style="background:var(--gold)"></i>Chapter</span>
       <span><i style="background:var(--bg-3)"></i>Continent</span>
     </div>
-    <p class="map-note">The continent is drawn as a single landmass. Chapters are marked by flag, and no national borders are shown.</p>
+    <p class="map-note"></p>
   </div>`;
 }
 function chapterList(){
@@ -959,7 +959,7 @@ function chapterList(){
       <p class="small">Quantum Africa helps students and researchers start new national chapters. Tell us where you are and we will help you launch one.</p>
       <a class="btn sm mt16" href="#/join">Start a chapter <span class="ar" aria-hidden="true">&rarr;</span></a>
     </div>
-    <p class="xs mt16">The map is a single landmass with no national borders drawn. Adding a chapter in the CMS places its flag automatically.</p>
+    <p class="xs mt16"></p>
   </div>`;
 }
 
@@ -1212,7 +1212,7 @@ ${highlightSection()}
   <div class="wrap">
     ${sectionHead(
       cx('pages.home.chaptersEyebrow', 'Chapters'),
-      cx('pages.home.chaptersTitle', 'Building Quantum Communities Across Africa'),
+      cx('pages.home.chaptersTitle', 'Building Quantum Communities Across Africa Through Chapters'),
       cx('pages.home.chaptersLede', 'Local leadership, local activity, one network.'),
       {t:cx('pages.home.chaptersCta', 'Explore our chapters'),h:'#/chapters'}
     )}
@@ -1287,7 +1287,7 @@ ${highlightSection()}
     ${sectionHead(
       cx('pages.home.partnersEyebrow', 'Partners'),
       cx('pages.home.partnersTitle', 'Working with institutions across Africa and beyond'),
-      cx('pages.home.partnersLede', 'Real, active collaborations only.'),
+      cx('pages.home.partnersLede', ''),
       {t:cx('pages.home.partnersCta', 'Become a partner'),h:'#/partners'}
     )}
     <div class="logo-wall">${Array.from({length:8}).map(()=>`<div class="logo-cell rv"><span class="mk"></span>PARTNER LOGO</div>`).join('')}</div>
@@ -1505,7 +1505,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
   ${sectionHead(
     cx('pages.impact.storiesEyebrow', 'Stories'),
     cx('pages.impact.storiesTitle', 'Impact in individual terms'),
-    cx('pages.impact.storiesLede', 'Numbers give scale. One trajectory gives meaning.')
+    cx('pages.impact.storiesLede', '')
   )}
   <div class="grid g3">${['bloch','network','circuit'].map((k,i)=>`<a class="card rv" href="#/news/a3">
     <div class="card-media">${cimg('pages.impact.storyImage'+(i+1), 'Portrait of the person this story is about', '1600×900 · JPG', '', k)}</div>
@@ -1522,8 +1522,8 @@ PAGES.education = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.education.heroEyebrow', 'Programs · Quantum Education')}</span><i></i></div>
-  <h1 class="mt24">${cx('pages.education.heroTitle', 'Quantum education, made reachable.')}</h1>
-  <p class="lede">${cx('pages.education.heroLede', 'A student with a laptop can start today. A university can build a programme on the same foundation.')}</p>
+  <h1 class="mt24">${cx('pages.education.heroTitle', 'Making Quantum Education Accessible Across Africa.')}</h1>
+  <p class="lede">${cx('pages.education.heroLede', 'Providing students and universities with the knowledge, resources, and pathways needed to learn, teach, and advance in quantum science and technology.')}</p>
   <div class="phero-meta">
     <span class="pill current">${cx('pages.education.pillRunning', 'Webinars &amp; workshops running')}</span>
     <span class="pill dev">${cx('pages.education.pillDev', 'Tutor &amp; resources in development')}</span>
@@ -1548,7 +1548,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'
   ${sectionHead(
     cx('pages.education.archiveEyebrow', 'Archive'),
     cx('pages.education.archiveTitle', 'Every session, kept'),
-    cx('pages.education.archiveLede', 'Each webinar and workshop gets a permanent page with its abstract, speaker, recording and photographs. This archive is the largest source of searchable pages on the site.'),
+    cx('pages.education.archiveLede', ''),
     {t:cx('pages.education.archiveCta', 'Browse events'),h:'#/events'}
   )}
   <div class="grid g3">${EVENTS.slice(0,3).map((e,i)=>eventCard(e,i)).join('')}</div>
@@ -1739,8 +1739,8 @@ PAGES.chapters = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Community',h:'#/chapters'},{t:'Chapters'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.chapters.heroEyebrow', 'Community · Chapters')}</span><i></i></div>
-  <h1 class="mt24">${cx('pages.chapters.heroTitle', 'Building Quantum Communities Across Africa')}</h1>
-  <p class="lede">${cx('pages.chapters.heroLede', 'How Quantum Africa becomes local — own leadership, own events, own universities.')}</p>
+  <h1 class="mt24">${cx('pages.chapters.heroTitle', 'Building Quantum Communities Across Africa Through Chapters')}</h1>
+  <p class="lede">${cx('pages.chapters.heroLede', 'Empowering local leaders to build and grow quantum communities through dedicated chapters, university engagement, events, and collaboration..')}</p>
 </div></section>
 <section class="sec"><div class="wrap">
   <div class="map-wrap">${africaMap()}${chapterList()}</div>
@@ -1748,7 +1748,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Community',h:'#/chapters'},{t:'Chapters'}])}
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
     cx('pages.chapters.allEyebrow', 'All chapters'),
-    cx('pages.chapters.allTitle', 'Seven chapters, one network')
+    cx('pages.chapters.allTitle', 'Many Chapters, one network')
   )}
   <div class="grid g3">${CHAPTERS.map(chapterCard).join('')}</div>
   <div class="mt48 panel">
@@ -1841,7 +1841,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.events.heroEyebrow', 'Events')}</span><i></i></div>
   <h1>${cx('pages.events.heroTitle', 'Webinars, workshops and chapter events.')}</h1>
-  <p class="lede">${cx('pages.events.heroLede', 'Every session keeps a permanent page — abstract, speaker, recording, photographs.')}</p>
+  <p class="lede">${cx('pages.events.heroLede', '')}</p>
 </div></section>
 
 <section class="sec flush"><div class="wrap">
@@ -2403,7 +2403,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.opportunities.heroEyebrow', 'Opportunities')}</span><i></i></div>
   <h1 class="mt24">${cx('pages.opportunities.heroTitle', 'Your Quantum Journey Starts Here')}</h1>
-  <p class="lede">${cx('pages.opportunities.heroLede', 'Every quantum PhD, postdoc, masters and industry role we can find, in one list — with anything based in Africa pushed to the top.')}</p>
+  <p class="lede">${cx('pages.opportunities.heroLede', 'Discover curated opportunities across quantum computing, research, academia, and industry, from Master’s and PhD positions to postdocs, internships, and professional roles.— with anything based in Africa pushed to the top.')}</p>
   <p class="feed-note" id="opFeed">${cx('pages.opportunities.feedLoading', 'Loading the latest listings…')}</p>
 </div></section>
 
@@ -2428,7 +2428,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
   ${sectionHead(
     cx('pages.opportunities.allEyebrow', 'All listings'),
     cx('pages.opportunities.allTitle', 'Search everything'),
-    cx('pages.opportunities.allLede', 'Filters combine — pick a type, a region and a status together, or type a keyword.')
+    cx('pages.opportunities.allLede', '')
   )}
   <div class="filters opp-filters" data-filter="opps">
     <div class="fgroup wide"><span class="fl">${cx('pages.opportunities.flSearch', 'Search')}</span>
@@ -2473,7 +2473,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
   ${sectionHead(
     cx('pages.opportunities.wwEyebrow', 'Worldwide'),
     cx('pages.opportunities.wwTitle', 'Conferences, workshops and summer schools'),
-    cx('pages.opportunities.wwLede', 'The same collection, for events rather than posts: gathered from the quantum community calendars, linking straight to the organisers. Anything hosted in Africa sits at the top.')
+    cx('pages.opportunities.wwLede', '')
   )}
   <p class="feed-note" id="evFeed">${cx('pages.opportunities.calLoading', 'Loading the calendar…')}</p>
 
@@ -2620,7 +2620,7 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
 <section class="cta-band">
   ${patternPanel('soft')}
   ${africaWatermark('wm-cta')}
-  <div class="wrap"><div class="hero-eye">${cx('pages.people.ctaBandEyebrow', 'Join them')}</div>
+  <div class="wrap"><div class="hero-eye">${cx('pages.people.ctaBandEyebrow', 'Join Us')}</div>
     <h2 class="mt24">${cx('pages.people.ctaBandTitle', 'There is room here<br>for what you do.')}</h2>
     <div class="btns"><a class="btn teal" href="#/join">${cx('pages.people.ctaBandBtn1', 'Join Quantum Africa')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/support">${cx('pages.people.ctaBandBtn2', 'Pledge your support')}</a></div>
   </div>
@@ -2667,7 +2667,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Universities'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.universities.heroEyebrow', 'For universities')}</span><i></i></div>
   <h1 class="mt24">${cx('pages.universities.heroTitle', 'Partner With Quantum Africa')}</h1>
-  <p class="lede">${cx('pages.universities.heroLede', 'Quantum education, research and opportunities for your students — without building a programme from scratch.')}</p>
+  <p class="lede">${cx('pages.universities.heroLede', 'Strengthen your university’s quantum capacity through access to education, research opportunities, expert networks, and global collaborations.')}</p>
   <div class="phero-meta"><a class="btn teal sm" href="#/contact">${cx('pages.universities.heroBtn1', 'Start a university partnership')}</a><a class="btn sm ghost" href="#/education">${cx('pages.universities.heroBtn2', 'See our programmes')}</a></div>
 </div></section>
 <section class="sec flush" style="padding-top:0"><div class="wrap">${cimg('pages.universities.heroImage','Workshop at a university campus','2400×1000 · JPG','wide','lattice')}</div></section>
@@ -2675,7 +2675,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Universities'}])}
   ${sectionHead(
     cx('pages.universities.whyEyebrow', 'Why partner'),
     cx('pages.universities.whyTitle', 'Quantum is arriving faster than curricula can change'),
-    cx('pages.universities.whyLede', 'The foundations are already there. The route into quantum is not. That is the gap we work in.')
+    cx('pages.universities.whyLede', '')
   )}
   <div class="grid g3">
     ${[[cx('pages.universities.o1Title','Quantum computing workshops'),cx('pages.universities.o1Body','Delivered on your campus or online, for students and staff.'),'current'],
