@@ -1464,7 +1464,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.impact.heroEyebrow', 'Our impact')}</span><i></i></div>
   <h1>${cx('pages.impact.heroTitle', ' Our Impact in Numbers')}</h1>
-  <p class="lede">${cx('pages.impact.heroLede', 'Verified figures only. Anything uncounted is marked, never estimated.')}</p>
+  <p class="lede">${cx('pages.impact.heroLede', 'A snapshot of our measurable achievements and growing reach across Africa.')}</p>
 </div></section>
 
 <section class="sec flush"><div class="wrap">
