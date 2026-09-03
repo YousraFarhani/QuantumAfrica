@@ -500,6 +500,36 @@ let PROJECTS = [
 const OPP_FEED = __OPPORTUNITIES_JSON__;
 const EVT_FEED = __EVENTS_JSON__;
 
+(function _bootstrap(){
+  // Ensure first paint + loadContent complete both pass through the footer
+  // socials hydrate function, even on browsers that fire DOMContentLoaded
+  // before our appended <script> finishes parsing (sandbox webview).
+  let _hydrated = 0;
+  function tryHydrate(force){
+    if(!document.getElementById('footSocials')) return false;
+    // run at most 4 times (first / after render / after loadContent / after force publish)
+    if(!force && _hydrated >= 4) return true;
+    _hydrated++;
+    try { hydrateFooterSocials(); } catch(e){}
+    return true;
+  }
+  const _origHydrate = (typeof hydrateFooterSocials !== 'undefined') ? hydrateFooterSocials : null;
+  // Hook rebuildFromContent: after each rebuild render socials again with fresh CONTENT.site
+  try {
+    const origRebuild = rebuildFromContent;
+    window.rebuildFromContent = function(){
+      try { return origRebuild.apply(this, arguments); }
+      finally { try { tryHydrate(true); } catch(e){} }
+    };
+    rebuildFromContent = window.rebuildFromContent;
+  } catch(e){}
+  document.addEventListener('DOMContentLoaded', () => { tryHydrate(); setTimeout(()=>tryHydrate(), 0); setTimeout(()=>tryHydrate(), 300); setTimeout(()=>tryHydrate(), 1600); });
+  const orc = new MutationObserver(() => { if(tryHydrate()) orc.disconnect(); });
+  try { orc.observe(document.documentElement, {childList:true, subtree:true}); } catch(e){}
+  // Make tryHydrate accessible for manual retry
+  window.__hydrateFootSocials = tryHydrate;
+})();
+
 /* Where the live data comes from.
    By default the page reads two JSON files written by the backend's exporter.
    Point it at the running API instead with either of:
@@ -570,13 +600,36 @@ function cval(path){
   return v == null ? '' : v;
 }
 function cx(path, fallback){
-  const v = cval(path);
-  if(v === '' || (Array.isArray(v) && !v.length)) return fallback === undefined ? '' : fallback;
+  const raw = cval(path);
+  const v = (typeof raw === 'string') ? raw.trim() : raw;
+  if(v === '' || v == null || (Array.isArray(v) && !v.length)) return fallback === undefined ? '' : fallback;
   return esc(Array.isArray(v) ? v.join(', ') : v);
 }
 function cnum(path, fallback){
-  const v = cval(path);
-  return (v === '' || v == null) ? fallback : v;
+  const raw = cval(path);
+  const v = (typeof raw === 'string') ? raw.trim() : raw;
+  if(v === '' || v == null) return fallback;
+  return v;
+}
+
+function _isMail(value){
+  // Bare email address → treat as mailto:. If it already has mailto: keep as-is.
+  const s = String(value || '').trim();
+  if(!s) return false;
+  if(s.toLowerCase().startsWith('mailto:')) return true;
+  // No scheme + has exactly one @ and no spaces: it's probably an email.
+  return !/^[a-z][a-z0-9+.\-]*:/i.test(s) && s.indexOf('@') !== -1 && s.indexOf(' ') === -1 && s.indexOf('\n') === -1;
+}
+function _href(value){
+  const s = String(value || '').trim();
+  if(!s) return null;
+  return _isMail(s) ? (s.toLowerCase().startsWith('mailto:') ? s : 'mailto:' + s) : s;
+}
+function _linkRel(value){
+  const href = _href(value);
+  if(!href) return '';
+  if(href.toLowerCase().startsWith('mailto:') || href.startsWith('#')) return '';
+  return ' target="_blank" rel="noopener noreferrer"';
 }
 function clist(key){
   const byFlat = CONTENT[key];
@@ -2901,8 +2954,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'Contact'}])}
     </form>
   </div>
   <aside><div class="panel"><h5>${cx('pages.contact.directHead', 'Direct')}</h5><dl class="dl-list">
-    <div class="dl-item"><dt>${cx('pages.contact.directEmailLabel', 'Email')}</dt><dd><a href="mailto:${cx('pages.contact.directEmailValue', 'contact@quantum-africa.org')}">${cx('pages.contact.directEmailValue', 'contact@quantum-africa.org')}</a></dd></div>
-    <div class="dl-item"><dt>${cx('pages.contact.directLinkedinLabel', 'LinkedIn')}</dt><dd><a href="https://www.linkedin.com/company/quantum-africa" target="_blank" rel="noopener">${cx('pages.contact.directLinkedinValue', 'Quantum Africa')}</a></dd></div>
+    <div class="dl-item"><dt>${cx('pages.contact.directEmailLabel', 'Email')}</dt><dd><a href="${_href(cval('pages.contact.directEmailValue') || cval('site.footerEmail') || cval('site.email')) || 'mailto:contact@quantum-africa.org'}"${_linkRel(cval('pages.contact.directEmailValue') || cval('site.footerEmail') || cval('site.email'))}>${cx('pages.contact.directEmailValue', cval('site.email') || cval('site.footerEmail') || 'contact@quantum-africa.org')}</a></dd></div>
+    <div class="dl-item"><dt>${cx('pages.contact.directLinkedinLabel', 'LinkedIn')}</dt><dd><a href="${cval('pages.contact.directLinkedinUrl') || cval('site.linkedin') || 'https://www.linkedin.com/company/quantum-africa'}"${_linkRel(cval('pages.contact.directLinkedinUrl') || cval('site.linkedin') || 'https://www.linkedin.com/company/quantum-africa')}>${cx('pages.contact.directLinkedinValue', 'Quantum Africa')}</a></dd></div>
     <div class="dl-item"><dt>${cx('pages.contact.directBasedLabel', 'Based in')}</dt><dd>${cx('pages.contact.directBasedValue', 'Pan-African — chapters across the continent')}</dd></div>
   </dl></div></aside>
 </div></div></section>`;
@@ -3406,7 +3459,13 @@ function loadContent(force){
       const firstLoad = !CONTENT_META.loaded;
       const changed = (CONTENT_META.loaded && incomingUpdated && prevUpdated !== incomingUpdated);
       CONTENT_META = { loaded:true, updated: incomingUpdated };
-      if(firstLoad || changed){ rebuildFromContent(); }
+      if(firstLoad || changed){
+        rebuildFromContent();
+      } else {
+        // Content unchanged, but (re)wire the footer icons anyway in case they
+        // were rendered before CONTENT.site was populated on the first load.
+        try { hydrateFooterSocials(); } catch(e){}
+      }
     })
     .catch(()=>{ if(!CONTENT_META.loaded) CONTENT_META.loaded = true; })
     .finally(()=>{ contentLoading = false; });
@@ -3494,8 +3553,8 @@ function rebuildFromContent(){
       : (o.deadline < new Date().toISOString().slice(0,10) ? 'Closed' : 'Open'),
     source: 'own', url: o.url || '#/contact', own: true,
   }));
-  hydrateFooterSocials();
   render();
+  try { hydrateFooterSocials(); } catch(e){}
 }
 
 function hydrateFooterSocials(){
@@ -3507,13 +3566,13 @@ function hydrateFooterSocials(){
     {k:'twitter',   label:'X',         icon:'twitter'},
     {k:'youtube',   label:'YouTube',   icon:'youtube'},
     {k:'instagram', label:'Instagram', icon:'instagram'},
-    {k:'__email',   label:'Email',     icon:'email',   url: defEmail},
+    {k:'__email',   label:'Email',     icon:'email',   raw: defEmail},
   ];
   root.innerHTML = items.map(it => {
-    const url = it.url || cval('site.' + it.k);
-    const href = url ? String(url) : '#/contact';
-    const rel = url ? ' target="_blank" rel="noopener noreferrer"' : '';
-    return `<a href="${href}" title="${esc(it.label)}" aria-label="${esc(it.label)}" data-k="${esc(it.k)}"${rel}>${svgIcon(it.icon, 18)}</a>`;
+    const raw = ('raw' in it) ? (it.raw ?? '') : cval('site.' + it.k);
+    const href = _href(raw) || '#/contact';
+    const rel = href.startsWith('#') ? '' : _linkRel(raw);
+    return `<a href="${esc(href)}" title="${esc(it.label)}" aria-label="${esc(it.label)}" data-k="${esc(it.k)}"${rel}>${svgIcon(it.icon, 18)}</a>`;
   }).join('');
 }
 
@@ -3786,6 +3845,7 @@ function transition(){
 }
 window.addEventListener('hashchange', transition);
 document.addEventListener('DOMContentLoaded', () => { try { loadContent(true); } catch(e){} }, { once: true });
+document.addEventListener('DOMContentLoaded', () => { try { hydrateFooterSocials(); } catch(e){} });
 const fr = document.getElementById('footRing');
 if(fr) fr.innerHTML = ringMark().replace('class="ring "','class="ring"');
 render();
