@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T21:14:52+00:00",
+ "updated": "2026-09-03T21:22:03+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -131,7 +131,13 @@
     "fullBio": "Quantum Mauritania Chapter Lead, Computer Science Engineer and Machine Learning Researcher"
    },
    {
-    "group": "Chapter leads"
+    "name": "Cheikh Abdelaziz Khattatt",
+    "group": "Chapter leads",
+    "role": "Mauritania Chapter Lead",
+    "country": "Mauritania",
+    "photo": "media/c03489a1b39fad40.jpg",
+    "bio": "Quantum Mauritania Chapter Lead, Mathematician, Graduate in Mathematical Engineering and Scientific Computing",
+    "fullBio": "Quantum Mauritania Chapter Lead, Mathematician, Graduate in Mathematical Engineering and Scientific Computing"
    },
    {
     "group": "Chapter leads"
