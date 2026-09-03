@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T14:49:14+00:00",
+ "updated": "2026-09-03T14:50:45+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -16,13 +16,13 @@
   "hero": {
    "statements": [
     {
-     "a": "Building Africa’s ",
-     "b": "Quantum Capacity.",
+     "a": "We are building Africa’s quantum ecosystem.",
+     "b": "quantum ecosystem.",
      "lede": "We equip African students, educators and researchers with the knowledge, skills and opportunities to shape the quantum future."
     },
     {
-     "a": "Advancing Quantum Education ",
-     "b": "Across Africa.",
+     "a": "We are training Africa’s ",
+     "b": "quantum generation.",
      "lede": "Building accessible learning pathways and strengthening the talent, skills and institutions needed for Africa to thrive in the quantum era."
     },
     {
