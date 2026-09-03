@@ -1,6 +1,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Quantum Africa</title>
+<script>
+  // Theme bootstrap — run before any stylesheets or inline CSS paint, so the
+  // first render already uses the right palette and nobody sees a dark→light
+  // flash on reload.
+  //
+  // Light is the new default. The only way to get dark on a fresh visit is to
+  // click the toggle; we no longer follow prefers-color-scheme automatically.
+  (function () {
+    var theme = 'light';
+    try {
+      var s = localStorage.getItem('qa.theme');
+      if (s === 'light' || s === 'dark') theme = s;
+    } catch (_) {}
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
@@ -176,7 +192,8 @@ body.bio-open{overflow:hidden}
    #082358 deep navy   ·   #036A81 teal-blue
    Poppins carries every label (Gotham's closest free match).
    ============================================================ */
-:root{
+:root,
+:root[data-theme="light"]{
   /* Visual Identity Guide — core palette */
   --navy:#001F3F;        /* Midnight Blue — structural */
   --navy-d:#00162E;
@@ -219,26 +236,6 @@ body.bio-open{overflow:hidden}
   --r:14px; --r-s:10px;
   --maxw:1200px;
   --logo:url(__LOGO_GOLD__);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --dark:#000000; --dark-2:#000000;
-    --btn-bg:#F5F2EA; --btn-fg:#0B0B0C;
-    --bg:#0B0B0C; --bg-2:#141414; --bg-3:#1F1F20; --card:#131314;
-    --ink:#F5F2EA; --ink-2:#A9A69E; --ink-3:#7E7B76;
-    --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.24);
-    --gold:#D9B76E; --gold-l:#EFD9AA;
-    --green:#2FB56B;
-    --teal:#2FB56B; --teal-m:#45C87F; --teal-l:#D9B76E; --teal-p:#EFD9AA;
-    --navy-l:#8FB2D6;
-    --ph:#D9B76E;
-    --duo:linear-gradient(120deg,#EFD9AA 0%,#D9B76E 55%,#A6833F 100%);
-    --duo-w:linear-gradient(120deg,#D9B76E 0%,#EFD9AA 55%,#FFF7E6 100%);
-    --sh-1:0 1px 2px rgba(0,0,0,.5);
-    --sh-2:0 3px 10px rgba(0,0,0,.5), 0 24px 48px -26px rgba(0,0,0,.95);
-    --sh-3:0 36px 80px -36px rgba(0,0,0,.95);
-    --logo:url(__LOGO_GOLD_W__);
-  }
 }
 :root[data-theme="dark"]{
     --dark:#000000; --dark-2:#000000;

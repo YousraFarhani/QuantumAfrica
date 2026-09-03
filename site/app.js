@@ -3729,19 +3729,42 @@ function initTyping(){
 function initControls(){
   const th = document.getElementById('themeToggle');
   const lbl = th && th.querySelector('.lbl');
-  function paintTheme(){
-    const cur = document.documentElement.getAttribute('data-theme');
-    const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = cur ? cur === 'dark' : sysDark;
-    if(lbl){ lbl.textContent = isDark ? 'Light' : 'Dark'; }
+
+  // Theme: saved preference → explicit light-by-default.
+  // Only fall back to system preference if the user explicitly opted in
+  // earlier AND the system value matches their stored intent; we don't
+  // auto-dark for unknown visitors.
+  function resolveTheme(withExplicit){
+    try {
+      const stored = localStorage.getItem('qa.theme');
+      if (stored === 'light' || stored === 'dark') return stored;
+    } catch (_) {}
+    if (withExplicit) {
+      const cur = document.documentElement.getAttribute('data-theme');
+      if (cur === 'light' || cur === 'dark') return cur;
+    }
+    return 'light';
   }
+  function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+    try { localStorage.setItem('qa.theme', theme === 'dark' ? 'dark' : 'light'); } catch (_) {}
+  }
+  function paintTheme(){
+    const isDark = resolveTheme(true) === 'dark';
+    if(lbl){ lbl.textContent = isDark ? 'Light' : 'Dark'; }
+    if(th){ th.classList.toggle('on', true); }
+  }
+
+  // Apply the resolved theme immediately so initControls running before the
+  // anti-FOUC bootstrap on inline <script> still ends up with a consistent
+  // data-theme attribute.
+  applyTheme(resolveTheme(false));
   paintTheme();
+
   th && th.addEventListener('click', ()=>{
-    const cur = document.documentElement.getAttribute('data-theme');
-    const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const next = cur ? (cur === 'dark' ? 'light' : 'dark') : (sysDark ? 'light' : 'dark');
-    document.documentElement.setAttribute('data-theme', next);
-    th.classList.toggle('on', true);
+    const cur = resolveTheme(true);
+    const next = cur === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
     paintTheme();
   });
   document.getElementById('burger').addEventListener('click', ()=>{
