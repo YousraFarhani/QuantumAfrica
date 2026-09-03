@@ -614,16 +614,6 @@ function cnum(path, fallback){
   return v;
 }
 
-if(typeof CONTENT_INLINE !== 'undefined' && CONTENT_INLINE && typeof CONTENT_INLINE === 'object'){
-  const d = CONTENT_INLINE;
-  const doc = d && (d.content || d);
-  if(doc && typeof doc === 'object'){
-    CONTENT = _nestFlatKeys(doc);
-    CONTENT_META = { loaded:true, updated: d.updated || null };
-    _contentInlineUsed = true;
-  }
-}
-
 function _isMail(value){
   // Bare email address → treat as mailto:. If it already has mailto: keep as-is.
   const s = String(value || '').trim();

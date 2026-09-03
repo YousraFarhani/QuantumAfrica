@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T19:15:32+00:00",
+ "updated": "2026-09-03T22:24:17+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "job",
  "sources": {
@@ -506,6 +506,21 @@
    "first_seen": "2026-08-30T05:16:53+00:00"
   },
   {
+   "id": "6d3d914dd2",
+   "kind": "job",
+   "title": "Research Scientist (Theory) Quantum Algorithms",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Research fellow",
+   "deadline": "2026-12-31",
+   "status": "Open",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/research-scientist-theory-quantum-algorithms",
+   "first_seen": "2026-08-30T05:16:53+00:00"
+  },
+  {
    "id": "203898adca",
    "kind": "job",
    "title": "Development Engineer Hardware Verification",
@@ -743,21 +758,6 @@
    "status": "Closed",
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/phd-proposal-energetic-cost-fault-tolerant-quantum-computing",
-   "first_seen": "2026-08-30T05:16:53+00:00"
-  },
-  {
-   "id": "a42d4f0001",
-   "kind": "job",
-   "title": "Postdoc position in topological-insulator-based Majorana devices at the University of Cologne",
-   "org": "University of Cologne",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Postdoc",
-   "deadline": "2026-07-30",
-   "status": "Closed",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/postdoc-position-topological-insulator-based-majorana-devices-university-cologne",
    "first_seen": "2026-08-30T05:16:53+00:00"
   },
   {
