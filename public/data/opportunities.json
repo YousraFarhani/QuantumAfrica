@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T15:43:30+00:00",
+ "updated": "2026-09-03T15:58:26+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "job",
  "sources": {
@@ -29,7 +29,7 @@
    "id": "2873675129",
    "kind": "job",
    "title": "MSc Quantum Science and Technology, FST Al-Hoceima – Abdelmalek Essaadi University",
-   "org": "",
+   "org": "FST Al-Hoceima – Abdelmalek Essaadi University",
    "city": "",
    "country": "",
    "africa": true,
@@ -374,7 +374,7 @@
    "id": "c01e830d2e",
    "kind": "job",
    "title": "Postdoc Openings: Quantum Computing and Artificial Intelligence, National University of Singapore",
-   "org": "",
+   "org": "National University of Singapore",
    "city": "",
    "country": "",
    "africa": false,

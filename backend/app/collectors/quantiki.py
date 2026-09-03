@@ -79,6 +79,19 @@ _PAREN_INST = re.compile(
     r')[^()]{0,40})\s*\)\s*$',
     re.I)
 
+# Final fallback: a SINGLE trailing comma followed directly by a
+# university/institution/organisation name (no country after it).
+# Catches the "..., National University of Singapore" style used on
+# many non-South-African Quantiki postings (Singapore, Europe, USA, ...).
+_COMMA_INST_TAIL = re.compile(
+    r',\s*([^,]{4,90}?\b(?:'
+    r'Universit|Institute|College|Laborator|Centre|Center|School|Polytechnic|'
+    r'ETH|EPFL|CERN|MIT|Caltech|Stanford|Harvard|Oxford|Cambridge|NUS|NTU|KAIST|'
+    r'TUM|Tsinghua|Peking|IIT|Imperial|KIT|Inria|CNRS|RIKEN|FZ Juelich|PSI|'
+    r'University|Universiteit|Université|Universität|Università|Universidade'
+    r')[^,—–]{0,60})\s*$',
+    re.I)
+
 
 def _strip_leading_article(s: str) -> str:
     s = (s or '').strip()
@@ -117,6 +130,12 @@ def _split_location(title: str):
         city = tc
         country = tco
         return org, city, country
+    # Final fallback: single trailing comma followed by a university/institution
+    # (no explicit country).  E.g. "…, National University of Singapore".
+    m = _COMMA_INST_TAIL.search(title)
+    if m:
+        inst = _strip_leading_article(m.group(1).strip().rstrip(' ,.—–'))
+        return inst, '', ''
     return org, city, country
 
 
