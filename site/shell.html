@@ -506,7 +506,7 @@ nav.main{display:flex;align-items:center;gap:2px;margin-left:auto}
    ============================================================ */
 .hero{position:relative;background:var(--dark);color:#fff;overflow:hidden;isolation:isolate}
 .hero-stage{position:absolute;inset:0;z-index:0}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity .85s ease,transform 5s linear;display:block;transform:scale(1.03)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease,transform 2.5s linear;display:block;transform:scale(1.03)}
 .slide.on{opacity:1;transform:scale(1)}
 .slide .art{opacity:.55}
 .hero-scrim{
@@ -533,7 +533,7 @@ nav.main{display:flex;align-items:center;gap:2px;margin-left:auto}
 .dots{display:flex;gap:10px;align-items:center}
 .dot-btn{width:50px;height:3px;border:0;padding:0;background:rgba(255,255,255,.24);cursor:pointer;position:relative;overflow:hidden;border-radius:3px;transition:background .2s}
 .dot-btn:hover{background:rgba(255,255,255,.5)}
-.dot-btn.on::after{content:"";position:absolute;inset:0;background:var(--duo-w);transform-origin:left;animation:fill 6s linear forwards}
+.dot-btn.on::after{content:"";position:absolute;inset:0;background:var(--duo-w);transform-origin:left;animation:fill 3s linear forwards}
 body.no-motion .dot-btn.on::after{animation:none;transform:none}
 @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .slide-cap{font-weight:500;font-size:.755rem;letter-spacing:.05em;color:rgba(255,255,255,.62)}

@@ -3154,7 +3154,7 @@ function initSlider(){
     stopAll();
     const isVideo = playActive();
     // Fall back to the timer even for video, in case it never fires 'ended'.
-    slideTimer = setInterval(()=>{ go(slideIdx+1); play(); }, isVideo ? 8000 : 2500);
+    slideTimer = setInterval(()=>{ go(slideIdx+1); play(); }, isVideo ? 4500 : 1400);
   }
   stage.querySelectorAll('[data-hero-video]').forEach(v => {
     v.addEventListener('ended', ()=>{
