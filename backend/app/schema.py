@@ -415,6 +415,18 @@ SECTIONS = [
       F('ctaBandBtn1', 'CTA band button 1'),
       F('ctaBandBtn2', 'CTA band button 2'),
       F('ctaBandBtn3', 'CTA band button 3'),
+      F('highlightEyebrow', 'Highlight — eyebrow', help='Small label above the title on the homepage highlight card, e.g. “Latest”.'),
+      F('highlightTitle', 'Highlight — title', help='One-line title for the front-page highlight.'),
+      F('highlightDate', 'Highlight — date', 'date'),
+      F('highlightPlace', 'Highlight — place'),
+      F('highlightSummary', 'Highlight — summary', 'textarea',
+        help='Two or three sentences — what happened and why it mattered.'),
+      F('highlightLinkText', 'Highlight — button text', help='e.g. Read the write-up'),
+      F('highlightLinkUrl', 'Highlight — button link', 'url'),
+      F('highlightGallery', 'Highlight — photos &amp; video', 'list', label_field='caption',
+        fields=MEDIA_FIELDS,
+        help='Shown as a carousel below the summary. Drag to reorder — the first '
+             'slide is what people see first.'),
     ],
   },
   {

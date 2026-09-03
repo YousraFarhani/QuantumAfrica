@@ -1011,15 +1011,24 @@ function highlightThumb(m, i){
 }
 
 function highlightSection(){
-  const h = CONTENT.highlight || {};
-  const gallery = Array.isArray(h.gallery) ? h.gallery : [];
-  // Nothing entered yet: show the empty state so it is obvious what goes here.
+  const home = CONTENT['pages.home'] || {};
+  const old = CONTENT.highlight || {};
+  const eyebrow = home.highlightEyebrow || old.eyebrow || '';
+  const title   = home.highlightTitle   || old.title   || '';
+  const summary = home.highlightSummary || old.summary || '';
+  const date    = home.highlightDate    || old.date    || '';
+  const place   = home.highlightPlace   || old.place   || '';
+  const linkText = home.highlightLinkText || old.linkText || '';
+  const linkUrl  = home.highlightLinkUrl  || old.linkUrl  || '';
+  const gallery = Array.isArray(home.highlightGallery)
+    ? home.highlightGallery
+    : (Array.isArray(old.gallery) ? old.gallery : []);
   const items = gallery.length ? gallery : [{}, {}, {}];
-  const when = [h.date ? oppDate(h.date) : '', h.place].filter(Boolean).join(' · ');
+  const when = [date ? oppDate(date) : '', place].filter(Boolean).join(' · ');
   return `
 <section class="sec hl-sec"><div class="wrap">
-  ${sectionHead(h.eyebrow || 'Latest', h.title || pht('HIGHLIGHT — your latest event'),
-     h.summary || pht('Two or three sentences: what happened and why it mattered.'))}
+  ${sectionHead(eyebrow || 'Latest', title || pht('HIGHLIGHT — your latest event'),
+     summary || pht('Two or three sentences: what happened and why it mattered.'))}
   ${when ? `<p class="hl-when">${esc(when)}</p>` : ''}
 
   <div class="hl" id="hl">
@@ -1030,8 +1039,8 @@ function highlightSection(){
   </div>
   <div class="hl-ths" id="hlThumbs">${items.map(highlightThumb).join('')}</div>
 
-  ${h.linkUrl ? `<div class="phero-meta mt24"><a class="btn teal" href="${esc(h.linkUrl)}"${/^https?:/.test(h.linkUrl) ? ' target="_blank" rel="noopener noreferrer"' : ''}>${esc(h.linkText || 'Read more')} <span class="ar" aria-hidden="true">&rarr;</span></a></div>` : ''}
-  ${gallery.length ? '' : `<p class="xs mt24">${pht('Add photos and videos to this carousel under “Front page highlight” in the admin panel. Uploaded clips play here; for a full talk, paste a YouTube or Vimeo link instead.')}</p>`}
+  ${linkUrl ? `<div class="phero-meta mt24"><a class="btn teal" href="${esc(linkUrl)}"${/^https?:/.test(linkUrl) ? ' target="_blank" rel="noopener noreferrer"' : ''}>${esc(linkText || 'Read more')} <span class="ar" aria-hidden="true">&rarr;</span></a></div>` : ''}
+  ${gallery.length ? '' : `<p class="xs mt24">${pht('Add photos and videos to this carousel inside Page: Home — the “Highlight — photos & video” list. Uploaded clips play here; for a full talk, paste a YouTube or Vimeo link instead.')}</p>`}
 </div></section>`;
 }
 
