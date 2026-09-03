@@ -2418,15 +2418,16 @@ function oppDate(iso){
 }
 function oppWhere(o){
   const bits = [o.org, [o.city, o.country].filter(Boolean).join(', ')].filter(Boolean);
-  return bits.length ? bits.join(' · ') : 'Location not stated';
+  return bits.length ? bits.join(' · ') : '';
 }
 function oppRow(o){
   const st = o.status === 'Closing soon' ? 'soon' : (o.status === 'Closed' ? 'shut' : 'open');
+  const w = oppWhere(o);
   return `<a class="opp-i${o.africa?' af':''}" href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">
     <span class="opp-dl ${st}">${esc(oppDate(o.deadline))}</span>
     <span class="opp-m">
       <h4>${esc(o.title)}</h4>
-      <span class="sub">${esc(oppWhere(o))}</span>
+      ${w ? `<span class="sub">${esc(w)}</span>` : ''}
     </span>
     <span class="opp-t">
       ${o.africa?'<span class="af-b">Africa</span>':''}
@@ -2449,15 +2450,16 @@ function evtDates(e){
 }
 function evtWhere(e){
   const p = [e.city, e.country].filter(Boolean).join(', ');
-  return p || (e.online ? 'Online' : 'Location not stated');
+  return p || (e.online ? 'Online' : '');
 }
 function evtRow(e){
   const st = e.status === 'Running now' ? 'soon' : (e.status === 'Past' ? 'shut' : 'open');
+  const w = evtWhere(e);
   return `<a class="opp-i${e.africa?' af':''}" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">
     <span class="opp-dl ${st}">${esc(evtDates(e))}</span>
     <span class="opp-m">
       <h4>${esc(e.title)}</h4>
-      <span class="sub">${esc(evtWhere(e))}</span>
+      ${w ? `<span class="sub">${esc(w)}</span>` : ''}
     </span>
     <span class="opp-t">
       ${e.africa?'<span class="af-b">Africa</span>':''}
@@ -2780,7 +2782,7 @@ ${highlightSection()}
     ${sectionHead(
       cx('pages.home.pillarEyebrow', 'Our work'),
       cx('pages.home.pillarTitle', 'From Learning to Leadership'),
-      cx('pages.home.pillarLede', 'One pathway. Most people move through all four.')
+      cx('pages.home.pillarLede', '')
     )}
     <div class="grid g4">
       ${pillarCard('01','Educate','Webinars, workshops, resources and the AI Tutor.','educate','Education','#/education')}
@@ -3072,12 +3074,12 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
 
 <section class="sec flush"><div class="wrap">
   <div class="bignum">
-    ${[[cnum('stats.members',400),'+',cx('pages.impact.kpi1Key','Community members'),cx('pages.impact.kpi1Desc','Across the continent and the diaspora.')],
+    ${[[cnum('stats.members',350),'+',cx('pages.impact.kpi1Key','Community members'),cx('pages.impact.kpi1Desc','Across the continent and the diaspora.')],
        [cnum('stats.chapters',7),'',cx('pages.impact.kpi2Key','National chapters'),cx('pages.impact.kpi2Desc','Across North, West, East and Southern Africa.')],
        [cnum('stats.projects',4),'',cx('pages.impact.kpi3Key','Research projects'),cx('pages.impact.kpi3Desc','All open to new contributors.')],
        [cnum('stats.countries',52),'',cx('pages.impact.kpi4Key','Countries reached'),cx('pages.impact.kpi4Desc','Across the continent and the diaspora.')],
        [cnum('stats.events',10),'',cx('pages.impact.kpi5Key','Events held'),cx('pages.impact.kpi5Desc','Webinars, workshops and chapter events.')],
-       [cval('stats.partners'),'',cx('pages.impact.kpi6Key','Partner institutions'),cx('pages.impact.kpi6Desc','Institutions that believe in our vision.')]]
+       [cval('stats.partners'),'',cx('pages.impact.kpi6Key','Partner institutions'),cx('pages.impact.kpi6Desc','Institutions that trust our vision.')]]
       .map(([n,sfx,k,d])=>`<div class="bigcell rv">${n===''
         ? `<span class="v tbd">[ ?? ]</span>`
         : `<span class="v" data-count="${n}"${sfx?` data-suffix="${sfx}"`:''}>0</span>`}<span class="k">${k}</span><span class="d">${n===''?pht(cx('pages.impact.kpiSupply', 'supply the figure')):d}</span></div>`).join('')}

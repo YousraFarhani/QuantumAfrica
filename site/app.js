@@ -814,15 +814,16 @@ function oppDate(iso){
 }
 function oppWhere(o){
   const bits = [o.org, [o.city, o.country].filter(Boolean).join(', ')].filter(Boolean);
-  return bits.length ? bits.join(' · ') : 'Location not stated';
+  return bits.length ? bits.join(' · ') : '';
 }
 function oppRow(o){
   const st = o.status === 'Closing soon' ? 'soon' : (o.status === 'Closed' ? 'shut' : 'open');
+  const w = oppWhere(o);
   return `<a class="opp-i${o.africa?' af':''}" href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">
     <span class="opp-dl ${st}">${esc(oppDate(o.deadline))}</span>
     <span class="opp-m">
       <h4>${esc(o.title)}</h4>
-      <span class="sub">${esc(oppWhere(o))}</span>
+      ${w ? `<span class="sub">${esc(w)}</span>` : ''}
     </span>
     <span class="opp-t">
       ${o.africa?'<span class="af-b">Africa</span>':''}
@@ -845,15 +846,16 @@ function evtDates(e){
 }
 function evtWhere(e){
   const p = [e.city, e.country].filter(Boolean).join(', ');
-  return p || (e.online ? 'Online' : 'Location not stated');
+  return p || (e.online ? 'Online' : '');
 }
 function evtRow(e){
   const st = e.status === 'Running now' ? 'soon' : (e.status === 'Past' ? 'shut' : 'open');
+  const w = evtWhere(e);
   return `<a class="opp-i${e.africa?' af':''}" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">
     <span class="opp-dl ${st}">${esc(evtDates(e))}</span>
     <span class="opp-m">
       <h4>${esc(e.title)}</h4>
-      <span class="sub">${esc(evtWhere(e))}</span>
+      ${w ? `<span class="sub">${esc(w)}</span>` : ''}
     </span>
     <span class="opp-t">
       ${e.africa?'<span class="af-b">Africa</span>':''}
@@ -1473,7 +1475,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
        [cnum('stats.projects',4),'',cx('pages.impact.kpi3Key','Research projects'),cx('pages.impact.kpi3Desc','All open to new contributors.')],
        [cnum('stats.countries',52),'',cx('pages.impact.kpi4Key','Countries reached'),cx('pages.impact.kpi4Desc','Across the continent and the diaspora.')],
        [cnum('stats.events',10),'',cx('pages.impact.kpi5Key','Events held'),cx('pages.impact.kpi5Desc','Webinars, workshops and chapter events.')],
-       [cval('stats.partners'),'',cx('pages.impact.kpi6Key','Partner institutions'),cx('pages.impact.kpi6Desc','Institutions with a signed agreement.')]]
+       [cval('stats.partners'),'',cx('pages.impact.kpi6Key','Partner institutions'),cx('pages.impact.kpi6Desc','Institutions that trust our vision.')]]
       .map(([n,sfx,k,d])=>`<div class="bigcell rv">${n===''
         ? `<span class="v tbd">[ ?? ]</span>`
         : `<span class="v" data-count="${n}"${sfx?` data-suffix="${sfx}"`:''}>0</span>`}<span class="k">${k}</span><span class="d">${n===''?pht(cx('pages.impact.kpiSupply', 'supply the figure')):d}</span></div>`).join('')}
