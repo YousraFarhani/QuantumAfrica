@@ -115,7 +115,7 @@ SECTIONS = [
     ],
   },
   {
-    'key': 'highlight', 'title': 'Front page highlight', 'icon': 'star', 'kind': 'single', 'hidden': True,
+    'key': 'highlight', 'title': 'Front page highlight', 'icon': 'star', 'kind': 'single',
     'blurb': 'The thing you most want people to see when they arrive — usually your '
              'latest event. Photos and videos together in one carousel.',
     'fields': [

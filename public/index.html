@@ -3358,7 +3358,6 @@ PAGES.chapterDetail = (slug) => {
     ${c.leadRole && !c.lead ? `<p>${esc(c.leadRole)}</p>` : ''}
     ${c.email ? `<p class="small mt8"><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></p>` : ''}
   </div>` : '';
-  const description = (c.description && (c.description+'').trim()) ? pht(esc(c.description)) : pht(cx('pages.chapterDetail.heroLede', 'CHAPTER DESCRIPTION — 3 to 4 sentences: when the chapter formed, what it focuses on, which universities are involved, and what it is working towards'));
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
 <section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.chapterDetail.heroImage','Chapter hero — team or event photo','2400×1000 · JPG → assets/chapters/'+c.slug+'/hero.jpg','wide','network')}</div></section>
@@ -3369,7 +3368,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
     ${statusPill()}
   </div>
   <h1 class="mt16">Quantum ${esc(nm)}</h1>
-  <p class="lede">${description}</p>
   <div class="phero-meta"><a class="btn sm grad" href="#/join">${cx('pages.chapterDetail.heroBtn1', 'Join Quantum')} ${esc(nm)}</a><a class="btn sm ghost" href="#/contact">${cx('pages.chapterDetail.heroBtn2', 'Contact the chapter')}</a></div>
 </div></section>
 
@@ -3380,7 +3378,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
   )}
   ${leadBlock}
   <div class="grid g4 mt24">${showPeople.length ? showPeople.map(personCard).join('') : '<p class="small">'+pht(cx('pages.chapterDetail.emptyLeadNote', 'Add chapter leads in the admin panel under Team by setting a person\'s Group to "Chapter leads" and their Chapter field to this country.'))+'</p>'}</div>
-  <div class="mt48">${cimg('pages.chapterDetail.teamImage','Chapter team photo','1600×900 · JPG','wide','network')}</div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
@@ -3394,16 +3391,9 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <div class="grid g2">
-    <div><h3>${cx('pages.chapterDetail.univHead', 'Universities &amp; institutions')}</h3><div class="mt16 grid g2">${Array.from({length:4}).map(()=>`<div class="logo-cell" style="height:78px"><span class="mk" style="width:30px;height:30px"></span>LOGO</div>`).join('')}</div></div>
-  </div>
   <div class="mt48">
     <h3>${cx('pages.chapterDetail.reHead', 'Research &amp; education in')} ${esc(nm)}</h3>
     <div class="grid g3 mt16">${PROJECTS.slice(0,3).map(projectCard).join('')}</div>
-  </div>
-  <div class="mt48 panel">
-    <h5>${cx('pages.chapterDetail.socialHead', 'Chapter social media')}</h5>
-    <p class="small">${pht(cx('pages.chapterDetail.socialLi', 'LinkedIn'))} · ${pht(cx('pages.chapterDetail.socialX', 'X'))} · ${pht(cx('pages.chapterDetail.socialIg', 'Instagram'))} · ${pht(cx('pages.chapterDetail.socialChat', 'WhatsApp / Telegram group'))}</p>
   </div>
 </div></section>
 
@@ -4971,8 +4961,10 @@ function bioModal(slug){
           : `<p>${pht('FULL BIOGRAPHY — as many paragraphs as this person wants to write. Written by them, not about them.')}</p>`}
         <h4>Research interests</h4>
         <p>${(p.interests && p.interests.length) ? esc(p.interests.join(', ')) : pht('Comma-separated interests')}</p>
+        ${(p.group || '') === 'Chapter leads' ? `
         <h4>Chapter</h4>
         <p>${p.chapter ? esc(p.chapter) : pht('Chapter, if any')}</p>
+        ` : ''}
       </div>
     </div>`;
   document.body.appendChild(el);
