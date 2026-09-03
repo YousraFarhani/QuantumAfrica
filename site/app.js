@@ -1384,7 +1384,7 @@ PAGES.about = () => {
   const philBody    = cval('pages.about.philosophyBody') || cval('about.philosophy');
   const heroImagePath = cval('pages.about.heroImage') || cval('about.heroImage');
   const heroImageHtml = heroImagePath
-    ? `<div class="slot filled" style="aspect-ratio:5/3;overflow:hidden;border-radius:8px"><img src="${esc(mediaUrl(heroImagePath))}" alt="Wide community photograph" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
+    ? `<div class="slot filled" style="aspect-ratio:9/4;overflow:hidden;border-radius:8px"><img src="${esc(mediaUrl(heroImagePath))}" alt="Wide community photograph" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
     : cimg('pages.about.heroImage','Wide community photograph','1000×600 · JPG → assets/about/hero.jpg','wide','field');
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
