@@ -2839,10 +2839,9 @@ ${highlightSection()}
          ['Learning Resources','Courses, notebooks and reading lists.','dev','lattice'],
          ['University Programs','Quantum inside African universities.','future','network'],
          ['Mentorship','Guidance from people already in the field.','future','fringes']
-        ].map(([t,d,s,k])=>`<a class="card rv" href="${t.indexOf('Workshops')===0?'#/events/workshops':'#/education'}">
+        ].map(([t,d,,k])=>`<a class="card rv" href="${t.indexOf('Workshops')===0?'#/events/workshops':'#/education'}">
           <div class="card-media">${art(k)}</div>
           <div class="card-b">
-            <div class="card-meta"><span class="pill ${s}">${s==='current'?'Current':s==='dev'?'In development':'Future vision'}</span></div>
             <h4>${esc(t)}</h4><p>${esc(d)}</p>
             <div class="card-foot"><span class="link-a">Learn more <span class="ar" aria-hidden="true">→</span></span></div>
           </div></a>`).join('')}
@@ -3068,8 +3067,8 @@ PAGES.impact = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.impact.heroEyebrow', 'Our impact')}</span><i></i></div>
-  <h1>${cx('pages.impact.heroTitle', 'Our Impact in Numbers.')}</h1>
-  <p class="lede">${cx('pages.impact.heroLede', 'A snapshot of our measurable achievements and growing reach across Africa.')}</p>
+  <h1>${cx('pages.impact.heroTitle', 'What we have actually done.')}</h1>
+  <p class="lede">${cx('pages.impact.heroLede', 'Verified figures only. Anything uncounted is marked, never estimated.')}</p>
 </div></section>
 
 <section class="sec flush"><div class="wrap">
@@ -3084,25 +3083,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
         ? `<span class="v tbd">[ ?? ]</span>`
         : `<span class="v" data-count="${n}"${sfx?` data-suffix="${sfx}"`:''}>0</span>`}<span class="k">${k}</span><span class="d">${n===''?pht(cx('pages.impact.kpiSupply', 'supply the figure')):d}</span></div>`).join('')}
   </div>
-</div></section>
-
-<section class="sec"><div class="wrap">
-  ${sectionHead(
-    cx('pages.impact.detailEyebrow', 'Detail'),
-    cx('pages.impact.detailTitle', 'Where the numbers come from'),
-    cx('pages.impact.detailLede', 'Each area needs its own count and the period it covers.')
-  )}
-  <div class="tw"><table>
-    <thead><tr><th>${cx('pages.impact.detailCol1', 'Area')}</th><th>${cx('pages.impact.detailCol2', 'What we count')}</th><th>${cx('pages.impact.detailCol3', 'Figure')}</th></tr></thead>
-    <tbody>
-      <tr><td>${cx('pages.impact.row1Area', 'Community')}</td><td>${cx('pages.impact.row1Count', 'Members, countries represented, active chapter participants')}</td><td>${cx('pages.impact.row1Fig', '400+ members')}</td></tr>
-      <tr><td>${cx('pages.impact.row2Area', 'Education')}</td><td>${cx('pages.impact.row2Count', 'Webinars delivered, workshop participants, hours taught, resources published')}</td><td>${pht(cx('pages.impact.row2Fig', 'supply'))}</td></tr>
-      <tr><td>${cx('pages.impact.row3Area', 'Research')}</td><td>${cx('pages.impact.row3Count', 'Active projects, contributors, repositories, publications')}</td><td>${cx('pages.impact.row3Fig', '4 projects')}</td></tr>
-      <tr><td>${cx('pages.impact.row4Area', 'Chapters')}</td><td>${cx('pages.impact.row4Count', 'Chapters launched, universities engaged, chapter-run events')}</td><td>${cx('pages.impact.row4Fig', '7 chapters')}</td></tr>
-      <tr><td>${cx('pages.impact.row5Area', 'Events')}</td><td>${cx('pages.impact.row5Count', 'Total events, attendees, speakers, speaker countries')}</td><td>${cx('pages.impact.row5Fig', '10 events')}</td></tr>
-      <tr><td>${cx('pages.impact.row6Area', 'Partnerships')}</td><td>${cx('pages.impact.row6Count', 'Partner institutions, joint activities, opportunities circulated')}</td><td>${pht(cx('pages.impact.row6Fig', 'supply'))}</td></tr>
-    </tbody>
-  </table></div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
@@ -3142,8 +3122,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'
        [cx('pages.education.p4Title','Learning Resources'),cx('pages.education.p4Desc','A curated library — courses, notebooks, reading lists, tools and recordings, filterable by topic and level.'),'dev','#/education'],
        [cx('pages.education.p5Title','Mentorship'),cx('pages.education.p5Desc','Connecting students with researchers and professionals for guidance on study, research and careers.'),'future','#/join'],
        [cx('pages.education.p6Title','University Programs'),cx('pages.education.p6Desc','Structured quantum education inside African universities: curriculum support, faculty training, student chapters.'),'future','#/universities']
-      ].map(([t,d,s,h])=>`<a class="card pad rv" href="${h}"><div class="card-b" style="padding:0">
-        <div class="card-meta"><span class="pill ${s}">${s==='current'?cx('pages.education.statusCurrent','Current'):s==='dev'?cx('pages.education.statusDev','In development'):cx('pages.education.statusFuture','Future vision')}</span></div>
+      ].map(([t,d,,h])=>`<a class="card pad rv" href="${h}"><div class="card-b" style="padding:0">
         <h3>${esc(t)}</h3><p>${esc(d)}</p>
         <div class="card-foot"><span class="link-a">${cx('pages.education.cardExplore','Explore')} <span aria-hidden="true">→</span></span></div></div></a>`).join('')}
   </div>
