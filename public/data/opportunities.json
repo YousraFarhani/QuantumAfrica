@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T15:58:26+00:00",
+ "updated": "2026-09-03T19:15:32+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "job",
  "sources": {
@@ -189,6 +189,21 @@
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/postdoc-theoretical-quantum-physics-quantum-sensing-and-tests-fundamental-physics",
    "first_seen": "2026-09-02T21:42:19+00:00"
+  },
+  {
+   "id": "29e50d27fb",
+   "kind": "job",
+   "title": "Postdoctoral Researcher – Quantum Computation for Quantum Many-body Physics",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Postdoc",
+   "deadline": "2026-09-20",
+   "status": "Closing soon",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/position/postdoctoral-researcher-quantum-computation-quantum-many-body-physics",
+   "first_seen": "2026-09-03T19:15:32+00:00"
   },
   {
    "id": "51f4323ee8",
@@ -491,24 +506,9 @@
    "first_seen": "2026-08-30T05:16:53+00:00"
   },
   {
-   "id": "6d3d914dd2",
+   "id": "203898adca",
    "kind": "job",
-   "title": "Research Scientist (Theory) Quantum Algorithms",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Research fellow",
-   "deadline": "2026-12-31",
-   "status": "Open",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/position/research-scientist-theory-quantum-algorithms",
-   "first_seen": "2026-08-30T05:16:53+00:00"
-  },
-  {
-   "id": "1a17dc150e",
-   "kind": "job",
-   "title": "Field Marketing Director, APAC",
+   "title": "Development Engineer Hardware Verification",
    "org": "",
    "city": "",
    "country": "",
@@ -517,8 +517,23 @@
    "deadline": null,
    "status": "Open",
    "source": "qjoblist",
-   "url": "https://www.quantumjobslist.com/job/field-marketing-director-apac",
-   "first_seen": "2026-09-02T21:42:19+00:00"
+   "url": "https://www.quantumjobslist.com/job/development-engineer-hardware-verification",
+   "first_seen": "2026-09-03T19:15:32+00:00"
+  },
+  {
+   "id": "bb0f294972",
+   "kind": "job",
+   "title": "Hardware Engineer – Signal & Power Integrity",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Industry",
+   "deadline": null,
+   "status": "Open",
+   "source": "qjoblist",
+   "url": "https://www.quantumjobslist.com/job/hardware-development-engineer---signal-power-integrity",
+   "first_seen": "2026-09-03T19:15:32+00:00"
   },
   {
    "id": "260638368e",
@@ -534,21 +549,6 @@
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/junior-fabrication-engineer",
    "first_seen": "2026-08-30T05:16:53+00:00"
-  },
-  {
-   "id": "2f28e1cf2c",
-   "kind": "job",
-   "title": "Manager - Quantum Development Tools",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Industry",
-   "deadline": null,
-   "status": "Open",
-   "source": "qjoblist",
-   "url": "https://www.quantumjobslist.com/job/manager---quantum-development-tools",
-   "first_seen": "2026-09-02T21:42:19+00:00"
   },
   {
    "id": "86caba2448",
@@ -596,6 +596,21 @@
    "first_seen": "2026-08-30T05:16:53+00:00"
   },
   {
+   "id": "95a6e21d84",
+   "kind": "job",
+   "title": "Qubit Characterization Engineer",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Industry",
+   "deadline": null,
+   "status": "Open",
+   "source": "qjoblist",
+   "url": "https://www.quantumjobslist.com/job/qubit-characterization-engineer",
+   "first_seen": "2026-09-03T19:15:32+00:00"
+  },
+  {
    "id": "ffff8bfaf5",
    "kind": "job",
    "title": "R&D Fabrication Engineer",
@@ -639,21 +654,6 @@
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/senior-postdoctoral-position-quantum-error-correction-berlin",
    "first_seen": "2026-08-30T05:16:53+00:00"
-  },
-  {
-   "id": "6470a7b812",
-   "kind": "job",
-   "title": "Software Engineer – Hybrid Quantum-HPC Orchestration",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Industry",
-   "deadline": null,
-   "status": "Open",
-   "source": "qjoblist",
-   "url": "https://www.quantumjobslist.com/job/software-engineer---hybrid-quantum-hpc-orchestration-2rtrt",
-   "first_seen": "2026-09-02T21:42:19+00:00"
   },
   {
    "id": "e4e8154297",
