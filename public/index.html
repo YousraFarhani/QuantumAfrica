@@ -2399,15 +2399,14 @@ function projectCard(p){
     </div></a>`;
 }
 function chapterCard(c){
-  return `<a class="card rv" href="#/chapters/${c.slug}">
+  return `<div class="card rv">
     <div class="card-media">${media('network','Chapter team photo','1600×900 · JPG')}</div>
     <div class="card-b">
       <div class="card-meta"><span class="tag" style="font-size:1rem;letter-spacing:0" aria-hidden="true">${c.flag||'?'}</span>${statusPill()}</div>
       <h4>Quantum ${esc(c.name)}</h4>
       <p>${pht('Chapter description — 2 sentences')}</p>
       <div class="kv"><b>Lead</b> ${pht('Chapter lead name')}</div>
-      <div class="card-foot"><span class="link-a">Visit chapter <span aria-hidden="true">→</span></span></div>
-    </div></a>`;
+    </div></div>`;
 }
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function oppDate(iso){
@@ -2531,9 +2530,9 @@ function africaMap(){
     const b = AFRICA.bbox[c.code];
     const x = ((b[0]+b[2])/2 - v[0]) / v[2] * 100;
     const y = ((b[1]+b[3])/2 - v[1]) / v[3] * 100;
-    return `<a class="mk" href="#/chapters/${c.slug}" data-code="${c.code}" style="left:${x.toFixed(2)}%;top:${y.toFixed(2)}%"
+    return `<div class="mk" data-code="${c.code}" style="left:${x.toFixed(2)}%;top:${y.toFixed(2)}%; cursor:default"
               aria-label="Quantum ${esc(c.name)} chapter">
-        <span class="fg" aria-hidden="true">${c.flag}</span><span class="nm">${esc(c.name)}</span></a>`;
+        <span class="fg" aria-hidden="true">${c.flag}</span><span class="nm">${esc(c.name)}</span></div>`;
   }).join('');
   return `<div class="map-box">
     <div class="mapwrap" style="aspect-ratio:${v[2]} / ${v[3]}">
@@ -2552,11 +2551,11 @@ function chapterList(){
   return `<div>
     <div class="sec-idx" style="margin-bottom:8px"><span class="lbl">Chapters</span><i></i></div>
     <div class="ch-list">
-      ${CHAPTERS.map(c=>`<a class="ch-row" href="#/chapters/${c.slug}" data-code="${c.code||''}">
+      ${CHAPTERS.map(c=>`<div class="ch-row" data-code="${c.code||''}" style="cursor:default">
         <span class="fl" aria-hidden="true">${c.flag || '?'}</span>
         <span class="nm">Quantum ${esc(c.name)}</span>
         <span class="cc">${c.code ? c.code.toUpperCase() : '—'}</span>
-      </a>`).join('')}
+      </div>`).join('')}
     </div>
     <div class="panel mt24" style="background:var(--grad-soft);border-color:var(--line)">
       <h5>No chapter where you are?</h5>
@@ -2989,7 +2988,7 @@ PAGES.about = () => {
   const philBody    = cval('pages.about.philosophyBody') || cval('about.philosophy');
   const heroImagePath = cval('pages.about.heroImage') || cval('about.heroImage');
   const heroImageHtml = heroImagePath
-    ? `<div class="slot filled"><img src="${esc(mediaUrl(heroImagePath))}" alt="Wide community photograph" loading="lazy"></div>`
+    ? `<div class="slot filled" style="aspect-ratio:5/3;overflow:hidden;border-radius:8px"><img src="${esc(mediaUrl(heroImagePath))}" alt="Wide community photograph" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
     : cimg('pages.about.heroImage','Wide community photograph','1000×600 · JPG → assets/about/hero.jpg','wide','field');
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
@@ -2999,8 +2998,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
   <p class="lede">${esc(lede)}</p>
 </div></section>
 
-<section class="sec flush" style="padding-top:0">
-  <div class="wrap">${heroImageHtml}</div>
+<section class="sec" style="padding-top:10px">
+  <div class="wrap" style="max-width:640px;margin:0 auto">${heroImageHtml}</div>
 </section>
 
 <section class="sec"><div class="wrap"><div class="side">
