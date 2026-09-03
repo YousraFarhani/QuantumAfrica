@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T14:51:28+00:00",
+ "updated": "2026-09-03T14:58:18+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -29,6 +29,24 @@
      "a": " We are connecting Africa to ",
      "b": "the Quantum World.",
      "lede": "We connect African talent and institutions with education, research and global opportunities in quantum technology."
+    }
+   ],
+   "slides": [
+    {
+     "image": "media/856c43197563ecf6.jpg",
+     "caption": "QML4Africa - Rwanda"
+    },
+    {
+     "video": "media/6b2f99361bae6521.mp4",
+     "caption": "Quantum Africa"
+    },
+    {
+     "video": "media/90ac7c7f0f18ff81.png",
+     "caption": "QML4Africa - Lagos"
+    },
+    {
+     "video": "media/54e419fc0a87e28c.png",
+     "caption": "Quantum Africa"
     }
    ]
   },
