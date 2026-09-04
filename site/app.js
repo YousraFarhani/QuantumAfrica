@@ -464,12 +464,34 @@ const CONF_SC_PAST = [
 ];
 
 let EVENTS = [
-  {slug:'qml4africa-2', type:'Workshop', when:'past', series:'QML4Africa', edition:'02',
+  {slug:'qml4africa-2', type:'Workshop', when:'past', series:'QML4Africa', edition:'02', status:'Delivered',
    title:'Quantum Machine Learning 4 Africa — Second Edition',
-   n:'Quantum Machine Learning 4 Africa — Second Edition'},
-  {slug:'qml4africa-1', type:'Workshop', when:'past', series:'QML4Africa', edition:'01',
+   n:'Quantum Machine Learning 4 Africa — Second Edition',
+   subhead:'Advancing Quantum Machine Learning',
+   lede:'Building on the foundations of the first edition, the second workshop explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.',
+   description:'Building on the foundations of the first edition, the second workshop explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.',
+   start:'2026-08-01', end:'2026-08-05', city:'Lagos', country:'Nigeria',
+   editionUrl:'https://sites.google.com/view/qml4africa/home',
+   image:'/media/edition2.jpeg',
+   org:'DeepLearning Indaba'},
+  {slug:'qml4africa-1', type:'Workshop', when:'past', series:'QML4Africa', edition:'01', status:'Delivered',
    title:'Quantum Machine Learning 4 Africa — First Edition',
-   n:'Quantum Machine Learning 4 Africa — First Edition'},
+   n:'Quantum Machine Learning 4 Africa — First Edition',
+   subhead:'Introduction to Quantum Machine Learning',
+   lede:'An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and practical implementation using quantum programming tools.',
+   description:'An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and practical implementation using quantum programming tools.',
+   start:'2025-09-08', end:'2025-09-12', city:'Kigali', country:'Rwanda',
+   editionUrl:'https://sites.google.com/view/qml4africa/past-editions',
+   image:'/media/edition1.JPG',
+   org:'DeepLearning Indaba'},
+  {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
+   title:'Quantum Machine Learning 4 Africa — Third Edition',
+   n:'Quantum Machine Learning 4 Africa — Third Edition',
+   subhead:'Third Edition',
+   lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
+   description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
+   image:'',
+   org:'DeepLearning Indaba'},
   {slug:'webinar-01', type:'Webinar',  when:'upcoming', n:'Quantum Africa Webinar — session title'},
   {slug:'workshop-01',type:'Workshop', when:'upcoming', n:'Quantum Africa Workshop — title'},
   {slug:'webinar-02', type:'Webinar',  when:'upcoming', n:'Quantum Africa Webinar — session title'},
@@ -867,6 +889,37 @@ function oppRow(o){
       <span class="tag">${esc(o.type)}</span>
       <span class="pill ${o.status==='Closed'?'past':'current'}">${esc(o.status)}</span>
       <span class="src">${o.source === 'own' ? 'Quantum Africa' : esc((OPP_SOURCES[o.source]||{}).name || o.source)}</span>
+    </span>
+  </a>`;
+}
+function oppRowHome(o, i){
+  const st = o.status === 'Closing soon' ? 'soon' : (o.status === 'Closed' ? 'shut' : 'open');
+  const w = oppWhere(o);
+  const num = String(i+1).padStart(2,'0');
+  const ttype = String(o.type||'').toLowerCase();
+  let iconName = 'doc';
+  if(/intern|student/.test(ttype)) iconName='user';
+  else if(/phd|master|fellow|postdoc|research|grant|position|school/.test(ttype)) iconName='scholar';
+  else if(/job|role|work|career|engineer|scientist/.test(ttype)) iconName='ui';
+  else if(/award|prize|competition|hackathon/.test(ttype)) iconName='data';
+  return `<a class="opp-h-card${o.africa?' af':''}" href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">
+    <span class="opp-h-accent" aria-hidden="true"></span>
+    <span class="opp-h-badge"><span>${num}</span></span>
+    <span class="opp-h-icon" aria-hidden="true">${svgIcon(iconName, 20)}</span>
+    <span class="opp-h-body">
+      <span class="opp-h-head">
+        <h4>${esc(o.title)}</h4>
+        <span class="opp-h-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </span>
+      <span class="opp-h-meta">
+        ${w ? `<span class="opp-h-where">${svgIcon('image', 13)} ${esc(w)}</span>` : ''}
+        <span class="opp-h-date ${st}">${svgIcon('doc', 13)} ${esc(oppDate(o.deadline))}</span>
+      </span>
+      <span class="opp-h-tags">
+        ${o.africa?'<span class="af-b">Africa</span>':''}
+        <span class="tag">${esc(o.type)}</span>
+        <span class="pill ${o.status==='Closed'?'past':'current'}">${esc(o.status)}</span>
+      </span>
     </span>
   </a>`;
 }
@@ -1312,7 +1365,11 @@ ${highlightSection()}
       cx('pages.home.opportunitiesLede', ' '),
       {t:cx('pages.home.opportunitiesCta', 'Explore opportunities'),h:'#/opportunities'}
     )}
-    <div class="opps" id="opHome">${oppPick(5).map(oppRow).join('')}</div>
+    <div class="home-opps" id="opHome">
+      <div class="home-opps-wrap">
+        ${oppPick(5).map((o,i)=>oppRowHome(o,i)).join('')}
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1699,6 +1756,19 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
     <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out2Head', 'Open source')}</h4><p>${cx('pages.research.out2BodyPrefix', 'Public repositories from Quantum Africa projects.')} ${pht(cx('pages.research.out2Body', 'GitHub organisation URL'))}</p></div></div>
     <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out3Head', 'Open roles')}</h4><p>${cx('pages.research.out3BodyPrefix', 'Contributor, student researcher, mentor.')}<a class="link-a mt16" href="#/join" style="display:inline-flex">${cx('pages.research.out3Cta', 'Get involved')} <span class="ar" aria-hidden="true">&rarr;</span></a></p></div></div>
   </div>
+</div></section>
+
+<section class="sec tint"><div class="wrap">
+  <div class="split">
+    <div>${sectionHead(
+      cx('pages.research.propEyebrow', 'Propose'),
+      cx('pages.research.propTitle', 'Bring us a project'),
+      cx('pages.research.propLede', 'If you have a project that needs collaborators, students or compute, tell us about it.')
+    )}
+      <a class="btn" href="#/contact">${cx('pages.research.propBtn', 'Propose a project')} <span class="ar" aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div>${rimg('/media/projects/bring.png','Optional: a photo of the team at work','1600×900 · JPG','tall','lightcone')}</div>
+  </div>
 </div></section>`;
 
 /* ---------- RESEARCH DETAIL ---------- */
@@ -1974,13 +2044,13 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:e.type}])}
 
 /* ---------- QML4AFRICA WORKSHOP SERIES ---------- */
 PAGES.workshops = () => {
-  const eds = EVENTS.filter(e => e.series === 'QML4Africa').sort((a,b)=>a.edition.localeCompare(b.edition));
+  const eds = EVENTS.filter(e => e.series === 'QML4Africa' && e.when !== 'upcoming').sort((a,b)=>a.edition.localeCompare(b.edition));
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.workshops.heroEyebrow', 'Workshop series')}</span><i></i></div>
   <h1>${cx('pages.workshops.heroTitle', 'Quantum Machine Learning 4 Africa')}</h1>
-  <p class="lede">${cx('pages.workshops.heroLede', 'A hands-on workshop series bringing quantum machine learning to African students and researchers. Two editions delivered.')}</p>
+  <p class="lede">${cx('pages.workshops.heroLede', 'A hands-on workshop series designed to equip African students and researchers with practical skills in quantum machine learning, combining foundational concepts with programming and real-world applications.')}</p>
   <div class="phero-meta"><a class="btn teal" href="#/join">${cx('pages.workshops.heroBtn1', 'Join the next edition')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/events">${cx('pages.workshops.heroBtn2', 'All events')}</a></div>
   ${africaWatermark('wm-hero')}
 </div></section>
@@ -1988,50 +2058,81 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
 <section class="sec flush"><div class="wrap">
   <div class="series-bar">
     <span>${cx('pages.workshops.barLbl1','Series')} <b>QML4Africa</b></span>
-    <span>${cx('pages.workshops.barLbl2','Editions delivered')} <b>${cx('pages.workshops.barVal2','2')}</b></span>
-    <span>${cx('pages.workshops.barLbl3','Format')} <b>${pht(cx('pages.workshops.barVal3','online / in person'))}</b></span>
-    <span>${cx('pages.workshops.barLbl4','Participants')} <b>${pht(cx('pages.workshops.barVal4','total'))}</b></span>
-    <span>${cx('pages.workshops.barLbl5','Partners')} <b>${pht(cx('pages.workshops.barVal5','count'))}</b></span>
+    <span>${cx('pages.workshops.barLbl2','Editions delivered')} <b>2</b></span>
+    <span>${cx('pages.workshops.barLbl3','Format')} <b>Online &amp; in-person</b></span>
+    <span>${cx('pages.workshops.barLbl4','Participants')} <b>${pht(cx('pages.workshops.barVal4','Total participants'))}</b></span>
+    <span>${cx('pages.workshops.barLbl5','Partners')} <b>${pht(cx('pages.workshops.barVal5','Number of partners'))}</b></span>
   </div>
   <div class="editions">
-    ${eds.map((e,i)=>`<a class="edition rv" href="#/events/${e.slug}">
-      ${patternPanel('soft')}
-      <span class="en">${esc(e.edition)}</span>
-      <h3>${esc(e.title.replace('Quantum Machine Learning 4 Africa — ',''))}</h3>
-      <p>${pht(cx('pages.workshops.editionCopy'+(i+1), 'One or two sentences on what this edition covered and who it was for'))}</p>
-      <span class="efoot">
-        <span class="pill current">${cx('pages.workshops.editionDelivered', 'Delivered')}</span>
-        <span class="kv" style="color:rgba(255,255,255,.6)">${pht(cx('pages.workshops.editionDates'+(i+1), 'DATES'))}</span>
-        <span class="link-a">${cx('pages.workshops.editionPage', 'Edition page')} <span class="ar" aria-hidden="true">&rarr;</span></span>
-      </span>
-    </a>`).join('')}
+    ${eds.map((e,i)=>{
+      const datesLine =
+        e.edition==='01' ? 'Delivered September 2025, Kigali, Rwanda' :
+        e.edition==='02' ? 'Delivered August 2026, Lagos, Nigeria' : '';
+      const editionHref = e.editionUrl ? e.editionUrl : `#/events/${e.slug}`;
+      const cardImg = e.image
+        ? `<img class="edition-photo" src="${esc(mediaUrl(e.image))}" alt="${esc(e.title)}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0">`
+        : '';
+      const titleShort = e.subhead || e.title.replace('Quantum Machine Learning 4 Africa — ','');
+      const copy =
+        e.edition==='01' ? cx('pages.workshops.editionCopy1','An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and practical implementation using quantum programming tools.') :
+        e.edition==='02' ? cx('pages.workshops.editionCopy2','Building on the foundations of the first edition, the second workshop explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.') :
+        '';
+      const pillCls = (e.when==='upcoming'||e.status==='Planned') ? 'future' : 'current';
+      return `<a class="edition rv" href="${editionHref}" ${e.editionUrl?'target="_blank" rel="noopener noreferrer"':''} style="position:relative;overflow:hidden">
+        ${cardImg || patternPanel('soft')}
+        <div style="position:relative;z-index:2">
+          <span class="en">${esc(e.edition)}</span>
+          <h3>${esc(titleShort)}</h3>
+          ${copy ? `<p>${esc(copy)}</p>` : ''}
+          <span class="efoot">
+            <span class="pill ${pillCls}">${esc(e.status||(e.when==='upcoming'?'Upcoming':'Delivered'))}</span>
+            ${datesLine ? `<span class="kv" style="color:rgba(255,255,255,.72)">${esc(datesLine)}</span>` : ''}
+            <span class="link-a">${cx('pages.workshops.editionPage', 'Edition page')} <span class="ar" aria-hidden="true">&rarr;</span></span>
+          </span>
+        </div>
+      </a>`;
+    }).join('')}
     <div class="edition planned rv">
       ${patternPanel('soft','light')}
-      <span class="en">03</span>
-      <h3>${cx('pages.workshops.planTitle', 'Third edition')}</h3>
-      <p>${pht(cx('pages.workshops.planBody', 'Confirm whether a third edition is planned, and when. Remove this panel if not.'))}</p>
-      <span class="efoot"><span class="pill future">${cx('pages.workshops.planPill', 'Planned')}</span>
-        <a class="link-a" href="#/join">${cx('pages.workshops.planCta', 'Register interest')} <span class="ar" aria-hidden="true">&rarr;</span></a></span>
+      <div style="position:relative;z-index:2">
+        <span class="en">03</span>
+        <h3>${cx('pages.workshops.planTitle', 'Third Edition')}</h3>
+        <p>${cx('pages.workshops.planBody', 'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.')}</p>
+        <span class="efoot"><span class="pill future">${cx('pages.workshops.planPill', 'Planned')}</span>
+          <a class="link-a" href="#/join">${cx('pages.workshops.planCta', 'Register interest')} <span class="ar" aria-hidden="true">&rarr;</span></a></span>
+      </div>
     </div>
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
   ${sectionHead(
-    cx('pages.workshops.seriesEyebrow', 'The series'),
-    cx('pages.workshops.seriesTitle', 'What QML4Africa is'),
-    cx('pages.workshops.seriesLede', 'A practical route into quantum machine learning for people who already have the maths and the code, and need the quantum.')
+    cx('pages.workshops.seriesEyebrow', 'The Series'),
+    cx('pages.workshops.seriesTitle', 'What QML4Africa Is'),
+    'QML4Africa is a practical learning initiative connecting African students and researchers with the emerging field of quantum machine learning.'
   )}
+  <div class="prose mt24" style="max-width:72ch;margin:0 auto 28px">
+    <p>The series combines accessible theory, hands-on programming, expert-led sessions, and collaborative learning to help participants move from understanding quantum machine learning concepts to implementing them in practice.</p>
+  </div>
   <div class="grid g3">
-    ${[[cx('pages.workshops.card1Title','Who it is for'),cx('pages.workshops.card1Body','Students and researchers in physics, mathematics, computing and data science.')],
-       [cx('pages.workshops.card2Title','What it covers'),null],
-       [cx('pages.workshops.card3Title','What you leave with'),null]
-      ].map(([t,d])=>`<div class="card pad rv"><div class="card-b">
-        <h4>${esc(t)}</h4><p>${d ? esc(d) : pht(cx('pages.workshops.cardBody', 'Supply this — three or four lines'))}</p></div></div>`).join('')}
+    <div class="card pad rv"><div class="card-b">
+      <h4>${cx('pages.workshops.card1Title','Who It Is For')}</h4>
+      <p>${cx('pages.workshops.card1Body','Students and researchers in physics, mathematics, computer science, artificial intelligence, and data science, as well as learners with a strong interest in exploring the intersection of quantum computing and machine learning.')}</p>
+    </div></div>
+    <div class="card pad rv"><div class="card-b">
+      <h4>${cx('pages.workshops.card2Title','What It Covers')}</h4>
+      <p>${cx('pages.workshops.card2Body','Quantum computing fundamentals, quantum machine learning concepts, quantum circuits and algorithms, variational methods, quantum neural networks, and practical implementation using quantum programming frameworks.<br><br>Participants work through hands-on examples and exercises designed to connect theoretical concepts with practical quantum machine learning applications.')}</p>
+    </div></div>
+    <div class="card pad rv"><div class="card-b">
+      <h4>${cx('pages.workshops.card3Title','What You Leave With')}</h4>
+      <p>${cx('pages.workshops.card3Body','Participants gain a practical foundation in quantum machine learning, experience working with quantum programming tools, and a clearer understanding of how quantum methods can be applied to machine learning problems.<br><br>The workshops also provide opportunities to connect with researchers, peers, and the wider African quantum community and identify pathways for further learning and research.')}</p>
+    </div></div>
   </div>
   <div class="mt48 grid g2">
-    <div class="panel"><h5>${cx('pages.workshops.panel1Head', 'Organisers &amp; partners')}</h5><p class="small">${pht(cx('pages.workshops.panel1Body', 'Who ran each edition, and which institutions co-hosted'))}</p></div>
-    <div class="panel"><h5>${cx('pages.workshops.panel2Head', 'Recordings &amp; materials')}</h5><p class="small">${pht(cx('pages.workshops.panel2Body', 'Video links, slides and notebooks for each edition'))}</p></div>
+    <div class="panel"><h5>${cx('pages.workshops.panel1Head', 'Organisers &amp; Partners')}</h5>
+      <p class="small">${cx('pages.workshops.panel1Body', 'QML4Africa is organized in collaboration with DeepLearning Indaba.')}</p></div>
+    <div class="panel"><h5>${cx('pages.workshops.panel2Head', 'Recordings &amp; materials')}</h5>
+      <p class="small">${pht(cx('pages.workshops.panel2Body', 'Video links, slides and notebooks for each edition'))}</p></div>
   </div>
 </div></section>
 
@@ -2041,7 +2142,11 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     cx('pages.workshops.galleryTitle', 'From the workshops'),
     cx('pages.workshops.galleryLede', '')
   )}
-  <div class="grid g4">${['circuit','kernel','lattice','network'].map((k,i)=>cimg('pages.workshops.galleryImage'+(i+1),'Workshop photograph','1600×900 · JPG','short',k)).join('')}</div>
+  <div class="grid g4">${['/media/edition1.JPG','/media/edition2.jpeg'].filter(Boolean).concat(['kernel','lattice']).map((src,i) => {
+    const isImg = typeof src === 'string' && /\\.(jpe?g|png|webp|svg)/i.test(src);
+    if (isImg) return `<div class="slot short filled rv"><img src="${esc(mediaUrl(src))}" alt="Edition ${i+1} photograph" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`;
+    return cimg('pages.workshops.galleryImage'+(i+1),'Workshop photograph','1600×900 · JPG','short',src);
+  }).join('')}</div>
 </div></section>
 
 <section class="cta-band">
@@ -3670,7 +3775,7 @@ function loadFeeds(){
       const bar = document.querySelector('.filters[data-filter="opps"]');
       if(bar) applyFilters(bar);
       const home = document.getElementById('opHome');
-      if(home) home.innerHTML = oppPick(5).map(oppRow).join('');
+      if(home) home.innerHTML = `<div class="home-opps-wrap">${oppPick(5).map((o,i)=>oppRowHome(o,i)).join('')}</div>`;
     })
     .catch(()=>{ OPP_META.tried = true; })
     .finally(oppFeedNote);
