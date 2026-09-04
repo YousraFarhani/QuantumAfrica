@@ -764,6 +764,31 @@ const pht = t => `<span class="ph-inline">[ ${esc(t)} ]</span>`;
 const avatar = (photo) => photo
   ? `<div class="ph-avatar filled"><img src="${esc(_assetSrc(photo))}" alt="" loading="lazy"></div>`
   : `<div class="ph-avatar">${svgIcon('user',40)}</div>`;
+const circuitRing = (photo) => {
+  const ticks = Array.from({length:8}).map((_,i)=>{
+    const a = (i * 45) * Math.PI/180;
+    const r1 = 55, r2 = 61;
+    const x1 = 64 + Math.cos(a)*r1, y1 = 64 + Math.sin(a)*r1;
+    const x2 = 64 + Math.cos(a)*r2, y2 = 64 + Math.sin(a)*r2;
+    return `<line class="tick" x1="${x1.toFixed(2)}" y1="${y1.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${y2.toFixed(2)}"/>`;
+  }).join('');
+  const dots = Array.from({length:6}).map((_,i)=>{
+    const a = ((i*60)+22) * Math.PI/180;
+    const r = 63.5;
+    const cx = 64 + Math.cos(a)*r, cy = 64 + Math.sin(a)*r;
+    return `<circle class="dots" cx="${cx.toFixed(2)}" cy="${cy.toFixed(2)}" r="1.4"/>`;
+  }).join('');
+  return `<div class="vq-circuit" aria-hidden="true">
+  <svg class="circ" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <circle class="ring" cx="64" cy="64" r="60.5"/>
+    <circle class="ring" cx="64" cy="64" r="52"/>
+    <g>${ticks}</g>
+    <g>${dots}</g>
+    <circle class="ring-inner" cx="64" cy="64" r="56.5"/>
+  </svg>
+  <div class="av">${avatar(photo || '')}</div>
+</div>`;
+};
 const statusPill = () => `<span class="pill current">Active</span>`;
 let __sec = 0;
 const sectionHead = (eyebrow, title, lede, cta) => {
@@ -1347,9 +1372,15 @@ ${highlightSection()}
     )}
     <div class="grid g3">
       ${(clist('pages.home.communityQuotes') || []).concat(Array.from({length: Math.max(0, 3 - (clist('pages.home.communityQuotes') || []).length)})
-          .map(()=>({}))).map(q=>`<div class="quote rv"><span class="qm" aria-hidden="true">“</span>
-        <p>${q.quote ? esc(q.quote) : pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p>
-        <div class="who">${avatar(q.photo || '')}<span><span class="nm" style="display:block;font-family:var(--f);font-weight:600;font-size:.92rem">${q.name ? esc(q.name) : pht('Name')}</span><span class="xs">${(q.role ? esc(q.role) + ' · ' : (q.name ? '' : pht('Role') + ' · ')) + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution'))) + (q.country ? ' · ' + esc(q.country) : (q.name ? '' : ' · ' + pht('Country')))}</span></span></div>
+          .map(()=>({}))).map(q=>`<div class="vq rv">
+        <span class="vq-quote-tl" aria-hidden="true">“</span>
+        <span class="vq-quote-br" aria-hidden="true">“</span>
+        <div class="vq-head">${circuitRing(q.photo || '')}</div>
+        <div class="vq-body"><p>${q.quote ? esc(q.quote) : pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p></div>
+        <div class="vq-who">
+          <span class="nm">${q.name ? esc(q.name) : pht('Name')}</span>
+          <span class="xs">${(q.role ? esc(q.role) + ' · ' : (q.name ? '' : pht('Role') + ' · ')) + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution'))) + (q.country ? ' · ' + esc(q.country) : (q.name ? '' : ' · ' + pht('Country')))}</span>
+        </div>
       </div>`).join('')}
     </div>
   </div>
@@ -2015,7 +2046,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
   ${sectionHead(
     cx('pages.workshops.galleryEyebrow', 'Gallery'),
     cx('pages.workshops.galleryTitle', 'From the workshops'),
-    cx('pages.workshops.galleryLede', 'Replace these with photographs from each edition.')
+    cx('pages.workshops.galleryLede', '')
   )}
   <div class="grid g4">${['circuit','kernel','lattice','network'].map((k,i)=>cimg('pages.workshops.galleryImage'+(i+1),'Workshop photograph','1600×900 · JPG','short',k)).join('')}</div>
 </div></section>

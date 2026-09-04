@@ -767,6 +767,98 @@ tr:last-child td{border-bottom:0}
 .quote .who .ph-avatar{width:44px;height:44px;flex:none}
 .quote .qm{display:none}
 
+/* ---------- ENHANCED VOICES (Community section 09) ---------- */
+.vq{
+  --vq-gold: #c9a55b;
+  --vq-navy: #0b1b3b;
+  --vq-line: rgba(11,27,59,.08);
+  position:relative;
+  background:#fff;
+  border:1px solid var(--vq-line);
+  border-radius:22px;
+  padding:36px 30px 28px;
+  overflow:visible;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .45s, border-color .3s;
+}
+.vq::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:22px;
+  padding:1px;
+  background:linear-gradient(135deg, rgba(201,165,91,.55) 0%, rgba(11,27,59,.06) 45%, rgba(201,165,91,.35) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events:none; opacity:.8;
+}
+.vq:hover{transform:translateY(-3px); box-shadow:0 20px 40px -24px rgba(11,27,59,.18); border-color:color-mix(in srgb, var(--vq-gold) 40%, transparent)}
+
+.vq-quote-tl, .vq-quote-br{
+  position:absolute; pointer-events:none; user-select:none;
+  font-family:Georgia, 'Times New Roman', serif; font-weight:700;
+  line-height:0; color:color-mix(in srgb, var(--vq-gold) 68%, transparent);
+  opacity:.88;
+}
+.vq-quote-tl{ top:14px; left:18px; font-size:68px; }
+.vq-quote-br{ bottom:-2px; right:22px; font-size:68px; transform:rotate(180deg); }
+
+.vq-head{
+  position:relative; display:flex; align-items:center; justify-content:center;
+  margin:2px 0 22px;
+}
+.vq-circuit{
+  position:relative; width:128px; height:128px; flex:none;
+}
+.vq-circuit svg.circ{
+  position:absolute; inset:0; width:100%; height:100%; overflow:visible;
+}
+.vq-circuit svg.circ .ring{ fill:none; stroke:color-mix(in srgb, var(--vq-navy) 28%, transparent); stroke-width:1.2; }
+.vq-circuit svg.circ .ring-inner{ fill:none; stroke:var(--vq-gold); stroke-width:1.6; stroke-linecap:round;
+  stroke-dasharray:42 16 6 16 42 16 6 16; opacity:.95;
+  transform-origin: 50% 50%;
+  animation: vqSpinSlow 18s linear infinite;
+}
+.vq-circuit svg.circ .dots{ fill:var(--vq-gold); }
+.vq-circuit svg.circ .tick{ stroke:color-mix(in srgb, var(--vq-navy) 38%, transparent); stroke-width:1.1; stroke-linecap:round; }
+.vq-circuit .av{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:84px; height:84px;
+  border-radius:50%; overflow:hidden;
+  background:#fff; border:2px solid #fff;
+  box-shadow:0 6px 18px -6px rgba(11,27,59,.35), 0 0 0 1px rgba(11,27,59,.06);
+}
+.vq-circuit .av .ph-avatar{ width:100%; height:100%; border:0; border-radius:50%; background:linear-gradient(145deg,#e8eef8,#f1e8d7); }
+.vq-circuit .av img{ width:100%; height:100%; object-fit:cover; display:block; }
+@keyframes vqSpinSlow{ to{ transform:rotate(360deg)} }
+
+.vq-body{ position:relative; margin:0 4px; }
+.vq-body p{
+  position:relative; z-index:1;
+  font-family:var(--f); font-weight:400;
+  font-size:1.06rem; line-height:1.62; letter-spacing:-.02em;
+  color:var(--ink); margin:0; padding:18px 10px 14px;
+}
+
+.vq-who{
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  margin-top:20px; padding-top:18px; border-top:1px solid rgba(11,27,59,.08);
+  text-align:center;
+}
+.vq-who .nm{
+  font-family:var(--f); font-weight:700; font-size:1rem; letter-spacing:-.02em; color:var(--vq-navy);
+}
+.vq-who .xs{
+  font-size:.8rem; color:var(--ink-3); letter-spacing:.005em; line-height:1.45;
+}
+@media(max-width:520px){
+  .vq{ padding:30px 22px 24px; border-radius:18px }
+  .vq-circuit{ width:112px; height:112px }
+  .vq-circuit .av{ width:74px; height:74px }
+  .vq-quote-tl{ font-size:56px; left:14px; top:10px }
+  .vq-quote-br{ font-size:56px; right:16px }
+  .vq-body p{ padding:14px 4px 10px; font-size:1rem }
+}
+
 .step{display:grid;grid-template-columns:58px 1fr;gap:0 22px;padding:26px 0;border-top:1px solid var(--line)}
 .step .n{font-family:var(--f);font-weight:700;font-size:.85rem;letter-spacing:.04em;background:var(--duo);-webkit-background-clip:text;background-clip:text;color:transparent}
 .step p{color:var(--ink-2);font-size:.93rem;margin-top:7px;max-width:56ch}
