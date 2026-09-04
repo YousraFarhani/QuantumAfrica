@@ -2844,7 +2844,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'News & Articles'}])}
         <h5>${cx('pages.news.newsletterFormHead', 'Subscribe')}</h5>
         <div class="field"><label>${cx('pages.news.newsletterNameLabel', 'Name')}</label><input name="name" required placeholder="${cx('pages.news.newsletterNamePlaceholder', 'Your name')}"></div>
         <div class="field"><label>${cx('pages.news.newsletterEmailLabel', 'Email')}</label><input name="email" type="email" required placeholder="${cx('pages.news.newsletterEmailPlaceholder', 'you@university.edu')}"></div>
-        <div class="field"><label>${cx('pages.news.newsletterCountryLabel', 'Country')}</label><select name="country" required><option value="">${cx('pages.news.countryPlaceholder', 'Select…')}</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">${cx('pages.news.countryOther', 'Other')}</option></select></div>
+        <div class="field"><label>${cx('pages.news.newsletterCountryLabel', 'Country')}</label><select name="country" required><option value="">${cx('pages.news.countryPlaceholder', 'Select…')}</option>${COUNTRIES.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('')}</select></div>
         <button class="btn teal" type="submit">${cx('pages.news.newsletterSubmitBtn', 'Subscribe')} <span class="ar" aria-hidden="true">&rarr;</span></button>
         <div class="form-msg mt16" hidden></div>
         <p class="xs mt16">${cx('pages.news.newsletterPrivacyNote', 'Your email is handled via Netlify Forms and forwarded to the newsletter team.')}</p>
@@ -2901,7 +2901,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
       <div class="grid g2">
         <div class="field"><label>${cx('pages.join.formNameLabel', 'Full name')}</label><input name="full_name" required placeholder="${cx('pages.join.formNamePlaceholder', 'Your name')}"></div>
         <div class="field"><label>${cx('pages.join.formEmailLabel', 'Email')}</label><input name="email" type="email" required placeholder="${cx('pages.join.formEmailPlaceholder', 'you@university.edu')}"></div>
-        <div class="field"><label>${cx('pages.join.formCountryLabel', 'Country')}</label><select name="country" required><option value="">${cx('pages.join.formCountryPlaceholder', 'Select…')}</option>${CHAPTERS.map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('')}<option value="other">${cx('pages.join.countryOther', 'Other')}</option></select></div>
+        <div class="field"><label>${cx('pages.join.formCountryLabel', 'Country')}</label><select name="country" required><option value="">${cx('pages.join.formCountryPlaceholder', 'Select…')}</option>${COUNTRIES.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('')}</select></div>
         <div class="field"><label>${cx('pages.join.formInstitutionLabel', 'Institution')}</label><input name="institution" placeholder="${cx('pages.join.formInstitutionPlaceholder', 'University or company')}"></div>
       </div>
       <div class="field"><label>${cx('pages.join.formRoleLabel', 'I am a…')}</label><select name="role" required><option>${cx('pages.join.roleStudent', 'Student')}</option><option>${cx('pages.join.roleResearcher', 'Researcher')}</option><option>${cx('pages.join.roleEducator', 'Educator')}</option><option>${cx('pages.join.roleIndustry', 'Industry professional')}</option><option>${cx('pages.join.roleOther', 'Other')}</option></select></div>
@@ -3383,10 +3383,6 @@ function bioModal(slug){
           : `<p>${pht('FULL BIOGRAPHY — as many paragraphs as this person wants to write. Written by them, not about them.')}</p>`}
         <h4>Research interests</h4>
         <p>${(p.interests && p.interests.length) ? esc(p.interests.join(', ')) : pht('Comma-separated interests')}</p>
-        ${(p.group || '') === 'Chapter leads' ? `
-        <h4>Chapter</h4>
-        <p>${p.chapter ? esc(p.chapter) : pht('Chapter, if any')}</p>
-        ` : ''}
       </div>
     </div>`;
   document.body.appendChild(el);
@@ -3598,6 +3594,30 @@ let OWN_OPPS = [];
 function allOpps(){ return OWN_OPPS.concat(OPPS); }
 const AFRICA_NAMES = new Set(['algeria','egypt','morocco','nigeria','mauritania','zambia',
   'uganda','south africa','tunisia','kenya','rwanda','ghana','senegal','ethiopia','cameroon']);
+const COUNTRIES = [
+  'Afghanistan','Albania','Algeria','Andorra','Angola','Antigua and Barbuda','Argentina','Armenia',
+  'Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium',
+  'Belize','Benin','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Bulgaria',
+  'Burkina Faso','Burundi','Cabo Verde','Cambodia','Cameroon','Canada','Central African Republic',
+  'Chad','Chile','China','Colombia','Comoros','Congo','Costa Rica','Côte d’Ivoire','Croatia','Cuba',
+  'Cyprus','Czechia','Denmark','Djibouti','Dominica','Dominican Republic','Ecuador','Egypt','El Salvador',
+  'Equatorial Guinea','Eritrea','Estonia','Eswatini','Ethiopia','Fiji','Finland','France','Gabon','Gambia',
+  'Georgia','Germany','Ghana','Greece','Grenada','Guatemala','Guinea','Guinea-Bissau','Guyana','Haiti',
+  'Honduras','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Israel','Italy','Jamaica',
+  'Japan','Jordan','Kazakhstan','Kenya','Kiribati','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho',
+  'Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Madagascar','Malawi','Malaysia','Maldives',
+  'Mali','Malta','Marshall Islands','Mauritania','Mauritius','Mexico','Micronesia','Moldova','Monaco',
+  'Mongolia','Montenegro','Morocco','Mozambique','Myanmar','Namibia','Nauru','Nepal','Netherlands',
+  'New Zealand','Nicaragua','Niger','Nigeria','North Macedonia','Norway','Oman','Pakistan','Palau',
+  'Panama','Papua New Guinea','Paraguay','Peru','Philippines','Poland','Portugal','Qatar','Romania',
+  'Russia','Rwanda','Saint Kitts and Nevis','Saint Lucia','Saint Vincent and the Grenadines','Samoa',
+  'San Marino','São Tomé and Príncipe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone',
+  'Singapore','Slovakia','Slovenia','Solomon Islands','Somalia','South Africa','South Korea','South Sudan',
+  'Spain','Sri Lanka','Sudan','Suriname','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania',
+  'Thailand','Timor-Leste','Togo','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Tuvalu',
+  'Uganda','Ukraine','United Arab Emirates','United Kingdom','United States','Uruguay','Uzbekistan',
+  'Vanuatu','Vatican City','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe'
+];
 const HERO_ART = ['field','lattice','wave','network','fringes'];
 
 let feedsLoading = false;
@@ -3860,7 +3880,17 @@ document.addEventListener('submit', async (e) => {
       msg.hidden = false;
       msg.className = 'form-msg mt16 small';
       msg.style.cssText = 'padding:10px 14px;border-radius:4px;background:color-mix(in srgb,var(--gold) 20%,transparent);color:var(--ink)';
-      msg.textContent = "Could not send right now. Please reload the page and try again, or email contact@quantum-africa.org directly.";
+      try {
+        const flat2 = {};
+        (new FormData(f)).forEach((v, k) => { if (k !== 'bot-field') flat2[k] = String(v ?? ''); });
+        const inbox = 'contact@quantum-africa.org';
+        const subj = `[${formName}] form submission${flat2.name || flat2.full_name ? ' from ' + (flat2.name||flat2.full_name) : ''}`;
+        const lines = Object.entries(flat2).map(([k,v])=>k+':\n'+String(v||'')+'\n').join('\n');
+        const mailto = 'mailto:'+inbox+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines);
+        msg.innerHTML = 'Could not send automatically. Please <a class="link-a" href="'+esc(mailto)+'" target="_blank" rel="noopener">email us directly at '+inbox+'</a> — your message details are pre-filled in the draft. Or reload and try again.';
+      } catch (_2) {
+        msg.textContent = "Could not send right now. Please reload the page and try again, or email contact@quantum-africa.org directly.";
+      }
     }
   } finally {
     if (btn) { btn.disabled = false; btn.style.opacity = ''; }

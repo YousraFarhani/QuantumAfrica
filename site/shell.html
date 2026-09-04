@@ -90,8 +90,10 @@ body.bio-open{overflow:hidden}
 .bio-x:hover{background:rgba(0,22,46,.6)}
 .bio-hd{position:relative;min-height:230px;display:flex;flex-direction:column;align-items:center;
   justify-content:center;gap:10px;padding:34px 26px 76px;color:rgba(255,255,255,.82);
-  background:linear-gradient(150deg,var(--navy-l),var(--navy) 55%,var(--navy-d))}
+  background:linear-gradient(150deg,var(--navy-l),var(--navy) 55%,var(--navy-d));overflow:hidden}
+.bio-hd.filled{padding:22px 22px 76px}
 .bio-hd::after{content:"";position:absolute;inset:14px 14px 62px;border:1.5px dashed rgba(255,255,255,.22);border-radius:4px}
+.bio-hd.filled::after{inset:10px 10px 62px}
 .bio-spec{font-family:var(--f);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase}
 .bio-spec em{font-style:normal;opacity:.62;margin-left:6px}
 .bio-id{position:absolute;left:26px;right:26px;bottom:20px;text-align:left}
@@ -119,7 +121,10 @@ body.bio-open{overflow:hidden}
 .slot.filled img{display:block;width:100%;height:100%;object-fit:cover}
 .card-media .slot.filled{position:absolute;inset:0}
 .pc-shot.filled,.pp-shot.filled{border:0;background:none;padding:0}
-.pc-shot img,.bio-hd img.portrait{width:100%;height:100%;object-fit:cover;display:block}
+.pc-shot img,.bio-hd img.portrait{display:block}
+.bio-hd img.portrait{position:absolute;left:10px;right:10px;top:10px;bottom:62px;
+  width:auto;height:auto;max-width:calc(100% - 20px);max-height:calc(100% - 72px);
+  margin:auto;border-radius:3px;object-fit:cover;box-shadow:0 6px 22px -14px rgba(0,0,0,.6)}
 .nm-av.filled{border-style:solid;border-color:var(--line-2);overflow:hidden;padding:0}
 .nm-av.filled img{width:100%;height:100%;object-fit:cover}
 
@@ -1225,3 +1230,31 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
 <div class="controls">
   <button class="ctl" id="themeToggle"><span class="dot"></span> <span class="lbl">Dark</span></button>
 </div>
+
+<!-- Static forms so Netlify registers form handlers at deploy time.
+     SPA renders runtime forms dynamically; these stubs are for the build crawler only. -->
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="contact">
+  <p hidden><label>Don't fill: <input name="bot-field"></label></p>
+  <p><label>Name: <input type="text" name="name"></label></p>
+  <p><label>Email: <input type="email" name="email"></label></p>
+  <p><label>Subject: <input type="text" name="reason"></label></p>
+  <p><label>Message: <textarea name="message"></textarea></label></p>
+</form>
+<form name="join" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="join">
+  <p hidden><label>Don't fill: <input name="bot-field"></label></p>
+  <p><label>Full name: <input type="text" name="full_name"></label></p>
+  <p><label>Email: <input type="email" name="email"></label></p>
+  <p><label>Country: <input type="text" name="country"></label></p>
+  <p><label>Institution: <input type="text" name="institution"></label></p>
+  <p><label>Role: <input type="text" name="role"></label></p>
+  <p><label>Looking for: <textarea name="message"></textarea></label></p>
+</form>
+<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="newsletter">
+  <p hidden><label>Don't fill: <input name="bot-field"></label></p>
+  <p><label>Name: <input type="text" name="name"></label></p>
+  <p><label>Email: <input type="email" name="email"></label></p>
+  <p><label>Country: <input type="text" name="country"></label></p>
+</form>
