@@ -645,11 +645,16 @@ function clist(key){
 }
 /* An uploaded image, rendered into the same slot the placeholder uses, so the
    layout does not move when a picture finally arrives. */
+function _assetSrc(v){
+  if(!v) return '';
+  if(/^(https?:|data:)/.test(v)) return v;
+  if(v.startsWith('/')) return v;
+  return '/' + v;
+}
 function cimg(path, alt, spec, cls){
   const v = cval(path);
   if(!v) return media(arguments[4] || 'network', alt, spec, cls);
-  const src = /^https?:/.test(v) ? v : (FEED.base ? FEED.base.replace(/\/api$/, '/') + v : v);
-  return `<div class="slot ${cls||''} filled"><img src="${esc(src)}" alt="${esc(alt||'')}" loading="lazy"></div>`;
+  return `<div class="slot ${cls||''} filled"><img src="${esc(_assetSrc(v))}" alt="${esc(alt||'')}" loading="lazy"></div>`;
 }
 
 const FEED = (() => {
@@ -2507,9 +2512,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
 
 /* ---------- PEOPLE ---------- */
 function mediaUrl(v){
-  if(!v) return '';
-  if(/^(https?:|data:)/.test(v)) return v;
-  return FEED.base ? FEED.base.replace(/\/api$/, '/') + v : v;
+  return _assetSrc(v);
 }
 /* ---------- photos and videos ----------
    A media item from the admin panel is one of three things, and everything on
