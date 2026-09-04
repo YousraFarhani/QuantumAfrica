@@ -1385,9 +1385,10 @@ ${highlightSection()}
         <div class="vq-by">
           <span class="nm">${q.name ? esc(q.name) : pht('Name')}</span>
           <div class="xs">${(q.role ? esc(q.role) : (q.name ? '' : pht('Role'))) + (q.role && q.institution ? ' · ' : '') + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution')))}</div>
+          <div class="vq-country">${q.country ? esc(q.country) : pht('Country')}</div>
         </div>
         <div class="vq-body"><p>${q.quote ? esc(q.quote) : pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p></div>
-        <div class="vq-country">${q.country ? esc(q.country) : pht('Country')}</div>
+        
       </div>`).join('')}
     </div>
   </div>
