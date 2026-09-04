@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T13:37:02+00:00",
+ "updated": "2026-09-04T13:51:10+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -1162,7 +1162,32 @@
    "communityTitle": "",
    "communityLede": "",
    "communityCta": "",
-   "communityQuotes": [],
+   "communityQuotes": [
+    {
+     "quote": "Being part of Quantum Africa has been a truly valuable and inspiring experience for me. It introduced me to the world of quantum computing, helped me understand it on a much deeper level, and made me genuinely excited to keep learning more about the field. It also gave me the opportunity to connect with amazing people from different countries and learn so much from their experiences and perspectives. I’m genuinely grateful and happy to be part of this amazing community ♥️",
+     "name": "Rana Walid",
+     "role": "R&D Department",
+     "institution": "Intelligent Systems Student | Alexandria National University",
+     "country": "Egypt",
+     "photo": "media/13a6f5ea2ea3d4bd.png"
+    },
+    {
+     "quote": "Being part of Quantum Africa has been an incredibly rewarding experience. I’ve had the opportunity to connect with people across different parts of the ecosystem and see firsthand how much potential exists on the continent. What excites me most is seeing a growing community of researchers, students, educators, and enthusiasts working together to build Africa’s capacity in quantum technologies.",
+     "name": "Somtochukwu Igwegbe",
+     "role": "R&D Department",
+     "institution": "Quantum computing researcher interested in post-quantum security",
+     "country": "Nigeria",
+     "photo": "media/add0492860bfe7a5.png"
+    },
+    {
+     "quote": "Quantum Africa has been a big part of my journey into quantum technology. Through its programmes, I have learned a lot, met people with similar interests, and gained a clearer view of what Africa can achieve in this field. It has encouraged me to keep learning and to help create more opportunities for young Africans interested in quantum technology.\n",
+     "name": "Jibril Abdullahi",
+     "role": "R&D Department",
+     "institution": "Kano University of Science and Technology",
+     "country": "Nigeria",
+     "photo": "media/cb3bef8754be21d5.png"
+    }
+   ],
    "newsEyebrow": "",
    "newsTitle": "",
    "newsLede": "",
