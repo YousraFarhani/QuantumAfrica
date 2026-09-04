@@ -1382,11 +1382,12 @@ ${highlightSection()}
         <span class="vq-quote-tl" aria-hidden="true">“</span>
         <span class="vq-quote-br" aria-hidden="true">“</span>
         <div class="vq-head">${circuitRing(q.photo || '')}</div>
-        <div class="vq-body"><p>${q.quote ? esc(q.quote) : pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p></div>
-        <div class="vq-who">
+        <div class="vq-by">
           <span class="nm">${q.name ? esc(q.name) : pht('Name')}</span>
-          <span class="xs">${(q.role ? esc(q.role) + ' · ' : (q.name ? '' : pht('Role') + ' · ')) + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution'))) + (q.country ? ' · ' + esc(q.country) : (q.name ? '' : ' · ' + pht('Country')))}</span>
+          <div class="xs">${(q.role ? esc(q.role) : (q.name ? '' : pht('Role'))) + (q.role && q.institution ? ' · ' : '') + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution')))}</div>
         </div>
+        <div class="vq-body"><p>${q.quote ? esc(q.quote) : pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p></div>
+        <div class="vq-country">${q.country ? esc(q.country) : pht('Country')}</div>
       </div>`).join('')}
     </div>
   </div>
@@ -1780,7 +1781,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research',h:'#/research'},{t:p.title}])}
   <p class="lede">${esc(p.short || '')}</p>
   <div class="phero-meta"><span class="pill current">${cx('pages.researchDetail.statusActive', 'Active')}</span><span class="tag">${esc(p.area)}</span>${(p.tech||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
 </div></section>
-<section class="sec flush" style="padding-top:0"><div class="wrap">${(() => { const cv = cval('pages.researchDetail.heroImage'); if(cv) return cimg('pages.researchDetail.heroImage','Optional project photo. The generated figure is the default.','2400×1000 · SVG or PNG','wide'); return rimg(p.image || null,'Optional project photo. The generated figure is the default.','2400×1000 · SVG or PNG','wide', p.art || 'circuit'); })()}</div></section>
+<section class="sec flush detail-hero" style="padding-top:0"><div class="wrap">${(() => { const cv = cval('pages.researchDetail.heroImage'); if(cv) return cimg('pages.researchDetail.heroImage','Optional project photo. The generated figure is the default.','2400×750 · SVG or PNG','wide project-hero'); return rimg(p.image || null,'Optional project photo. The generated figure is the default.','2400×750 · SVG or PNG','wide project-hero', p.art || 'circuit'); })()}</div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div class="prose">
     <h3>${cx('pages.researchDetail.descHead', 'Description')}</h3>
@@ -1797,8 +1798,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research',h:'#/research'},{t:p.title}])}
       <div class="dl-item"><dt>${cx('pages.researchDetail.areaLabel', 'Area')}</dt><dd>${esc(p.area)}</dd></div>
       <div class="dl-item"><dt>${cx('pages.researchDetail.statusLabel', 'Status')}</dt><dd>${cx('pages.researchDetail.statusActive', 'Active')}</dd></div>
       <div class="dl-item"><dt>${cx('pages.researchDetail.toolsLabel', 'Tools')}</dt><dd>${(p.tech||[]).map(t=>esc(t)).join(' · ') || pht(cx('pages.researchDetail.toolsValue', 'Python · Qiskit · …'))}</dd></div>
-      <div class="dl-item"><dt>${cx('pages.researchDetail.repoLabel', 'Repository')}</dt><dd>${p.repo ? `<a class="link-a" href="${esc(p.repo)}" target="_blank" rel="noopener">Repository →</a>` : pht(cx('pages.researchDetail.repoValue', 'GitHub URL'))}</dd></div>
-      <div class="dl-item"><dt>${cx('pages.researchDetail.pubLabel', 'Publication')}</dt><dd>${p.publication ? `<a class="link-a" href="${esc(p.publication)}" target="_blank" rel="noopener">DOI →</a>` : pht(cx('pages.researchDetail.pubValue', 'DOI / link'))}</dd></div>
     </dl></div>
   </aside>
 </div></div></section>
