@@ -406,6 +406,21 @@ SECTIONS = [
       F('communityTitle', 'Community section headline'),
       F('communityLede', 'Community section lede', 'textarea'),
       F('communityCta', 'Community CTA link text'),
+      F('communityQuotes', 'Community — member quotes', 'list', label_field='name',
+        help='Drag to reorder. Each card shows a short quote from a member, '
+             'with their name, role and country below. Three or six look best.',
+        fields=[
+          F('quote', 'Quote', 'textarea',
+            help='25 to 40 words, in their own words — what Quantum Africa '
+                 'changed for them.'),
+          F('name', 'Name'),
+          F('role', 'Role'),
+          F('institution', 'Institution'),
+          F('country', 'Country'),
+          F('photo', 'Portrait', 'image',
+            help='Small square or 4:5 photo. Optional — if empty the page '
+                 'uses a placeholder avatar.'),
+        ]),
       F('newsEyebrow', 'News section eyebrow'),
       F('newsTitle', 'News section headline'),
       F('newsLede', 'News section lede', 'textarea'),
@@ -1441,6 +1456,19 @@ SECTIONS = [
       F('voicesEyebrow', 'Voices eyebrow'),
       F('voicesTitle', 'Voices headline'),
       F('voicesCta', 'Voices CTA link text'),
+      F('voices', 'Voices — student quotes & stories', 'list', label_field='name',
+        help='Drag to reorder. Each card shows a short student quote with their '
+             'name, university and country below. Three or six look best.',
+        fields=[
+          F('quote', 'Quote', 'textarea',
+            help='Short quote in the student\u2019s own words.'),
+          F('name', 'Name'),
+          F('institution', 'University / institution'),
+          F('country', 'Country'),
+          F('photo', 'Portrait', 'image',
+            help='Square or 4:5 photo. Optional — if empty the page uses a '
+                 'placeholder avatar.'),
+        ]),
       F('voicesQuotePlaceholder', 'Voices — quote placeholder'),
       F('voicesWhoPlaceholder', 'Voices — who placeholder'),
       F('ctaBandEyebrow', 'CTA band eyebrow'),

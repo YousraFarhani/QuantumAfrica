@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T13:20:24+00:00",
+ "updated": "2026-09-04T13:37:02+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -1162,6 +1162,7 @@
    "communityTitle": "",
    "communityLede": "",
    "communityCta": "",
+   "communityQuotes": [],
    "newsEyebrow": "",
    "newsTitle": "",
    "newsLede": "",
@@ -2188,6 +2189,7 @@
    "voicesEyebrow": "",
    "voicesTitle": "",
    "voicesCta": "",
+   "voices": [],
    "voicesQuotePlaceholder": "",
    "voicesWhoPlaceholder": "",
    "ctaBandEyebrow": "",

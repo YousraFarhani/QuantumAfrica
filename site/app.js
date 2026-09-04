@@ -761,7 +761,9 @@ function ph(kind, title, spec, cls=''){
   </div>`;
 }
 const pht = t => `<span class="ph-inline">[ ${esc(t)} ]</span>`;
-const avatar = () => `<div class="ph-avatar">${svgIcon('user',40)}</div>`;
+const avatar = (photo) => photo
+  ? `<div class="ph-avatar filled"><img src="${esc(_assetSrc(photo))}" alt="" loading="lazy"></div>`
+  : `<div class="ph-avatar">${svgIcon('user',40)}</div>`;
 const statusPill = () => `<span class="pill current">Active</span>`;
 let __sec = 0;
 const sectionHead = (eyebrow, title, lede, cta) => {
@@ -1344,9 +1346,10 @@ ${highlightSection()}
       {t:cx('pages.home.communityCta', 'Read member stories'),h:'#/news'}
     )}
     <div class="grid g3">
-      ${Array.from({length:3}).map(()=>`<div class="quote rv"><span class="qm" aria-hidden="true">“</span>
-        <p>${pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p>
-        <div class="who">${avatar()}<span><span class="nm" style="display:block;font-family:var(--f);font-weight:600;font-size:.92rem">${pht('Name')}</span><span class="xs">${pht('Role')} · ${pht('Institution')} · ${pht('Country')}</span></span></div>
+      ${(clist('pages.home.communityQuotes') || []).concat(Array.from({length: Math.max(0, 3 - (clist('pages.home.communityQuotes') || []).length)})
+          .map(()=>({}))).map(q=>`<div class="quote rv"><span class="qm" aria-hidden="true">“</span>
+        <p>${q.quote ? esc(q.quote) : pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p>
+        <div class="who">${avatar(q.photo || '')}<span><span class="nm" style="display:block;font-family:var(--f);font-weight:600;font-size:.92rem">${q.name ? esc(q.name) : pht('Name')}</span><span class="xs">${(q.role ? esc(q.role) + ' · ' : (q.name ? '' : pht('Role') + ' · ')) + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution'))) + (q.country ? ' · ' + esc(q.country) : (q.name ? '' : ' · ' + pht('Country')))}</span></span></div>
       </div>`).join('')}
     </div>
   </div>
@@ -2755,8 +2758,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Students'}])}
     null,
     {t:cx('pages.students.voicesCta', 'Member stories'),h:'#/news'}
   )}
-  <div class="grid g3">${[0,1,2].map(()=>`<div class="quote rv"><p>${cx('pages.students.voicesQuotePlaceholder', pht('Student quote'))}</p>
-    <div class="who">${avatar()}<span class="xs">${cx('pages.students.voicesWhoPlaceholder', pht('Name') + ' · ' + pht('University') + ' · ' + pht('Country'))}</span></div></div>`).join('')}</div>
+  <div class="grid g3">${(clist('pages.students.voices') || []).concat(Array.from({length: Math.max(0, 3 - (clist('pages.students.voices') || []).length)}).map(()=>({}))).map(v=>`<div class="quote rv"><p>${v.quote ? esc(v.quote) : cx('pages.students.voicesQuotePlaceholder', pht('Student quote'))}</p>
+    <div class="who">${avatar(v.photo || '')}<span class="xs">${(v.name ? esc(v.name) : cx('pages.students.voicesWhoPlaceholder', pht('Name'))) + (v.institution ? ' · ' + esc(v.institution) : (v.name ? '' : ' · ' + pht('University'))) + (v.country ? ' · ' + esc(v.country) : (v.name ? '' : ' · ' + pht('Country')))}</span></div></div>`).join('')}</div>
 </div></section>
 
 <section class="cta-band">
