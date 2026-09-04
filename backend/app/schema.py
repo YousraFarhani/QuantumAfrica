@@ -208,6 +208,8 @@ SECTIONS = [
       F('description', 'Description', 'markdown'),
       F('objectives', 'Objectives', 'tags', help='One per entry.'),
       F('tech', 'Tools and technologies', 'tags'),
+      F('proposedBy', 'Proposed by',
+        help='Person or team who leads the project. Displayed on the project page.'),
       F('repo', 'Repository', 'url'),
       F('publication', 'Publication / DOI', 'url'),
       F('started', 'Started', 'date'),

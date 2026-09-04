@@ -68,7 +68,7 @@ let CHAPTERS = [
    Edition history verified against the QA7 host site and IQST.
    The series is run by its own steering committee — confirm
    Quantum Africa's relationship to it before publishing. */
-const CONF = [
+let CONF = [
   {n:'01', slug:'qa1', year:'2010', city:'Durban', country:'South Africa',
    dates:'19–24 September 2010',
    locNote:'All committee members are part of the Quantum Research Group, School of Physics, University of KwaZulu-Natal.',
@@ -656,6 +656,10 @@ function cimg(path, alt, spec, cls){
   if(!v) return media(arguments[4] || 'network', alt, spec, cls);
   return `<div class="slot ${cls||''} filled"><img src="${esc(_assetSrc(v))}" alt="${esc(alt||'')}" loading="lazy"></div>`;
 }
+function rimg(v, alt, spec, cls, fallbackArt){
+  if(!v) return media(fallbackArt || 'circuit', alt, spec, cls);
+  return `<div class="slot ${cls||''} filled"><img src="${esc(_assetSrc(v))}" alt="${esc(alt||'')}" loading="lazy"></div>`;
+}
 
 const FEED = (() => {
   const m = document.querySelector('meta[name="qa-feed"]');
@@ -819,8 +823,10 @@ function eventCard(e, idx){
     </div></a>`;
 }
 function projectCard(p){
+  const artSrc = p.image || null;
+  const fallBack = p.art || 'circuit';
   return `<a class="card rv" href="#/research/${p.slug}">
-    <div class="card-media">${media(p.art||'circuit','Optional: photo of the team or lab. The generated figure works as the default.','1600×900 · PNG/SVG')}</div>
+    <div class="card-media">${rimg(artSrc,'Optional: photo of the team or lab. The generated figure works as the default.','1600×900 · PNG/SVG','',fallBack)}</div>
     <div class="card-b">
       <div class="card-meta"><span class="pill current">Active</span></div>
       <h4>${esc(p.title)}</h4>
@@ -1693,17 +1699,17 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
   <div class="wrap">
     ${sectionHead(
       cx('pages.research.projectsEyebrow', 'Active projects'),
-      cx('pages.research.projectsTitle', 'Four projects running now')
+      cx('pages.research.projectsTitle', 'Seven projects running now')
     )}
     <div class="blist">
       ${PROJECTS.map((p,i)=>`<a class="brow rv" href="#/research/${p.slug}">
-        <span class="bn">0${i+1}</span>
+        <span class="bn">${String(i+1).padStart(2,'0')}</span>
         <span class="bmeta">
           <h3>${esc(p.title)}</h3>
           <span class="pill current">${cx('pages.research.statusActive', 'Active')}</span>
-          <span class="kv" style="color:rgba(255,255,255,.55)">${esc(p.area)} &nbsp;·&nbsp; ${cx('pages.research.leadLabel', 'Lead')} ${pht(cx('pages.research.leadName', 'name'))}</span>
+          <span class="kv" style="color:rgba(255,255,255,.55)">${esc(p.area)} &nbsp;·&nbsp; ${cx('pages.research.leadLabel', 'Lead')} ${p.proposedBy ? esc(p.proposedBy) : pht(cx('pages.research.leadName', 'name'))}</span>
         </span>
-        <span class="bfig">${art(p.art)}</span>
+        <span class="bfig">${rimg(p.image || null,'Project cover figure or generated artwork','1600×1000 · PNG/SVG','',p.art || 'circuit')}</span>
       </a>`).join('')}
     </div>
   </div>
@@ -1737,35 +1743,63 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
 /* ---------- RESEARCH DETAIL ---------- */
 PAGES.researchDetail = (slug) => {
   const p = PROJECTS.find(x=>x.slug===slug) || PROJECTS[0];
+  const _descRender = (p) => {
+    if(p.description) {
+      let md = String(p.description).trim();
+      md = md.replace(/\r\n/g,'\n');
+      const paras = md.split(/\n\s*\n/).filter(s=>s && s.trim().length);
+      return paras.map(p => {
+        const line = p.trim();
+        if(/^([A-Z][A-Za-z0-9/&,. \-]{1,60})?[Nn]ote[ :]/.test(line.split('\n')[0]) || /^Data note|SCOPE TO CONFIRM|\[ SCOPE/.test(line)) {
+          return `<div class="panel note" style="margin:16px 0 22px;padding:16px 18px;border-left:3px solid var(--gold);background:color-mix(in srgb, var(--gold) 8%, transparent)"><p class="xs" style="margin:0;color:var(--ink);line-height:1.55">${line.split('\n').map(l=>esc(l)).join('<br>')}</p></div>`;
+        }
+        return `<p>${line.split('\n').map(l=>esc(l)).join('<br>')}</p>`;
+      }).join('');
+    }
+    return `<p>${esc(p.short || '')}</p><p>${pht(cx('pages.researchDetail.descExtended', 'EXTENDED DESCRIPTION — 2 to 3 paragraphs written by the project lead'))}</p>`;
+  };
+  const _objRender = (p) => {
+    const list = Array.isArray(p.objectives) ? p.objectives : [];
+    if(list.length){
+      return `<ul>${list.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>`;
+    }
+    return `<ul>${Array.from({length:3}).map((_,i)=>`<li>${pht(cx('pages.researchDetail.obj'+(i+1), 'Objective'))}</li>`).join('')}</ul>`;
+  };
+  const _needsRender = (p) => {
+    if(p.needs){
+      return `<p style="margin:0">${String(p.needs).split('\n').map(l=>esc(l)).join('<br>')}</p>`;
+    }
+    return `<p>${cx('pages.researchDetail.joinPrefix', 'This project is open to new contributors.')} ${pht(cx('pages.researchDetail.joinBody', 'Skills needed and time commitment'))}</p>`;
+  };
+  const _heroArt = p.image ? p.image : (p.art || 'circuit');
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Research',h:'#/research'},{t:p.title}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.researchDetail.heroEyebrow', 'Research project')}</span><i></i></div>
   <h1 class="mt24" style="font-size:clamp(2rem,4vw,3.2rem)">${esc(p.title)}</h1>
-  <p class="lede">${esc(p.short)}</p>
-  <div class="phero-meta"><span class="pill current">${cx('pages.researchDetail.statusActive', 'Active')}</span><span class="tag">${esc(p.area)}</span>${p.tech.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
+  <p class="lede">${esc(p.short || '')}</p>
+  <div class="phero-meta"><span class="pill current">${cx('pages.researchDetail.statusActive', 'Active')}</span><span class="tag">${esc(p.area)}</span>${(p.tech||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
 </div></section>
-<section class="sec flush" style="padding-top:0"><div class="wrap">${cimg('pages.researchDetail.heroImage','Optional project photo. The generated figure is the default.','2400×1000 · SVG or PNG','wide',p.art||'circuit')}</div></section>
+<section class="sec flush" style="padding-top:0"><div class="wrap">${(() => { const cv = cval('pages.researchDetail.heroImage'); if(cv) return cimg('pages.researchDetail.heroImage','Optional project photo. The generated figure is the default.','2400×1000 · SVG or PNG','wide'); return rimg(p.image || null,'Optional project photo. The generated figure is the default.','2400×1000 · SVG or PNG','wide', p.art || 'circuit'); })()}</div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div class="prose">
-    <h3>${cx('pages.researchDetail.descHead', 'Description')}</h3><p>${esc(p.short)}</p>
-    <p>${pht(cx('pages.researchDetail.descExtended', 'EXTENDED DESCRIPTION — 2 to 3 paragraphs written by the project lead'))}</p>
-    <h3>${cx('pages.researchDetail.objHead', 'Objectives')}</h3><ul>${Array.from({length:3}).map((_,i)=>`<li>${pht(cx('pages.researchDetail.obj'+(i+1), 'Objective'))}</li>`).join('')}</ul>
-    <h3>${cx('pages.researchDetail.joinHead', 'Join this project')}</h3>
-    <p>${cx('pages.researchDetail.joinPrefix', 'This project is open to new contributors.')} ${pht(cx('pages.researchDetail.joinBody', 'Skills needed and time commitment'))}</p>
-    <a class="btn" href="#/join">${cx('pages.researchDetail.joinBtn', 'Join this project')} <span class="ar" aria-hidden="true">→</span></a>
+    <h3>${cx('pages.researchDetail.descHead', 'Description')}</h3>
+    ${_descRender(p)}
+    ${p.proposedBy ? `<h3 style="margin-top:28px">${cx('pages.researchDetail.proposedHead', 'Proposed by')}</h3><p style="margin:0;font-weight:600;color:var(--ink)">${esc(p.proposedBy)}</p>` : ''}
+    <h3 style="margin-top:28px">${cx('pages.researchDetail.objHead', 'Objectives')}</h3>
+    ${_objRender(p)}
+    <h3 style="margin-top:28px">${cx('pages.researchDetail.joinHead', 'Join this project / Skills needed')}</h3>
+    ${_needsRender(p)}
+    <a class="btn mt16" style="display:inline-flex" href="#/join">${cx('pages.researchDetail.joinBtn', 'Join this project')} <span class="ar" aria-hidden="true">→</span></a>
   </div>
   <aside>
     <div class="panel"><h5>${cx('pages.researchDetail.projPanelHead', 'Project')}</h5><dl class="dl-list">
       <div class="dl-item"><dt>${cx('pages.researchDetail.areaLabel', 'Area')}</dt><dd>${esc(p.area)}</dd></div>
       <div class="dl-item"><dt>${cx('pages.researchDetail.statusLabel', 'Status')}</dt><dd>${cx('pages.researchDetail.statusActive', 'Active')}</dd></div>
-      <div class="dl-item"><dt>${cx('pages.researchDetail.startedLabel', 'Started')}</dt><dd>${pht(cx('pages.researchDetail.startedValue', 'DATE'))}</dd></div>
-      <div class="dl-item"><dt>${cx('pages.researchDetail.repoLabel', 'Repository')}</dt><dd>${pht(cx('pages.researchDetail.repoValue', 'GitHub URL'))}</dd></div>
-      <div class="dl-item"><dt>${cx('pages.researchDetail.pubLabel', 'Publication')}</dt><dd>${pht(cx('pages.researchDetail.pubValue', 'DOI / link'))}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.researchDetail.toolsLabel', 'Tools')}</dt><dd>${(p.tech||[]).map(t=>esc(t)).join(' · ') || pht(cx('pages.researchDetail.toolsValue', 'Python · Qiskit · …'))}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.researchDetail.repoLabel', 'Repository')}</dt><dd>${p.repo ? `<a class="link-a" href="${esc(p.repo)}" target="_blank" rel="noopener">Repository →</a>` : pht(cx('pages.researchDetail.repoValue', 'GitHub URL'))}</dd></div>
+      <div class="dl-item"><dt>${cx('pages.researchDetail.pubLabel', 'Publication')}</dt><dd>${p.publication ? `<a class="link-a" href="${esc(p.publication)}" target="_blank" rel="noopener">DOI →</a>` : pht(cx('pages.researchDetail.pubValue', 'DOI / link'))}</dd></div>
     </dl></div>
-    <div class="panel mt16"><h5>${cx('pages.researchDetail.contribPanelHead', 'Contributors')}</h5>
-      ${Array.from({length:3}).map((_,i)=>`<div class="dl-item"><dt style="text-transform:none;letter-spacing:0;font-family:inherit;font-size:.85rem;color:var(--ink-2)">${pht(cx('pages.researchDetail.contribName'+(i+1), 'Name'))}</dt><dd class="xs">${pht(cx('pages.researchDetail.contribRole'+(i+1), 'Role'))}</dd></div>`).join('')}
-    </div>
   </aside>
 </div></div></section>
 <section class="sec tint"><div class="wrap">

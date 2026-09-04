@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T14:04:39+00:00",
+ "updated": "2026-09-04T14:10:53+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -85,7 +85,7 @@
    "chapters": 7,
    "countries": 52,
    "events": 10,
-   "projects": 4,
+   "projects": 7,
    "partners": 12,
    "note": "Audited HTTP PUT simulated admin browser save after paths fix"
   },
@@ -497,59 +497,177 @@
   "events": [],
   "projects": [
    {
-    "title": "",
-    "area": "",
-    "short": "",
-    "description": "",
-    "objectives": [],
-    "tech": [],
+    "title": "Quantum Circuit Causality Engine",
+    "area": "Quantum computing · Tooling",
+    "short": "An open-source tool that works out which gates and qubits actually influence each measurement outcome in a quantum circuit.",
+    "description": "Every quantum circuit contains operations that matter to a given measurement and operations that cannot possibly affect it. Telling them apart is currently done by hand, or not at all. This project builds a tool that does it automatically: given a circuit, it constructs the causal dependency graph linking gates, qubits and measurements, and derives the light cone of each measurement outcome — the set of operations that could have reached it.\n\nThe same structure explains how errors travel. A fault on a gate outside a measurement's light cone cannot affect that result; a fault inside it has a path, and the graph shows the path. That makes the tool useful for two things at once: understanding what a circuit is really doing, and deciding where error mitigation and optimisation effort is worth spending.\n\nThe output is a documented Python package, published openly with its tests and worked examples, so the analysis can be checked and reused rather than taken on trust.",
+    "objectives": [
+     "Build a causal dependency graph from an arbitrary quantum circuit, gate by gate",
+     "Derive the backward light cone of every measurement and the forward light cone of every gate",
+     "Trace how a fault at any point in the circuit propagates to the measured results",
+     "Release the tool as an open-source package with a reproducible test suite"
+    ],
+    "tech": [
+     "Python",
+     "Qiskit",
+     "Graph analysis",
+     "Open source"
+    ],
+    "proposedBy": "Osama El Mahdi",
     "repo": "",
     "publication": "",
     "started": "",
-    "needs": "",
-    "image": "",
+    "needs": "Quantum circuits and algorithms · quantum information theory · software engineering for quantum tools · graph theory and causal analysis · error mitigation and circuit optimisation. You do not need all five. The project needs people who can reason about circuits and people who can build software, and those are rarely the same person.",
+    "image": "media/projects/project1.png",
     "contributors": []
    },
    {
-    "title": "",
-    "area": "",
-    "short": "",
-    "description": "",
-    "objectives": [],
-    "tech": [],
+    "title": "Quantum-Inspired Machine Learning for Disease Prediction",
+    "area": "Quantum machine learning · Health",
+    "short": "A feature-mapping and interpretability study asking whether quantum-inspired kernels help on the small, noisy health datasets African clinical research actually produces.",
+    "description": "Quantum-inspired feature maps are nonlinear kernel transforms motivated by parameterised quantum circuits, and they run on ordinary hardware. The open question is whether they classify better than classical kernels on small, noisy data — the situation common in African health research, where a study may have a few hundred labelled cases rather than a few hundred thousand.\n\nCandidate datasets include malaria microscopy, malaria rapid-test metadata and TB screening records. Quantum-inspired kernels are compared directly against classical baselines on the same splits, with the same preprocessing, so the comparison means something.\n\nAccuracy is not the only measure. A model a clinician cannot interrogate is not usable in a clinic, so the study also asks what each approach gives up in interpretability and what it costs to train and run. Both findings get published. A clear negative result is more valuable than a positive one nobody can reproduce.\n\nData note for the site: any clinical dataset used must be openly licensed or covered by an agreement with the institution holding it, with ethics approval where required. Settled before modelling starts, not after.",
+    "objectives": [
+     "Assemble and document a small set of openly licensed, low-data African health datasets",
+     "Implement quantum-inspired feature maps and matched classical baselines under one evaluation protocol",
+     "Measure classification performance, interpretability and computational cost side by side",
+     "Publish the pipeline and the results, including where the quantum-inspired approach does not help"
+    ],
+    "tech": [
+     "Python",
+     "scikit-learn",
+     "Quantum-inspired kernels",
+     "Feature maps"
+    ],
+    "proposedBy": "",
     "repo": "",
     "publication": "",
     "started": "",
-    "needs": "",
-    "image": "",
+    "needs": "Quantum machine learning · classical ML and kernel methods · biomedical or clinical data · interpretable and explainable ML · research data governance.",
+    "image": "media/projects/project2.png",
     "contributors": []
    },
    {
-    "title": "",
-    "area": "",
-    "short": "",
-    "description": "",
-    "objectives": [],
-    "tech": [],
+    "title": "Lightweight ML for Predicting Quantum Material Properties",
+    "area": "Materials science · Machine learning",
+    "short": "Small, interpretable models that predict material properties well enough to tell an experimentalist which candidates are worth making.",
+    "description": "New-material discovery is a small-data problem. Open materials databases are large in total but thin in any particular corner, and the groups running the experiments often have neither the compute nor the data volume that large models assume. The question is whether small, interpretable models trained on carefully curated subsets can predict bandgap — or absorption edge — accurately enough to be useful.\n\n\"Useful\" is defined narrowly and deliberately: not to replace measurement, but to rank candidates so that limited laboratory time goes to the most promising ones first. A model that is roughly right about the ordering is worth more to a lab on a small budget than one that is precisely right but cannot be run or explained.\n\nThe output is a reproducible pipeline — curation, feature engineering, model, evaluation — documented so another group can rerun it on their own subset. Throughout, the emphasis is on features a materials scientist recognises rather than a representation only the model understands.",
+    "objectives": [
+     "Curate reproducible subsets of open materials databases for a defined property and material class",
+     "Engineer physically meaningful features, and document why each one is there",
+     "Train and evaluate small interpretable models against the standard larger baselines",
+     "Test whether the ranking is good enough to guide experimental selection, and publish the pipeline end to end"
+    ],
+    "tech": [
+     "Python",
+     "scikit-learn",
+     "Open materials databases",
+     "Feature engineering"
+    ],
+    "proposedBy": "",
     "repo": "",
     "publication": "",
     "started": "",
-    "needs": "",
-    "image": "",
+    "needs": "Materials science and condensed-matter physics · DFT and computational chemistry · interpretable ML for small datasets · data curation and reproducible pipelines · experimentalists willing to test the predictions.",
+    "image": "media/projects/project3.png",
     "contributors": []
    },
    {
-    "title": "",
-    "area": "",
-    "short": "",
-    "description": "",
-    "objectives": [],
-    "tech": [],
+    "title": "Feasibility of Satellite Quantum Communication Across Africa",
+    "area": "Quantum communication · Infrastructure",
+    "short": "Link budgets, key rates and pass windows for satellite QKD between African research hubs — and a first ranked list of city pairs worth a pilot.",
+    "description": "Satellite quantum key distribution has been demonstrated elsewhere. Whether, and where, it is viable across Africa is a separate question, and it turns on things a general study does not model: the geography of the continent, its atmospheric conditions, the ground infrastructure that exists at each candidate site, and the hours in which a link is actually available.\n\nThis study works that out for a defined set of African research hubs. For each candidate pair it computes the link budget, the achievable secret key rate under realistic loss and background light, and the temporal windows in which a pass is usable — then folds in what is known about the ground infrastructure at each end.\n\nThe output is a roadmap rather than a demonstration: maps, link budgets, assumptions stated openly, and a prioritised list of city pairs where a pilot would have the best chance. It is meant to be the document a group takes to a funder or a space agency when proposing one.",
+    "objectives": [
+     "Define candidate ground sites across the continent, and the criteria for including them",
+     "Model link budgets and secret key rates for each pair under realistic atmospheric and background conditions",
+     "Determine usable pass windows and expected availability across the year",
+     "Produce continent-scale maps and a ranked, justified shortlist of pilot city pairs"
+    ],
+    "tech": [
+     "Python",
+     "Orbital and link modelling",
+     "Atmospheric data",
+     "Geospatial analysis"
+    ],
+    "proposedBy": "",
     "repo": "",
     "publication": "",
     "started": "",
-    "needs": "",
-    "image": "",
+    "needs": "Quantum communication and QKD · satellite and orbital mechanics · optics and atmospheric propagation · geospatial analysis and cartography · telecommunications infrastructure and policy.",
+    "image": "media/projects/project4.png",
+    "contributors": []
+   },
+   {
+    "title": "Quantum Education LLM for African Communities",
+    "area": "Education technology · Quantum education",
+    "short": "A domain-specific language model for quantum computing education, built for the contexts, prior backgrounds and constraints African learners actually have.",
+    "description": "A general-purpose model can answer a quantum computing question. What it cannot easily do is tell whether the person asking has already met linear algebra, whether they are on a phone with a data cap, or whether the example it just reached for means anything where they live. This project asks what a model built specifically for quantum education across African communities would need to do differently.\n\nThree constraints shape it. Prior background varies enormously, so the model has to meet a learner where they are rather than where a syllabus assumes. Language and context matter, so worked examples should be recognisable. And resources are finite, so it has to remain usable on modest hardware and an intermittent connection.\n\nThe project runs alongside the AI Tutor and feeds into it.\n\n[ SCOPE TO CONFIRM WITH THE PROJECT LEAD — whether this is fine-tuning an open model, building a retrieval layer over curated quantum teaching material, or both. ]",
+    "objectives": [
+     "Assemble and license a curated corpus of quantum computing teaching material",
+     "Adapt a model to that corpus and to varied prior backgrounds, and evaluate it on real learner questions",
+     "Establish what is required to run it under realistic bandwidth and hardware constraints"
+    ],
+    "tech": [
+     "Python",
+     "Open LLMs",
+     "Retrieval-augmented generation",
+     "Evaluation"
+    ],
+    "proposedBy": "",
+    "repo": "",
+    "publication": "",
+    "started": "",
+    "needs": "NLP and LLM fine-tuning · quantum education and curriculum design · retrieval systems and evaluation · multilingual NLP and localisation · teachers and students willing to test what gets built.",
+    "image": "media/projects/project5.png",
+    "contributors": []
+   },
+   {
+    "title": "Quantum Computing for Healthcare Applications",
+    "area": "Quantum algorithms · Health",
+    "short": "Where in the biomedical research pipeline quantum methods could genuinely shorten a computation — and where they could not.",
+    "description": "Biomedical research contains several stages that are computationally expensive: molecular simulation, structure and binding prediction, optimisation over large combinatorial spaces. Quantum computing is often proposed for these in general terms. This project takes the narrower and more useful question — which specific stages have a structure a quantum or hybrid method could actually help with, on hardware that exists or is credibly near.\n\nThe work is a mapping exercise before it is an implementation one: identify the candidate stages, characterise what makes each one hard, and match them against what these algorithms can currently do. Ruling a stage out is a result, and a more honest one than a demonstration that only works on a toy instance.\n\n[ SCOPE TO CONFIRM WITH THE PROJECT LEAD — which stage or stages the project will take on, and whether the output is a survey, a benchmark or a prototype. ]",
+    "objectives": [
+     "Map the computationally intensive stages of a defined biomedical research pipeline",
+     "Match each against quantum and hybrid algorithms, and state the hardware each would require",
+     "Benchmark one candidate stage against the classical method it would replace",
+     "Publish the assessment, including the stages where a quantum approach is not warranted"
+    ],
+    "tech": [
+     "Python",
+     "Qiskit",
+     "Computational chemistry",
+     "Benchmarking"
+    ],
+    "proposedBy": "",
+    "repo": "",
+    "publication": "",
+    "started": "",
+    "needs": "Quantum algorithms · computational biology, chemistry or bioinformatics · high-performance and hybrid computing · benchmarking and numerical methods.",
+    "image": "media/projects/project6.png",
+    "contributors": []
+   },
+   {
+    "title": "Secure Quantum Machine Learning",
+    "area": "Quantum machine learning · Security",
+    "short": "Whether quantum machine learning models can be attacked, how, and what it takes to make them trustworthy.",
+    "description": "Classical machine learning has a well-developed literature on how models fail under attack: adversarial examples, data poisoning, model extraction, privacy leakage from training data. Quantum machine learning is young enough that the equivalent picture is incomplete. This project asks which of those attacks carry over unchanged, which change shape in a quantum or hybrid pipeline, and which are new.\n\nThe security question is inseparable from a trust question. A model whose failure modes are unknown and whose behaviour cannot be audited should not carry a decision that matters — and that holds for a quantum model exactly as it does for a classical one.\n\n[ SCOPE TO CONFIRM WITH THE PROJECT LEAD — which threat model and which class of QML model the project takes on first. ]",
+    "objectives": [
+     "Survey the known attacks on classical ML and assess which transfer to quantum models",
+     "Characterise the threat models specific to quantum and hybrid pipelines",
+     "Demonstrate at least one attack, and evaluate the defences proposed against it",
+     "Publish a threat model and practical recommendations for building QML systems"
+    ],
+    "tech": [
+     "Python",
+     "PennyLane / Qiskit",
+     "Adversarial ML",
+     "Threat modelling"
+    ],
+    "proposedBy": "",
+    "repo": "",
+    "publication": "",
+    "started": "",
+    "needs": "Quantum machine learning · adversarial ML and AI security · cryptography and security analysis · privacy-preserving machine learning.",
+    "image": "media/projects/project7.png",
     "contributors": []
    }
   ],
