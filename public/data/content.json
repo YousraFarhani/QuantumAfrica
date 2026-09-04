@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T11:42:41+00:00",
+ "updated": "2026-09-04T11:50:17+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -372,6 +372,24 @@
     ],
     "chapter": "",
     "linkedin": "https://www.linkedin.com/in/nankya-zaharah-534a6b246/",
+    "scholar": "",
+    "orcid": ""
+   },
+   {
+    "name": "Aliyu Ibrahim Usman",
+    "group": "Leadership",
+    "role": "Lead Partnerships & Outreach",
+    "institution": "Kwantom",
+    "country": "",
+    "photo": "media/dc139bda3eedc14e.jpg",
+    "bio": "Lead Partnerships & Outreach at Quantum Africa, Founder & CEO at Kwantom.",
+    "fullBio": "Lead Partnerships & Outreach at Quantum Africa, Founder & CEO at Kwantom.",
+    "interests": [
+     "Quantum Computing",
+     "Community and outreach."
+    ],
+    "chapter": "",
+    "linkedin": "https://ng.linkedin.com/in/aliyuibrahimusman",
     "scholar": "",
     "orcid": ""
    }
