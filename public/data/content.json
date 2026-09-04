@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-03T22:23:19+00:00",
+ "updated": "2026-09-04T10:00:19+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -54,7 +54,7 @@
     },
     {
      "type": "",
-     "image": "media/90ac7c7f0f18ff81.png",
+     "image": "media/6c583a94e65b5194.jpg",
      "video": "",
      "videoUrl": "",
      "caption": "QML4Africa - Lagos",
@@ -345,7 +345,6 @@
   "events": [],
   "projects": [
    {
-    "slug": "pr1",
     "title": "",
     "area": "",
     "short": "",
@@ -360,7 +359,6 @@
     "contributors": []
    },
    {
-    "slug": "pr2",
     "title": "",
     "area": "",
     "short": "",
@@ -375,7 +373,6 @@
     "contributors": []
    },
    {
-    "slug": "pr3",
     "title": "",
     "area": "",
     "short": "",
@@ -390,7 +387,6 @@
     "contributors": []
    },
    {
-    "slug": "pr4",
     "title": "",
     "area": "",
     "short": "",
