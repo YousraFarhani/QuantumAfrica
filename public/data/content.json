@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T11:52:05+00:00",
+ "updated": "2026-09-04T12:21:12+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -260,6 +260,24 @@
     "orcid": ""
    },
    {
+    "name": " Nankya Zaharah Zinda",
+    "group": "Chapter leads",
+    "role": "Uganda Chapter Lead",
+    "institution": "",
+    "country": "Uganda",
+    "photo": "media/204f2c5caf8c1531.jpg",
+    "bio": "Quantum Uganda Chapter Lead, Computer Scientist.",
+    "fullBio": "Quantum Uganda Chapter Lead, Computer Scientist.",
+    "interests": [
+     "Quantum Computing",
+     "Computer Science"
+    ],
+    "chapter": "",
+    "linkedin": "https://www.linkedin.com/in/nankya-zaharah-534a6b246/",
+    "scholar": "",
+    "orcid": ""
+   },
+   {
     "name": "Billy Peter Munyenyembe",
     "group": "Chapter leads",
     "role": "Zambia Chapter Lead",
@@ -354,24 +372,6 @@
     ],
     "chapter": "",
     "linkedin": "https://www.linkedin.com/in/hope-alemayehu/",
-    "scholar": "",
-    "orcid": ""
-   },
-   {
-    "name": " Nankya Zaharah Zinda",
-    "group": "Chapter leads",
-    "role": "Uganda Chapter Lead",
-    "institution": "",
-    "country": "Uganda",
-    "photo": "media/204f2c5caf8c1531.jpg",
-    "bio": "Quantum Uganda Chapter Lead, Computer Scientist.",
-    "fullBio": "Quantum Uganda Chapter Lead, Computer Scientist.",
-    "interests": [
-     "Quantum Computing",
-     "Computer Science"
-    ],
-    "chapter": "",
-    "linkedin": "https://www.linkedin.com/in/nankya-zaharah-534a6b246/",
     "scholar": "",
     "orcid": ""
    },
