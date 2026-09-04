@@ -140,14 +140,29 @@ main{padding:0 0 120px;min-width:0}
 .row-item.over{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,165,91,.3)}
 
 /* collection list */
-.coll{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+.coll{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start}
 @media(max-width:900px){.coll{grid-template-columns:1fr}}
-.coll-list{display:flex;flex-direction:column;gap:4px;position:sticky;top:104px}
-.coll-list button{text-align:left;background:#fff;border:1px solid var(--line);border-radius:4px;
-  padding:11px 13px;cursor:pointer;font-size:.88rem;display:flex;justify-content:space-between;gap:10px}
-.coll-list button.on{border-color:var(--navy);background:var(--navy);color:#fff}
-.coll-list button .sub{font-size:.72rem;color:var(--ink-3)}
-.coll-list button.on .sub{color:rgba(255,255,255,.6)}
+.coll-list{display:flex;flex-direction:column;gap:6px;position:sticky;top:104px}
+.coll-list .entry{display:grid;grid-template-columns:20px 1fr auto;gap:6px;align-items:stretch;
+  border:1px solid var(--line);border-radius:4px;background:#fff;overflow:hidden}
+.coll-list .entry.dragging{opacity:.45}
+.coll-list .entry.over{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,165,91,.3)}
+.coll-list .row-grip{display:flex;align-items:center;justify-content:center;cursor:grab;
+  color:var(--ink-3);background:color-mix(in srgb,var(--ink-1) 26%,transparent);
+  font-size:.95rem;letter-spacing:-3px;user-select:none}
+.coll-list .row-grip:hover{color:var(--navy);background:color-mix(in srgb,var(--gold) 30%,transparent)}
+.coll-list .entry .nb{text-align:left;background:transparent;border:0;border-radius:0;
+  padding:11px 10px 11px 8px;cursor:pointer;font-size:.88rem;width:100%;
+  display:flex;flex-direction:column;gap:3px;justify-content:center}
+.coll-list .entry .nb.on{background:var(--navy);color:#fff}
+.coll-list .entry .nb .sub{font-size:.72rem;color:var(--ink-3)}
+.coll-list .entry .nb.on .sub{color:rgba(255,255,255,.6)}
+.coll-list .mvs{display:flex;flex-direction:column;border-left:1px solid var(--line)}
+.coll-list .mvs button{width:28px;height:50%;background:#fff;border:0;color:var(--ink-3);
+  cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+.coll-list .mvs button:hover{background:color-mix(in srgb,var(--gold) 35%,transparent);color:var(--navy)}
+.coll-list .mvs button:disabled{opacity:.22;cursor:default;background:#fff}
+.coll-list .mvs button + button{border-top:1px solid var(--line)}
 .empty-note{color:var(--ink-3);font-size:.88rem;padding:18px 0}
 
 .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(12px);
@@ -652,11 +667,82 @@ function draw(){
   list.forEach((row, i) => {
     const name = row[SECTION.label_field] || 'Untitled';
     const sub = row.role || row.type || row.country || row.category || '';
-    const b = el('button', i === ROW ? 'on' : '',
+    const entry = el('div', 'entry');
+    entry.draggable = true;
+    entry.dataset.idx = String(i);
+
+    const grip = el('div', 'row-grip', '⋮⋮');
+    grip.title = 'Drag to reorder';
+
+    const b = el('button', 'nb ' + (i === ROW ? 'on' : ''),
       `<span>${esc(name)}</span><span class="sub">${esc(sub)}</span>`);
     b.type = 'button';
     b.addEventListener('click', ()=>{ ROW = i; draw(); });
-    side.appendChild(b);
+
+    const mvs = el('div', 'mvs');
+    const up = el('button', '', '↑');
+    up.type = 'button';
+    up.title = 'Move up';
+    up.disabled = i === 0;
+    up.addEventListener('click', (ev)=>{
+      ev.stopPropagation();
+      if(i === 0) return;
+      const [it] = list.splice(i, 1);
+      list.splice(i - 1, 0, it);
+      if(ROW === i) ROW = i - 1;
+      else if(ROW === i - 1) ROW = i;
+      markDirty(); counts(); draw();
+    });
+    const down = el('button', '', '↓');
+    down.type = 'button';
+    down.title = 'Move down';
+    down.disabled = i === list.length - 1;
+    down.addEventListener('click', (ev)=>{
+      ev.stopPropagation();
+      if(i === list.length - 1) return;
+      const [it] = list.splice(i, 1);
+      list.splice(i + 1, 0, it);
+      if(ROW === i) ROW = i + 1;
+      else if(ROW === i + 1) ROW = i;
+      markDirty(); counts(); draw();
+    });
+    mvs.append(up, down);
+
+    entry.append(grip, b, mvs);
+
+    entry.addEventListener('dragstart', e => {
+      entry.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', 'coll-' + String(i));
+    });
+    entry.addEventListener('dragend', ()=> entry.classList.remove('dragging'));
+    entry.addEventListener('dragover', e => {
+      if(String(e.dataTransfer.types || []).includes('text/plain') &&
+         (e.dataTransfer.getData('text/plain') || '').startsWith('coll-')){
+        e.preventDefault();
+        entry.classList.add('over');
+      }
+    });
+    entry.addEventListener('dragleave', ()=> entry.classList.remove('over'));
+    entry.addEventListener('drop', e => {
+      entry.classList.remove('over');
+      const raw = e.dataTransfer.getData('text/plain') || '';
+      if(!raw.startsWith('coll-')) return;
+      e.preventDefault();
+      const from = Number(raw.slice(5));
+      const to = i;
+      if(Number.isNaN(from) || from === to || from < 0 || from >= list.length) return;
+      const [it] = list.splice(from, 1);
+      list.splice(to, 0, it);
+      let nRow = ROW;
+      if(nRow === from) nRow = to;
+      else if(from < to && nRow > from && nRow <= to) nRow -= 1;
+      else if(from > to && nRow >= to && nRow < from) nRow += 1;
+      ROW = nRow;
+      markDirty(); counts(); draw();
+    });
+
+    side.appendChild(entry);
   });
 
   if(!list.length){
