@@ -3659,10 +3659,19 @@ ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
       <div class="field"><label>${cx('pages.join.formLookingLabel', 'What are you looking for?')}</label><textarea name="message" rows="4" placeholder="${cx('pages.join.formLookingPlaceholder', 'Learning, research, mentorship, opportunities, starting a chapter…')}"></textarea></div>
       <button class="btn teal" type="submit">${cx('pages.join.formSubmitBtn', 'Join Quantum Africa')} <span class="ar" aria-hidden="true">→</span></button>
       <div class="form-msg mt16" hidden></div>
+      <p class="small mt18" style="color:var(--ink-2);line-height:1.7">
+        ${cx('pages.join.googleFormHint', 'Prefer to sign up via Google Form?')}
+        <a class="link-a" href="https://forms.gle/b1qSiiniz5wYRZJo9" target="_blank" rel="noopener noreferrer">${cx('pages.join.googleFormCta', 'Fill in this Google Form →')}</a>
+      </p>
     </form>
   </div>
   <aside>
-    <div class="panel"><h5>${cx('pages.join.getHead', 'What you get')}</h5>
+    <div class="panel" style="background:color-mix(in srgb,var(--teal) 8%,transparent);border-color:color-mix(in srgb,var(--teal) 26%,var(--line))">
+      <h5 style="margin-bottom:6px">${cx('pages.join.altHeadline', 'Join via Google Form')}</h5>
+      <p class="small" style="margin:0 0 14px;color:var(--ink-2)">${cx('pages.join.altSub', 'If the on-page form doesn\u2019t work for you, fill in the Google Form below instead \u2014 submissions flow to the same inbox.')}</p>
+      <a class="btn teal" href="https://forms.gle/b1qSiiniz5wYRZJo9" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${cx('pages.join.altBtn', 'Open Google Form →')}</a>
+    </div>
+    <div class="panel mt16"><h5>${cx('pages.join.getHead', 'What you get')}</h5>
       <ul style="margin:0;padding-left:18px;font-size:.88rem;color:var(--ink-2);line-height:1.9">
         <li>${cx('pages.join.getItem1', 'Invitations to every webinar and workshop')}</li>
         <li>${cx('pages.join.getItem2', 'Opportunities circulated before deadlines')}</li>
@@ -4913,17 +4922,18 @@ document.addEventListener('submit', async (e) => {
     if (msg) {
       msg.hidden = false;
       msg.className = 'form-msg mt16 small';
-      msg.style.cssText = 'padding:10px 14px;border-radius:4px;background:color-mix(in srgb,var(--gold) 20%,transparent);color:var(--ink)';
+      msg.style.cssText = 'padding:12px 14px;border-radius:10px;background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--ink);line-height:1.7;border:1px solid color-mix(in srgb,var(--gold) 30%,transparent)';
       try {
         const flat2 = {};
         (new FormData(f)).forEach((v, k) => { if (k !== 'bot-field') flat2[k] = String(v ?? ''); });
         const inbox = 'contact@quantum-africa.org';
+        const googleForm = 'https://forms.gle/b1qSiiniz5wYRZJo9';
         const subj = `[${formName}] form submission${flat2.name || flat2.full_name ? ' from ' + (flat2.name||flat2.full_name) : ''}`;
         const lines = Object.entries(flat2).map(([k,v])=>k+':\n'+String(v||'')+'\n').join('\n');
         const mailto = 'mailto:'+inbox+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines);
-        msg.innerHTML = 'Could not send automatically. Please <a class="link-a" href="'+esc(mailto)+'" target="_blank" rel="noopener">email us directly at '+inbox+'</a> — your message details are pre-filled in the draft. Or reload and try again.';
+        msg.innerHTML = 'Could not send automatically. Please <a class="link-a" href="'+esc(mailto)+'" target="_blank" rel="noopener noreferrer">email us directly at '+inbox+'</a>, or fill in <a class="link-a" href="'+esc(googleForm)+'" target="_blank" rel="noopener noreferrer">this google form</a>.';
       } catch (_2) {
-        msg.textContent = "Could not send right now. Please reload the page and try again, or email contact@quantum-africa.org directly.";
+        msg.textContent = "Could not send automatically. Please email us directly at contact@quantum-africa.org, or fill in this google form: https://forms.gle/b1qSiiniz5wYRZJo9";
       }
     }
   } finally {
