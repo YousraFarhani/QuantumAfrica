@@ -1599,7 +1599,7 @@ PAGES.home = () => `
 
 <section class="stats-band">
   <div class="wrap"><div class="stats">
-    ${[[cnum('stats.members',361),'Community members','+'],
+    ${[[cnum('stats.members',361),'Community members',''],
        [cnum('stats.chapters',8),'Chapters',''],
        [cnum('stats.countries',48),'Countries reached',''],
        [cnum('stats.events',10),'Events held','']]
@@ -1853,7 +1853,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
     <div class="panel mt16">
       <h5>${cx('pages.about.glancePanelHead', 'At a glance')}</h5>
       <dl class="dl-list">
-        <div class="dl-item"><dt>Members</dt><dd>${cnum('stats.members','361')}+</dd></div>
+        <div class="dl-item"><dt>Members</dt><dd>${cnum('stats.members','361')}</dd></div>
         <div class="dl-item"><dt>Chapters</dt><dd>${cnum('stats.chapters',8)}</dd></div>
         <div class="dl-item"><dt>Founded</dt><dd>${cx('site.founded', pht('YEAR'))}</dd></div>
         <div class="dl-item"><dt>Location</dt><dd>${cx('site.registered', pht('COUNTRY'))}</dd></div>
@@ -1884,7 +1884,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
 
 <section class="sec flush"><div class="wrap">
   <div class="bignum">
-    ${[[cnum('stats.members',361),'+',cx('pages.impact.kpi1Key','Community members'),cx('pages.impact.kpi1Desc','Across the continent and the diaspora.')],
+    ${[[cnum('stats.members',361),'',cx('pages.impact.kpi1Key','Community members'),cx('pages.impact.kpi1Desc','Across the continent and the diaspora.')],
        [cnum('stats.chapters',8),'',cx('pages.impact.kpi2Key','National chapters'),cx('pages.impact.kpi2Desc','Across North, West, East and Southern Africa.')],
        [cnum('stats.projects',4),'',cx('pages.impact.kpi3Key','Research projects'),cx('pages.impact.kpi3Desc','All open to new contributors.')],
        [cnum('stats.countries',48),'',cx('pages.impact.kpi4Key','Countries reached'),cx('pages.impact.kpi4Desc','Across the continent and the diaspora.')],
@@ -3283,7 +3283,7 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
     cx('pages.people.wideLede', '')
   )}
   <div class="grid g3">
-    ${[[cx('pages.people.p1N','361+'),cx('pages.people.p1K','Members'),cx('pages.people.p1D','Across the continent and the diaspora.')],
+    ${[[cx('pages.people.p1N','361'),cx('pages.people.p1K','Members'),cx('pages.people.p1D','Across the continent and the diaspora.')],
        [cx('pages.people.p2N','8'),cx('pages.people.p2K','Chapters'),cx('pages.people.p2D','Each with its own team.')],
        [cx('pages.people.p3N','48'),cx('pages.people.p3K','Countries reached'),cx('pages.people.p3D','Members, attendees and collaborators.')]
       ].map(([n,k,d])=>`<div class="pillar rv"><span class="pi">${esc(n)}</span><h3 style="font-size:1.22rem">${esc(k)}</h3><p>${esc(d)}</p></div>`).join('')}
