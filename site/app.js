@@ -3592,6 +3592,25 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:'Article'}])}
     }).join('');
   };
   const related = ARTICLES.filter(x => x && x.slug && x.slug !== a.slug).slice(0,3);
+  const ytIdMatch = a.url && typeof a.url === 'string' ? a.url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([A-Za-z0-9_-]{6,})/) : null;
+  const ytId = ytIdMatch && ytIdMatch[1] ? ytIdMatch[1] : '';
+  const ytCard = (ytId) ? `
+<div class="mt40">
+  <div class="sec-idx"><span class="lbl">${cx('pages.article.recordingEyebrow', 'Recording')}</span><i></i></div>
+  <a class="yt-card rv" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer" style="max-width:780px;margin-top:18px">
+    <span class="yt-thumb">
+      <img src="https://img.youtube.com/vi/${esc(ytId)}/hqdefault.jpg" alt="${esc(a.title)} — YouTube recording" loading="lazy">
+      <span class="yt-play" aria-hidden="true">
+        <svg viewBox="0 0 68 48" width="54" height="38"><path d="M66.52,7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"/><path d="M 45,24 27,14v20z" fill="#fff"/></svg>
+      </span>
+    </span>
+    <span class="yt-body">
+      <span class="yt-title">${esc(a.title)}</span>
+      <span class="yt-sub">Full recording · YouTube · ${esc(ytId)}</span>
+      <span class="yt-cta">Watch the session on YouTube &rarr;</span>
+    </span>
+  </a>
+</div>` : '';
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:a.title}])}
 <section class="sec flush" style="padding:0"><div class="wrap">${artImage(a,'2400×1000 · JPG')}</div></section>
@@ -3600,6 +3619,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:a.title}])}
   <h1 style="font-size:clamp(1.9rem,3.4vw,2.9rem)">${esc(a.title)}</h1>
   ${a.summary ? `<p class="lede mt16">${esc(a.summary)}</p>` : ''}
   <div class="prose mt32">${md(a.body||'')}</div>
+  ${ytCard}
   ${(a.gallery && a.gallery.length) ? `<div class="mt40"><div class="sec-idx"><span class="lbl">${cx('pages.article.galleryEyebrow', 'Gallery')}</span><i></i></div><div class="grid g3 mt24" style="grid-template-columns:repeat(${a.gallery.length >= 3 ? 3 : 2},1fr)">${a.gallery.map(src=>`<a class="rv" href="${esc(_assetSrc(src))}" target="_blank" rel="noopener noreferrer" style="display:block;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -22px rgba(0,0,0,.22);border:1px solid var(--line)"><img src="${esc(_assetSrc(src))}" alt="${esc(a.title)}" loading="lazy" style="width:100%;height:100%;max-height:320px;object-fit:cover;display:block"></a>`).join('')}</div></div>` : ''}
   ${(a.links && a.links.length) ? `<div class="mt32" style="display:flex;gap:12px;flex-wrap:wrap">${a.links.map(l=>`<a class="btn ghost" href="${esc(l.u||'#')}" target="_blank" rel="noopener noreferrer">${esc(l.l||'Link')} <span class="ar" aria-hidden="true">&rarr;</span></a>`).join('')}</div>` : ''}
 </div></section>
