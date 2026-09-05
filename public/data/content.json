@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-05T16:47:29+00:00",
+ "updated": "2026-09-05T20:44:35+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -81,9 +81,9 @@
    "ctaSecondary": ""
   },
   "stats": {
-   "members": 350,
+   "members": 361,
    "chapters": 8,
-   "countries": 52,
+   "countries": 48,
    "events": 10,
    "projects": 7,
    "partners": 12,
