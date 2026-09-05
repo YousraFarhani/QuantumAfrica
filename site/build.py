@@ -22,8 +22,31 @@ DATA = os.path.join(PUBLIC, 'data')
 
 
 def b64(name):
-    with open(os.path.join(HERE, name), 'rb') as f:
-        return 'data:image/png;base64,' + base64.b64encode(f.read()).decode()
+    p = name if os.path.isabs(name) else os.path.join(HERE, name)
+    if not os.path.exists(p):
+        alt = os.path.join(PUBLIC, 'media', 'logo', os.path.basename(name) if not os.path.isabs(name) else name)
+        if os.path.exists(alt):
+            p = alt
+        else:
+            base = os.path.splitext(os.path.basename(name))[0]
+            png = os.path.join(PUBLIC, 'media', 'logo', base + '.png')
+            svg = os.path.join(PUBLIC, 'media', 'logo', base + '.svg')
+            if os.path.exists(png): p = png
+            elif os.path.exists(svg): p = svg
+    ext = os.path.splitext(p)[1].lower().lstrip('.')
+    mime = {
+        'png': 'image/png', 'jpg': 'image/jpeg', 'jpeg': 'image/jpeg',
+        'gif': 'image/gif', 'webp': 'image/webp', 'svg': 'image/svg+xml',
+    }.get(ext, 'image/png')
+    with open(p, 'rb') as f:
+        data = f.read()
+    if mime == 'image/svg+xml':
+        try:
+            from urllib.parse import quote
+            return 'data:image/svg+xml;utf8,' + quote(data.decode('utf-8'))
+        except Exception:
+            return 'data:image/svg+xml;base64,' + base64.b64encode(data).decode()
+    return 'data:' + mime + ';base64,' + base64.b64encode(data).decode()
 
 
 def load(name, default):
@@ -38,6 +61,24 @@ def load(name, default):
         return default
 
 
+def resolve_logo(token_name, svg_basename_no_ext, fallback_png):
+    svg = os.path.join(PUBLIC, 'media', 'logo', svg_basename_no_ext + '.svg')
+    png = os.path.join(PUBLIC, 'media', 'logo', svg_basename_no_ext + '.png')
+    fb = os.path.join(HERE, fallback_png)
+    if os.path.exists(svg):
+        return b64(svg)
+    if os.path.exists(png):
+        return b64(png)
+    return b64(fb)
+
+
+def resolve_icon():
+    icon_png = os.path.join(PUBLIC, 'media', 'logo', 'icon.png')
+    if os.path.exists(icon_png):
+        return b64(icon_png)
+    return b64(os.path.join(HERE, 'logo-mark.png'))
+
+
 def main():
     shell = open(os.path.join(HERE, 'shell.html'), encoding='utf-8').read()
     art = open(os.path.join(HERE, 'art.js'), encoding='utf-8').read()
@@ -48,12 +89,11 @@ def main():
     evts = load('events.json', {'updated': None, 'items': [], 'sources': {}})
     content = load('content.json', {'updated': None, 'content': {}})
 
-    for token, png in (('__LOGO_GOLD__', 'logo-gold.png'),
-                       ('__LOGO_GOLD_W__', 'logo-gold-w.png'),
-                       ('__LOGO_LIGHT__', 'logo-light.png'),
-                       ('__LOGO_DARK__', 'logo-dark.png'),
-                       ('__LOGO_MARK__', 'logo-mark.png')):
-        shell = shell.replace(token, b64(png))
+    shell = shell.replace('__LOGO_GOLD__',    resolve_logo('__LOGO_GOLD__',    'light', 'logo-gold.png'))
+    shell = shell.replace('__LOGO_GOLD_W__',  resolve_logo('__LOGO_GOLD_W__',  'dark',  'logo-gold-w.png'))
+    shell = shell.replace('__LOGO_LIGHT__',   resolve_logo('__LOGO_LIGHT__',   'light', 'logo-light.png'))
+    shell = shell.replace('__LOGO_DARK__',    resolve_logo('__LOGO_DARK__',    'dark',  'logo-dark.png'))
+    shell = shell.replace('__LOGO_MARK__',    resolve_icon())
 
     data = ('const AFRICA = ' + json.dumps(
                 {'view': af['view'], 'paths': af['paths'], 'bbox': af['bbox']},

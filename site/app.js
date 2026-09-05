@@ -649,7 +649,8 @@ Open to **students, researchers, professionals, and anyone curious** about quant
    subhead:'Third Edition',
    lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
    description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
-   image:'',
+   image:'/media/south.png',
+   heroImage:'/media/south.png',
    org:'DeepLearning Indaba'},
 ];
 
@@ -923,6 +924,8 @@ const EVENT_ART = ['circuit','bloch','wave','lattice','network','fringes'];
 
 /* ---------- helpers ---------- */
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const titleCase = s => String(s||'').replace(/\b([A-Za-zÀ-ÖØ-öø-ÿ'])/g,(_,c)=>c.toUpperCase());
+const tc = s => titleCase(s);   // convenience: for country names
 
 const SVG = {
   image:'<path d="M3 5.5A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m3 16.5 4.6-4.2a1.6 1.6 0 0 1 2.2 0L15 17"/><path d="m13.5 15 2.3-2.1a1.6 1.6 0 0 1 2.2 0L21 15.7"/>',
@@ -1610,7 +1613,7 @@ ${highlightSection()}
           <div class="xs">${(q.role ? esc(q.role) : (q.name ? '' : pht('Role'))) + (q.role && q.institution ? ' · ' : '') + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution')))}</div>
         </div>
         <div class="vq-body"><p>${q.quote ? esc(q.quote) : pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p></div>
-        <div class="vq-country">${q.country ? esc(q.country) : pht('Country')}</div>
+        <div class="vq-country">${q.country ? esc(tc(q.country)) : pht('Country')}</div>
       </div>`).join('')}
     </div>
   </div>
@@ -1734,13 +1737,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
         <div class="dl-item"><dt>Location</dt><dd>${cx('site.registered', pht('COUNTRY'))}</dd></div>
       </dl>
     </div>
-    <div class="panel mt16">
-      <h5>${cx('pages.about.documentsPanelHead', 'Documents')}</h5>
-      <p class="small">${cx('pages.about.documentsNote',
-                        cval('about.documents')
-                          ? cval('about.documents')
-                          : pht('Annual report, strategy document or one-pager PDF — upload and link here'))}</p>
-    </div>
   </aside>
 </div></div></section>
 
@@ -1788,10 +1784,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
     <div class="card-media">${cimg('pages.impact.storyImage'+(i+1), 'Portrait of the person this story is about', '1600×900 · JPG', '', k)}</div>
     <div class="card-b"><div class="news-meta"><span class="t">${cx('pages.impact.storyMeta', 'Member story')}</span></div>
       <h4>${pht(cx('pages.impact.storyHeadline'+(i+1), 'Impact story headline'))}</h4><p>${pht(cx('pages.impact.storyCopy'+(i+1), 'Who, what they did, where they are now'))}</p></div></a>`).join('')}</div>
-  <div class="mt48 grid g2">
-    <div class="panel"><h5>${cx('pages.impact.reportHead', 'Annual report')}</h5><p class="small">${pht(cx('pages.impact.reportNote', 'Upload the PDF and a cover image'))}</p></div>
-    <div class="panel"><h5>${cx('pages.impact.methodHead', 'Methodology')}</h5><p class="small">${pht(cx('pages.impact.methodNote', 'How each figure is counted, and over what period'))}</p></div>
-  </div>
 </div></section>`;
 
 /* ---------- EDUCATION ---------- */
@@ -2234,8 +2226,8 @@ PAGES.eventDetail = (slug) => {
   const galleryHtml = hasGall
     ? (e.gallery.length===1
         ? `<div class="slot wide filled"><img src="${esc(mediaUrl(e.gallery[0]))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:12px"></div>`
-        : `<div class="grid ${e.gallery.length>=3?'g3':'g2'}">${e.gallery.map(src=>`<div class="slot short filled"><img src="${esc(mediaUrl(src))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:10px"></div>`).join('')}</div>`)
-    : `<div class="grid g3">${['circuit','network','wave'].map((k,i)=>cimg('pages.eventDetail.photo'+(i+1),'Event photo','1200×800 · JPG','short',k)).join('')}</div>`;
+        : `<div class="grid g3">${e.gallery.map(src=>`<div class="slot filled" style="aspect-ratio:4/3"><img src="${esc(mediaUrl(src))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:10px"></div>`).join('')}</div>`)
+    : '';
   const linksHtml = (hasLinks||hasReg)
     ? `<div class="rows" style="margin-top:8px">${(hasReg?[{l:'Register / RSVP', u:e.registerUrl}]:[]).concat(hasLinks?e.links:[]).map(l=>`<div class="row-i" style="grid-template-columns:110px 1fr;gap:12px;align-items:start"><span class="dl" style="padding-top:10px">${esc(l.l)}</span><span style="padding-top:8px"><a class="link-a" href="${esc(l.u)}" target="_blank" rel="noopener noreferrer">${esc(l.u)}</a></span></div>`).join('')}</div>`
     : '';
@@ -2258,7 +2250,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:e.type}])}
     ${linksHtml?`<h3 style="margin-top:32px">${cx('pages.eventDetail.resHead', 'Links &amp; registration')}</h3>${linksHtml}`:''}
     <h3 style="margin-top:32px">${cx('pages.eventDetail.photosHead', 'Photos &amp; gallery')}</h3>
     ${galleryHtml}
-    ${e.when==='past'?`<h3 style="margin-top:32px">${cx('pages.eventDetail.outcomesHead', 'Outcomes &amp; highlights')}</h3><p>${e.when==='past'&&e.status?esc(e.status+'. '):''}${pht(cx('pages.eventDetail.outcomesBody', 'Outcomes — attendance, what came out of it, follow-on activity. Only for past events.'))}</p>`:''}
+    ${e.when==='past'&&e.status?`<h3 style="margin-top:32px">${cx('pages.eventDetail.outcomesHead','Outcomes &amp; highlights')}</h3><p>${esc(e.status)}</p>`:''}
   </div>
   <aside>
     <div class="panel">
@@ -2437,7 +2429,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     cx('pages.workshops.galleryTitle', 'From the workshops'),
     cx('pages.workshops.galleryLede', '')
   )}
-  <div class="grid g4">${[
+  <div class="grid g3">${[
     '/media/workshops/1786655195296.jpeg',
     '/media/workshops/1786655195534.jpeg',
     '/media/workshops/1786655195632.jpeg',
@@ -2445,7 +2437,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     '/media/edition1.JPG',
     '/media/edition2.jpeg'
   ].filter(Boolean).map((src,i) => {
-    return `<div class="slot short filled rv"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`;
+    return `<div class="slot filled rv" style="aspect-ratio:4/3"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:10px"></div>`;
   }).join('')}</div>
 </div></section>
 
@@ -3228,50 +3220,82 @@ ${PARTNER_CATS.map(cat=>`
 
 /* ---------- FOR UNIVERSITIES ---------- */
 PAGES.universities = () => `
-${crumb([{t:'Home',h:'#/'},{t:'For Universities'}])}
-<section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">${cx('pages.universities.heroEyebrow', 'For universities')}</span><i></i></div>
-  <h1 class="mt24">${cx('pages.universities.heroTitle', 'Partner With Quantum Africa')}</h1>
-  <p class="lede">${cx('pages.universities.heroLede', 'Strengthen your university’s quantum capacity through access to education, research opportunities, expert networks, and global collaborations.')}</p>
-  <div class="phero-meta"><a class="btn teal sm" href="#/contact">${cx('pages.universities.heroBtn1', 'Start a university partnership')}</a><a class="btn sm ghost" href="#/education">${cx('pages.universities.heroBtn2', 'See our programmes')}</a></div>
-</div></section>
-<section class="sec flush" style="padding-top:0"><div class="wrap">${cimg('pages.universities.heroImage','Workshop at a university campus','2400×1000 · JPG','wide','lattice')}</div></section>
+${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'University Programs'}])}
+<section class="phero" style="padding-top:38px;padding-bottom:30px">
+  ${africaWatermark('wm-univ')}
+  <div class="wrap">
+    <div class="sec-idx"><span class="lbl">${cx('pages.universities.heroEyebrow', 'Programs · University partnerships')}</span><i></i></div>
+    <div class="split" style="align-items:center;gap:clamp(22px,3.6vw,48px)">
+      <div>
+        <h1 class="mt24" style="font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.05;letter-spacing:-.03em;max-width:20ch">${cx('pages.universities.heroTitle', 'Bring Quantum to Your Campus')}</h1>
+        <p class="lede mt16" style="max-width:52ch">${cx('pages.universities.heroLede', 'Structured programmes that help African universities launch, teach and grow quantum — from first workshops to long-term research partnerships.')}</p>
+        <div class="phero-meta mt24">
+          <a class="btn teal" href="#/contact">${cx('pages.universities.heroBtn1', 'Start a partnership')} <span class="ar" aria-hidden="true">&rarr;</span></a>
+          <a class="btn ghost" href="#/education">${cx('pages.universities.heroBtn2', 'Explore programmes')}</a>
+        </div>
+      </div>
+      <div class="panel" style="margin:0;padding:26px 24px;background:color-mix(in srgb,var(--teal) 4%,transparent);border:1px solid color-mix(in srgb,var(--teal) 14%,transparent)">
+        <div class="hero-eye" style="color:var(--teal-p)">${cx('pages.universities.heroPanelEyebrow','Impact at a glance')}</div>
+        <h3 style="margin-top:10px;font-size:1.3rem;letter-spacing:-.02em">${cx('pages.universities.heroPanelTitle','Trusted across 8 national chapters')}</h3>
+        <dl class="dl-list" style="margin-top:18px">
+          <div class="dl-item"><dt>${cx('pages.universities.kpiWorkshops','Workshops delivered')}</dt><dd style="font-weight:600;font-size:1.05rem">${cnum('stats.events',12)}+</dd></div>
+          <div class="dl-item"><dt>${cx('pages.universities.kpiChapters','Campus chapters')}</dt><dd style="font-weight:600;font-size:1.05rem">${cnum('stats.chapters',8)}</dd></div>
+          <div class="dl-item"><dt>${cx('pages.universities.kpiProjects','Open research projects')}</dt><dd style="font-weight:600;font-size:1.05rem">${cnum('stats.projects',4)}</dd></div>
+          <div class="dl-item"><dt>${cx('pages.universities.kpiMembers','Students & researchers')}</dt><dd style="font-weight:600;font-size:1.05rem">${cnum('stats.members',350)}+</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec"><div class="wrap">
   ${sectionHead(
-    cx('pages.universities.whyEyebrow', 'Why partner'),
-    cx('pages.universities.whyTitle', 'Quantum is arriving faster than curricula can change'),
-    cx('pages.universities.whyLede', '')
+    cx('pages.universities.whyEyebrow', 'What we bring'),
+    cx('pages.universities.whyTitle', 'A complete quantum programme, staged for your context'),
+    cx('pages.universities.whyLede', 'Plug-and-play components that fit the reality of African departments: short timeframes, small budgets, ambitious students.')
   )}
   <div class="grid g3">
-    ${[[cx('pages.universities.o1Title','Quantum computing workshops'),cx('pages.universities.o1Body','Delivered on your campus or online, for students and staff.'),'current'],
-       [cx('pages.universities.o2Title','Faculty training'),cx('pages.universities.o2Body','Preparing your lecturers to teach quantum topics with confidence.'),'dev'],
-       [cx('pages.universities.o3Title','Student bootcamps'),cx('pages.universities.o3Body','Intensive short programmes taking students from zero to running circuits.'),'dev'],
-       [cx('pages.universities.o4Title','Guest lectures'),cx('pages.universities.o4Body','Speakers from the global quantum ecosystem into your classroom.'),'current'],
-       [cx('pages.universities.o5Title','Curriculum support'),cx('pages.universities.o5Body','Help designing quantum modules and choosing teaching materials.'),'future'],
-       [cx('pages.universities.o6Title','Research collaboration'),cx('pages.universities.o6Body','Joint projects, co-supervision and access to our research network.'),'current'],
-       [cx('pages.universities.o7Title','Student chapters'),cx('pages.universities.o7Body','A Quantum Africa chapter on your campus, run by your students.'),'current'],
-       [cx('pages.universities.o8Title','Quantum AI Tutor access'),cx('pages.universities.o8Body','Free access for your students as a learning companion.'),'dev'],
-       [cx('pages.universities.o9Title','International connections'),cx('pages.universities.o9Body','Introductions to institutions, conferences and programmes abroad.'),'future']
-      ].map(([t,d,s])=>`<div class="card pad rv"><div class="card-b">
-        <h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
+    ${[[cx('pages.universities.o1Title','Quantum computing workshops'),cx('pages.universities.o1Body','Hands-on Qiskit / PennyLane workshops delivered on your campus or online, for students and staff.'),'01'],
+       [cx('pages.universities.o2Title','Faculty training'),cx('pages.universities.o2Body','Up-skilling workshops for lecturers so they can teach quantum topics with confidence long-term.'),'02'],
+       [cx('pages.universities.o3Title','Student bootcamps'),cx('pages.universities.o3Body','Intensive short programmes taking students from zero to running real quantum circuits.'),'03'],
+       [cx('pages.universities.o4Title','Guest lectures'),cx('pages.universities.o4Body','Speakers from the global quantum ecosystem invited into your classroom or lecture series.'),'04'],
+       [cx('pages.universities.o5Title','Curriculum support'),cx('pages.universities.o5Body','Help designing quantum modules, choosing syllabi and compiling teaching materials.'),'05'],
+       [cx('pages.universities.o6Title','Research collaboration'),cx('pages.universities.o6Body','Joint projects, co-supervision and introduction to our open research network.'),'06'],
+       [cx('pages.universities.o7Title','Student chapters'),cx('pages.universities.o7Body','A Quantum Africa chapter on your campus, student-led, with our playbook and budget support.'),'07'],
+       [cx('pages.universities.o8Title','Quantum AI Tutor access'),cx('pages.universities.o8Body','Institutional access to our free AI tutor for every enrolled student, with cohort tracking.'),'08'],
+       [cx('pages.universities.o9Title','International pathways'),cx('pages.universities.o9Body','Introductions to partner institutions, conferences and exchange programmes abroad.'),'09']
+      ].map(([t,d,n])=>`<div class="card pad rv"><div class="card-b">
+        <div class="sec-idx" style="margin-bottom:14px"><span class="lbl" style="color:var(--gold-d);font-weight:700">${n}</span><i></i></div>
+        <h4 style="font-size:1.08rem;letter-spacing:-.01em">${esc(t)}</h4>
+        <p class="mt8" style="font-size:.92rem;line-height:1.55">${esc(d)}</p></div></div>`).join('')}
   </div>
 </div></section>
+
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
-    cx('pages.universities.howEyebrow', 'How it starts'),
-    cx('pages.universities.howTitle', 'From first conversation to first workshop')
+    cx('pages.universities.howEyebrow', 'How we start'),
+    cx('pages.universities.howTitle', 'From first email to first workshop'),
+    cx('pages.universities.howLede', 'A lightweight four-stage onboarding designed for busy departments.')
   )}
-  ${[[cx('pages.universities.s1Title','Get in touch'),cx('pages.universities.s1Body','Tell us your department, your students and what you are trying to build.')],
-     [cx('pages.universities.s2Title','Scoping call'),cx('pages.universities.s2Body','We work out what is realistic in your first year — usually a workshop and a student chapter.')],
-     [cx('pages.universities.s3Title','Pilot activity'),cx('pages.universities.s3Body','A first workshop or lecture series on your campus, co-organised with your staff.')],
-     [cx('pages.universities.s4Title','Ongoing partnership'),cx('pages.universities.s4Body','Student chapter, research collaboration, faculty training and access to the wider network.')]
-    ].map(([t,d],i)=>`<div class="step"><span class="n">0${i+1}</span><div><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
+  <div class="grid g2" style="gap:14px">
+  ${[[cx('pages.universities.s1Title','Get in touch'),cx('pages.universities.s1Body','One email is enough. Tell us your department, your students and what you are trying to build.')],
+     [cx('pages.universities.s2Title','Scoping call'),cx('pages.universities.s2Body','A 30-minute conversation to design a realistic first year: usually a pilot workshop and a student chapter.')],
+     [cx('pages.universities.s3Title','Pilot activity'),cx('pages.universities.s3Body','First workshop or lecture series on your campus, co-organised with your staff. Materials delivered in advance.')],
+     [cx('pages.universities.s4Title','Ongoing partnership'),cx('pages.universities.s4Body','Student chapter launch, faculty training plan, research collaboration and access to the wider network.')]
+    ].map(([t,d],i)=>`<div class="panel rv step"><span class="n" style="width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--gold) 14%,transparent);color:var(--gold-d);font-weight:700">0${i+1}</span><div class="mt16"><h4 style="font-size:1.08rem">${esc(t)}</h4><p style="margin-top:6px;font-size:.93rem">${esc(d)}</p></div></div>`).join('')}
+  </div>
 </div></section>
+
 <section class="cta-band">
   ${ringMark('cta-ring')}
-  <div class="wrap"><h2>${cx('pages.universities.ctaBandTitle', 'Start a university partnership.')}</h2>
-  <div class="btns"><a class="btn teal" href="#/contact">${cx('pages.universities.ctaBandBtn1', 'Start a university partnership')}</a></div>
-</div></section>`;
+  <div class="wrap">
+    <h2 style="max-width:22ch">${cx('pages.universities.ctaBandTitle', 'Bring quantum programmes to your university.')}</h2>
+    <div class="btns mt16">
+      <a class="btn teal" href="#/contact">${cx('pages.universities.ctaBandBtn1', 'Start a partnership')} <span class="ar" aria-hidden="true">&rarr;</span></a>
+      <a class="btn inv ghost" href="#/education">${cx('pages.universities.ctaBandBtn2', 'See programmes')}</a>
+    </div>
+  </div>
+</section>`;
 
 /* ---------- FOR STUDENTS ---------- */
 PAGES.students = () => `
@@ -3321,8 +3345,14 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Students'}])}
     null,
     {t:cx('pages.students.voicesCta', 'Member stories'),h:'#/news'}
   )}
-  <div class="grid g3">${(clist('pages.students.voices') || []).concat(Array.from({length: Math.max(0, 3 - (clist('pages.students.voices') || []).length)}).map(()=>({}))).map(v=>`<div class="quote rv"><p>${v.quote ? esc(v.quote) : cx('pages.students.voicesQuotePlaceholder', pht('Student quote'))}</p>
-    <div class="who">${avatar(v.photo || '')}<span class="xs">${(v.name ? esc(v.name) : cx('pages.students.voicesWhoPlaceholder', pht('Name'))) + (v.institution ? ' · ' + esc(v.institution) : (v.name ? '' : ' · ' + pht('University'))) + (v.country ? ' · ' + esc(v.country) : (v.name ? '' : ' · ' + pht('Country')))}</span></div></div>`).join('')}</div>
+  <div class="grid g3">${(clist('pages.home.communityQuotes') || []).concat(Array.from({length: Math.max(0, 3 - (clist('pages.home.communityQuotes') || []).length)}).map(()=>({}))).map(v=>`<div class="vq rv">
+    <span class="vq-quote-tl" aria-hidden="true">"6</span>
+    <span class="vq-quote-br" aria-hidden="true">"6</span>
+    <div class="vq-body" style="order:1"><p style="font-size:1.02rem;line-height:1.55">${v.quote ? esc(v.quote) : cx('pages.students.voicesQuotePlaceholder', pht('[ Student quote ]'))}</p></div>
+    <div class="vq-by" style="order:2;text-align:left;margin-top:14px">
+      <div class="xs" style="font-size:0.78rem;font-weight:500;letter-spacing:0.01em;color:var(--muted);text-transform:none">${(v.name ? esc(v.name) : cx('pages.students.voicesWhoPlaceholder', pht('[ Name ]'))) + (v.institution ? ' · ' + esc(v.institution) : ' · ' + pht('[ University ]')) + (v.country ? ' · ' + esc(tc(v.country)) : ' · ' + pht('[ Country ]'))}</div>
+    </div>
+  </div>`).join('')}</div>
 </div></section>
 
 <section class="cta-band">
