@@ -48,6 +48,10 @@ MEDIA_FIELDS = [
 PERSON_FIELDS = [
     F('name', 'Full name', help='As they want it written.'),
     F('group', 'Group', 'select', options=['Leadership', 'Advisors', 'Chapter leads']),
+    F('category', 'Category', 'select',
+      options=['Student', 'Researcher', 'Faculty / Lecturer', 'Industry professional',
+               'Postdoc', 'PhD candidate', 'Masters student', 'Undergraduate student',
+               'Partner organisation', 'Alumni', 'Advisor', 'Volunteer', 'Other']),
     F('role', 'Role at Quantum Africa'),
     F('institution', 'Institution'),
     F('country', 'Country', 'select', options=COUNTRIES),

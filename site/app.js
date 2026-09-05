@@ -1481,8 +1481,8 @@ PAGES.home = () => `
 
 <section class="stats-band">
   <div class="wrap"><div class="stats">
-    ${[[cnum('stats.members',400),'Community members','+'],
-       [cnum('stats.chapters',7),'Chapters',''],
+    ${[[cnum('stats.members',350),'Community members','+'],
+       [cnum('stats.chapters',8),'Chapters',''],
        [cnum('stats.countries',52),'Countries reached',''],
        [cnum('stats.events',10),'Events held','']]
       .map(([n,l,sfx])=>`<div class="stat"><div class="n" data-count="${n}"${sfx?` data-suffix="${sfx}"`:''}>0</div><span class="u"></span><div class="l">${l}</div></div>`).join('')}
@@ -1732,8 +1732,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
     <div class="panel mt16">
       <h5>${cx('pages.about.glancePanelHead', 'At a glance')}</h5>
       <dl class="dl-list">
-        <div class="dl-item"><dt>Members</dt><dd>${cnum('stats.members','400')}+</dd></div>
-        <div class="dl-item"><dt>Chapters</dt><dd>${cnum('stats.chapters',7)}</dd></div>
+        <div class="dl-item"><dt>Members</dt><dd>${cnum('stats.members','350')}+</dd></div>
+        <div class="dl-item"><dt>Chapters</dt><dd>${cnum('stats.chapters',8)}</dd></div>
         <div class="dl-item"><dt>Founded</dt><dd>${cx('site.founded', pht('YEAR'))}</dd></div>
         <div class="dl-item"><dt>Location</dt><dd>${cx('site.registered', pht('COUNTRY'))}</dd></div>
       </dl>
@@ -3152,26 +3152,22 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Team'}])}
 </div></section>
 
 ${PEOPLE_GROUPS.map(([g, note], gi) => `
-<section class="sec ${gi % 2 ? 'tint' : ''}"><div class="wrap">
+<section class="sec ${gi % 2 ? 'tint' : ''}" style="padding-top:28px;padding-bottom:28px"><div class="wrap">
   ${sectionHead(g, g, note)}
   <div class="grid g4 pgrid">${PEOPLE.filter(p => p.group === g).map(personCard).join('')}</div>
 </div></section>`).join('')}
 
-<section class="sec"><div class="wrap">
+<section class="sec" style="padding-top:34px;padding-bottom:36px"><div class="wrap">
   ${sectionHead(
     cx('pages.people.wideEyebrow', 'Community Members'),
     cx('pages.people.wideTitle', 'Our Community Members'),
     cx('pages.people.wideLede', '')
   )}
   <div class="grid g3">
-    ${[[cx('pages.people.p1N','400+'),cx('pages.people.p1K','Members'),cx('pages.people.p1D','Across the continent and the diaspora.')],
-       [cx('pages.people.p2N','7'),cx('pages.people.p2K','Chapters'),cx('pages.people.p2D','Each with its own team.')],
+    ${[[cx('pages.people.p1N','350+'),cx('pages.people.p1K','Members'),cx('pages.people.p1D','Across the continent and the diaspora.')],
+       [cx('pages.people.p2N','8'),cx('pages.people.p2K','Chapters'),cx('pages.people.p2D','Each with its own team.')],
        [cx('pages.people.p3N','52'),cx('pages.people.p3K','Countries reached'),cx('pages.people.p3D','Members, attendees and collaborators.')]
       ].map(([n,k,d])=>`<div class="pillar rv"><span class="pi">${esc(n)}</span><h3 style="font-size:1.22rem">${esc(k)}</h3><p>${esc(d)}</p></div>`).join('')}
-  </div>
-  <div class="panel mt48">
-    <h5>${cx('pages.people.dirHead', 'Member directory')}</h5>
-    <p class="small">${cx('pages.people.dirPrefix', 'Members who opt in appear in a searchable directory with their country, institution and research interests.')}</p>
   </div>
 </div></section>
 
@@ -3349,7 +3345,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Students'}])}
 <section class="cta-band">
   ${ringMark('cta-ring')}
   <div class="wrap"><div class="hero-eye">${cx('pages.students.ctaBandEyebrow', 'Get started')}</div>
-    <h2 class="mt24">${cx('pages.students.ctaBandTitle', 'Join 400+ people already in the community.')}</h2>
+    <h2 class="mt24">${cx('pages.students.ctaBandTitle', 'Join 350+ people already in the community.')}</h2>
     <div class="btns"><a class="btn teal" href="#/join">${cx('pages.students.ctaBandBtn1', 'Join Quantum Africa')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/education">${cx('pages.students.ctaBandBtn2', 'Browse programmes')}</a></div>
   </div>
 </section>`;
