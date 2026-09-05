@@ -637,8 +637,9 @@ Open to **students, researchers, professionals, and anyone curious** about quant
 • Friday, 7 August 2026
 • 09:00 – 15:00 hrs Zambian Time (CAT / UTC+2)
 • Equivalent to 07:00 – 13:00 UTC`,
-   heroImage:'/media/events/zambia/1785899683901.jpeg',
-   gallery:['/media/events/zambia/1785899683901.jpeg','/media/events/zambia/1785929131822.jpeg','/media/events/zambia/1786000206630.jpeg','/media/events/zambia/1786001452228.jpeg'],
+   image:'/media/seminar.png',
+   heroImage:'/media/seminar.png',
+   gallery:['/media/seminar.png','/media/events/zambia/1785899683901.jpeg','/media/events/zambia/1785929131822.jpeg','/media/events/zambia/1786000206630.jpeg','/media/events/zambia/1786001452228.jpeg'],
    start:'2026-08-07', end:'2026-08-07', deadline:'2026-08-05', city:'Lusaka', country:'Zambia',
    registerUrl:'https://lnkd.in/dEthyAQY',
    org:'Quantum Zambia · Quantum Africa',
@@ -2225,8 +2226,8 @@ PAGES.eventDetail = (slug) => {
   const descHtml = e.description ? _mdToHtml(e.description) : pht(cx('pages.eventDetail.aboutBody', 'FULL DESCRIPTION'));
   const galleryHtml = hasGall
     ? (e.gallery.length===1
-        ? `<div class="slot wide filled"><img src="${esc(mediaUrl(e.gallery[0]))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:12px"></div>`
-        : `<div class="grid g3">${e.gallery.map(src=>`<div class="slot filled" style="aspect-ratio:4/3"><img src="${esc(mediaUrl(src))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:10px"></div>`).join('')}</div>`)
+        ? `<div class="slot wide filled" style="aspect-ratio:1/1;background:var(--bg-2);border-radius:12px"><img src="${esc(mediaUrl(e.gallery[0]))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;border-radius:12px"></div>`
+        : `<div class="grid g3">${e.gallery.map(src=>`<div class="slot filled" style="aspect-ratio:1/1;background:var(--bg-2);border-radius:10px"><img src="${esc(mediaUrl(src))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;border-radius:10px"></div>`).join('')}</div>`)
     : '';
   const linksHtml = (hasLinks||hasReg)
     ? `<div class="rows" style="margin-top:8px">${(hasReg?[{l:'Register / RSVP', u:e.registerUrl}]:[]).concat(hasLinks?e.links:[]).map(l=>`<div class="row-i" style="grid-template-columns:110px 1fr;gap:12px;align-items:start"><span class="dl" style="padding-top:10px">${esc(l.l)}</span><span style="padding-top:8px"><a class="link-a" href="${esc(l.u)}" target="_blank" rel="noopener noreferrer">${esc(l.u)}</a></span></div>`).join('')}</div>`
@@ -2437,7 +2438,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     '/media/edition1.JPG',
     '/media/edition2.jpeg'
   ].filter(Boolean).map((src,i) => {
-    return `<div class="slot filled rv" style="aspect-ratio:4/3"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:10px"></div>`;
+    return `<div class="slot filled rv" style="aspect-ratio:1/1;background:var(--bg-2);border-radius:10px"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;border-radius:10px"></div>`;
   }).join('')}</div>
 </div></section>
 
@@ -3158,7 +3159,7 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
 
 <section class="sec"><div class="wrap">
   ${sectionHead(
-    cx('pages.people.wideEyebrow', 'Everyone else'),
+    cx('pages.people.wideEyebrow', 'Community Members'),
     cx('pages.people.wideTitle', 'Our Community Members'),
     cx('pages.people.wideLede', '')
   )}
