@@ -463,39 +463,37 @@ const CONF_SC_PAST = [
 ];
 
 let EVENTS = [
-  {slug:'junction-hackathon', type:'Hackathon', when:'upcoming',
-   title:'European Quantum Hackathon by Junction — Morocco 2026',
+  {slug:'junction-hackathon', type:'Hackathon', when:'past',
+   title:'European Quantum Hackathon by Junction — Espoo, Finland 2026',
    n:'European Quantum Hackathon by Junction',
-   subhead:'Official Media Partnership · Rabat, Morocco',
-   eyebrow:'Big News — and this time from Rabat! 🇲🇦',
-   lede:'We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026, organised by Junction as the European Quantum Hackathon stop in Africa. Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.',
-   description:`We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026, organised by Junction as part of the European Quantum Hackathon series. Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.
+   subhead:'Hosted by Junction in Espoo · Finland',
+   eyebrow:'European Quantum Hackathon · Junction',
+   lede:'We are incredibly proud to partner with Junction for the European Quantum Hackathon stop hosted in Espoo, Finland. The event tackles real-world quantum challenges with expert-led mentorship and a global innovator community.',
+   description:`We partnered with Junction for the European Quantum Hackathon in Espoo, Finland — part of the wider European Quantum Hackathon series bringing quantum computing challenges, hands-on workshops, and industry/academic mentorship to participants from across Europe and beyond.
 
-**What to Expect**
+**What the event covered**
 • Real-World Challenges — Tackle complex problems using the power of quantum computing.
 • Workshops & Mentorship — Learn from industry experts and academic leaders throughout the event.
 • Prizes & Networking — Connect with a global community of innovators and win big.
 
 **Event Details**
 • Dates: 23–25 June 2026
-• Location: Rabat, Morocco
+• Location: Espoo, Finland
 • Registration Deadline: 31 March 2026
 
-**Opportunity**
-This programme is specifically open to all Africans, with travel grants available for selected participants. Supported by prestigious institutions like UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this is an event you do not want to miss.`,
+Supported by Junction and its institutional partners this is a flagship stop on the European quantum calendar.`,
    heroImage:'/media/events/junction/1781132640865.jpeg',
    gallery:['/media/events/junction/1781132640865.jpeg','/media/events/junction/1781132641804.jpeg','/media/events/junction/1781132643921.jpeg','/media/events/junction/1781132644811.jpeg'],
-   start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Rabat', country:'Morocco',
-   partners:['UM6P · University Mohammed VI Polytechnic','Mohammed V University in Rabat','OQI · Open Quantum Institute'],
+   start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Espoo', country:'Finland',
    registerUrl:'https://lnkd.in/e4ZA9d-S', org:'Junction · European Quantum Hackathon',
-   status:'Registration open'},
-  {slug:'morocco-hackathon', type:'Hackathon', when:'upcoming',
+   status:'Delivered · June 2026'},
+  {slug:'morocco-hackathon', type:'Hackathon', when:'past',
    title:'Morocco Quantum Hackathon — Rabat 2026',
    n:'Morocco Quantum Hackathon',
    subhead:'Official Media Partners · Quantum Africa',
-   eyebrow:'Big News — and this time from Rabat! 🇲🇦',
-   lede:'We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.',
-   description:`We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.
+   eyebrow:'Morocco Quantum Hackathon · Rabat',
+   lede:'We were official media partners for the Morocco Quantum Hackathon – Rabat 2026, held 23–25 June 2026 with UM6P, Mohammed V University, and the Open Quantum Institute.',
+   description:`We were official media partners for the Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there was no better place to witness this transformation than in the heart of Morocco.
 
 **What to Expect**
 • Real-World Challenges — Tackle complex problems using the power of quantum computing.
@@ -507,44 +505,43 @@ This programme is specifically open to all Africans, with travel grants availabl
 • Location: Rabat, Morocco
 • Registration Deadline: 31 March 2026
 
-**Opportunity**
-This programme is specifically open to all Africans, with travel grants available for selected participants. Supported by prestigious institutions like UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this is an event you do not want to miss.`,
+Supported by UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this was an event not to miss.`,
    heroImage:'/media/events/mor/Screenshot 2026-09-05 at 12.03.34.png',
    gallery:['/media/events/mor/Screenshot 2026-09-05 at 12.03.34.png','/media/events/mor/Screenshot 2026-09-05 at 12.03.41.png'],
    start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Rabat', country:'Morocco',
    partners:['UM6P · University Mohammed VI Polytechnic','Mohammed V University in Rabat','OQI · Open Quantum Institute'],
    registerUrl:'https://lnkd.in/e4ZA9d-S', org:'UM6P · Mohammed V University · OQI',
-   status:'Registration open'},
-  {slug:'pan-hackathon', type:'Challenge', when:'upcoming',
+   status:'Delivered · June 2026'},
+  {slug:'pan-hackathon', type:'Challenge', when:'past',
    title:'Hack the Horizon — The Pan-African Quantum Challenge',
    n:'Hack the Horizon · Pan-African Quantum Challenge',
    subhead:'Launched by the Africa Quantum Consortium',
    eyebrow:'Landmark pan-African initiative',
-   lede:'We are proud to announce Hack the Horizon — the Pan-African Quantum Challenge, launched by the Africa Quantum Consortium. This landmark initiative is designed to assemble and activate Africa’s sovereign quantum ecosystem.',
-   description:`We are proud to announce Hack the Horizon — the Pan-African Quantum Challenge, launched by the Africa Quantum Consortium.
+   lede:'Hack the Horizon — the Pan-African Quantum Challenge launched by the Africa Quantum Consortium activated Africa\'s sovereign quantum ecosystem, uniting innovators, industry leaders and problem-solvers to co-build solutions.',
+   description:`Hack the Horizon — the Pan-African Quantum Challenge launched by the Africa Quantum Consortium.
 
-This landmark initiative is designed to assemble and activate Africa’s sovereign quantum ecosystem. More than just a competition, this is the strategic assembly of Africa’s quantum future, uniting the continent’s top innovators, visionary industry leaders, and the next generation of problem-solvers to co-build solutions for the continent and the world.`,
+This landmark initiative assembled and activated Africa's sovereign quantum ecosystem. More than a competition, this was the strategic assembly of Africa's quantum future, uniting the continent's top innovators, visionary industry leaders, and the next generation of problem-solvers to co-build solutions for the continent and the world.`,
    heroImage:'/media/events/pan.png',
    gallery:['/media/events/pan.png'],
-   whenLabel:'Registration now open', city:'Pan-African · Online + in-person hubs', country:'Africa-wide',
+   city:'Pan-African · Online + in-person hubs', country:'Africa-wide',
    registerUrl:'https://lnkd.in/gJTuNKXE', org:'Africa Quantum Consortium',
-   status:'Registration open'},
+   status:'Delivered'},
   {slug:'unicc-course', type:'Online Programme', when:'past',
    title:'International Quantum Course — UNICC & ITU',
    n:'International Quantum Course',
    subhead:'Free online programme launched at ITU AI & Quantum for Good Summit',
    eyebrow:'The International Quantum Course is live! 📚🎓',
-   lede:'Quantum technology is shaping the future, but understanding it should not be limited to a few specialists. That is why the International Quantum Course has been created — a free online programme that opens the world of quantum to everyone.',
+   lede:'Quantum technology is shaping the future, but understanding it should not be limited to a few specialists. The International Quantum Course is a free online programme that opens the world of quantum to everyone — developed by Jim Stolze, Quantum Delta NL, UNICC and ITU.',
    description:`Quantum technology is shaping the future, but understanding it should not be limited to a few specialists.
 
-That is why the International Quantum Course has been created — a free online programme that opens the world of quantum to everyone. Through the course, participants can:
+The International Quantum Course — a free online programme that opens the world of quantum to everyone. Through the course, participants can:
 • Learn the foundations of quantum mechanics
 • Explore current applications and future potential of quantum technology
 • Earn a certificate upon completion
 
 Developed by experts led by Jim Stolze, funded by Quantum Delta NL and launched together with UNICC and International Telecommunication Union, the course is now available in Dutch and English, with more languages on the way.
 
-The official launch took place in Geneva at ITU’s AI & Quantum for Good Summit, as part of International Year of Quantum Science and Technology.`,
+The official launch took place in Geneva at ITU's AI & Quantum for Good Summit, as part of International Year of Quantum Science and Technology.`,
    heroImage:'/media/events/quantumforeveryone.png',
    gallery:['/media/events/quantumforeveryone.png'],
    links:[{l:'Get started now', u:'https://lnkd.in/dXefig6n'},{l:'Read more here', u:'https://lnkd.in/eJhqR2tR'}],
@@ -556,8 +553,8 @@ The official launch took place in Geneva at ITU’s AI & Quantum for Good Summit
    n:'QTEdu Pan-African Quantum Hackathon',
    subhead:'Accra, Ghana · July 2025',
    eyebrow:'First-ever African Quantum Hackathon',
-   lede:'We are proud that our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute. A true pleasure connecting with brilliant African quantum talents shaping the future of science and innovation across the continent.',
-   description:`We are proud that our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute.
+   lede:'Our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute in July 2025 in Accra.',
+   description:`Our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute.
 
 It was a true pleasure connecting with brilliant African quantum talents who are shaping the future of science and innovation across the continent. ⚛️🚀
 
@@ -567,14 +564,6 @@ A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participan
    start:'2025-07-01', end:'2025-07-03', city:'Accra', country:'Ghana',
    org:'AIMS Ghana · Open Quantum Institute',
    status:'Delivered · July 2025'},
-  {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
-   title:'Quantum Machine Learning 4 Africa — Third Edition',
-   n:'Quantum Machine Learning 4 Africa — Third Edition',
-   subhead:'Third Edition',
-   lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
-   description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
-   image:'',
-   org:'DeepLearning Indaba'},
   {slug:'qml4africa-2', type:'Workshop', when:'past', series:'QML4Africa', edition:'02', status:'Delivered',
    title:'Quantum Machine Learning 4 Africa — Second Edition',
    n:'Quantum Machine Learning 4 Africa — Second Edition',
@@ -597,6 +586,14 @@ A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participan
    image:'/media/edition1.JPG',
    heroImage:'/media/edition1.JPG',
    org:'DeepLearning Indaba'},
+  {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
+   title:'Quantum Machine Learning 4 Africa — Third Edition',
+   n:'Quantum Machine Learning 4 Africa — Third Edition',
+   subhead:'Third Edition',
+   lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
+   description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
+   image:'',
+   org:'DeepLearning Indaba'},
 ];
 
 let PROJECTS = [
@@ -612,22 +609,6 @@ let PROJECTS = [
   {slug:'african-pigments-photonics', title:'Modeling African Natural Pigments for Photonics & DSSC', area:'Photonics · Materials', status:'current',
    short:'Comparative spectral and performance analysis of African natural pigments for photonic applications and dye-sensitised solar cells.',
    tech:['DFT','Spectroscopy','Simulation'], repo:false, art:'spectra'},
-  {slug:'qubo-microgrid-optimization', title:'QUBO Model for Energy Planning', area:'Quantum optimization · Energy access', status:'current',
-   short:'Quantum-enhanced microgrid optimization for rural electrification in Africa — a QUBO-based planning model exploring demand, generation, storage and grid extension trade-offs.',
-   tech:['QUBO','Quantum annealing','Energy systems','Microgrid modelling'], repo:false, art:'network',
-   proposedBy:'Yousra Farhani',
-   authors:[
-     {n:'Yousra Farhani',               a:'NNF Quantum Computing Programme, Niels Bohr Institute, University of Copenhagen, Copenhagen, Denmark',  e:'yousra.farhani@nbi.ku.dk'},
-     {n:'Helarie Rose Medie Fah',       a:'University of Kwazulu Natal, Durban, South Africa',                                                      e:'helarie@aims.ac.za'},
-     {n:'Ahmed Samir',                  a:'Cairo University, Cairo, Egypt',                                                                           e:'ahmedsamir1598@gmail.com'},
-     {n:'Marzuq Yussif Etsie Adam',     a:'University of Ghana, Accra, Ghana',                                                                       e:'myeadam@st.ug.edu.gh'},
-     {n:'Kenedy Mwendwa Mulila',        a:'African Institute for Mathematical Sciences (AIMS), Mbour, Senegal',                                      e:'Kenedy.m.mulila@aims-senegal.org'},
-     {n:'Abdulmajid Osumanu',           a:'African Institute for Mathematical Sciences (AIMS) Ghana, Accra, Ghana',                                  e:'abdulmajid@aims.edu.gh'},
-   ],
-   doi:'https://dl.acm.org/doi/pdf/10.1145/3795101.3814703',
-   description:`This work introduces a QUBO (Quadratic Unconstrained Binary Optimization) formulation for community-level energy planning, with a focus on rural microgrid electrification scenarios in Africa. The model jointly considers generation mix, storage sizing, demand profiles, and capital and operational trade-offs so that planners can compare centralized grid extension, standalone solar microgrids, and hybrid configurations using quantum annealing and classical QUBO solvers.
-
-The case studies and sensitivity analyses demonstrate how QUBO-based optimization can support locally tailored energy-access decisions — including demand sizing, renewable penetration targets, and resilience to seasonal load variation — with particular attention to communities currently without reliable grid access.`},
 ];
 
 const QUBO_PUB = {
@@ -651,7 +632,6 @@ const QUBO_PUB = {
 
 The case studies and sensitivity analyses demonstrate how QUBO-based optimization can support locally tailored energy-access decisions — including demand sizing, renewable penetration targets, and resilience to seasonal load variation — with particular attention to communities currently without reliable grid access.`,
 };
-if(!PROJECTS.some(p=>p.slug===QUBO_PUB.slug)) PROJECTS.push(QUBO_PUB);
 
 /* Opportunities feed.
    __OPPORTUNITIES_JSON__ is replaced at build time with feed/opportunities.json.
@@ -1141,12 +1121,17 @@ const PILLAR_SVG = {
   lead:'<path d="M12 3.2 14.5 9l6.3.5-4.8 4.1 1.5 6.2L12 16.6 6.5 19.8 8 13.6 3.2 9.5 9.5 9z"/>'
 };
 function pillarCard(n, title, body, icon, cta, href){
-  return `<div class="pillar rv">
-    <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PILLAR_SVG[icon]}</svg></span>
-    <span class="n">${n}</span>
-    <h3>${title}</h3>
-    <p>${body}</p>
-    <a class="link-a" href="${href}" style="margin-top:6px">${cta} <span class="ar" aria-hidden="true">&rarr;</span></a>
+  return `<div class="pillar rv" style="position:relative;border-top:0;padding:0;background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--bg-2) 60%,transparent) 100%);border-radius:14px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease" onmouseenter="const el=this;el.style.transform='translateY(-4px)';el.style.boxShadow='0 18px 48px -20px rgba(0,0,0,.18)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='100%'" onmouseleave="const el=this;el.style.transform='translateY(0)';el.style.boxShadow='none';const bar=el.querySelector('.pbar');if(bar)bar.style.width='56px'">
+    <div style="display:flex;align-items:flex-start;gap:16px;padding:26px 24px 0;position:relative">
+      <span class="ic" style="width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:linear-gradient(135deg,var(--teal) 0%,color-mix(in srgb,var(--teal) 50%,var(--gold)) 100%);color:#fff;box-shadow:0 6px 18px -8px rgba(13,122,119,.6);flex:0 0 48px;margin:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PILLAR_SVG[icon]}</svg></span>
+      <span class="n" style="font-size:2.2rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--gold);margin:0 0 0 auto;font-variant-numeric:tabular-nums;opacity:.85">${n}</span>
+    </div>
+    <div class="pbar" style="height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));width:56px;margin:14px 24px 0;transition:width .55s cubic-bezier(.2,.7,.3,1);border-radius:2px"></div>
+    <div style="padding:20px 24px 26px">
+      <h3 style="font-size:1.42rem;letter-spacing:-.032em;margin:0 0 8px;line-height:1.18">${title}</h3>
+      <p style="font-size:.92rem;color:var(--ink-2);max-width:34ch;margin:0 0 18px;line-height:1.55">${body}</p>
+      <a class="link-a" href="${href}" style="margin:0;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.92rem;padding:9px 14px;border-radius:9px;background:color-mix(in srgb,var(--teal) 12%,transparent);border:1px solid color-mix(in srgb,var(--teal) 30%,transparent);color:var(--teal);transition:all .3s ease;text-decoration:none" onmouseenter="this.style.background='var(--teal)';this.style.color='#fff';this.style.borderColor='var(--teal)'" onmouseleave="this.style.background='color-mix(in srgb,var(--teal) 12%,transparent)';this.style.color='var(--teal)';this.style.borderColor='color-mix(in srgb,var(--teal) 30%,transparent)'">${cta} <span class="ar" aria-hidden="true" style="margin-left:2px">&rarr;</span></a>
+    </div>
   </div>`;
 }
 
@@ -1461,19 +1446,19 @@ ${highlightSection()}
   </div>
 </section>
 
-<section class="sec inv">
+<section class="sec inv" style="padding-top:40px;padding-bottom:40px">
   <div class="wrap">
-    <div class="split">
+    <div class="split" style="gap:clamp(20px,3vw,44px);align-items:center">
       <div>
-        <div class="sec-idx"><span class="lbl">${cx('pages.home.tutorEyebrow', 'Featured program')}</span><i></i></div>
-        <h2 class="mt16">${cx('pages.home.tutorTitle', 'Meet the Quantum AI Tutor')}</h2>
-        <p class="lede mt16">${cx('pages.home.tutorLede', 'Learn quantum computing. For free. A guided, conversational way in , built by Quantum Africa, open to anyone.')}</p>
-        <div class="hero-cta">
+        <div class="sec-idx" style="margin-bottom:10px"><span class="lbl">${cx('pages.home.tutorEyebrow', 'Featured program')}</span><i></i></div>
+        <h2 style="margin-top:8px;margin-bottom:10px;font-size:clamp(1.6rem,2.6vw,2.15rem);line-height:1.12">${cx('pages.home.tutorTitle', 'Meet the Quantum AI Tutor')}</h2>
+        <p class="lede" style="margin-top:6px;margin-bottom:16px;max-width:46ch;font-size:.96rem;line-height:1.5">${cx('pages.home.tutorLede', 'Learn quantum computing. For free. A guided, conversational way in , built by Quantum Africa, open to anyone.')}</p>
+        <div class="hero-cta" style="margin-top:14px;gap:10px">
           <a class="btn teal" href="#/tutor">${cx('pages.home.tutorCtaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
           <a class="btn inv ghost" href="#/tutor">${cx('pages.home.tutorCtaSecondary', 'How it works')}</a>
         </div>
       </div>
-      <div>${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage')))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
+      <div style="transform:scale(.9);transform-origin:center right">${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage')))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
     </div>
   </div>
 </section>
@@ -1876,7 +1861,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
   <div class="wrap">
     ${sectionHead(
     cx('pages.research.projectsEyebrow', 'Active projects'),
-    cx('pages.research.projectsTitle', 'Five projects running now')
+    cx('pages.research.projectsTitle', 'Four projects running now')
   )}
     <div class="blist">
       ${PROJECTS.map((p,i)=>`<a class="brow rv" href="#/research/${p.slug}">
@@ -1884,7 +1869,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
         <span class="bmeta">
           <h3>${esc(p.title)}</h3>
           <span class="pill current">${cx('pages.research.statusActive', 'Active')}</span>
-          <span class="kv" style="color:rgba(255,255,255,.55)">${esc(p.area)} &nbsp;·&nbsp; ${cx('pages.research.leadLabel', 'Lead')} ${p.proposedBy ? esc(p.proposedBy) : pht(cx('pages.research.leadName', 'name'))}</span>
+          <span class="kv" style="color:rgba(255,255,255,.55)">${esc(p.area)}${p.proposedBy ? ` &nbsp;·&nbsp; ${cx('pages.research.leadLabel', 'Lead')} ${esc(p.proposedBy)}` : ''}</span>
         </span>
         <span class="bfig">${rimg(p.image || null,'Project cover figure or generated artwork','1600×1000 · PNG/SVG','',p.art || 'circuit')}</span>
       </a>`).join('')}
@@ -4053,10 +4038,9 @@ function rebuildFromContent(){
   const projects = clist('projects');
   if(projects.length){
     PROJECTS = projects.map((p, i) => Object.assign({
-      slug: p.id || ((p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-')),
+      slug: p.id || ((p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
       tech: p.tech || [], area: p.area || '', short: p.short || '' }, p));
   }
-  if(!PROJECTS.some(p=>p.slug===QUBO_PUB.slug)) PROJECTS.push(QUBO_PUB);
   const articles = clist('articles');
   if(articles.length){
     // Newest first, so the lead on the homepage really is the latest thing.

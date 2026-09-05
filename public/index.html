@@ -301,13 +301,13 @@ a{color:inherit;text-decoration:none}
 .tl{color:var(--teal)}
 .duotext{background:var(--duo);-webkit-background-clip:text;background-clip:text;color:transparent}
 .center{text-align:center}
-.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}.mt32{margin-top:32px}.mt48{margin-top:48px}
+.mt8{margin-top:6px}.mt16{margin-top:10px}.mt24{margin-top:16px}.mt32{margin-top:22px}.mt48{margin-top:32px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-.sec{padding:clamp(76px,9vw,134px) 0;position:relative}
+.sec{padding:clamp(48px,6.5vw,92px) 0;position:relative}
 .sec.flush{padding-top:0}
-.phero + .sec{padding-top:clamp(24px,3vw,44px)}
-.phero + .sec.tint,.phero + .sec.inv,.phero + .sec.deep{padding-top:clamp(62px,7.5vw,106px)}
+.phero + .sec{padding-top:clamp(16px,2.2vw,30px)}
+.phero + .sec.tint,.phero + .sec.inv,.phero + .sec.deep{padding-top:clamp(40px,5vw,72px)}
 .sec.tint{background:var(--bg-2)}
 .sec.tint .card,.sec.tint .panel{background:var(--card)}
 .panel{background:var(--bg-2)}
@@ -319,7 +319,7 @@ a{color:inherit;text-decoration:none}
 .sec.inv .wrap,.sec.deep .wrap{position:relative;z-index:2}
 
 /* editorial section header */
-.sec-idx{display:flex;align-items:center;gap:16px;margin-bottom:clamp(22px,2.6vw,34px)}
+.sec-idx{display:flex;align-items:center;gap:16px;margin-bottom:clamp(14px,1.8vw,22px)}
 .sec-idx .n{font-family:var(--f);font-weight:700;font-size:.82rem;letter-spacing:.06em;background:var(--duo);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sec-idx .lbl{font-weight:600;font-size:.755rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
 .sec-idx i{flex:1;height:2px;background:var(--duo);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.3,1)}
@@ -531,7 +531,7 @@ nav.main{display:flex;align-items:center;gap:2px;margin-left:auto}
 .hero-eye::before{content:"";width:34px;height:2px;background:var(--gold);border-radius:2px}
 .hero h1{max-width:14ch;margin-top:26px;min-height:3.12em}
 .hero .lede{color:rgba(255,255,255,.72);max-width:44ch;margin-top:24px}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .caret{display:inline-block;width:3px;height:.82em;background:var(--teal-p);margin-left:6px;vertical-align:-.06em;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .fade-seq{opacity:0;transform:translateY(14px)}
@@ -748,13 +748,13 @@ tr:last-child td{border-bottom:0}
 .breadcrumb{font-weight:500;font-size:.75rem;letter-spacing:.05em;color:var(--ink-3);padding:26px 0 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .breadcrumb a:hover{color:var(--teal)}
 
-.phero{position:relative;padding:clamp(44px,5.5vw,74px) 0 clamp(48px,6vw,80px);overflow:hidden}
+.phero{position:relative;padding:clamp(30px,4vw,56px) 0 clamp(34px,4.5vw,60px);overflow:hidden}
 .phero h1{max-width:15ch}
-.phero .lede{margin-top:22px}
-.phero-meta{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:28px;align-items:center}
-.phero .sec-idx{margin-bottom:26px}
+.phero .lede{margin-top:16px}
+.phero-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.phero .sec-idx{margin-bottom:18px}
 
-.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,3.6vw,48px);align-items:center}
 @media(max-width:880px){.split{grid-template-columns:1fr}}
 .side{display:grid;grid-template-columns:1fr 320px;gap:clamp(32px,4.5vw,64px);align-items:start}
 @media(max-width:940px){.side{grid-template-columns:1fr}}
@@ -2394,39 +2394,37 @@ const CONF_SC_PAST = [
 ];
 
 let EVENTS = [
-  {slug:'junction-hackathon', type:'Hackathon', when:'upcoming',
-   title:'European Quantum Hackathon by Junction — Morocco 2026',
+  {slug:'junction-hackathon', type:'Hackathon', when:'past',
+   title:'European Quantum Hackathon by Junction — Espoo, Finland 2026',
    n:'European Quantum Hackathon by Junction',
-   subhead:'Official Media Partnership · Rabat, Morocco',
-   eyebrow:'Big News — and this time from Rabat! 🇲🇦',
-   lede:'We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026, organised by Junction as the European Quantum Hackathon stop in Africa. Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.',
-   description:`We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026, organised by Junction as part of the European Quantum Hackathon series. Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.
+   subhead:'Hosted by Junction in Espoo · Finland',
+   eyebrow:'European Quantum Hackathon · Junction',
+   lede:'We are incredibly proud to partner with Junction for the European Quantum Hackathon stop hosted in Espoo, Finland. The event tackles real-world quantum challenges with expert-led mentorship and a global innovator community.',
+   description:`We partnered with Junction for the European Quantum Hackathon in Espoo, Finland — part of the wider European Quantum Hackathon series bringing quantum computing challenges, hands-on workshops, and industry/academic mentorship to participants from across Europe and beyond.
 
-**What to Expect**
+**What the event covered**
 • Real-World Challenges — Tackle complex problems using the power of quantum computing.
 • Workshops & Mentorship — Learn from industry experts and academic leaders throughout the event.
 • Prizes & Networking — Connect with a global community of innovators and win big.
 
 **Event Details**
 • Dates: 23–25 June 2026
-• Location: Rabat, Morocco
+• Location: Espoo, Finland
 • Registration Deadline: 31 March 2026
 
-**Opportunity**
-This programme is specifically open to all Africans, with travel grants available for selected participants. Supported by prestigious institutions like UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this is an event you do not want to miss.`,
+Supported by Junction and its institutional partners this is a flagship stop on the European quantum calendar.`,
    heroImage:'/media/events/junction/1781132640865.jpeg',
    gallery:['/media/events/junction/1781132640865.jpeg','/media/events/junction/1781132641804.jpeg','/media/events/junction/1781132643921.jpeg','/media/events/junction/1781132644811.jpeg'],
-   start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Rabat', country:'Morocco',
-   partners:['UM6P · University Mohammed VI Polytechnic','Mohammed V University in Rabat','OQI · Open Quantum Institute'],
+   start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Espoo', country:'Finland',
    registerUrl:'https://lnkd.in/e4ZA9d-S', org:'Junction · European Quantum Hackathon',
-   status:'Registration open'},
-  {slug:'morocco-hackathon', type:'Hackathon', when:'upcoming',
+   status:'Delivered · June 2026'},
+  {slug:'morocco-hackathon', type:'Hackathon', when:'past',
    title:'Morocco Quantum Hackathon — Rabat 2026',
    n:'Morocco Quantum Hackathon',
    subhead:'Official Media Partners · Quantum Africa',
-   eyebrow:'Big News — and this time from Rabat! 🇲🇦',
-   lede:'We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.',
-   description:`We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.
+   eyebrow:'Morocco Quantum Hackathon · Rabat',
+   lede:'We were official media partners for the Morocco Quantum Hackathon – Rabat 2026, held 23–25 June 2026 with UM6P, Mohammed V University, and the Open Quantum Institute.',
+   description:`We were official media partners for the Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there was no better place to witness this transformation than in the heart of Morocco.
 
 **What to Expect**
 • Real-World Challenges — Tackle complex problems using the power of quantum computing.
@@ -2438,44 +2436,43 @@ This programme is specifically open to all Africans, with travel grants availabl
 • Location: Rabat, Morocco
 • Registration Deadline: 31 March 2026
 
-**Opportunity**
-This programme is specifically open to all Africans, with travel grants available for selected participants. Supported by prestigious institutions like UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this is an event you do not want to miss.`,
+Supported by UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this was an event not to miss.`,
    heroImage:'/media/events/mor/Screenshot 2026-09-05 at 12.03.34.png',
    gallery:['/media/events/mor/Screenshot 2026-09-05 at 12.03.34.png','/media/events/mor/Screenshot 2026-09-05 at 12.03.41.png'],
    start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Rabat', country:'Morocco',
    partners:['UM6P · University Mohammed VI Polytechnic','Mohammed V University in Rabat','OQI · Open Quantum Institute'],
    registerUrl:'https://lnkd.in/e4ZA9d-S', org:'UM6P · Mohammed V University · OQI',
-   status:'Registration open'},
-  {slug:'pan-hackathon', type:'Challenge', when:'upcoming',
+   status:'Delivered · June 2026'},
+  {slug:'pan-hackathon', type:'Challenge', when:'past',
    title:'Hack the Horizon — The Pan-African Quantum Challenge',
    n:'Hack the Horizon · Pan-African Quantum Challenge',
    subhead:'Launched by the Africa Quantum Consortium',
    eyebrow:'Landmark pan-African initiative',
-   lede:'We are proud to announce Hack the Horizon — the Pan-African Quantum Challenge, launched by the Africa Quantum Consortium. This landmark initiative is designed to assemble and activate Africa’s sovereign quantum ecosystem.',
-   description:`We are proud to announce Hack the Horizon — the Pan-African Quantum Challenge, launched by the Africa Quantum Consortium.
+   lede:'Hack the Horizon — the Pan-African Quantum Challenge launched by the Africa Quantum Consortium activated Africa\'s sovereign quantum ecosystem, uniting innovators, industry leaders and problem-solvers to co-build solutions.',
+   description:`Hack the Horizon — the Pan-African Quantum Challenge launched by the Africa Quantum Consortium.
 
-This landmark initiative is designed to assemble and activate Africa’s sovereign quantum ecosystem. More than just a competition, this is the strategic assembly of Africa’s quantum future, uniting the continent’s top innovators, visionary industry leaders, and the next generation of problem-solvers to co-build solutions for the continent and the world.`,
+This landmark initiative assembled and activated Africa's sovereign quantum ecosystem. More than a competition, this was the strategic assembly of Africa's quantum future, uniting the continent's top innovators, visionary industry leaders, and the next generation of problem-solvers to co-build solutions for the continent and the world.`,
    heroImage:'/media/events/pan.png',
    gallery:['/media/events/pan.png'],
-   whenLabel:'Registration now open', city:'Pan-African · Online + in-person hubs', country:'Africa-wide',
+   city:'Pan-African · Online + in-person hubs', country:'Africa-wide',
    registerUrl:'https://lnkd.in/gJTuNKXE', org:'Africa Quantum Consortium',
-   status:'Registration open'},
+   status:'Delivered'},
   {slug:'unicc-course', type:'Online Programme', when:'past',
    title:'International Quantum Course — UNICC & ITU',
    n:'International Quantum Course',
    subhead:'Free online programme launched at ITU AI & Quantum for Good Summit',
    eyebrow:'The International Quantum Course is live! 📚🎓',
-   lede:'Quantum technology is shaping the future, but understanding it should not be limited to a few specialists. That is why the International Quantum Course has been created — a free online programme that opens the world of quantum to everyone.',
+   lede:'Quantum technology is shaping the future, but understanding it should not be limited to a few specialists. The International Quantum Course is a free online programme that opens the world of quantum to everyone — developed by Jim Stolze, Quantum Delta NL, UNICC and ITU.',
    description:`Quantum technology is shaping the future, but understanding it should not be limited to a few specialists.
 
-That is why the International Quantum Course has been created — a free online programme that opens the world of quantum to everyone. Through the course, participants can:
+The International Quantum Course — a free online programme that opens the world of quantum to everyone. Through the course, participants can:
 • Learn the foundations of quantum mechanics
 • Explore current applications and future potential of quantum technology
 • Earn a certificate upon completion
 
 Developed by experts led by Jim Stolze, funded by Quantum Delta NL and launched together with UNICC and International Telecommunication Union, the course is now available in Dutch and English, with more languages on the way.
 
-The official launch took place in Geneva at ITU’s AI & Quantum for Good Summit, as part of International Year of Quantum Science and Technology.`,
+The official launch took place in Geneva at ITU's AI & Quantum for Good Summit, as part of International Year of Quantum Science and Technology.`,
    heroImage:'/media/events/quantumforeveryone.png',
    gallery:['/media/events/quantumforeveryone.png'],
    links:[{l:'Get started now', u:'https://lnkd.in/dXefig6n'},{l:'Read more here', u:'https://lnkd.in/eJhqR2tR'}],
@@ -2487,8 +2484,8 @@ The official launch took place in Geneva at ITU’s AI & Quantum for Good Summit
    n:'QTEdu Pan-African Quantum Hackathon',
    subhead:'Accra, Ghana · July 2025',
    eyebrow:'First-ever African Quantum Hackathon',
-   lede:'We are proud that our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute. A true pleasure connecting with brilliant African quantum talents shaping the future of science and innovation across the continent.',
-   description:`We are proud that our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute.
+   lede:'Our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute in July 2025 in Accra.',
+   description:`Our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute.
 
 It was a true pleasure connecting with brilliant African quantum talents who are shaping the future of science and innovation across the continent. ⚛️🚀
 
@@ -2498,14 +2495,6 @@ A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participan
    start:'2025-07-01', end:'2025-07-03', city:'Accra', country:'Ghana',
    org:'AIMS Ghana · Open Quantum Institute',
    status:'Delivered · July 2025'},
-  {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
-   title:'Quantum Machine Learning 4 Africa — Third Edition',
-   n:'Quantum Machine Learning 4 Africa — Third Edition',
-   subhead:'Third Edition',
-   lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
-   description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
-   image:'',
-   org:'DeepLearning Indaba'},
   {slug:'qml4africa-2', type:'Workshop', when:'past', series:'QML4Africa', edition:'02', status:'Delivered',
    title:'Quantum Machine Learning 4 Africa — Second Edition',
    n:'Quantum Machine Learning 4 Africa — Second Edition',
@@ -2528,6 +2517,14 @@ A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participan
    image:'/media/edition1.JPG',
    heroImage:'/media/edition1.JPG',
    org:'DeepLearning Indaba'},
+  {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
+   title:'Quantum Machine Learning 4 Africa — Third Edition',
+   n:'Quantum Machine Learning 4 Africa — Third Edition',
+   subhead:'Third Edition',
+   lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
+   description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
+   image:'',
+   org:'DeepLearning Indaba'},
 ];
 
 let PROJECTS = [
@@ -2543,22 +2540,6 @@ let PROJECTS = [
   {slug:'african-pigments-photonics', title:'Modeling African Natural Pigments for Photonics & DSSC', area:'Photonics · Materials', status:'current',
    short:'Comparative spectral and performance analysis of African natural pigments for photonic applications and dye-sensitised solar cells.',
    tech:['DFT','Spectroscopy','Simulation'], repo:false, art:'spectra'},
-  {slug:'qubo-microgrid-optimization', title:'QUBO Model for Energy Planning', area:'Quantum optimization · Energy access', status:'current',
-   short:'Quantum-enhanced microgrid optimization for rural electrification in Africa — a QUBO-based planning model exploring demand, generation, storage and grid extension trade-offs.',
-   tech:['QUBO','Quantum annealing','Energy systems','Microgrid modelling'], repo:false, art:'network',
-   proposedBy:'Yousra Farhani',
-   authors:[
-     {n:'Yousra Farhani',               a:'NNF Quantum Computing Programme, Niels Bohr Institute, University of Copenhagen, Copenhagen, Denmark',  e:'yousra.farhani@nbi.ku.dk'},
-     {n:'Helarie Rose Medie Fah',       a:'University of Kwazulu Natal, Durban, South Africa',                                                      e:'helarie@aims.ac.za'},
-     {n:'Ahmed Samir',                  a:'Cairo University, Cairo, Egypt',                                                                           e:'ahmedsamir1598@gmail.com'},
-     {n:'Marzuq Yussif Etsie Adam',     a:'University of Ghana, Accra, Ghana',                                                                       e:'myeadam@st.ug.edu.gh'},
-     {n:'Kenedy Mwendwa Mulila',        a:'African Institute for Mathematical Sciences (AIMS), Mbour, Senegal',                                      e:'Kenedy.m.mulila@aims-senegal.org'},
-     {n:'Abdulmajid Osumanu',           a:'African Institute for Mathematical Sciences (AIMS) Ghana, Accra, Ghana',                                  e:'abdulmajid@aims.edu.gh'},
-   ],
-   doi:'https://dl.acm.org/doi/pdf/10.1145/3795101.3814703',
-   description:`This work introduces a QUBO (Quadratic Unconstrained Binary Optimization) formulation for community-level energy planning, with a focus on rural microgrid electrification scenarios in Africa. The model jointly considers generation mix, storage sizing, demand profiles, and capital and operational trade-offs so that planners can compare centralized grid extension, standalone solar microgrids, and hybrid configurations using quantum annealing and classical QUBO solvers.
-
-The case studies and sensitivity analyses demonstrate how QUBO-based optimization can support locally tailored energy-access decisions — including demand sizing, renewable penetration targets, and resilience to seasonal load variation — with particular attention to communities currently without reliable grid access.`},
 ];
 
 const QUBO_PUB = {
@@ -2582,7 +2563,6 @@ const QUBO_PUB = {
 
 The case studies and sensitivity analyses demonstrate how QUBO-based optimization can support locally tailored energy-access decisions — including demand sizing, renewable penetration targets, and resilience to seasonal load variation — with particular attention to communities currently without reliable grid access.`,
 };
-if(!PROJECTS.some(p=>p.slug===QUBO_PUB.slug)) PROJECTS.push(QUBO_PUB);
 
 /* Opportunities feed.
    {"updated":"2026-09-04T14:12:09+00:00","generated_by":"quantum-africa-backend","kind":"job","sources":{"quantiki":{"name":"Quantiki","url":"https://www.quantiki.org/","note":"Academic positions and the conference calendar. Crawl-delay 10s."},"qjobs":{"name":"quantum.jobs","url":"https://quantum.jobs/","note":"Industry roles. Its robots.txt disallows /rss/, so listing pages are used."},"qjoblist":{"name":"Quantum Jobs List","url":"https://www.quantumjobslist.com/","note":"Industry roles plus a curated events calendar."}},"errors":{"qjobs":"RobotsDisallowed: https://quantum.jobs/"},"count":66,"africa":1,"items":[{"id":"2873675129","kind":"job","title":"MSc Quantum Science and Technology, FST Al-Hoceima – Abdelmalek Essaadi University","org":"FST Al-Hoceima – Abdelmalek Essaadi University","city":"","country":"","africa":true,"type":"MSc","deadline":"2026-08-02","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/msc-quantum-science-and-technology-fst-al-hoceima-abdelmalek-essaadi-university","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"4491caaf41","kind":"job","title":"PhD Position in Quantum Error Correction for Quantum Networks","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-09-06","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-quantum-error-correction-quantum-networks","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"1d7a22bb90","kind":"job","title":"PhD position in quantum computing and continuous variables","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-09-07","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-quantum-computing-and-continuous-variables","first_seen":"2026-09-02T21:42:19+00:00"},{"id":"7b721eb76c","kind":"job","title":"Computational post-doc position on \"AI for Quantum Sensing\"","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-09-09","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/computational-post-doc-position-ai-quantum-sensing","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"e87d1dc34f","kind":"job","title":"Postdoctoral Research Associate in Experimental Quantum Sensing (AI-Driven Nuclear-Spin Control)","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-09-09","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-research-associate-experimental-quantum-sensing-ai-driven-nuclear-spin-control","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"cfc7c325bc","kind":"job","title":"Postdoctoral Position in Theoretical Quantum Nanomechanics Laboratoire Ondes et Matière d’Aquitaine (LOMA), CNRS & Université de Bordeaux, France","org":"CNRS & Université de Bordeaux","city":"","country":"France","africa":false,"type":"Postdoc","deadline":"2026-09-11","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-position-theoretical-quantum-nanomechanics-laboratoire-ondes-et-mati%C3%A8re","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"579c4776a1","kind":"job","title":"PhD Positions in Quantum Physics and Machine Learning","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-09-14","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/phd-positions-quantum-physics-and-machine-learning","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"c1b1f3523e","kind":"job","title":"Postdoctoral Researcher / Staff Scientist in Theoretical Quantum Physics","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-09-14","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-researcher-staff-scientist-theoretical-quantum-physics","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"abca346d5c","kind":"job","title":"PhD position in quantum information and quantum communication theory at Télécom SudParis, Institut Polytechnique de Paris","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-09-15","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-quantum-information-and-quantum-communication-theory-t%C3%A9l%C3%A9com-sudparis-institut","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"f54eb8f115","kind":"job","title":"PhD Position in Theoretical Physics | Mechanical Quantum Sensors for Fundamental Physics","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-09-15","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-theoretical-physics-mechanical-quantum-sensors-fundamental-physics","first_seen":"2026-09-02T21:42:19+00:00"},{"id":"de6d683f7d","kind":"job","title":"Postdoc in Theoretical Quantum Physics | Quantum Sensing and Tests of Fundamental Physics","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-09-15","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/postdoc-theoretical-quantum-physics-quantum-sensing-and-tests-fundamental-physics","first_seen":"2026-09-02T21:42:19+00:00"},{"id":"29e50d27fb","kind":"job","title":"Postdoctoral Researcher – Quantum Computation for Quantum Many-body Physics","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-09-20","status":"Closing soon","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-researcher-quantum-computation-quantum-many-body-physics","first_seen":"2026-09-03T19:15:32+00:00"},{"id":"51f4323ee8","kind":"job","title":"Junior Professor (W1 with tenure-track to W3) for Theoretical Solid-State Physics","org":"","city":"","country":"","africa":false,"type":"Faculty","deadline":"2026-09-27","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/junior-professor-w1-tenure-track-w3-theoretical-solid-state-physics","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"e67c93a30a","kind":"job","title":"CIFRE PhD Topic Molecular Chemistry, Variational Quantum Algorithms, and Applications to the Study of Molecular Vibrations","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-09-30","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/cifre-phd-topic-molecular-chemistry-variational-quantum-algorithms-and-applications-study","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"4d0f9f4cea","kind":"job","title":"Open call for two R1 Researcher positions: Research Assistant / PhD Candidate (f/m/x), EUCENTRAL project (MSz/23/2026)","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-09-30","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/open-call-two-r1-researcher-positions-research-assistant-phd-candidate-fmx-eucentral","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"bc6a71dacd","kind":"job","title":"Postdoctoral Researcher in Theoretical Quantum Information Science (University of Jyväskylä, Finland)","org":"University of Jyväskylä, Finland","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-09-30","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-researcher-theoretical-quantum-information-science-university-jyv%C3%A4skyl%C3%A4","first_seen":"2026-09-02T21:42:19+00:00"},{"id":"104b900b24","kind":"job","title":"two postdoc positions in QIT @ U.Gdańsk","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-09-30","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/two-postdoc-positions-qit-ugda%C5%84sk","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"715faae413","kind":"job","title":"Postdoc Opening: Experimental Polariton Photonics &amp; Neuromorphic Computing, Warsaw, Poland","org":"","city":"Warsaw","country":"Poland","africa":false,"type":"Postdoc","deadline":"2026-10-01","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/postdoc-opening-experimental-polariton-photonics-neuromorphic-computing-warsaw-poland","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"7a8529d612","kind":"job","title":"Assistant Professor in Physics specialising in Quantum Information Theory","org":"","city":"","country":"","africa":false,"type":"Faculty","deadline":"2026-10-05","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/assistant-professor-physics-specialising-quantum-information-theory","first_seen":"2026-09-02T21:42:19+00:00"},{"id":"db3a590f4d","kind":"job","title":"Open Faculty Positions at CQuERE, TCG CREST, Kolkata (India)","org":"","city":"","country":"","africa":false,"type":"Faculty","deadline":"2026-10-15","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/open-faculty-positions-cquere-tcg-crest-kolkata-india-1","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"54d97c83fb","kind":"job","title":"Research Associate in Quantum Computation in Imperial College London","org":"","city":"","country":"","africa":false,"type":"Research fellow","deadline":"2026-10-18","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/research-associate-quantum-computation-imperial-college-london","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"f23e47551d","kind":"job","title":"Postdoctoral Position in Quantum Computing / Quantum Machine Learning, Yukawa Institute for Theoretical Physics, Kyoto University","org":"Yukawa Institute for Theoretical Physics","city":"","country":"Kyoto University","africa":false,"type":"Postdoc","deadline":"2026-10-31","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-position-quantum-computing-quantum-machine-learning-yukawa-institute","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"aac28623e0","kind":"job","title":"Senior Scientist (Senior Postdoc)","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-10-31","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/senior-scientist-senior-postdoc","first_seen":"2026-09-02T21:42:19+00:00"},{"id":"b15bc32a09","kind":"job","title":"3-5 PhD Positions in Quantum Computing and Artificial Intelligence, NUS, Singapore","org":"","city":"NUS","country":"Singapore","africa":false,"type":"PhD","deadline":"2026-11-15","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/3-5-phd-positions-quantum-computing-and-artificial-intelligence-nus-singapore","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"c01e830d2e","kind":"job","title":"Postdoc Openings: Quantum Computing and Artificial Intelligence, National University of Singapore","org":"National University of Singapore","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-11-15","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/postdoc-openings-quantum-computing-and-artificial-intelligence-national-university","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"b8252c3cd0","kind":"job","title":"PhD in Controlling Errors in Quantum Computers at Imperial College","org":"Imperial College","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-12-01","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/phd-controlling-errors-quantum-computers-imperial-college-2","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"503facc2e7","kind":"job","title":"Postdoctoral Fellow in “Deploying geometrically-designed algorithms”","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-12-12","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-fellow-deploying-geometrically-designed-algorithms-1","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"73275d5e8b","kind":"job","title":"Two Associate Professorships or Professorships of Computer Science (with Tutorial Fellowships)","org":"","city":"","country":"","africa":false,"type":"Faculty","deadline":"2026-12-16","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/two-associate-professorships-or-professorships-computer-science-tutorial-fellowships","first_seen":"2026-09-02T21:42:19+00:00"},{"id":"fa2fec55ea","kind":"job","title":"Postdoc positions for ultracold atom experiment, University of Milan, Italy","org":"University of Milan","city":"","country":"Italy","africa":false,"type":"Postdoc","deadline":"2026-12-22","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/postdoc-positions-ultracold-atom-experiment-university-milan-italy","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"cd1ea6f225","kind":"job","title":"Ph.D Positions in Post Quantum Cryptography","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-12-30","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/phd-positions-post-quantum-cryptography","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"7361afe131","kind":"job","title":"Postdoctoral Research Fellow in Experimental Quantum Nanomechanics (POSTECH, South Korea)","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-12-31","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-research-fellow-experimental-quantum-nanomechanics-postech-south-korea","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"ad8d846470","kind":"job","title":"Research Scientist (Theory) QEC Implementations","org":"","city":"","country":"","africa":false,"type":"Research fellow","deadline":"2026-12-31","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/research-scientist-theory-qec-implementations","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"6d3d914dd2","kind":"job","title":"Research Scientist (Theory) Quantum Algorithms","org":"","city":"","country":"","africa":false,"type":"Research fellow","deadline":"2026-12-31","status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/research-scientist-theory-quantum-algorithms","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"203898adca","kind":"job","title":"Development Engineer Hardware Verification","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/development-engineer-hardware-verification","first_seen":"2026-09-03T19:15:32+00:00"},{"id":"bb0f294972","kind":"job","title":"Hardware Engineer – Signal & Power Integrity","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/hardware-development-engineer---signal-power-integrity","first_seen":"2026-09-03T19:15:32+00:00"},{"id":"260638368e","kind":"job","title":"Junior Fabrication Engineer","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/junior-fabrication-engineer","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"86caba2448","kind":"job","title":"Quantum Computational Science Specialist","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/quantum-computational-science-specialist","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"9a30dad75a","kind":"job","title":"Quantum Design Engineer","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/quantum-design-engineer-2869","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"e18dca209d","kind":"job","title":"Quantum Measurement Engineer","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/quantum-measurement-engineer-hmc4i","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"95a6e21d84","kind":"job","title":"Qubit Characterization Engineer","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/qubit-characterization-engineer","first_seen":"2026-09-03T19:15:32+00:00"},{"id":"ffff8bfaf5","kind":"job","title":"R&D Fabrication Engineer","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/r-d-fabrication-engineer","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"c06bed7337","kind":"job","title":"Research Intern, PhD, Summer 2027","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":null,"status":"Open","source":"qjoblist","url":"https://www.quantumjobslist.com/job/research-intern-phd-summer-2027-2ssd","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"5c983f8b4d","kind":"job","title":"Senior postdoctoral position in quantum error correction in Berlin","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":null,"status":"Open","source":"quantiki","url":"https://www.quantiki.org/position/senior-postdoctoral-position-quantum-error-correction-berlin","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"e4e8154297","kind":"job","title":"Postdoc & PhD Position in Quantum Information Theory (Siegen/Germany)","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-07-05","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/postdoc-phd-position-quantum-information-theory-siegengermany-3","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"9966ea84ff","kind":"job","title":"PhD-Level Researcher in Large Language Model Training, Optimization and Scientific A","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-07-21","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/phd-level-researcher-large-language-model-training-optimization-and-scientific","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"a92f4b389f","kind":"job","title":"PhD-Level Researcher in Quantum Computing, Benchmarking and Hybrid Quantum-Classical Systems","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-07-21","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/phd-level-researcher-quantum-computing-benchmarking-and-hybrid-quantum-classical-systems","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"c3b4715069","kind":"job","title":"PhD position: Spin systems for quantum information processing and sensing @ University of Parma","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-07-23","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-spin-systems-quantum-information-processing-and-sensing-university-parma","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"7297046253","kind":"job","title":"Student / Research and Technical Associate position position in Quantum Information and Certification / Center for Quantum-Enabled Computing, Warsaw, Poland","org":"","city":"Warsaw","country":"Poland","africa":false,"type":"Industry","deadline":"2026-07-24","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/student-research-and-technical-associate-position-position-quantum-information-and","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"60bf9e1ffc","kind":"job","title":"PhD proposal in energetic cost of fault-tolerant quantum computing","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-07-26","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/phd-proposal-energetic-cost-fault-tolerant-quantum-computing","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"8af43594f6","kind":"job","title":"3 postdocs + 3 doctoral students on distributed quantum algorithms","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-07-31","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/3-postdocs-3-doctoral-students-distributed-quantum-algorithms","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"3df225a2a9","kind":"job","title":"PhD position (f/m/d) in quantum information or quantum computing at Ruhr-University Bochum, Germany","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-08-03","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-fmd-quantum-information-or-quantum-computing-ruhr-university-bochum-germany","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"303b44208b","kind":"job","title":"PhD position: learning, characterizing, and testing bosonic quantum computers (University of Cologne)","org":"University of Cologne","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-08-12","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-learning-characterizing-and-testing-bosonic-quantum-computers-university","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"9459de6b14","kind":"job","title":"Research Assistant and PhD Candidate in quantum sensing (theory) @ QI^2, Warsaw","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-08-16","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/research-assistant-and-phd-candidate-quantum-sensing-theory-qi2-warsaw","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"cdc951f9bb","kind":"job","title":"Postdoc positions at APCTP, South Korea","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-08-19","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/postdoc-positions-apctp-south-korea","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"65a131f5c7","kind":"job","title":"PhD position developing solid-state quantum network components","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-08-20","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-developing-solid-state-quantum-network-components","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"dd74a832e1","kind":"job","title":"Research Fellow in Quantum Simulation Algorithms on IBM-Q hardware","org":"","city":"","country":"","africa":false,"type":"Research fellow","deadline":"2026-08-21","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/research-fellow-quantum-simulation-algorithms-ibm-q-hardware","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"d56c19d486","kind":"job","title":"Postdoctoral Position University College Dublin","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-08-27","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-position-university-college-dublin","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"9fdb1689b4","kind":"job","title":"Research Fellow - Experimental Quantum Foundations","org":"","city":"","country":"","africa":false,"type":"Research fellow","deadline":"2026-08-27","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/research-fellow-experimental-quantum-foundations","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"3c174d0cab","kind":"job","title":"Doctoral Researcher in quantum computing and algorithms for Life Science applications","org":"","city":"","country":"","africa":false,"type":"Industry","deadline":"2026-08-31","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/doctoral-researcher-quantum-computing-and-algorithms-life-science-applications","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"e660b25dc8","kind":"job","title":"Open Postdoc Positions in “Many-Body Open Quantum Systems” (Okinawa, Japan)","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-08-31","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/open-postdoc-positions-many-body-open-quantum-systems-okinawa-japan","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"c47161fce9","kind":"job","title":"PhD position (f/m/d) in quantum information or quantum metrology","org":"","city":"","country":"","africa":false,"type":"PhD","deadline":"2026-08-31","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/phd-position-fmd-quantum-information-or-quantum-metrology","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"7e8511d92b","kind":"job","title":"Postdoctoral researcher in quantum algorithms and optimization for Life Science applications","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-08-31","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-researcher-quantum-algorithms-and-optimization-life-science-applications","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"d07980d60f","kind":"job","title":"Postdoctoral Researcher in Theoretical Quantum Information Science (QEC & Photonic Quantum Computing, KAIST, South Korea)","org":"","city":"","country":"","africa":false,"type":"Postdoc","deadline":"2026-08-31","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/postdoctoral-researcher-theoretical-quantum-information-science-qec-photonic-quantum","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"8bae3aede3","kind":"job","title":"University Professorship (W3) “Experimental Physics II” - Experimental solid state physics and quantum technologies","org":"","city":"","country":"","africa":false,"type":"Faculty","deadline":"2026-08-31","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/university-professorship-w3-experimental-physics-ii-experimental-solid-state-physics-and","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"574119ac8b","kind":"job","title":"W3 Professorship Experimental Physics of Quantum Technologies (m/f/x; Reference no. W2885))","org":"","city":"","country":"","africa":false,"type":"Faculty","deadline":"2026-08-31","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/w3-professorship-experimental-physics-quantum-technologies-mfx-reference-no-w2885","first_seen":"2026-08-30T05:16:53+00:00"},{"id":"e2bb777087","kind":"job","title":"University Professorship in Solid-State Quantum Phenomena","org":"","city":"","country":"","africa":false,"type":"Faculty","deadline":"2026-09-01","status":"Closed","source":"quantiki","url":"https://www.quantiki.org/position/university-professorship-solid-state-quantum-phenomena","first_seen":"2026-08-30T05:16:53+00:00"}]} is replaced at build time with feed/opportunities.json.
@@ -3072,12 +3052,17 @@ const PILLAR_SVG = {
   lead:'<path d="M12 3.2 14.5 9l6.3.5-4.8 4.1 1.5 6.2L12 16.6 6.5 19.8 8 13.6 3.2 9.5 9.5 9z"/>'
 };
 function pillarCard(n, title, body, icon, cta, href){
-  return `<div class="pillar rv">
-    <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PILLAR_SVG[icon]}</svg></span>
-    <span class="n">${n}</span>
-    <h3>${title}</h3>
-    <p>${body}</p>
-    <a class="link-a" href="${href}" style="margin-top:6px">${cta} <span class="ar" aria-hidden="true">&rarr;</span></a>
+  return `<div class="pillar rv" style="position:relative;border-top:0;padding:0;background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--bg-2) 60%,transparent) 100%);border-radius:14px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease" onmouseenter="const el=this;el.style.transform='translateY(-4px)';el.style.boxShadow='0 18px 48px -20px rgba(0,0,0,.18)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='100%'" onmouseleave="const el=this;el.style.transform='translateY(0)';el.style.boxShadow='none';const bar=el.querySelector('.pbar');if(bar)bar.style.width='56px'">
+    <div style="display:flex;align-items:flex-start;gap:16px;padding:26px 24px 0;position:relative">
+      <span class="ic" style="width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:linear-gradient(135deg,var(--teal) 0%,color-mix(in srgb,var(--teal) 50%,var(--gold)) 100%);color:#fff;box-shadow:0 6px 18px -8px rgba(13,122,119,.6);flex:0 0 48px;margin:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PILLAR_SVG[icon]}</svg></span>
+      <span class="n" style="font-size:2.2rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--gold);margin:0 0 0 auto;font-variant-numeric:tabular-nums;opacity:.85">${n}</span>
+    </div>
+    <div class="pbar" style="height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));width:56px;margin:14px 24px 0;transition:width .55s cubic-bezier(.2,.7,.3,1);border-radius:2px"></div>
+    <div style="padding:20px 24px 26px">
+      <h3 style="font-size:1.42rem;letter-spacing:-.032em;margin:0 0 8px;line-height:1.18">${title}</h3>
+      <p style="font-size:.92rem;color:var(--ink-2);max-width:34ch;margin:0 0 18px;line-height:1.55">${body}</p>
+      <a class="link-a" href="${href}" style="margin:0;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.92rem;padding:9px 14px;border-radius:9px;background:color-mix(in srgb,var(--teal) 12%,transparent);border:1px solid color-mix(in srgb,var(--teal) 30%,transparent);color:var(--teal);transition:all .3s ease;text-decoration:none" onmouseenter="this.style.background='var(--teal)';this.style.color='#fff';this.style.borderColor='var(--teal)'" onmouseleave="this.style.background='color-mix(in srgb,var(--teal) 12%,transparent)';this.style.color='var(--teal)';this.style.borderColor='color-mix(in srgb,var(--teal) 30%,transparent)'">${cta} <span class="ar" aria-hidden="true" style="margin-left:2px">&rarr;</span></a>
+    </div>
   </div>`;
 }
 
@@ -3392,19 +3377,19 @@ ${highlightSection()}
   </div>
 </section>
 
-<section class="sec inv">
+<section class="sec inv" style="padding-top:40px;padding-bottom:40px">
   <div class="wrap">
-    <div class="split">
+    <div class="split" style="gap:clamp(20px,3vw,44px);align-items:center">
       <div>
-        <div class="sec-idx"><span class="lbl">${cx('pages.home.tutorEyebrow', 'Featured program')}</span><i></i></div>
-        <h2 class="mt16">${cx('pages.home.tutorTitle', 'Meet the Quantum AI Tutor')}</h2>
-        <p class="lede mt16">${cx('pages.home.tutorLede', 'Learn quantum computing. For free. A guided, conversational way in , built by Quantum Africa, open to anyone.')}</p>
-        <div class="hero-cta">
+        <div class="sec-idx" style="margin-bottom:10px"><span class="lbl">${cx('pages.home.tutorEyebrow', 'Featured program')}</span><i></i></div>
+        <h2 style="margin-top:8px;margin-bottom:10px;font-size:clamp(1.6rem,2.6vw,2.15rem);line-height:1.12">${cx('pages.home.tutorTitle', 'Meet the Quantum AI Tutor')}</h2>
+        <p class="lede" style="margin-top:6px;margin-bottom:16px;max-width:46ch;font-size:.96rem;line-height:1.5">${cx('pages.home.tutorLede', 'Learn quantum computing. For free. A guided, conversational way in , built by Quantum Africa, open to anyone.')}</p>
+        <div class="hero-cta" style="margin-top:14px;gap:10px">
           <a class="btn teal" href="#/tutor">${cx('pages.home.tutorCtaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
           <a class="btn inv ghost" href="#/tutor">${cx('pages.home.tutorCtaSecondary', 'How it works')}</a>
         </div>
       </div>
-      <div>${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage')))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
+      <div style="transform:scale(.9);transform-origin:center right">${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage')))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
     </div>
   </div>
 </section>
@@ -3807,7 +3792,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
   <div class="wrap">
     ${sectionHead(
     cx('pages.research.projectsEyebrow', 'Active projects'),
-    cx('pages.research.projectsTitle', 'Five projects running now')
+    cx('pages.research.projectsTitle', 'Four projects running now')
   )}
     <div class="blist">
       ${PROJECTS.map((p,i)=>`<a class="brow rv" href="#/research/${p.slug}">
@@ -3815,7 +3800,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
         <span class="bmeta">
           <h3>${esc(p.title)}</h3>
           <span class="pill current">${cx('pages.research.statusActive', 'Active')}</span>
-          <span class="kv" style="color:rgba(255,255,255,.55)">${esc(p.area)} &nbsp;·&nbsp; ${cx('pages.research.leadLabel', 'Lead')} ${p.proposedBy ? esc(p.proposedBy) : pht(cx('pages.research.leadName', 'name'))}</span>
+          <span class="kv" style="color:rgba(255,255,255,.55)">${esc(p.area)}${p.proposedBy ? ` &nbsp;·&nbsp; ${cx('pages.research.leadLabel', 'Lead')} ${esc(p.proposedBy)}` : ''}</span>
         </span>
         <span class="bfig">${rimg(p.image || null,'Project cover figure or generated artwork','1600×1000 · PNG/SVG','',p.art || 'circuit')}</span>
       </a>`).join('')}
@@ -5984,10 +5969,9 @@ function rebuildFromContent(){
   const projects = clist('projects');
   if(projects.length){
     PROJECTS = projects.map((p, i) => Object.assign({
-      slug: p.id || ((p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-')),
+      slug: p.id || ((p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
       tech: p.tech || [], area: p.area || '', short: p.short || '' }, p));
   }
-  if(!PROJECTS.some(p=>p.slug===QUBO_PUB.slug)) PROJECTS.push(QUBO_PUB);
   const articles = clist('articles');
   if(articles.length){
     // Newest first, so the lead on the homepage really is the latest thing.
