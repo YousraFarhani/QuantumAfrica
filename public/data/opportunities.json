@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-05T13:29:35+00:00",
+ "updated": "2026-09-05T16:30:09+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "job",
  "sources": {
@@ -521,36 +521,6 @@
    "first_seen": "2026-08-30T05:16:53+00:00"
   },
   {
-   "id": "203898adca",
-   "kind": "job",
-   "title": "Development Engineer Hardware Verification",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Industry",
-   "deadline": null,
-   "status": "Open",
-   "source": "qjoblist",
-   "url": "https://www.quantumjobslist.com/job/development-engineer-hardware-verification",
-   "first_seen": "2026-09-03T19:15:32+00:00"
-  },
-  {
-   "id": "bb0f294972",
-   "kind": "job",
-   "title": "Hardware Engineer – Signal & Power Integrity",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Industry",
-   "deadline": null,
-   "status": "Open",
-   "source": "qjoblist",
-   "url": "https://www.quantumjobslist.com/job/hardware-development-engineer---signal-power-integrity",
-   "first_seen": "2026-09-03T19:15:32+00:00"
-  },
-  {
    "id": "260638368e",
    "kind": "job",
    "title": "Junior Fabrication Engineer",
@@ -564,6 +534,36 @@
    "source": "qjoblist",
    "url": "https://www.quantumjobslist.com/job/junior-fabrication-engineer",
    "first_seen": "2026-08-30T05:16:53+00:00"
+  },
+  {
+   "id": "03bf30d692",
+   "kind": "job",
+   "title": "Networking AI Systems Architect",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Industry",
+   "deadline": null,
+   "status": "Open",
+   "source": "qjoblist",
+   "url": "https://www.quantumjobslist.com/job/networking-ai-systems-architect",
+   "first_seen": "2026-09-05T16:30:08+00:00"
+  },
+  {
+   "id": "f57c6f4e02",
+   "kind": "job",
+   "title": "Product Manager, AI for Quantum",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Industry",
+   "deadline": null,
+   "status": "Open",
+   "source": "qjoblist",
+   "url": "https://www.quantumjobslist.com/job/product-manager-ai-for-quantum",
+   "first_seen": "2026-09-05T16:30:08+00:00"
   },
   {
    "id": "86caba2448",
@@ -611,21 +611,6 @@
    "first_seen": "2026-08-30T05:16:53+00:00"
   },
   {
-   "id": "95a6e21d84",
-   "kind": "job",
-   "title": "Qubit Characterization Engineer",
-   "org": "",
-   "city": "",
-   "country": "",
-   "africa": false,
-   "type": "Industry",
-   "deadline": null,
-   "status": "Open",
-   "source": "qjoblist",
-   "url": "https://www.quantumjobslist.com/job/qubit-characterization-engineer",
-   "first_seen": "2026-09-03T19:15:32+00:00"
-  },
-  {
    "id": "ffff8bfaf5",
    "kind": "job",
    "title": "R&D Fabrication Engineer",
@@ -669,6 +654,21 @@
    "source": "quantiki",
    "url": "https://www.quantiki.org/position/senior-postdoctoral-position-quantum-error-correction-berlin",
    "first_seen": "2026-08-30T05:16:53+00:00"
+  },
+  {
+   "id": "94c4e1b2db",
+   "kind": "job",
+   "title": "Solutions Architect - Drug Discovery",
+   "org": "",
+   "city": "",
+   "country": "",
+   "africa": false,
+   "type": "Industry",
+   "deadline": null,
+   "status": "Open",
+   "source": "qjoblist",
+   "url": "https://www.quantumjobslist.com/job/solutions-architect---drug-discovery",
+   "first_seen": "2026-09-05T16:30:08+00:00"
   },
   {
    "id": "e4e8154297",
