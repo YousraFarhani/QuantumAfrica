@@ -1704,11 +1704,15 @@ ${highlightSection()}
       {t:cx('pages.home.newsCta', 'All articles'),h:'#/news'}
     )}
     <div class="news-lead">
-      ${articleFeature(ARTICLES[0])}
-      <div>
-        <div class="news-side">${ARTICLES.slice(1,5).map(articleRow).join('')}</div>
-        <div class="news-more"><a class="btn ghost sm" href="#/news">Browse the archive <span class="ar" aria-hidden="true">&rarr;</span></a></div>
-      </div>
+      ${(() => {
+        const featured = (ARTICLES.find(a => a && a.slug === 'uganda-indaba-2026') || ARTICLES[0]);
+        const rest = ARTICLES.filter(a => a !== featured);
+        return articleFeature(featured || {}) +
+          `<div>
+             <div class="news-side">${rest.slice(0,4).map(articleRow).join('')}</div>
+             <div class="news-more"><a class="btn ghost sm" href="#/news">Browse the archive <span class="ar" aria-hidden="true">&rarr;</span></a></div>
+           </div>`;
+      })()}
     </div>
   </div>
 </section>
