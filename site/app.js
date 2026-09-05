@@ -977,16 +977,16 @@ let HERO_LINES = [
    p:'Our projects are open by default: read the work, run the code, join a team. What it takes to contribute is curiosity, not an invitation.'},
 ];
 let HERO_SLIDES = [
-  {t:'Community group photo', s:'The whole community together — the most important image on the site.',
-    image:'/media/events/mor/Screenshot 2026-09-05 at 12.03.41.png', f:'/media/events/mor/Screenshot 2026-09-05 at 12.03.41.png', art:'field'},
-  {t:'Quantum Africa workshop at Indaba', s:'Participants working in small groups at a hands-on workshop.',
-    image:'/media/workshops/main.jpeg', f:'/media/workshops/main.jpeg', art:'lattice'},
-  {t:'Webinar — faculty presentation', s:'A speaker presenting during a live webinar session.',
-    image:'/media/webinar/Main.png', f:'/media/webinar/Main.png', art:'wave'},
-  {t:'National chapter activity', s:'A campus or local gathering hosted by a national chapter.',
-    image:'/media/events/zambia/1785899683901.jpeg', f:'/media/events/zambia/1785899683901.jpeg', art:'network'},
-  {t:'Students & researchers collaborating', s:'People working together in a tutorial room.',
-    image:'/media/events/junction/1781132640865.jpeg', f:'/media/events/junction/1781132640865.jpeg', art:'fringes'},
+  {t:'QML4Africa - Rwanda', s:'',
+    image:'/media/856c43197563ecf6.jpg', video:'', f:'/media/856c43197563ecf6.jpg', art:'field'},
+  {t:'Quantum Africa', s:'',
+    image:'', video:'/media/6b2f99361bae6521.mp4', f:'/media/6b2f99361bae6521.mp4', art:'lattice'},
+  {t:'QML4Africa - Lagos', s:'',
+    image:'/media/6c583a94e65b5194.jpg', video:'', f:'/media/6c583a94e65b5194.jpg', art:'wave'},
+  {t:'Quantum Africa', s:'',
+    image:'/media/54e419fc0a87e28c.png', video:'', f:'/media/54e419fc0a87e28c.png', art:'network'},
+  {t:'Quantum Africa', s:'',
+    image:'/media/24e9dbbb08f61554.jpg', video:'', f:'/media/24e9dbbb08f61554.jpg', art:'fringes'},
 ];
 const EVENT_ART = ['circuit','bloch','wave','lattice','network','fringes'];
 
@@ -1097,7 +1097,8 @@ function eventCard(e, idx){
     </div></a>`;
 }
 function projectCard(p){
-  const artSrc = p.image || null;
+  const artSrc = p.image || p.cover || p.hero || p.heroImage || p.photo || p.picture ||
+    (Array.isArray(p.gallery) ? ((p.gallery.find(g => g && (g.image || g.f)) || {}).image || (p.gallery.find(g => g && (g.image || g.f)) || {}).f) : null);
   const fallBack = p.art || 'circuit';
   return `<a class="card rv" href="#/research/${p.slug}">
     <div class="card-media">${rimg(artSrc,'Optional: photo of the team or lab. The generated figure works as the default.','1600×900 · PNG/SVG','',fallBack)}</div>
@@ -1212,8 +1213,11 @@ function evtRow(e){
 }
 function artDate(a){ return a.date ? oppDate(a.date) : pht('DATE'); }
 function artImage(a, spec){
-  return a.image
-    ? `<div class="slot filled"><img src="${esc(mediaUrl(a.image))}" alt="${esc(a.title||'')}" loading="lazy"></div>`
+  const firstGalleryImg = Array.isArray(a.gallery) ? (a.gallery.find(x => x && x.image) || {}).image : '';
+  const firstGalleryVid = Array.isArray(a.gallery) ? (a.gallery.find(x => x && x.video) || {}).video : '';
+  const src = a.cover || a.image || a.hero || a.photo || a.headerImage || firstGalleryImg || firstGalleryVid || '';
+  return src
+    ? `<div class="slot filled"><img src="${esc(mediaUrl(src))}" alt="${esc(a.title||'')}" loading="lazy"></div>`
     : media(a.art || 'circuit', 'Article header image', spec || '1600×900 · JPG');
 }
 function articleCard(a){
@@ -1330,19 +1334,31 @@ const PAGES = {};
    somebody presses play, so an ordinary visit costs nothing extra. */
 function highlightItem(m, i){
   const k = mKind(m);
+  const pickSrc = (obj, keys) => {
+    for(const key of keys){ if(obj && obj[key]) return obj[key]; }
+    if(Array.isArray(obj && obj.gallery)){
+      for(const g of obj.gallery){
+        for(const key of keys){ if(g && g[key]) return g[key]; }
+      }
+    }
+    return '';
+  };
+  const imgSrc = pickSrc(m, ['image','f','cover','hero','heroImage','photo','picture','headerImage']);
+  const vidSrc = pickSrc(m, ['video']);
+  const embed = m && m.videoUrl;
   const poster = mPoster(m);
   const label = mLabel(m, i);
   const isFirst = i === 0;
-  if(k === 'video'){
+  if(k === 'video' || vidSrc){
     return `<figure class="hl-item" data-i="${i}" data-kind="video">
-      <video controls ${isFirst ? 'autoplay muted playsinline loop preload="metadata"' : 'playsinline preload="none"'}
+      <video controls ${isFirst ? 'autoplay muted playsinline loop preload="auto"' : 'playsinline preload="metadata"'}
              ${poster ? `poster="${esc(poster)}"` : ''}
-             src="${esc(mediaUrl(m.video))}"></video>
+             src="${esc(mediaUrl(vidSrc))}"></video>
       ${m.caption ? `<figcaption>${esc(m.caption)}${m.credit ? ` <span class="cr">${esc(m.credit)}</span>` : ''}</figcaption>` : ''}
     </figure>`;
   }
-  if(k === 'embed'){
-    return `<figure class="hl-item" data-i="${i}" data-kind="embed" data-src="${esc(embedSrc(m.videoUrl))}">
+  if(k === 'embed' || embed){
+    return `<figure class="hl-item" data-i="${i}" data-kind="embed" data-src="${esc(embedSrc(embed))}">
       <button class="hl-play" type="button" aria-label="Play ${esc(label)}">
         ${poster ? `<img src="${esc(poster)}" alt="${esc(label)}">` : '<span class="hl-blank"></span>'}
         <span class="hl-pb" aria-hidden="true"></span>
@@ -1350,9 +1366,9 @@ function highlightItem(m, i){
       ${m.caption ? `<figcaption>${esc(m.caption)}${m.credit ? ` <span class="cr">${esc(m.credit)}</span>` : ''}</figcaption>` : ''}
     </figure>`;
   }
-  if(k === 'image'){
+  if(k === 'image' || imgSrc){
     return `<figure class="hl-item" data-i="${i}" data-kind="image">
-      <img src="${esc(mediaUrl(m.image))}" alt="${esc(label)}" loading="lazy">
+      <img src="${esc(mediaUrl(imgSrc))}" alt="${esc(label)}" loading="lazy">
       ${m.caption ? `<figcaption>${esc(m.caption)}${m.credit ? ` <span class="cr">${esc(m.credit)}</span>` : ''}</figcaption>` : ''}
     </figure>`;
   }
@@ -3137,6 +3153,13 @@ function mKind(m){
   if(m.video)    return 'video';
   if(m.image)    return 'image';
   if(m.f)        return 'image';
+  if(m.cover)    return 'image';
+  if(m.hero || m.heroImage) return 'image';
+  if(m.photo || m.picture || m.headerImage) return 'image';
+  if(Array.isArray(m.gallery)){
+    if(m.gallery.some(g => g && (g.video || g.videoUrl))) return 'video';
+    if(m.gallery.some(g => g && g.image)) return 'image';
+  }
   return 'none';
 }
 function ytId(u){
@@ -3157,8 +3180,16 @@ function embedSrc(u){
 /* The still we show before anyone presses play: the picture you uploaded, or
    YouTube's own thumbnail if you only gave us a link. */
 function mPoster(m){
-  if(m && (m.image || m.f)) return mediaUrl(m.image || m.f);
-  const y = m && ytId(m.videoUrl);
+  if(!m) return '';
+  if(m.image || m.f) return mediaUrl(m.image || m.f);
+  if(m.cover) return mediaUrl(m.cover);
+  if(m.hero || m.heroImage) return mediaUrl(m.hero || m.heroImage);
+  if(m.photo || m.picture || m.headerImage) return mediaUrl(m.photo || m.picture || m.headerImage);
+  if(Array.isArray(m.gallery)){
+    const gImg = m.gallery.find(g => g && (g.image || g.f));
+    if(gImg) return mediaUrl(gImg.image || gImg.f);
+  }
+  const y = ytId(m.videoUrl);
   return y ? `https://i.ytimg.com/vi/${y}/hqdefault.jpg` : '';
 }
 function mLabel(m, i){
@@ -4293,9 +4324,11 @@ function rebuildFromContent(){
   const articles = clist('articles');
   if(articles.length){
     ARTICLES = articles
-      .filter(a => a && (a.slug && String(a.slug).trim() !== ''))
-      .map((a, i) => Object.assign({ slug: a.id || ('a' + (i+1)), art: 'network',
-                                     read: a.read || '' }, a))
+      .filter(a => a && (a.title && String(a.title).trim() !== '') &&
+        !(a.slug && String(a.slug).trim() === '' && !a.title))
+      .map((a, i) => Object.assign({
+        slug: a.slug || a.id || (a.title ? String(a.title).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') : ('a' + (i+1))),
+        art: 'network', read: a.read || '' }, a))
       .sort((x, y) => String(y.date || '').localeCompare(String(x.date || '')));
   }
   const hero = cval('hero.statements');
