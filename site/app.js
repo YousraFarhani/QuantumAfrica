@@ -1227,22 +1227,23 @@ const PILLAR_SVG = {
   lead:'<path d="M12 3.2 14.5 9l6.3.5-4.8 4.1 1.5 6.2L12 16.6 6.5 19.8 8 13.6 3.2 9.5 9.5 9z"/>'
 };
 function pillarCard(n, title, body, icon, cta, href){
-  const BLUE_DEEP = '#0B2A6B';
-  const BLUE_MID = '#1E4DB7';
-  const BLUE_LIGHT = '#3D7BED';
-  const BLUE_SOFT = 'color-mix(in srgb,'+BLUE_MID+' 10%,transparent)';
-  const BLUE_SOFT_BD = 'color-mix(in srgb,'+BLUE_MID+' 22%,transparent)';
-  return `<div class="pillar rv" style="position:relative;border-top:0;padding:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease,border-color .4s ease" onmouseenter="const el=this;el.style.transform='translateY(-4px)';el.style.boxShadow='0 22px 56px -28px rgba(11,42,107,.28)';el.style.borderColor='color-mix(in srgb,'+BLUE_MID+' 30%,transparent)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='100%'" onmouseleave="const el=this;el.style.transform='translateY(0)';el.style.boxShadow='none';el.style.borderColor='var(--line)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='56px'">
-    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,${BLUE_DEEP},${BLUE_MID},var(--gold))"></div>
+  const NAVY_D = '#00162E';
+  const NAVY   = '#001F3F';
+  const NAVY_L = '#0A3357';
+  const NAVY_SOFT = 'color-mix(in srgb,'+NAVY+' 11%,transparent)';
+  const NAVY_SOFT_BD = 'color-mix(in srgb,'+NAVY+' 24%,transparent)';
+  const NAVY_SHADOW = 'rgba(0,22,46,';
+  return `<div class="pillar rv" style="position:relative;border-top:0;padding:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease,border-color .4s ease" onmouseenter="const el=this;el.style.transform='translateY(-4px)';el.style.boxShadow='0 22px 56px -28px ${NAVY_SHADOW}.30)';el.style.borderColor='color-mix(in srgb,'+NAVY+' 32%,transparent)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='100%'" onmouseleave="const el=this;el.style.transform='translateY(0)';el.style.boxShadow='none';el.style.borderColor='var(--line)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='56px'">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,${NAVY_D},${NAVY},var(--gold))"></div>
     <div style="display:flex;align-items:flex-start;gap:16px;padding:30px 26px 0;position:relative">
-      <span class="ic" style="width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,${BLUE_DEEP} 0%,${BLUE_MID} 55%,${BLUE_LIGHT} 100%);color:#fff;box-shadow:0 10px 26px -14px rgba(11,42,107,.55), inset 0 1px 0 rgba(255,255,255,.15);flex:0 0 52px;margin:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PILLAR_SVG[icon]}</svg></span>
+      <span class="ic" style="width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,${NAVY_D} 0%,${NAVY} 58%,${NAVY_L} 100%);color:#fff;box-shadow:0 10px 26px -14px ${NAVY_SHADOW}.60), inset 0 1px 0 rgba(255,255,255,.12);flex:0 0 52px;margin:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PILLAR_SVG[icon]}</svg></span>
       <span class="n" style="font-size:2.3rem;font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--gold);margin:0 0 0 auto;font-variant-numeric:tabular-nums;opacity:.9">${n}</span>
     </div>
-    <div class="pbar" style="height:2px;background:linear-gradient(90deg,${BLUE_DEEP},${BLUE_MID},${BLUE_LIGHT});width:56px;margin:16px 26px 0;transition:width .55s cubic-bezier(.2,.7,.3,1);border-radius:2px"></div>
+    <div class="pbar" style="height:2px;background:linear-gradient(90deg,${NAVY_D},${NAVY},${NAVY_L});width:56px;margin:16px 26px 0;transition:width .55s cubic-bezier(.2,.7,.3,1);border-radius:2px"></div>
     <div style="padding:22px 26px 28px">
       <h3 style="font-size:1.48rem;letter-spacing:-.034em;margin:0 0 10px;line-height:1.16;color:var(--dark)">${title}</h3>
       <p style="font-size:.92rem;color:var(--ink-2);max-width:34ch;margin:0 0 22px;line-height:1.6">${body}</p>
-      <a class="link-a" href="${href}" style="margin:0;display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.86rem;padding:10px 16px;border-radius:10px;background:${BLUE_SOFT};border:1px solid ${BLUE_SOFT_BD};color:${BLUE_MID};transition:all .3s ease;text-decoration:none;letter-spacing:.03em;text-transform:uppercase" onmouseenter="this.style.background='${BLUE_MID}';this.style.color='#fff';this.style.borderColor='${BLUE_MID}';this.style.boxShadow='0 10px 24px -14px rgba(30,77,183,.65)'" onmouseleave="this.style.background='${BLUE_SOFT}';this.style.color='${BLUE_MID}';this.style.borderColor='${BLUE_SOFT_BD}';this.style.boxShadow='none'">${cta} <span class="ar" aria-hidden="true" style="margin-left:2px">&rarr;</span></a>
+      <a class="link-a" href="${href}" style="margin:0;display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.86rem;padding:10px 16px;border-radius:10px;background:${NAVY_SOFT};border:1px solid ${NAVY_SOFT_BD};color:${NAVY};transition:all .3s ease;text-decoration:none;letter-spacing:.03em;text-transform:uppercase" onmouseenter="this.style.background='${NAVY}';this.style.color='#fff';this.style.borderColor='${NAVY}';this.style.boxShadow='0 10px 24px -14px ${NAVY_SHADOW}.68)'" onmouseleave="this.style.background='${NAVY_SOFT}';this.style.color='${NAVY}';this.style.borderColor='${NAVY_SOFT_BD}';this.style.boxShadow='none'">${cta} <span class="ar" aria-hidden="true" style="margin-left:2px">&rarr;</span></a>
     </div>
   </div>`;
 }
@@ -3787,10 +3788,15 @@ function markActiveNav(path){
 function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); document.body.style.overflow=''; }
 
 /* ---------- hero slider ---------- */
-let slideTimer = null, slideIdx = 0;
+let slideTimer = null, slideIdx = 0, sliderControllers = null;
 function initSlider(){
   const stage = document.getElementById('stage');
   if(!stage) return;
+  // Clear any previous timer/listeners so re-renders never leave orphan intervals / double-listeners.
+  if(slideTimer){ clearInterval(slideTimer); slideTimer = null; }
+  if(sliderControllers && sliderControllers.abort){ try{ sliderControllers.abort(); }catch(e){} }
+  sliderControllers = new AbortController();
+  const signal = sliderControllers.signal;
   const slides = [...stage.querySelectorAll('.slide')];
   const dots = document.getElementById('dots');
   const cap = document.getElementById('slideCap');
@@ -3803,48 +3809,60 @@ function initSlider(){
     slides.forEach((s,n)=>s.classList.toggle('on', n===slideIdx));
     [...dots.children].forEach((d,n)=>{ d.classList.remove('on'); if(n===slideIdx){ void d.offsetWidth; d.classList.add('on'); }});
     const meta = HERO_SLIDES[slideIdx] || {};
-    cap.textContent = `Slide ${slideIdx+1} of ${slides.length} — ${meta.caption || meta.t || ''}`;
+    if(cap) cap.textContent = `Slide ${slideIdx+1} of ${slides.length} — ${meta.caption || meta.t || ''}`;
   }
-  /* A video slide holds the stage until it ends; photos get ~2.5s so the
-     hero rotates briskly without racing past readable copy. Videos are
-     muted/inline and respect prefers-reduced-motion. */
   function stopAll(){
-    stage.querySelectorAll('[data-hero-video]').forEach(v => { v.pause(); });
+    stage.querySelectorAll('[data-hero-video]').forEach(v => { try{ v.pause(); }catch(e){} });
   }
   function playActive(){
     if(reduced) return;
     const v = slides[slideIdx] && slides[slideIdx].querySelector('[data-hero-video]');
     if(!v) return false;
-    v.currentTime = 0;
+    try{ v.currentTime = 0; }catch(e){}
     const p = v.play();
-    if(p && p.catch) p.catch(()=>{});     // a browser may refuse; the poster stays
+    if(p && p.catch) p.catch(()=>{});
     return true;
   }
   function play(){
     if(reduced) return;
-    clearInterval(slideTimer);
+    if(slideTimer){ clearInterval(slideTimer); slideTimer = null; }
     stopAll();
     const isVideo = playActive();
-    // Fall back to the timer even for video, in case it never fires 'ended'.
-    slideTimer = setInterval(()=>{ go(slideIdx+1); play(); }, isVideo ? 6000 : 3000);
+    const ms = isVideo ? 6000 : 3200;
+    slideTimer = setInterval(()=>{
+      go(slideIdx+1); play();
+    }, ms);
   }
   stage.querySelectorAll('[data-hero-video]').forEach(v => {
     v.addEventListener('ended', ()=>{
       if(slides[slideIdx] && slides[slideIdx].contains(v)){ go(slideIdx+1); play(); }
-    });
+    }, { signal });
   });
-  go(0); play();
+  go(0);
+  // Start the auto-advance after the DOM has had a chance to paint the stage, and
+  // after any first-paint work (feed fetches / rebuildFromContent) is done).
+  const startSoon = () => {
+    if(document.readyState === 'complete' || document.readyState === 'interactive'){
+      setTimeout(()=>{ if(location.hash.replace(/^#/,'/') === '/' || !location.hash){ play(); } }, 420);
+    } else {
+      window.addEventListener('load', startSoon, { once: true, signal });
+    }
+  };
+  startSoon();
 
-  dots.onclick = e => { const b = e.target.closest('.dot-btn'); if(b){ go(+b.dataset.i); play(); } };
-  document.getElementById('prev').onclick = () => { go(slideIdx-1); play(); };
-  document.getElementById('next').onclick = () => { go(slideIdx+1); play(); };
+  dots.addEventListener('click', e => { const b = e.target.closest('.dot-btn'); if(b){ go(+b.dataset.i); play(); } }, { signal });
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  if(prevBtn) prevBtn.addEventListener('click', () => { go(slideIdx-1); play(); }, { signal });
+  if(nextBtn) nextBtn.addEventListener('click', () => { go(slideIdx+1); play(); }, { signal });
   const hero = stage.closest('.hero');
-  hero.addEventListener('mouseenter', ()=>clearInterval(slideTimer));
-  hero.addEventListener('mouseleave', play);
-  // Nothing plays while the tab is in the background.
+  if(hero){
+    hero.addEventListener('mouseenter', ()=>{ if(slideTimer){ clearInterval(slideTimer); slideTimer = null; } }, { signal });
+    hero.addEventListener('mouseleave', play, { signal });
+  }
   document.addEventListener('visibilitychange', ()=>{
-    if(document.hidden){ clearInterval(slideTimer); stopAll(); } else { play(); }
-  });
+    if(document.hidden){ if(slideTimer){ clearInterval(slideTimer); slideTimer = null; } stopAll(); } else { play(); }
+  }, { signal });
 }
 
 /* ---------- map interactions ---------- */
