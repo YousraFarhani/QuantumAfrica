@@ -2916,6 +2916,8 @@ let HERO_LINES = [
    p:'Our projects are open by default: read the work, run the code, join a team. What it takes to contribute is curiosity, not an invitation.'},
 ];
 let VOICES = [];
+let HIGHLIGHT = null;
+let ARTICLES_AGG = null;
 let HERO_SLIDES = [
   {t:'QML4Africa - Rwanda', s:'',
     image:'/media/856c43197563ecf6.jpg', video:'', f:'/media/856c43197563ecf6.jpg', art:'field'},
@@ -3326,18 +3328,15 @@ function highlightThumb(m, i){
 }
 
 function highlightSection(){
-  const home = CONTENT['pages.home'] || {};
-  const old = CONTENT.highlight || {};
-  const eyebrow = home.highlightEyebrow || old.eyebrow || '';
-  const title   = home.highlightTitle   || old.title   || '';
-  const summary = home.highlightSummary || old.summary || '';
-  const date    = home.highlightDate    || old.date    || '';
-  const place   = home.highlightPlace   || old.place   || '';
-  const linkText = home.highlightLinkText || old.linkText || '';
-  const linkUrl  = home.highlightLinkUrl  || old.linkUrl  || '';
-  const gallery = Array.isArray(home.highlightGallery)
-    ? home.highlightGallery
-    : (Array.isArray(old.gallery) ? old.gallery : []);
+  const data = HIGHLIGHT || {};
+  const eyebrow = data.eyebrow || '';
+  const title   = data.title   || '';
+  const summary = data.summary || '';
+  const date    = data.date    || '';
+  const place   = data.place   || '';
+  const linkText = data.linkText || '';
+  const linkUrl  = data.linkUrl  || '';
+  const gallery  = Array.isArray(data.gallery) ? data.gallery : [];
   const items = gallery.length ? gallery : [{}, {}, {}];
   const when = [date ? oppDate(date) : '', place].filter(Boolean).join(' · ');
   return `
@@ -6260,16 +6259,6 @@ function rebuildFromContent(){
       slug: p.id || (p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
       tech: p.tech || [], area: p.area || '', short: p.short || '' }, p));
   }
-  const articles = clist('articles');
-  if(articles.length){
-    ARTICLES = articles
-      .filter(a => a && (a.title && String(a.title).trim() !== '') &&
-        !(a.slug && String(a.slug).trim() === '' && !a.title))
-      .map((a, i) => Object.assign({
-        slug: a.slug || a.id || (a.title ? String(a.title).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') : ('a' + (i+1))),
-        art: 'network', read: a.read || '' }, a))
-      .sort((x, y) => String(y.date || '').localeCompare(String(x.date || '')));
-  }
   const hero = cval('hero.statements');
   if(Array.isArray(hero) && hero.length){
     HERO_LINES = hero.map(h => ({ a: h.a || '', b: h.b || '', p: h.lede || '' }));
@@ -6330,6 +6319,94 @@ function rebuildFromContent(){
     .map(_normalizeVoice)
     .filter(Boolean)
     .slice(0, 12);
+
+  const _pick = (obj, keys, fallback) => {
+    if(!obj || typeof obj !== 'object') return fallback === undefined ? '' : fallback;
+    for(const k of keys){
+      if(k in obj && obj[k] !== null && obj[k] !== undefined && String(obj[k]).trim() !== '') return obj[k];
+    }
+    return fallback === undefined ? '' : fallback;
+  };
+  const _pickGallery = (a) => {
+    if(!Array.isArray(a) || !a.length) return [];
+    return a.filter(g => g && typeof g === 'object' &&
+      (String(g.video || g.videoUrl || g.image || g.f || g.cover || g.hero || g.photo || '').trim() !== ''));
+  };
+  const hlHomes = [CONTENT && (CONTENT.pages && CONTENT.pages.home) ? CONTENT.pages.home : null,
+                   CONTENT && CONTENT['pages.home'] ? CONTENT['pages.home'] : null,
+                   CONTENT && CONTENT.home ? CONTENT.home : null,
+                   CONTENT && CONTENT['page.home'] ? CONTENT['page.home'] : null];
+  const hlCandidates = hlHomes.concat([CONTENT && CONTENT.highlight ? CONTENT.highlight : null])
+    .filter(Boolean);
+  let _hl = null;
+  for(const src of hlCandidates){
+    const eyebrow = _pick(src, ['highlightEyebrow','eyebrow','heroEyebrow','tag']);
+    const title =   _pick(src, ['highlightTitle','title','headline']);
+    const summary = _pick(src, ['highlightSummary','summary','lede','description','body','subhead']);
+    const date =    _pick(src, ['highlightDate','date','when','eventDate']);
+    const place =   _pick(src, ['highlightPlace','place','venue','location','host','city']);
+    const linkText= _pick(src, ['highlightLinkText','linkText','ctaText','buttonText','readMore']);
+    const linkUrl = _pick(src, ['highlightLinkUrl','linkUrl','ctaHref','href','url','link']);
+    const g1 = Array.isArray(src.highlightGallery) ? src.highlightGallery : null;
+    const g2 = Array.isArray(src.gallery) ? src.gallery : null;
+    const g3 = Array.isArray(src.photos) ? src.photos : null;
+    const gallery = _pickGallery(g1 || g2 || g3 || []);
+    if(title || summary || gallery.length){
+      _hl = { eyebrow, title, summary, date, place, linkText, linkUrl, gallery };
+      break;
+    }
+  }
+  if(_hl) HIGHLIGHT = _hl;
+
+  const artSources = [
+    Array.isArray(CONTENT && CONTENT.articles) ? CONTENT.articles : [],
+    Array.isArray(CONTENT && CONTENT.news) ? CONTENT.news : [],
+    Array.isArray(CONTENT && CONTENT.stories) ? CONTENT.stories : [],
+    Array.isArray(CONTENT && CONTENT.posts) ? CONTENT.posts : [],
+    Array.isArray(CONTENT && CONTENT.blog) ? CONTENT.blog : [],
+    clist('pages.home.articles'),
+    clist('pages.home.news'),
+    clist('pages.home.stories'),
+    clist('pages.news.items'),
+    clist('pages.news.articles'),
+    clist('pages.news.list'),
+    clist('pages.news.archive'),
+    clist('articles.list'),
+    clist('news.items'),
+  ];
+  const _artSeen = new Set();
+  const _normalizeArticle = (a, idx) => {
+    if(!a || typeof a !== 'object') return null;
+    const title = String(_pick(a, ['title','headline','name','subject'])).trim();
+    if(!title) return null;
+    const date = String(_pick(a, ['date','published','publishedAt','eventDate','when','createdAt'])).trim();
+    const slug = String(_pick(a, ['slug','id','urlId','uid']) || '').trim() ||
+      (title ? title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') : ('art-' + (idx+1)));
+    const type = String(_pick(a, ['type','category','kind','section','tag']) || 'News').trim();
+    const author = String(_pick(a, ['author','byline','writer','who','name'])).trim();
+    const read = String(_pick(a, ['read','readTime','readingTime','minutes']) || '').trim();
+    const summary = String(_pick(a, ['summary','lede','standfirst','excerpt','description','subtitle','subhead'])).trim();
+    const body = String(_pick(a, ['body','content','article','text','main','post'])).trim();
+    const coverSrc =
+      a.cover || a.image || a.hero || a.photo || a.picture || a.headerImage || a.heroImage || a.thumbnail || a.poster || a.avatar || a.profilePic || a.pictureUrl || a.f ||
+      (Array.isArray(a.gallery) ? ((a.gallery.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo)) || {}).image || (a.gallery.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo)) || {}).f) : '') ||
+      (Array.isArray(a.photos) ? ((a.photos.find(g=>g && (g.image || g.f)) || {}).image || (a.photos.find(g=>g && (g.image || g.f)) || {}).f) : '') || '';
+    const chapter = String(_pick(a, ['chapter','country','chapterName'])).trim();
+    const url = String(_pick(a, ['url','link','href','linkUrl']) || '').trim();
+    const dedup = (slug + '|' + title).toLowerCase();
+    if(_artSeen.has(dedup)) return null;
+    _artSeen.add(dedup);
+    return Object.assign({}, a, { title, date, slug, type, author, read, summary, body, image: coverSrc, cover: coverSrc, chapter, url });
+  };
+  ARTICLES_AGG = artSources
+    .flat()
+    .map((a, i) => _normalizeArticle(a, i))
+    .filter(Boolean)
+    .sort((x, y) => String(y.date || '').localeCompare(String(x.date || '')))
+    .slice(0, 60);
+  if(ARTICLES_AGG && ARTICLES_AGG.length){
+    ARTICLES = ARTICLES_AGG.slice();
+  }
   /* Opportunities entered by hand are pinned above the collected feed.
      They are kept in their own list, because the jobs feed and the content
      document load independently and either can finish last. */
