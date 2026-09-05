@@ -1623,7 +1623,7 @@ ${highlightSection()}
   <div class="wrap">
     ${sectionHead(
       cx('pages.home.partnersEyebrow', 'Collaborators & Partners'),
-      cx('pages.home.partnersTitle', 'Collaborators and partners, organisations we worked with'),
+      cx('pages.home.partnersTitle', 'Collaborators ,partners, and organisations we worked with'),
       cx('pages.home.partnersLede', ''),
       {t:cx('pages.home.partnersCta', 'Work with us'),h:'#/partners'}
     )}
@@ -3159,7 +3159,7 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
 <section class="sec"><div class="wrap">
   ${sectionHead(
     cx('pages.people.wideEyebrow', 'Everyone else'),
-    cx('pages.people.wideTitle', 'The wider community'),
+    cx('pages.people.wideTitle', 'Our Community Members'),
     cx('pages.people.wideLede', '')
   )}
   <div class="grid g3">
@@ -3188,7 +3188,7 @@ PAGES.partners = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Collaborators & Partners',h:'#/partners'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.partners.heroEyebrow', 'Collaborators & Partners')}</span><i></i></div>
-  <h1 class="mt24">${cx('pages.partners.heroTitle', 'Collaborators and partners, organisations we worked with')}</h1>
+  <h1 class="mt24">${cx('pages.partners.heroTitle', 'Collaborators ,partners, and organisations we worked with')}</h1>
   <p class="lede">${cx('pages.partners.heroLede', "Universities, research institutions, industry partners and international organisations building Africa's quantum workforce with us.")}</p>
   <div class="phero-meta"><a class="btn teal sm" href="#/contact">${cx('pages.partners.heroBtn', "Let's collaborate")}</a></div>
 </div></section>
@@ -3229,7 +3229,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'University Program
     <div class="sec-idx"><span class="lbl">${cx('pages.universities.heroEyebrow', 'Programs · University partnerships')}</span><i></i></div>
     <div>
       <h1 class="mt24" style="font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.05;letter-spacing:-.03em;max-width:20ch">${cx('pages.universities.heroTitle', 'Bring Quantum to Your Campus')}</h1>
-      <p class="lede mt16" style="max-width:52ch">${cx('pages.universities.heroLede', 'Structured programmes that help African universities launch, teach and grow quantum — from first workshops to long-term research partnerships.')}</p>
+      <p class="lede mt16" style="max-width:52ch">${cx('pages.universities.heroLede', 'Structured programmes that help African universities launch, teach and grow quantum, from first workshops to long-term research partnerships.')}</p>
       <div class="phero-meta mt24">
         <a class="btn teal" href="#/contact">${cx('pages.universities.heroBtn1', 'Start a partnership')} <span class="ar" aria-hidden="true">&rarr;</span></a>
         <a class="btn ghost" href="#/education">${cx('pages.universities.heroBtn2', 'Explore programmes')}</a>
