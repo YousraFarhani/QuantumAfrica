@@ -977,11 +977,16 @@ let HERO_LINES = [
    p:'Our projects are open by default: read the work, run the code, join a team. What it takes to contribute is curiosity, not an invitation.'},
 ];
 let HERO_SLIDES = [
-  {t:'Community group photo', s:'The whole community together — the most important image on the site.', f:'assets/hero/slide-1.jpg', art:'field'},
-  {t:'Workshop in progress',  s:'Participants working at laptops during a Quantum Africa workshop.', f:'assets/hero/slide-2.jpg', art:'lattice'},
-  {t:'Speaker at a webinar',  s:'A speaker presenting, or a full webinar gallery view.', f:'assets/hero/slide-3.jpg', art:'wave'},
-  {t:'Chapter activity',      s:'A national chapter meeting or campus event, with the local team visible.', f:'assets/hero/slide-4.jpg', art:'network'},
-  {t:'Students and researchers', s:'Close-up of people collaborating — faces, not equipment.', f:'assets/hero/slide-5.jpg', art:'fringes'},
+  {t:'Community group photo', s:'The whole community together — the most important image on the site.',
+    image:'/media/events/mor/Screenshot 2026-09-05 at 12.03.41.png', f:'/media/events/mor/Screenshot 2026-09-05 at 12.03.41.png', art:'field'},
+  {t:'Quantum Africa workshop at Indaba', s:'Participants working in small groups at a hands-on workshop.',
+    image:'/media/workshops/main.jpeg', f:'/media/workshops/main.jpeg', art:'lattice'},
+  {t:'Webinar — faculty presentation', s:'A speaker presenting during a live webinar session.',
+    image:'/media/webinar/Main.png', f:'/media/webinar/Main.png', art:'wave'},
+  {t:'National chapter activity', s:'A campus or local gathering hosted by a national chapter.',
+    image:'/media/events/zambia/1785899683901.jpeg', f:'/media/events/zambia/1785899683901.jpeg', art:'network'},
+  {t:'Students & researchers collaborating', s:'People working together in a tutorial room.',
+    image:'/media/events/junction/1781132640865.jpeg', f:'/media/events/junction/1781132640865.jpeg', art:'fringes'},
 ];
 const EVENT_ART = ['circuit','bloch','wave','lattice','network','fringes'];
 
@@ -1508,13 +1513,12 @@ PAGES.home = () => `
     ${HERO_SLIDES.map((s,i)=>`<div class="slide ${i===0?'on':''}" data-i="${i}" data-kind="${mKind(s)}">
       ${(() => {
         const k = mKind(s);
-        if(k === 'video') return `<video class="hero-media" data-hero-video preload="metadata" muted playsinline loop
-            ${s.image ? `poster="${esc(mediaUrl(s.image))}"` : ''}
+        if(k === 'video') return `<video class="hero-media" data-hero-video preload="auto" muted playsinline loop autoplay
+            ${(s.image||s.f) ? `poster="${esc(mediaUrl(s.image||s.f))}"` : ''}
             src="${esc(mediaUrl(s.video))}"></video>`;
-        // A linked video cannot autoplay behind the headline without loading a
-        // third party into every visit, so the hero shows its still frame.
-        const still = k === 'image' ? mediaUrl(s.image) : mPoster(s);
-        if(still) return `<img class="hero-media" src="${esc(still)}" alt="${esc(s.t||'')}" ${i ? 'loading="lazy"' : ''}>`;
+        if(k === 'embed') return `<img class="hero-media" src="${esc(mPoster(s))}" alt="${esc(s.t||s.caption||'')}" ${i ? 'loading="lazy"' : ''}>`;
+        const still = mediaUrl(s.image || s.f);
+        if(still) return `<img class="hero-media" src="${esc(still)}" alt="${esc(s.t||s.caption||'')}" ${i ? 'loading="lazy"' : ''}>`;
         return art(s.art, 'hero-art');
       })()}
       <span class="slot-note hero-note">
@@ -3132,6 +3136,7 @@ function mKind(m){
   if(m.videoUrl) return 'embed';
   if(m.video)    return 'video';
   if(m.image)    return 'image';
+  if(m.f)        return 'image';
   return 'none';
 }
 function ytId(u){
@@ -3152,7 +3157,7 @@ function embedSrc(u){
 /* The still we show before anyone presses play: the picture you uploaded, or
    YouTube's own thumbnail if you only gave us a link. */
 function mPoster(m){
-  if(m && m.image) return mediaUrl(m.image);
+  if(m && (m.image || m.f)) return mediaUrl(m.image || m.f);
   const y = m && ytId(m.videoUrl);
   return y ? `https://i.ytimg.com/vi/${y}/hqdefault.jpg` : '';
 }
@@ -4300,7 +4305,11 @@ function rebuildFromContent(){
   const slides = cval('hero.slides');
   if(Array.isArray(slides) && slides.length){
     HERO_SLIDES = slides.map((sl, i) => Object.assign(
-      { t: sl.caption || ('Slide ' + (i+1)), s: '', f: sl.image || '', art: HERO_ART[i % HERO_ART.length] }, sl));
+      { t: sl.caption || ('Slide ' + (i+1)), s: '',
+        image: sl.image || sl.f || '',
+        video: sl.video || '',
+        f: sl.image || sl.f || sl.video || '',
+        art: HERO_ART[i % HERO_ART.length] }, sl));
   }
   const confEditions = clist('confEditions');
   if(confEditions.length){
