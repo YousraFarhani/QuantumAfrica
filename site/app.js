@@ -897,8 +897,8 @@ const PERSON_LINKS = [
 const PARTNER_CATS = ['Academic','Research','Industry','Education','Strategic'];
 
 let ARTICLES = [
-  {slug:'a1', type:'News',           art:'network',  read:'4 min'},
-  {slug:'a2', type:'Chapter update', art:'lattice',  read:'3 min'},
+  {slug:'uganda-indaba-2026', type:'Chapter update', art:'fringes', read:'3 min'},
+  {slug:'african-women-quantum-roundtable-2025', type:'News', art:'wave', read:'3 min'},
   {slug:'a3', type:'Member story',   art:'bloch',    read:'6 min'},
   {slug:'a4', type:'Report',         art:'spectra',  read:'12 min'},
   {slug:'a5', type:'News',           art:'circuit',  read:'3 min'},
@@ -1781,10 +1781,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
     cx('pages.impact.storiesTitle', 'Impact in individual terms'),
     cx('pages.impact.storiesLede', '')
   )}
-  <div class="grid g3">${['bloch','network','circuit'].map((k,i)=>`<a class="card rv" href="#/news/a3">
-    <div class="card-media">${cimg('pages.impact.storyImage'+(i+1), 'Portrait of the person this story is about', '1600×900 · JPG', '', k)}</div>
-    <div class="card-b"><div class="news-meta"><span class="t">${cx('pages.impact.storyMeta', 'Member story')}</span></div>
-      <h4>${pht(cx('pages.impact.storyHeadline'+(i+1), 'Impact story headline'))}</h4><p>${pht(cx('pages.impact.storyCopy'+(i+1), 'Who, what they did, where they are now'))}</p></div></a>`).join('')}</div>
+  <div class="grid g3">${ARTICLES.slice(0,3).map(articleCard).join('')}</div>
 </div></section>`;
 
 /* ---------- EDUCATION ---------- */
