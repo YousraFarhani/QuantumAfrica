@@ -1113,9 +1113,12 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
 .ql-stats em{font-style:normal;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .ql-split-art{position:relative;z-index:1;border-radius:10px;overflow:hidden;min-height:200px;
   background:#061224;border:1px solid rgba(255,255,255,.06)}
-.ql-art-pat{opacity:.28}
-.ql-art-ring{position:absolute;inset:auto -20px -30% -20%;pointer-events:none}
-.ql-art-chip{position:absolute;left:14px;bottom:14px;right:14px;z-index:2;
+.ql-art-img{z-index:0}
+.ql-art-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,12,24,.22) 0%,rgba(6,12,24,.38) 45%,rgba(6,12,24,.78) 85%),
+    linear-gradient(90deg,rgba(6,12,24,.22) 0%,transparent 40%)}
+.ql-art-ring{position:absolute;inset:auto -20px -30% -20%;pointer-events:none;z-index:2}
+.ql-art-chip{position:absolute;left:14px;bottom:14px;right:14px;z-index:3;
   display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;
   background:rgba(6,12,24,.72);backdrop-filter:blur(6px);
   border:1px solid rgba(201,165,91,.3);font-family:var(--f);font-size:.76rem;font-weight:600;

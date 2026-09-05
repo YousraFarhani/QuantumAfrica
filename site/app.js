@@ -2122,7 +2122,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     </div>
     <div class="ql-split-art">
       ${ringMark('ql-art-ring',{noSvg:true})}
-      ${patternPanel('lattice','light','ql-art-pat')}
+      <img class="ql-art-img" src="${esc(mediaUrl('/media/workshops/main.jpeg'))}" alt="QML4Africa workshop" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div class="ql-art-overlay" aria-hidden="true"></div>
       <div class="ql-art-chip">
         <span class="chip-dot"></span>
         <span>Hands-on sessions · Expert-led · Community</span>
