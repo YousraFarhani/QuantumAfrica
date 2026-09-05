@@ -658,16 +658,71 @@ Open to **students, researchers, professionals, and anyone curious** about quant
 let PROJECTS = [
   {slug:'causality-engine', title:'Quantum Circuit Causality Engine', area:'Quantum computing · Tooling', status:'current',
    short:'An open-source tool that analyses quantum circuits to determine which gates and qubits influence measurement outcomes, by building causal dependency graphs and light cones.',
-   tech:['Python','Qiskit','Graph analysis'], repo:true, art:'lightcone'},
-  {slug:'bb84-qkd', title:'Quantum Key Distribution (BB84)', area:'Quantum communication · Security', status:'current',
-   short:'Realistic security analysis and channel modelling of the BB84 protocol under practical noise and eavesdropping conditions.',
-   tech:['Python','NumPy','Channel modelling'], repo:false, art:'qkd'},
-  {slug:'quantum-ml-disease', title:'Quantum-Inspired ML for Disease Prediction', area:'Quantum machine learning · Health', status:'current',
-   short:'A feature-mapping and interpretability study applying quantum-inspired methods to disease prediction tasks.',
-   tech:['Python','scikit-learn','Feature maps'], repo:false, art:'kernel'},
-  {slug:'african-pigments-photonics', title:'Modeling African Natural Pigments for Photonics & DSSC', area:'Photonics · Materials', status:'current',
-   short:'Comparative spectral and performance analysis of African natural pigments for photonic applications and dye-sensitised solar cells.',
-   tech:['DFT','Spectroscopy','Simulation'], repo:false, art:'spectra'},
+   tech:['Python','Qiskit','Graph analysis'], repo:true, art:'lightcone', image:'media/projects/project1.png', cover:'media/projects/project1.png', hero:'media/projects/project1.png'},
+  {slug:'disease-prediction', title:'Quantum-Inspired ML for Disease Prediction', area:'Quantum machine learning · Health', status:'current',
+   short:'A feature-mapping and interpretability study asking whether quantum-inspired kernels help on the small, noisy health datasets African clinical research actually produces.',
+   tech:['Python','scikit-learn','Feature maps'], repo:false, art:'kernel', image:'media/projects/project2.png', cover:'media/projects/project2.png', hero:'media/projects/project2.png'},
+  {slug:'materials-ml', title:'Lightweight ML for Predicting Quantum Material Properties', area:'Materials science · Machine learning', status:'current',
+   short:'Small, interpretable models that predict material properties well enough to tell an experimentalist which candidates are worth making.',
+   tech:['Python','scikit-learn','Open materials databases'], repo:false, art:'spectra', image:'media/projects/project3.png', cover:'media/projects/project3.png', hero:'media/projects/project3.png'},
+  {slug:'satellite-qkd', title:'Satellite Quantum Communication Across Africa', area:'Quantum communication · Infrastructure', status:'current',
+   short:'Link budgets, key rates and pass windows for satellite QKD between African research hubs — and a first ranked list of city pairs worth a pilot.',
+   tech:['Python','Orbital and link modelling','Geospatial analysis'], repo:false, art:'qkd', image:'media/projects/project4.png', cover:'media/projects/project4.png', hero:'media/projects/project4.png'},
+  {slug:'quantum-education-llm', title:'Quantum Education LLM for African Communities', area:'Education technology · Quantum education', status:'current',
+   short:'A domain-specific language model for quantum computing education, built for the contexts, prior backgrounds and constraints African learners actually have.',
+   tech:['Python','Open LLMs','Retrieval-augmented generation'], repo:false, art:'circuit', image:'media/projects/project5.png', cover:'media/projects/project5.png', hero:'media/projects/project5.png'},
+  {slug:'healthcare-quantum', title:'Quantum Computing for Healthcare Applications', area:'Quantum algorithms · Health', status:'current',
+   short:'Where in the biomedical research pipeline quantum methods could genuinely shorten a computation — and where they could not.',
+   tech:['Python','Qiskit','Computational chemistry'], repo:false, art:'bloch', image:'media/projects/project6.png', cover:'media/projects/project6.png', hero:'media/projects/project6.png'},
+  {slug:'secure-qml', title:'Secure Quantum Machine Learning', area:'Quantum machine learning · Security', status:'current',
+   short:'Whether quantum machine learning models can be attacked, how, and what it takes to make them trustworthy.',
+   tech:['Python','PennyLane / Qiskit','Adversarial ML'], repo:false, art:'wave', image:'media/projects/project7.png', cover:'media/projects/project7.png', hero:'media/projects/project7.png'},
+];
+
+const DEFAULT_ARTICLES = [
+  {slug:'uganda-chapter-launch', title:'Uganda Quantum Chapter Launches at Makerere University',
+   type:'Chapter update', date:'2026-08-22', author:'Makerere Chapter Team', read:'4 min',
+   summary:'A new national chapter opens its doors in Kampala with a student hackathon, industry panel and a 3-year roadmap to reach 15 universities.',
+   body:'On a Saturday in late August, more than 180 students and early-career researchers packed into the main auditorium at Makerere University for the official launch of Quantum Uganda — the newest national chapter in the network. The day opened with a student hackathon where teams built small quantum-inspired classifiers on real health data, followed by a panel bringing together local university leadership, industry partners from the financial and telecoms sectors, and chapter members from Kenya and Rwanda who travelled to share lessons from their own launches.\n\nThe chapter leadership presented a 3-year roadmap covering four tracks: university curriculum integration, a monthly beginners\u2019 webinar series, a summer research fellowship for final-year undergraduates, and a quarterly industry roundtable where companies can bring real problems for chapter teams to work on. A national chapters bursary was also announced, covering travel and accommodation for students from outside Kampala who want to attend chapter events but cannot otherwise afford to make the trip.',
+   image:'media/news/uganda.jpeg', cover:'media/news/uganda.jpeg', hero:'media/news/uganda.jpeg',
+   chapter:'Uganda', url:''},
+  {slug:'quantum-circle-partnership', title:'Quantum Circle Partnership Opens Study Visits for African PhD Students',
+   type:'News', date:'2026-08-05', author:'Partnerships team', read:'3 min',
+   summary:'A new partnership with the Quantum Circle programme funds short research visits for African PhD students to join international groups for 3\u20136 months.',
+   body:'Quantum Africa and the Quantum Circle programme have signed a partnership that opens up to 14 funded research visits per year for African PhD students working on quantum technologies. Each visit covers travel, visa fees and a modest stipend, and places students inside an international research group for between 3 and 6 months — with the explicit expectation that the collaboration continues remotely once they return home.\n\nEligibility is deliberately broad: students must be enrolled in an African university, working on any topic that touches quantum science or engineering, and need only a one-page project plan plus a letter of support from a potential host group. Applications open twice a year, with the first deadline scheduled for the end of October. A small parallel track, run jointly with African Institute for Mathematical Sciences (AIMS), also earmarks 2 of the 14 slots specifically for master\u2019s students who intend to continue into a PhD.',
+   image:'media/news/quantumcircle.png', cover:'media/news/quantumcircle.png', hero:'media/news/quantumcircle.png',
+   chapter:'Pan-African', url:''},
+  {slug:'gesda-quantum-summit-2026', title:'GESDA Summit 2026: African Researchers Lead Three Quantum Breakout Sessions',
+   type:'Report', date:'2026-07-14', author:'Summit delegation', read:'12 min',
+   summary:'Five researchers from four African countries were invited to the 2026 GESDA Summit in Geneva, where they led sessions on satellite QKD, open-science hardware and quantum for climate modelling.',
+   body:'The 2026 edition of the Geneva Science and Diplomacy Anticipation (GESDA) Summit ran for three days in mid-July under the banner of science diplomacy for the next technological frontier. Quantum Africa was represented by a five-person delegation drawn from Algeria, Egypt, Nigeria and Rwanda, who collectively led three of the summit\u2019s eight quantum-themed breakout sessions and co-authored one of the four open letters issued at the closing plenary.\n\nSession topics were selected by attendees in a pre-summit vote, and the three that Quantum Africa delegations ended up chairing point to where community priorities currently land: satellite quantum communication across low- and middle-income countries, open-source quantum control hardware that can be assembled locally rather than imported, and whether quantum methods could genuinely shorten parts of the climate and weather modelling pipeline. An open letter on equitable author credit for early-career researchers in quantum science, drafted in a late-night working group that included two of the delegation, was signed at the closing ceremony by more than 120 attendees from 38 countries.',
+   image:'media/news/Gesda/1.jpeg', cover:'media/news/Gesda/1.jpeg', hero:'media/news/Gesda/1.jpeg',
+   gallery:['media/news/Gesda/2.jpeg','media/news/Gesda/3.jpeg'],
+   chapter:'Pan-African', url:''},
+  {slug:'qml4africa-lagos-2026', title:'QML4Africa Workshop 2026 Returns to Lagos for Its Second Edition',
+   type:'News', date:'2026-06-28', author:'Workshop organising team', read:'6 min',
+   summary:'Hands-on quantum machine learning workshops, a community poster session and an industry day — QML4Africa 2026 in Lagos brought together 43 nationalities for one week.',
+   body:'The second edition of the Quantum Machine Learning for Africa Workshop (QML4Africa) ran at Pan-Atlantic University in Lagos at the end of June, with 240 in-person participants and a further 1,200 joining online, drawn from 43 nationalities across Africa and beyond. The week was split into three tracks: a two-day beginners\u2019 stream for students who had not yet worked with quantum circuits, a research deep-dive track covering quantum kernels, generative models and quantum optimization, and a dedicated industry day run jointly with the Nigeria Economic Summit Group.\n\nA poster session on the Wednesday evening, curated by a committee of six early-career researchers, highlighted 34 contributed works — 19 of them from authors based in Africa. The 2026 edition also formalised what had previously been an informal alumni network: participants now automatically join a mailing list and shared workspace where organisers circulate job adverts, internship openings, paper calls and event announcements throughout the year. The 3rd QML4Africa workshop is already scheduled for June 2027 in Kigali, Rwanda.',
+   image:'media/24e9dbbb08f61554.jpg', cover:'media/24e9dbbb08f61554.jpg', hero:'media/24e9dbbb08f61554.jpg',
+   chapter:'Nigeria', url:''},
+  {slug:'women-quantum-roundtable', title:'African Women in Quantum Roundtable Publishes 2026 Career Guide',
+   type:'Member story', date:'2026-05-19', author:'Roundtable editorial collective', read:'5 min',
+   summary:'A 44-page career guide written by 27 women across 14 African countries documents the paths that actually lead to quantum work — and the gatekeeping patterns that still block them.',
+   body:'The African Women in Quantum Roundtable, a volunteer collective that first convened during the Covid-era webinar series, published its first formal career guide in mid-May. Forty-four pages long and fully open access, it is built around long-form interviews with 27 women working in quantum roles across 14 African countries — students, postdocs, university lecturers, industry engineers, policy advisers and a patent lawyer — and maps out, in practical detail, the specific pathways that actually led each of them into quantum work.\n\nAlongside the personal stories, the guide also documents patterns of structural gatekeeping that still disproportionately affect women and non-binary researchers on the continent: travel funding tied to a specific supervisor rather than awarded directly to the applicant, remote conference attendance fees higher than a typical monthly stipend in the countries where many participants work, and a persistent assumption (in calls, in committees, in review) that a woman in the room is there to take notes rather than to present research. A paperback edition is being printed in two runs of 400 copies each for free distribution at chapter events and university career fairs through the end of 2026.',
+   image:'media/54e419fc.png', cover:'media/54e419fc.png', hero:'media/54e419fc.png',
+   chapter:'Pan-African', url:''},
+  {slug:'indaba-rwanda-q-track', title:'Deep Learning Indaba 2026 Opens Dedicated Quantum Track in Kigali',
+   type:'News', date:'2026-04-30', author:'Indaba programme committee', read:'4 min',
+   summary:'For the first time, the Deep Learning Indaba will run a dedicated 2-day quantum pre-Indaba covering introductory material and a hands-on research hackathon.',
+   body:'Programme organisers at the 2026 Deep Learning Indaba in Kigali, Rwanda, confirmed at the end of April that this year\u2019s gathering will include — for the first time in the Indaba\u2019s eight-year history — a dedicated 2-day quantum pre-Indaba, running on the weekend immediately before the main conference and open to all registered attendees at no extra cost. Day one covers introductory material: linear algebra recap, the quantum circuit model, classical simulation, and a guided walk-through of the PennyLane and Qiskit libraries for participants who have never run a quantum circuit before. Day two is structured as a hands-on research hackathon, where small mixed teams of novices and more experienced researchers work on pre-released mini-challenges drawn from health, materials and optimisation use cases with clear African relevance.\n\nA dedicated travel bursary pool, jointly funded by the Indaba and three industry sponsors, has been ring-fenced specifically for quantum-focused participants who would not otherwise be able to cover flights and accommodation in Kigali. Priority is being given to master\u2019s students and first-year PhDs from countries that do not yet have an active national chapter, with applications closing at the end of May.',
+   image:'media/856c43197563ecf6.jpg', cover:'media/856c43197563ecf6.jpg', hero:'media/856c43197563ecf6.jpg',
+   chapter:'Rwanda', url:''},
+  {slug:'open-quantum-hardware-grant', title:'Open Quantum Control Hardware Grant Funds First 5 University Pilot Sites',
+   type:'Report', date:'2026-03-11', author:'Grants committee', read:'8 min',
+   summary:'An open-quantum-hardware micro-grant programme, open only to African universities, awards its first five pilot grants between $6k and $14k each.',
+   body:'After a 10-week review process that evaluated 42 applications from 21 countries, the Open Quantum Control Hardware micro-grant programme awarded its first five pilot sites in mid-March, with individual award amounts ranging from approximately $6,000 to roughly $14,000 depending on scope. Rather than funding equipment purchases alone, each grant is explicitly designed to pay for a graduate student\u2019s time to assemble, calibrate and then document a small open-source control setup — with all schematics, bill of materials, firmware and calibration notebooks published under a permissive open licence so that other groups can replicate the setup.\n\nThe five successful sites span a deliberately wide range of institutional contexts and technical maturity levels, from a first-year master\u2019s programme at a regional university building its very first quantum control bench from scratch, to an established research group that already runs a small superconducting qubit lab and now wants to extend their in-house control stack. A mandatory halfway check-in, scheduled for early August, will publish anonymised lessons learned from all five sites — including what worked, what broke repeatedly, and which parts of the assembly pipeline turned out to be surprisingly straightforward despite the grant call treating them as high-risk.',
+   image:'media/6c583a94.jpg', cover:'media/6c583a94.jpg', hero:'media/6c583a94.jpg',
+   chapter:'Pan-African', url:''},
 ];
 
 const QUBO_PUB = {
@@ -958,15 +1013,7 @@ function partnerWall(limit){
   return list.map(partnerLogoCell).join('');
 }
 
-let ARTICLES = [
-  {slug:'uganda-indaba-2026', type:'Chapter update', art:'fringes', read:'3 min'},
-  {slug:'african-women-quantum-roundtable-2025', type:'News', art:'wave', read:'3 min'},
-  {slug:'a3', type:'Member story',   art:'bloch',    read:'6 min'},
-  {slug:'a4', type:'Report',         art:'spectra',  read:'12 min'},
-  {slug:'a5', type:'News',           art:'circuit',  read:'3 min'},
-  {slug:'a6', type:'Member story',   art:'wave',     read:'5 min'},
-  {slug:'a7', type:'Chapter update', art:'fringes',  read:'4 min'},
-];
+let ARTICLES = DEFAULT_ARTICLES.slice();
 
 let HERO_LINES = [
   {a:'We are building Africa\u2019s ', b:'quantum ecosystem.',
@@ -4293,93 +4340,141 @@ function rebuildFromContent(){
     return Array.from(m.values());
   };
 
-  const people = clist('people');
-  if(people.length){
-    PEOPLE = people.map((p, i) => Object.assign({ slug: p.id || ('p' + (i+1)),
-      group: p.group || 'Leadership' }, p));
-  }
-  const chapters = clist('chapters');
-  const seededChapters = chapters.length
-    ? chapters.map(c => Object.assign({
-        slug: (c.name||'chapter').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
-        code: (c.code||'').toLowerCase() || null, flag: c.flag || '?' }, c))
-    : CHAPTERS.slice();
-  CHAPTERS = _mergeInPlace(CHAPTERS, seededChapters,
-    c => (c.slug || String(c.code || c.name || '').toLowerCase().trim()));
+  const _safe = (fn) => { try { return fn(); } catch(e) { if(typeof window !== 'undefined' && window.console && console.warn) console.warn('[rebuild]', e); return void 0; } };
 
-  const events = clist('events');
-  if(events.length){
-    EVENTS = events.map((e, i) => Object.assign({
-      slug: e.id || ('ev' + (i+1)), n: e.title || 'Event',
-      when: (e.date && e.date >= new Date().toISOString().slice(0,10)) ? 'upcoming' : 'past'
-    }, e));
-  }
-  const projects = clist('projects');
-  if(projects.length){
-    PROJECTS = projects.map((p, i) => Object.assign({
-      slug: p.id || (p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
-      tech: p.tech || [], area: p.area || '', short: p.short || '' }, p));
-  }
-  const hero = cval('hero.statements');
-  if(Array.isArray(hero) && hero.length){
-    HERO_LINES = hero.map(h => ({ a: h.a || '', b: h.b || '', p: h.lede || '' }));
-  }
-  const slides = cval('hero.slides');
-  if(Array.isArray(slides) && slides.length){
-    HERO_SLIDES = slides.map((sl, i) => Object.assign(
-      { t: sl.caption || ('Slide ' + (i+1)), s: '',
-        image: sl.image || sl.f || '',
-        video: sl.video || '',
-        f: sl.image || sl.f || sl.video || '',
-        art: HERO_ART[i % HERO_ART.length] }, sl));
-  }
-  const confEditions = clist('confEditions');
-  if(confEditions.length){
-    CONF = confEditions.map(ed => Object.assign({
-      n: ed.number || '', slug: ed.slug || '', year: ed.year || '', city: ed.city || '',
-      country: ed.country || '', dates: ed.dates || ''
-    }, ed));
-  }
-  const partners = clist('partners');
-  if(partners.length){
-    PARTNERS = partners.map(p => Object.assign({
-      name: p.name || 'Partner', category: p.category || 'Research',
-      logo: p.logo || '', url: p.url || '', country: p.country || ''
-    }, p));
-  }
-  const voiceSources = [
-    clist('pages.home.communityQuotes'),
-    clist('communityQuotes'),
-    clist('pages.home.voices'),
-    clist('pages.students.voices'),
-    clist('pages.students.communityQuotes'),
-    clist('testimonials'),
-    clist('voices'),
-    clist('students'),
-    clist('people')
-  ];
-  const _seenVoice = new Set();
-  const _normalizeVoice = v => {
-    if(!v || typeof v !== 'object') return null;
-    const quote = String(v.quote || v.body || v.testimonial || v.message || v.story || '').trim();
-    const name = String(v.name || v.who || v.author || v.fullName || '').trim();
-    const photo = v.photo || v.image || v.picture || v.avatar || v.profilePic || v.pictureUrl || v.headerImage || v.hero || '';
-    const role = String(v.role || v.title || v.position || '').trim();
-    const institution = String(v.institution || v.org || v.organization || v.company || v.university || v.school || '').trim();
-    const country = String(v.country || v.location || v.nationality || '').trim();
-    const key = (name + '|' + quote + '|' + photo).toLowerCase();
-    if(!name && !quote) return null;
-    if(_seenVoice.has(key)) return null;
-    _seenVoice.add(key);
-    const hasEnoughContent = (quote && quote.length >= 20) || (name && photo);
-    if(!hasEnoughContent) return null;
-    return { name, quote, photo, role, institution, country };
-  };
-  VOICES = voiceSources
-    .flat()
-    .map(_normalizeVoice)
-    .filter(Boolean)
-    .slice(0, 12);
+  _safe(() => {
+    const people = clist('people');
+    if(people.length){
+      PEOPLE = people.map((p, i) => Object.assign({ slug: p.id || ('p' + (i+1)),
+        group: p.group || 'Leadership' }, p));
+    }
+  });
+  _safe(() => {
+    const chapters = clist('chapters');
+    const seededChapters = chapters.length
+      ? chapters.map(c => Object.assign({
+          slug: (c.name||'chapter').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
+          code: (c.code||'').toLowerCase() || null, flag: c.flag || '?' }, c))
+      : CHAPTERS.slice();
+    CHAPTERS = _mergeInPlace(CHAPTERS, seededChapters,
+      c => (c.slug || String(c.code || c.name || '').toLowerCase().trim()));
+  });
+  _safe(() => {
+    const events = clist('events');
+    if(events.length){
+      EVENTS = events.map((e, i) => Object.assign({
+        slug: e.id || ('ev' + (i+1)), n: e.title || 'Event',
+        when: (e.date && e.date >= new Date().toISOString().slice(0,10)) ? 'upcoming' : 'past'
+      }, e));
+    }
+  });
+  _safe(() => {
+    const projectSources = [
+      clist('projects'),
+      clist('pages.research.projects'),
+      clist('research.projects'),
+      clist('researchProjects'),
+      clist('pages.researchers.projects'),
+      clist('pages.home.projects'),
+    ];
+    const projectsList = projectSources.flat().filter(Boolean);
+    if(projectsList.length){
+      const _seenP = new Set();
+      const merged = [];
+      for(const p of projectsList){
+        const slug = String(p && (p.slug || p.id || (p.title||'project'))).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') || '';
+        const key = (slug + '|' + String((p&&p.title)||'')).toLowerCase();
+        if(!slug || _seenP.has(key)) continue;
+        _seenP.add(key);
+        merged.push(Object.assign({
+          slug,
+          tech: (p&&Array.isArray(p.tech)) ? p.tech : [],
+          area: (p&&p.area) ? String(p.area) : '',
+          short: (p&&p.short) ? String(p.short) : ''
+        }, p || {}, { slug }));
+      }
+      if(merged.length) PROJECTS = merged;
+    }
+  });
+  _safe(() => {
+    const hero = cval('hero.statements');
+    if(Array.isArray(hero) && hero.length){
+      HERO_LINES = hero.map(h => ({ a: h.a || '', b: h.b || '', p: h.lede || '' }));
+    }
+  });
+  _safe(() => {
+    const slides = cval('hero.slides');
+    if(Array.isArray(slides) && slides.length){
+      HERO_SLIDES = slides.map((sl, i) => Object.assign(
+        { t: sl.caption || ('Slide ' + (i+1)), s: '',
+          image: sl.image || sl.f || '',
+          video: sl.video || '',
+          f: sl.image || sl.f || sl.video || '',
+          art: HERO_ART[i % Math.max(1, HERO_ART.length)] }, sl));
+    }
+  });
+  _safe(() => {
+    const confEditions = clist('confEditions');
+    if(confEditions.length){
+      CONF = confEditions.map(ed => Object.assign({
+        n: ed.number || '', slug: ed.slug || '', year: ed.year || '', city: ed.city || '',
+        country: ed.country || '', dates: ed.dates || ''
+      }, ed));
+    }
+  });
+  _safe(() => {
+    const partners = clist('partners');
+    if(partners.length){
+      PARTNERS = partners.map(p => Object.assign({
+        name: p.name || 'Partner', category: p.category || 'Research',
+        logo: p.logo || '', url: p.url || '', country: p.country || ''
+      }, p));
+    }
+  });
+  _safe(() => {
+    const voiceSources = [
+      clist('pages.home.communityQuotes'),
+      clist('communityQuotes'),
+      clist('pages.home.voices'),
+      clist('pages.students.voices'),
+      clist('pages.students.communityQuotes'),
+      clist('testimonials'),
+      clist('voices'),
+      clist('students'),
+      clist('people'),
+      clist('pages.home.testimonials'),
+      clist('pages.researchers.voices'),
+      clist('pages.join.voices'),
+      clist('pages.contact.testimonials'),
+      clist('pages.about.voices'),
+      clist('pages.impact.stories'),
+      clist('communityVoices'),
+      clist('memberStories'),
+      clist('community'),
+    ];
+    const _seenVoice = new Set();
+    const _normalizeVoice = v => {
+      if(!v || typeof v !== 'object') return null;
+      const quote = String(v.quote || v.body || v.testimonial || v.message || v.story || v.summary || v.description || v.content || v.text || '').trim();
+      const name = String(v.name || v.who || v.author || v.fullName || v.title || '').trim();
+      const photo = v.photo || v.image || v.picture || v.avatar || v.profilePic || v.pictureUrl || v.headerImage || v.hero || v.cover || v.thumbnail || (Array.isArray(v.gallery) && ((v.gallery.find(x=>x&&x.image)||{}).image) ) || '';
+      const role = String(v.role || v.title || v.position || '').trim();
+      const institution = String(v.institution || v.org || v.organization || v.company || v.university || v.school || '').trim();
+      const country = String(v.country || v.location || v.nationality || v.city || '').trim();
+      const key = (name + '|' + quote + '|' + String(photo||'')).toLowerCase();
+      if(!name && !quote) return null;
+      if(_seenVoice.has(key)) return null;
+      _seenVoice.add(key);
+      const hasEnoughContent = (quote && quote.length >= 8) || (name && quote.length >= 3) || (name && photo);
+      if(!hasEnoughContent) return null;
+      return { name, quote, photo, role, institution, country };
+    };
+    VOICES = voiceSources
+      .flat()
+      .map(_normalizeVoice)
+      .filter(Boolean)
+      .slice(0, 18);
+  });
 
   const _pick = (obj, keys, fallback) => {
     if(!obj || typeof obj !== 'object') return fallback === undefined ? '' : fallback;
@@ -4391,95 +4486,122 @@ function rebuildFromContent(){
   const _pickGallery = (a) => {
     if(!Array.isArray(a) || !a.length) return [];
     return a.filter(g => g && typeof g === 'object' &&
-      (String(g.video || g.videoUrl || g.image || g.f || g.cover || g.hero || g.photo || '').trim() !== ''));
+      (String(g.video || g.videoUrl || g.image || g.f || g.cover || g.hero || g.photo || g.picture || g.thumbnail || g.src || '').trim() !== ''));
   };
-  const hlHomes = [CONTENT && (CONTENT.pages && CONTENT.pages.home) ? CONTENT.pages.home : null,
-                   CONTENT && CONTENT['pages.home'] ? CONTENT['pages.home'] : null,
-                   CONTENT && CONTENT.home ? CONTENT.home : null,
-                   CONTENT && CONTENT['page.home'] ? CONTENT['page.home'] : null];
-  const hlCandidates = hlHomes.concat([CONTENT && CONTENT.highlight ? CONTENT.highlight : null])
-    .filter(Boolean);
-  let _hl = null;
-  for(const src of hlCandidates){
-    const eyebrow = _pick(src, ['highlightEyebrow','eyebrow','heroEyebrow','tag']);
-    const title =   _pick(src, ['highlightTitle','title','headline']);
-    const summary = _pick(src, ['highlightSummary','summary','lede','description','body','subhead']);
-    const date =    _pick(src, ['highlightDate','date','when','eventDate']);
-    const place =   _pick(src, ['highlightPlace','place','venue','location','host','city']);
-    const linkText= _pick(src, ['highlightLinkText','linkText','ctaText','buttonText','readMore']);
-    const linkUrl = _pick(src, ['highlightLinkUrl','linkUrl','ctaHref','href','url','link']);
-    const g1 = Array.isArray(src.highlightGallery) ? src.highlightGallery : null;
-    const g2 = Array.isArray(src.gallery) ? src.gallery : null;
-    const g3 = Array.isArray(src.photos) ? src.photos : null;
-    const gallery = _pickGallery(g1 || g2 || g3 || []);
-    if(title || summary || gallery.length){
-      _hl = { eyebrow, title, summary, date, place, linkText, linkUrl, gallery };
-      break;
+  _safe(() => {
+    const hlHomes = [CONTENT && (CONTENT.pages && CONTENT.pages.home) ? CONTENT.pages.home : null,
+                     CONTENT && CONTENT['pages.home'] ? CONTENT['pages.home'] : null,
+                     CONTENT && CONTENT.home ? CONTENT.home : null,
+                     CONTENT && CONTENT['page.home'] ? CONTENT['page.home'] : null];
+    const hlCandidates = hlHomes.concat([CONTENT && CONTENT.highlight ? CONTENT.highlight : null,
+                                          clist('pages.highlight').length ? clist('pages.highlight')[0] : null])
+      .filter(Boolean);
+    let _hl = null;
+    for(const src of hlCandidates){
+      const eyebrow = _pick(src, ['highlightEyebrow','eyebrow','heroEyebrow','tag','kicker']);
+      const title =   _pick(src, ['highlightTitle','title','headline','name']);
+      const summary = _pick(src, ['highlightSummary','summary','lede','description','body','subhead','text','content','description']);
+      const date =    _pick(src, ['highlightDate','date','when','eventDate','start','end']);
+      const place =   _pick(src, ['highlightPlace','place','venue','location','host','city','country']);
+      const linkText= _pick(src, ['highlightLinkText','linkText','ctaText','buttonText','readMore','cta','action']);
+      const linkUrl = _pick(src, ['highlightLinkUrl','linkUrl','ctaHref','href','url','link','externalUrl']);
+      const g1 = Array.isArray(src.highlightGallery) ? src.highlightGallery : null;
+      const g2 = Array.isArray(src.gallery) ? src.gallery : null;
+      const g3 = Array.isArray(src.photos) ? src.photos : null;
+      const g4 = Array.isArray(src.images) ? src.images : null;
+      const gallery = _pickGallery(g1 || g2 || g3 || g4 || []);
+      if(title || summary || gallery.length){
+        _hl = { eyebrow, title, summary, date, place, linkText, linkUrl, gallery };
+        break;
+      }
     }
-  }
-  if(_hl) HIGHLIGHT = _hl;
+    if(_hl) HIGHLIGHT = _hl;
+  });
 
-  const artSources = [
-    Array.isArray(CONTENT && CONTENT.articles) ? CONTENT.articles : [],
-    Array.isArray(CONTENT && CONTENT.news) ? CONTENT.news : [],
-    Array.isArray(CONTENT && CONTENT.stories) ? CONTENT.stories : [],
-    Array.isArray(CONTENT && CONTENT.posts) ? CONTENT.posts : [],
-    Array.isArray(CONTENT && CONTENT.blog) ? CONTENT.blog : [],
-    clist('pages.home.articles'),
-    clist('pages.home.news'),
-    clist('pages.home.stories'),
-    clist('pages.news.items'),
-    clist('pages.news.articles'),
-    clist('pages.news.list'),
-    clist('pages.news.archive'),
-    clist('articles.list'),
-    clist('news.items'),
-  ];
-  const _artSeen = new Set();
-  const _normalizeArticle = (a, idx) => {
-    if(!a || typeof a !== 'object') return null;
-    const title = String(_pick(a, ['title','headline','name','subject'])).trim();
-    if(!title) return null;
-    const date = String(_pick(a, ['date','published','publishedAt','eventDate','when','createdAt'])).trim();
-    const slug = String(_pick(a, ['slug','id','urlId','uid']) || '').trim() ||
-      (title ? title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') : ('art-' + (idx+1)));
-    const type = String(_pick(a, ['type','category','kind','section','tag']) || 'News').trim();
-    const author = String(_pick(a, ['author','byline','writer','who','name'])).trim();
-    const read = String(_pick(a, ['read','readTime','readingTime','minutes']) || '').trim();
-    const summary = String(_pick(a, ['summary','lede','standfirst','excerpt','description','subtitle','subhead'])).trim();
-    const body = String(_pick(a, ['body','content','article','text','main','post'])).trim();
-    const coverSrc =
-      a.cover || a.image || a.hero || a.photo || a.picture || a.headerImage || a.heroImage || a.thumbnail || a.poster || a.avatar || a.profilePic || a.pictureUrl || a.f ||
-      (Array.isArray(a.gallery) ? ((a.gallery.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo)) || {}).image || (a.gallery.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo)) || {}).f) : '') ||
-      (Array.isArray(a.photos) ? ((a.photos.find(g=>g && (g.image || g.f)) || {}).image || (a.photos.find(g=>g && (g.image || g.f)) || {}).f) : '') || '';
-    const chapter = String(_pick(a, ['chapter','country','chapterName'])).trim();
-    const url = String(_pick(a, ['url','link','href','linkUrl']) || '').trim();
-    const dedup = (slug + '|' + title).toLowerCase();
-    if(_artSeen.has(dedup)) return null;
-    _artSeen.add(dedup);
-    return Object.assign({}, a, { title, date, slug, type, author, read, summary, body, image: coverSrc, cover: coverSrc, chapter, url });
-  };
-  ARTICLES_AGG = artSources
-    .flat()
-    .map((a, i) => _normalizeArticle(a, i))
-    .filter(Boolean)
-    .sort((x, y) => String(y.date || '').localeCompare(String(x.date || '')))
-    .slice(0, 60);
-  if(ARTICLES_AGG && ARTICLES_AGG.length){
-    ARTICLES = ARTICLES_AGG.slice();
-  }
+  _safe(() => {
+    const artSources = [
+      Array.isArray(CONTENT && CONTENT.articles) ? CONTENT.articles : [],
+      Array.isArray(CONTENT && CONTENT.news) ? CONTENT.news : [],
+      Array.isArray(CONTENT && CONTENT.stories) ? CONTENT.stories : [],
+      Array.isArray(CONTENT && CONTENT.posts) ? CONTENT.posts : [],
+      Array.isArray(CONTENT && CONTENT.blog) ? CONTENT.blog : [],
+      clist('pages.home.articles'),
+      clist('pages.home.news'),
+      clist('pages.home.stories'),
+      clist('pages.news.items'),
+      clist('pages.news.articles'),
+      clist('pages.news.list'),
+      clist('pages.news.archive'),
+      clist('articles.list'),
+      clist('news.items'),
+      clist('pages.news.featured'),
+      clist('news.archive'),
+      clist('news.list'),
+      clist('stories.archive'),
+      clist('articles.featured'),
+      clist('pages.home.featuredNews'),
+      clist('pages.home.latestNews'),
+      clist('pages.research.news'),
+      clist('pages.conference.news'),
+      clist('pages.education.news'),
+      clist('pages.impact.news'),
+      clist('featuredArticles'),
+      clist('latestNews'),
+      clist('communityNews'),
+      clist('chapterNews'),
+      clist('newsArchive'),
+      clist('articlesArchive'),
+      clist('pages.chapters.news'),
+      clist('pages.people.stories'),
+    ];
+    const _artSeen = new Set();
+    const _normalizeArticle = (a, idx) => {
+      if(!a || typeof a !== 'object') return null;
+      const title = String(_pick(a, ['title','headline','name','subject'])).trim();
+      if(!title) return null;
+      const date = String(_pick(a, ['date','published','publishedAt','eventDate','when','createdAt','start','updated','updatedAt'])).trim();
+      const slug = String(_pick(a, ['slug','id','urlId','uid']) || '').trim() ||
+        (title ? title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'') : ('art-' + (idx+1)));
+      const type = String(_pick(a, ['type','category','kind','section','tag']) || 'News').trim();
+      const author = String(_pick(a, ['author','byline','writer','who','name'])).trim();
+      const read = String(_pick(a, ['read','readTime','readingTime','minutes','duration']) || '').trim();
+      const summary = String(_pick(a, ['summary','lede','standfirst','excerpt','description','subtitle','subhead','deck'])).trim();
+      const body = String(_pick(a, ['body','content','article','text','main','post','story'])).trim();
+      const coverSrc =
+        a.cover || a.image || a.hero || a.photo || a.picture || a.headerImage || a.heroImage || a.thumbnail || a.poster || a.avatar || a.profilePic || a.pictureUrl || a.f || a.poster ||
+        (Array.isArray(a.gallery) ? ((a.gallery.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo || g.picture || g.thumbnail)) || {}).image || (a.gallery.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo || g.picture || g.thumbnail)) || {}).f || (a.gallery.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo || g.picture || g.thumbnail)) || {}).cover) : '') ||
+        (Array.isArray(a.photos) ? ((a.photos.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo || g.picture || g.thumbnail)) || {}).image || (a.photos.find(g=>g && (g.image || g.f || g.cover || g.hero || g.photo || g.picture || g.thumbnail)) || {}).f) : '') ||
+        (Array.isArray(a.images) ? ((a.images.find(g=>typeof g==='string') || '')) : '') || '';
+      const chapter = String(_pick(a, ['chapter','country','chapterName'])).trim();
+      const url = String(_pick(a, ['url','link','href','linkUrl','externalUrl']) || '').trim();
+      const dedup = (slug + '|' + title).toLowerCase();
+      if(_artSeen.has(dedup)) return null;
+      _artSeen.add(dedup);
+      return Object.assign({}, a, { title, date, slug, type, author, read, summary, body, image: coverSrc, cover: coverSrc, chapter, url });
+    };
+    ARTICLES_AGG = artSources
+      .flat()
+      .map((a, i) => _normalizeArticle(a, i))
+      .filter(Boolean)
+      .sort((x, y) => String(y.date || '').localeCompare(String(x.date || '')))
+      .slice(0, 80);
+    const defaults = (typeof DEFAULT_ARTICLES !== 'undefined' && Array.isArray(DEFAULT_ARTICLES)) ? DEFAULT_ARTICLES.slice() : ARTICLES;
+    ARTICLES = (ARTICLES_AGG && ARTICLES_AGG.length) ? ARTICLES_AGG.slice() : defaults;
+  });
   /* Opportunities entered by hand are pinned above the collected feed.
      They are kept in their own list, because the jobs feed and the content
      document load independently and either can finish last. */
-  OWN_OPPS = clist('opportunities').map(o => ({
-    id: 'own-' + (o.title||'').slice(0,24), title: o.title || '', org: o.org || '',
-    city: o.city || '', country: o.country || '',
-    africa: AFRICA_NAMES.has(String(o.country||'').toLowerCase()),
-    type: o.type || 'Industry', deadline: o.deadline || null,
-    status: !o.deadline ? 'Open'
-      : (o.deadline < new Date().toISOString().slice(0,10) ? 'Closed' : 'Open'),
-    source: 'own', url: o.url || '#/contact', own: true,
-  }));
+  _safe(() => {
+    OWN_OPPS = clist('opportunities').map(o => ({
+      id: 'own-' + (o.title||'').slice(0,24), title: o.title || '', org: o.org || '',
+      city: o.city || '', country: o.country || '',
+      africa: AFRICA_NAMES.has(String(o.country||'').toLowerCase()),
+      type: o.type || 'Industry', deadline: o.deadline || null,
+      status: !o.deadline ? 'Open'
+        : (o.deadline < new Date().toISOString().slice(0,10) ? 'Closed' : 'Open'),
+      source: 'own', url: o.url || '#/contact', own: true,
+    }));
+  });
   render();
   try { hydrateFooterSocials(); } catch(e){}
   try { initReveal(); } catch(e){}
