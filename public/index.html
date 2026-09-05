@@ -1957,10 +1957,9 @@ const NAV = [
     {t:'Join Quantum Africa', h:'#/join', d:'Become part of the community'},
   ]},
   {label:'Events', href:'#/events', items:[
-    {t:'Upcoming Events', h:'#/events', d:'What is happening next'},
+    {t:'All Events', h:'#/events', d:'Upcoming sessions and past recordings, unified'},
     {t:'Quantum Africa Webinars', h:'#/events/webinars', d:'The recurring webinar series'},
     {t:'Workshops', h:'#/events/workshops', d:'QML4Africa and other hands-on training'},
-    {t:'Past Events & Recordings', h:'#/events', d:'The full archive'},
   ]},
   {label:'Research', href:'#/research', items:[
     {t:'Projects', h:'#/research', d:'Active and completed research'},
@@ -2395,6 +2394,118 @@ const CONF_SC_PAST = [
 ];
 
 let EVENTS = [
+  {slug:'junction-hackathon', type:'Hackathon', when:'upcoming',
+   title:'European Quantum Hackathon by Junction — Morocco 2026',
+   n:'European Quantum Hackathon by Junction',
+   subhead:'Official Media Partnership · Rabat, Morocco',
+   eyebrow:'Big News — and this time from Rabat! 🇲🇦',
+   lede:'We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026, organised by Junction as the European Quantum Hackathon stop in Africa. Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.',
+   description:`We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026, organised by Junction as part of the European Quantum Hackathon series. Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.
+
+**What to Expect**
+• Real-World Challenges — Tackle complex problems using the power of quantum computing.
+• Workshops & Mentorship — Learn from industry experts and academic leaders throughout the event.
+• Prizes & Networking — Connect with a global community of innovators and win big.
+
+**Event Details**
+• Dates: 23–25 June 2026
+• Location: Rabat, Morocco
+• Registration Deadline: 31 March 2026
+
+**Opportunity**
+This programme is specifically open to all Africans, with travel grants available for selected participants. Supported by prestigious institutions like UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this is an event you do not want to miss.`,
+   heroImage:'/media/events/junction/1781132640865.jpeg',
+   gallery:['/media/events/junction/1781132640865.jpeg','/media/events/junction/1781132641804.jpeg','/media/events/junction/1781132643921.jpeg','/media/events/junction/1781132644811.jpeg'],
+   start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Rabat', country:'Morocco',
+   partners:['UM6P · University Mohammed VI Polytechnic','Mohammed V University in Rabat','OQI · Open Quantum Institute'],
+   registerUrl:'https://lnkd.in/e4ZA9d-S', org:'Junction · European Quantum Hackathon',
+   status:'Registration open'},
+  {slug:'morocco-hackathon', type:'Hackathon', when:'upcoming',
+   title:'Morocco Quantum Hackathon — Rabat 2026',
+   n:'Morocco Quantum Hackathon',
+   subhead:'Official Media Partners · Quantum Africa',
+   eyebrow:'Big News — and this time from Rabat! 🇲🇦',
+   lede:'We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.',
+   description:`We are incredibly proud to announce that we are the official media partners for the upcoming Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there is no better place to witness this transformation than in the heart of Morocco.
+
+**What to Expect**
+• Real-World Challenges — Tackle complex problems using the power of quantum computing.
+• Workshops & Mentorship — Learn from industry experts and academic leaders throughout the event.
+• Prizes & Networking — Connect with a global community of innovators and win big.
+
+**Event Details**
+• Dates: 23–25 June 2026
+• Location: Rabat, Morocco
+• Registration Deadline: 31 March 2026
+
+**Opportunity**
+This programme is specifically open to all Africans, with travel grants available for selected participants. Supported by prestigious institutions like UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this is an event you do not want to miss.`,
+   heroImage:'/media/events/mor/Screenshot 2026-09-05 at 12.03.34.png',
+   gallery:['/media/events/mor/Screenshot 2026-09-05 at 12.03.34.png','/media/events/mor/Screenshot 2026-09-05 at 12.03.41.png'],
+   start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Rabat', country:'Morocco',
+   partners:['UM6P · University Mohammed VI Polytechnic','Mohammed V University in Rabat','OQI · Open Quantum Institute'],
+   registerUrl:'https://lnkd.in/e4ZA9d-S', org:'UM6P · Mohammed V University · OQI',
+   status:'Registration open'},
+  {slug:'pan-hackathon', type:'Challenge', when:'upcoming',
+   title:'Hack the Horizon — The Pan-African Quantum Challenge',
+   n:'Hack the Horizon · Pan-African Quantum Challenge',
+   subhead:'Launched by the Africa Quantum Consortium',
+   eyebrow:'Landmark pan-African initiative',
+   lede:'We are proud to announce Hack the Horizon — the Pan-African Quantum Challenge, launched by the Africa Quantum Consortium. This landmark initiative is designed to assemble and activate Africa’s sovereign quantum ecosystem.',
+   description:`We are proud to announce Hack the Horizon — the Pan-African Quantum Challenge, launched by the Africa Quantum Consortium.
+
+This landmark initiative is designed to assemble and activate Africa’s sovereign quantum ecosystem. More than just a competition, this is the strategic assembly of Africa’s quantum future, uniting the continent’s top innovators, visionary industry leaders, and the next generation of problem-solvers to co-build solutions for the continent and the world.`,
+   heroImage:'/media/events/pan.png',
+   gallery:['/media/events/pan.png'],
+   whenLabel:'Registration now open', city:'Pan-African · Online + in-person hubs', country:'Africa-wide',
+   registerUrl:'https://lnkd.in/gJTuNKXE', org:'Africa Quantum Consortium',
+   status:'Registration open'},
+  {slug:'unicc-course', type:'Online Programme', when:'past',
+   title:'International Quantum Course — UNICC & ITU',
+   n:'International Quantum Course',
+   subhead:'Free online programme launched at ITU AI & Quantum for Good Summit',
+   eyebrow:'The International Quantum Course is live! 📚🎓',
+   lede:'Quantum technology is shaping the future, but understanding it should not be limited to a few specialists. That is why the International Quantum Course has been created — a free online programme that opens the world of quantum to everyone.',
+   description:`Quantum technology is shaping the future, but understanding it should not be limited to a few specialists.
+
+That is why the International Quantum Course has been created — a free online programme that opens the world of quantum to everyone. Through the course, participants can:
+• Learn the foundations of quantum mechanics
+• Explore current applications and future potential of quantum technology
+• Earn a certificate upon completion
+
+Developed by experts led by Jim Stolze, funded by Quantum Delta NL and launched together with UNICC and International Telecommunication Union, the course is now available in Dutch and English, with more languages on the way.
+
+The official launch took place in Geneva at ITU’s AI & Quantum for Good Summit, as part of International Year of Quantum Science and Technology.`,
+   heroImage:'/media/events/quantumforeveryone.png',
+   gallery:['/media/events/quantumforeveryone.png'],
+   links:[{l:'Get started now', u:'https://lnkd.in/dXefig6n'},{l:'Read more here', u:'https://lnkd.in/eJhqR2tR'}],
+   city:'Geneva · Online worldwide', country:'Switzerland',
+   org:'Quantum Delta NL · UNICC · ITU',
+   status:'Live · Free access'},
+  {slug:'qtedu-hackathon', type:'Hackathon', when:'past',
+   title:'QTEdu · Pan-African Quantum Hackathon — AIMS Ghana',
+   n:'QTEdu Pan-African Quantum Hackathon',
+   subhead:'Accra, Ghana · July 2025',
+   eyebrow:'First-ever African Quantum Hackathon',
+   lede:'We are proud that our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute. A true pleasure connecting with brilliant African quantum talents shaping the future of science and innovation across the continent.',
+   description:`We are proud that our founder represented Quantum Africa at the first-ever African Quantum Hackathon, hosted by AIMS Ghana 🇬🇭 and the Open Quantum Institute.
+
+It was a true pleasure connecting with brilliant African quantum talents who are shaping the future of science and innovation across the continent. ⚛️🚀
+
+A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participant for making the first-ever African Quantum Hackathon a reality.`,
+   heroImage:'/media/events/qtedu/1.png',
+   gallery:['/media/events/qtedu/1.png','/media/events/qtedu/2.png','/media/events/qtedu/3.png'],
+   start:'2025-07-01', end:'2025-07-03', city:'Accra', country:'Ghana',
+   org:'AIMS Ghana · Open Quantum Institute',
+   status:'Delivered · July 2025'},
+  {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
+   title:'Quantum Machine Learning 4 Africa — Third Edition',
+   n:'Quantum Machine Learning 4 Africa — Third Edition',
+   subhead:'Third Edition',
+   lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
+   description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
+   image:'',
+   org:'DeepLearning Indaba'},
   {slug:'qml4africa-2', type:'Workshop', when:'past', series:'QML4Africa', edition:'02', status:'Delivered',
    title:'Quantum Machine Learning 4 Africa — Second Edition',
    n:'Quantum Machine Learning 4 Africa — Second Edition',
@@ -2404,6 +2515,7 @@ let EVENTS = [
    start:'2026-08-01', end:'2026-08-05', city:'Lagos', country:'Nigeria',
    editionUrl:'https://sites.google.com/view/qml4africa/home',
    image:'/media/edition2.jpeg',
+   heroImage:'/media/edition2.jpeg',
    org:'DeepLearning Indaba'},
   {slug:'qml4africa-1', type:'Workshop', when:'past', series:'QML4Africa', edition:'01', status:'Delivered',
    title:'Quantum Machine Learning 4 Africa — First Edition',
@@ -2414,21 +2526,8 @@ let EVENTS = [
    start:'2025-09-08', end:'2025-09-12', city:'Kigali', country:'Rwanda',
    editionUrl:'https://sites.google.com/view/qml4africa/past-editions',
    image:'/media/edition1.JPG',
+   heroImage:'/media/edition1.JPG',
    org:'DeepLearning Indaba'},
-  {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
-   title:'Quantum Machine Learning 4 Africa — Third Edition',
-   n:'Quantum Machine Learning 4 Africa — Third Edition',
-   subhead:'Third Edition',
-   lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
-   description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
-   image:'',
-   org:'DeepLearning Indaba'},
-  {slug:'webinar-01', type:'Webinar',  when:'upcoming', n:'Quantum Africa Webinar — session title'},
-  {slug:'workshop-01',type:'Workshop', when:'upcoming', n:'Quantum Africa Workshop — title'},
-  {slug:'webinar-02', type:'Webinar',  when:'upcoming', n:'Quantum Africa Webinar — session title'},
-  {slug:'webinar-03', type:'Webinar',  when:'past',     n:'Past webinar — title'},
-  {slug:'workshop-02',type:'Workshop', when:'past',     n:'Past workshop — title'},
-  {slug:'chapter-01', type:'Chapter event', when:'past',n:'Chapter event — title'},
 ];
 
 let PROJECTS = [
@@ -2804,14 +2903,20 @@ const crumb = arr => `<div class="wrap"><nav class="breadcrumb">${arr.map((c,i)=
 /* ---------- card renderers ---------- */
 function eventCard(e, idx){
   const k = EVENT_ART[(idx||0) % EVENT_ART.length];
+  const img = e.heroImage || e.image || null;
+  const whenStr = (e.start && e.end) ? oppDate(e.start)+(e.end!==e.start?' – '+oppDate(e.end):'') : (e.city || '');
+  const pillWhen = e.when==='upcoming' ? 'current' : 'future';
+  const pillLbl = (e.when==='upcoming') ? (e.status||'Upcoming') : (e.status||'Past');
+  const where = [e.city, e.country].filter(Boolean).join(', ');
+  const cta = e.when==='upcoming' ? (e.registerUrl?'Register now':'Register interest') : (e.links&&e.links.length?'View resources':'Details');
   return `<a class="card rv" href="#/events/${e.slug}">
-    <div class="card-media">${media(k,'Event photo or speaker portrait','1600×900 · JPG')}</div>
+    <div class="card-media">${rimg(img,'Event photo — '+(esc(e.n||e.title||'')),'1600×900 · JPG','',k)}</div>
     <div class="card-b">
-      <div class="card-meta"><span class="tag">${esc(e.type)}</span>${e.series?`<span class="pill current">${esc(e.series)} · ${esc(e.edition)}</span>`:`<span class="pill ${e.when==='upcoming'?'current':'future'}">${e.when}</span>`}</div>
+      <div class="card-meta"><span class="tag">${esc(e.type)}</span>${e.series?`<span class="pill current">${esc(e.series)} · ${esc(e.edition)}</span>`:`<span class="pill ${pillWhen}">${esc(pillLbl)}</span>`}</div>
       <h4>${e.title ? esc(e.title) : pht(e.n)}</h4>
-      <div class="kv"><b>Date</b> ${pht('DD MMM YYYY · HH:MM GMT')}</div>
-      <div class="kv"><b>Speaker</b> ${pht('Name · Institution')}</div>
-      <div class="card-foot"><span class="link-a">${e.when==='upcoming'?'Register':'Watch recording'} <span aria-hidden="true">→</span></span></div>
+      ${whenStr?`<div class="kv"><b>Date</b> ${esc(whenStr)}</div>`:''}
+      ${where?`<div class="kv"><b>Location</b> ${esc(where)}</div>`:''}
+      <div class="card-foot"><span class="link-a">${cta} <span aria-hidden="true">→</span></span></div>
     </div></a>`;
 }
 function projectCard(p){
@@ -3934,48 +4039,62 @@ ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
 };
 
 /* ---------- EVENTS ---------- */
-PAGES.events = () => `
+PAGES.events = () => {
+  const upcoming = EVENTS.filter(e=>e.when==='upcoming');
+  const past = EVENTS.filter(e=>e.when==='past');
+  const featured = upcoming[0] || EVENTS[0];
+  const restFeatured = upcoming.slice(1).concat(past.slice(0,4));
+  const types = Array.from(new Set(EVENTS.map(e=>e.type).filter(Boolean)));
+  return `
 ${crumb([{t:'Home',h:'#/'},{t:'Events'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.events.heroEyebrow', 'Events')}</span><i></i></div>
-  <h1>${cx('pages.events.heroTitle', 'Webinars, workshops and chapter events.')}</h1>
-  <p class="lede">${cx('pages.events.heroLede', '')}</p>
+  <h1>${cx('pages.events.heroTitle', 'Hackathons, workshops, webinars and chapter events.')}</h1>
+  <p class="lede">${cx('pages.events.heroLede', 'Upcoming sessions and past recordings in one place. Filter by date or event type to find what matters.')}</p>
+  <div class="phero-meta" style="gap:10px;margin-top:22px">
+    <span class="pill current">${upcoming.length} Upcoming</span>
+    <span class="pill future">${past.length} Delivered</span>
+    <span class="pill">${EVENTS.length} Total</span>
+    <a class="btn ghost sm" href="#/events/webinars">Webinar series <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <a class="btn ghost sm" href="#/events/workshops">QML4Africa workshops <span class="ar" aria-hidden="true">&rarr;</span></a>
+  </div>
 </div></section>
 
 <section class="sec flush"><div class="wrap">
   <div class="news-lead">
-    <a class="feature rv" href="#/events/${EVENTS[0].slug}">
-      <div class="card-media">${cimg('pages.events.featureImage','Speaker portrait or event photograph for the next session','2400×1350 · JPG','','bloch')}</div>
+    <a class="feature rv" href="#/events/${featured.slug}">
+      <div class="card-media">${rimg(featured.heroImage||featured.image,'Featured event photograph — '+(esc(featured.title||featured.n||'')),'2400×1350 · JPG','','bloch')}</div>
       <div class="fb">
-        <div class="news-meta"><span class="t">${cx('pages.events.nextUpPrefix', 'Next up')} · ${esc(EVENTS[0].type)}</span><span>${pht(cx('pages.events.nextUpDate', 'DATE'))}</span><span>${pht(cx('pages.events.nextUpTime', 'TIME GMT'))}</span></div>
-        <h3>${pht(cx('pages.events.nextUpTitle', 'Next session title'))}</h3>
-        <p>${pht(cx('pages.events.nextUpAbstract', 'Abstract — three or four sentences on what the session covers and why it matters'))}</p>
-        <span class="link-a">${cx('pages.events.nextUpCta', 'Register')} <span class="ar" aria-hidden="true">&rarr;</span></span>
+        <div class="news-meta"><span class="t">${cx('pages.events.nextUpPrefix', (featured.when==='upcoming'?'Featured next':'Headlining'))} · ${esc(featured.type)}</span><span>${(featured.start?oppDate(featured.start):'')}${(featured.end&&featured.end!==featured.start)?' – '+oppDate(featured.end):''}</span>${featured.city?`<span>${esc(featured.city)}</span>`:''}</div>
+        <h3>${esc(featured.title||featured.n)}</h3>
+        <p>${esc(featured.lede||featured.subhead||featured.description||'').slice(0,260)}${(featured.lede||featured.description||'').length>260?'…':''}</p>
+        <span class="link-a">${featured.when==='upcoming'?(featured.registerUrl?'Register for this event':'View event details'):'Open event details'} <span class="ar" aria-hidden="true">&rarr;</span></span>
       </div>
     </a>
     <div>
-      <div class="sec-idx" style="margin-bottom:10px"><span class="lbl">${cx('pages.events.alsoLbl', 'Also coming up')}</span><i></i></div>
+      <div class="sec-idx" style="margin-bottom:10px"><span class="lbl">${cx('pages.events.alsoLbl', 'Also on the calendar')}</span><i></i></div>
       <div class="news-side">
-        ${EVENTS.filter(e=>e.when==='upcoming').slice(1).concat(EVENTS.filter(e=>e.when==='past').slice(0,2)).map(e=>`<a class="news-row rv" href="#/events/${e.slug}">
-          <div class="news-meta"><span class="t">${esc(e.type)}</span><span>${pht(cx('pages.events.rowDate', 'DATE'))}</span></div>
-          <h4>${pht(e.n)}</h4></a>`).join('')}
+        ${restFeatured.map(e=>`<a class="news-row rv" href="#/events/${e.slug}">
+          <div class="news-meta"><span class="t">${esc(e.type)}</span><span>${e.when==='upcoming'?'Upcoming':'Delivered'}</span>${e.start?`<span>${esc(oppDate(e.start))}</span>`:''}</div>
+          <h4>${esc(e.title||e.n)}</h4></a>`).join('')}
       </div>
-      <div class="news-more"><a class="btn ghost sm" href="#/join">${cx('pages.events.inviteBtn', 'Get the invitations')} <span class="ar" aria-hidden="true">&rarr;</span></a></div>
+      <div class="news-more"><a class="btn ghost sm" href="#/join">${cx('pages.events.inviteBtn', 'Get event invitations')} <span class="ar" aria-hidden="true">&rarr;</span></a></div>
     </div>
   </div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
-    cx('pages.events.archiveEyebrow', 'Archive'),
-    cx('pages.events.archiveTitle', 'Every session we have run')
+    cx('pages.events.archiveEyebrow', 'All events'),
+    cx('pages.events.archiveTitle', 'Every session, hackathon and workshop'),
+    cx('pages.events.archiveLede', 'Use the filters to narrow by date or format. Click a card to open the full event page with recordings, registration and gallery.')
   )}
   <div class="filters" data-filter="events">
     <div class="fgroup"><span class="fl">${cx('pages.events.flWhen', 'When')}</span>
       ${['All','Upcoming','Past'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="when" data-v="${a.toLowerCase()}">${cx('pages.events.chipWhen'+a, a)}</button>`).join('')}
     </div>
     <div class="fgroup"><span class="fl">${cx('pages.events.flType', 'Type')}</span>
-      ${['All','Webinar','Workshop','Conference','Chapter event'].map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="type" data-v="${esc(a)}">${cx('pages.events.chipType'+(i), a)}</button>`).join('')}
+      ${['All'].concat(types).map((a,i)=>`<button class="chip ${i===0?'on':''}" data-k="type" data-v="${esc(a)}">${cx('pages.events.chipType'+(i), a)}</button>`).join('')}
     </div>
   </div>
   <div class="result-n" id="evCount">${EVENTS.length} ${cx('pages.events.resultSuffix', 'events')}</div>
@@ -3987,47 +4106,69 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events'}])}
   </div>
 </div></section>
 
-`;
+`;};
 
 PAGES.eventDetail = (slug) => {
   const e = EVENTS.find(x=>x.slug===slug) || EVENTS[0];
+  const hasGall = Array.isArray(e.gallery) && e.gallery.length;
+  const hasLinks = Array.isArray(e.links) && e.links.length;
+  const hasReg = !!e.registerUrl;
+  const hasPartners = Array.isArray(e.partners) && e.partners.length;
+  const pillLbl = e.when==='upcoming' ? (e.status||'Upcoming') : (e.status||'Past');
+  const pillCls = e.when==='upcoming' ? 'current' : 'future';
+  const whenStr = (e.start && e.end) ? oppDate(e.start)+(e.end!==e.start?' – '+oppDate(e.end):'') : '';
+  const where = [e.city, e.country].filter(Boolean).join(', ');
+  const title = e.title || e.n;
+  const descHtml = e.description ? _mdToHtml(e.description) : pht(cx('pages.eventDetail.aboutBody', 'FULL DESCRIPTION'));
+  const galleryHtml = hasGall
+    ? (e.gallery.length===1
+        ? `<div class="slot wide filled"><img src="${esc(mediaUrl(e.gallery[0]))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:12px"></div>`
+        : `<div class="grid ${e.gallery.length>=3?'g3':'g2'}">${e.gallery.map(src=>`<div class="slot short filled"><img src="${esc(mediaUrl(src))}" alt="${esc(title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:10px"></div>`).join('')}</div>`)
+    : `<div class="grid g3">${['circuit','network','wave'].map((k,i)=>cimg('pages.eventDetail.photo'+(i+1),'Event photo','1200×800 · JPG','short',k)).join('')}</div>`;
+  const linksHtml = (hasLinks||hasReg)
+    ? `<div class="rows" style="margin-top:8px">${(hasReg?[{l:'Register / RSVP', u:e.registerUrl}]:[]).concat(hasLinks?e.links:[]).map(l=>`<div class="row-i" style="grid-template-columns:110px 1fr;gap:12px;align-items:start"><span class="dl" style="padding-top:10px">${esc(l.l)}</span><span style="padding-top:8px"><a class="link-a" href="${esc(l.u)}" target="_blank" rel="noopener noreferrer">${esc(l.u)}</a></span></div>`).join('')}</div>`
+    : '';
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:e.type}])}
-<section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.eventDetail.heroImage','Event hero — speaker portrait or event photograph','2400×1000 · JPG','wide','bloch')}</div></section>
+<section class="sec flush" style="padding:0"><div class="wrap">${e.heroImage||e.image
+  ? `<div class="slot wide filled"><img src="${esc(mediaUrl(e.heroImage||e.image))}" alt="${esc(title)} — event hero" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
+  : cimg('pages.eventDetail.heroImage','Event hero — speaker portrait or event photograph','2400×1000 · JPG','wide','bloch')}</div></section>
 <section class="phero" style="padding-top:34px"><div class="wrap">
-  <div class="phero-meta" style="margin:0 0 18px"><span class="tag">${esc(e.type)}</span>${e.series?`<span class="pill current">${esc(e.series)} · ${cx('pages.eventDetail.editionPrefix','Edition')} ${esc(e.edition)}</span>`:`<span class="pill ${e.when==='upcoming'?'current':'future'}">${e.when}</span>`}</div>
-  <h1 style="font-size:clamp(2rem,4vw,3.2rem)">${e.title ? esc(e.title) : pht(e.n)}</h1>
+  <div class="phero-meta" style="margin:0 0 18px"><span class="tag">${esc(e.type)}</span>${e.series?`<span class="pill current">${esc(e.series)} · ${cx('pages.eventDetail.editionPrefix','Edition')} ${esc(e.edition)}</span>`:`<span class="pill ${pillCls}">${esc(pillLbl)}</span>`}${e.eyebrow?`<span class="pill">${esc(e.eyebrow)}</span>`:''}</div>
+  <h1 style="font-size:clamp(2rem,4vw,3.2rem)">${esc(title)}</h1>
+  ${e.subhead?`<p class="mt16" style="color:var(--ink-2);line-height:1.55">${esc(e.subhead)}</p>`:''}
   ${e.series?`<p class="small mt16"><a class="link-a" href="#/events/workshops">${cx('pages.eventDetail.backSeriesPrefix', 'Back to the')} ${esc(e.series)} ${cx('pages.eventDetail.backSeriesSuffix', 'series')} <span class="ar" aria-hidden="true">&rarr;</span></a></p>`:''}
-  <p class="lede">${pht(cx('pages.eventDetail.abstract', 'ABSTRACT — 3 to 5 sentences describing the session, written so that someone outside the field understands why it matters'))}</p>
+  <p class="lede">${esc(e.lede||'')}</p>
 </div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div class="prose">
-    <h3>${cx('pages.eventDetail.aboutHead', 'About this session')}</h3><p>${pht(cx('pages.eventDetail.aboutBody', 'FULL DESCRIPTION'))}</p>
-    <h3>${cx('pages.eventDetail.agendaHead', 'Agenda')}</h3>
-    <div class="rows">${Array.from({length:4}).map((_,i)=>`<div class="row-i" style="grid-template-columns:110px 1fr"><span class="dl">${pht(cx('pages.eventDetail.agendaTime'+(i+1), 'TIME'))}</span><span><h4>${pht(cx('pages.eventDetail.agendaItem'+(i+1), 'Agenda item'))}</h4></span></div>`).join('')}</div>
-    <h3>${cx('pages.eventDetail.speakersHead', 'Speakers')}</h3>
-    <div class="grid g3" style="margin-bottom:16px">${PEOPLE.slice(0,3).map(personCard).join('')}</div>
-    <h3>${cx('pages.eventDetail.photosHead', 'Photos &amp; recording')}</h3>
-    <div class="grid g3">${['circuit','network','wave'].map((k,i)=>cimg('pages.eventDetail.photo'+(i+1),'Event photo','1200×800 · JPG','short',k)).join('')}</div>
-    <div class="mt16">${cimg('pages.eventDetail.recordingImage','Recording embed — YouTube or Vimeo URL','Paste the video URL in the CMS','short','fringes')}</div>
-    <h3>${cx('pages.eventDetail.outcomesHead', 'Outcomes')}</h3><p>${pht(cx('pages.eventDetail.outcomesBody', 'OUTCOMES — attendance, what came out of it, follow-on activity. Only for past events.'))}</p>
-    <h3>${cx('pages.eventDetail.resHead', 'Resources')}</h3><p>${pht(cx('pages.eventDetail.resBody', 'Slides, notebooks, reading list — upload files or link'))}</p>
+    <h3>${cx('pages.eventDetail.aboutHead', 'About this event')}</h3>
+    ${descHtml}
+    ${linksHtml?`<h3 style="margin-top:32px">${cx('pages.eventDetail.resHead', 'Links &amp; registration')}</h3>${linksHtml}`:''}
+    <h3 style="margin-top:32px">${cx('pages.eventDetail.photosHead', 'Photos &amp; gallery')}</h3>
+    ${galleryHtml}
+    ${e.when==='past'?`<h3 style="margin-top:32px">${cx('pages.eventDetail.outcomesHead', 'Outcomes &amp; highlights')}</h3><p>${e.when==='past'&&e.status?esc(e.status+'. '):''}${pht(cx('pages.eventDetail.outcomesBody', 'Outcomes — attendance, what came out of it, follow-on activity. Only for past events.'))}</p>`:''}
   </div>
   <aside>
     <div class="panel">
       <h5>${cx('pages.eventDetail.detailsHead', 'Details')}</h5>
       <dl class="dl-list">
-        <div class="dl-item"><dt>${cx('pages.eventDetail.dateLabel', 'Date')}</dt><dd>${pht(cx('pages.eventDetail.dateValue', 'DD MMM YYYY'))}</dd></div>
-        <div class="dl-item"><dt>${cx('pages.eventDetail.timeLabel', 'Time')}</dt><dd>${pht(cx('pages.eventDetail.timeValue', 'HH:MM–HH:MM GMT'))}</dd></div>
-        <div class="dl-item"><dt>${cx('pages.eventDetail.locLabel', 'Location')}</dt><dd>${pht(cx('pages.eventDetail.locValue', 'Online / venue'))}</dd></div>
-        <div class="dl-item"><dt>${cx('pages.eventDetail.langLabel', 'Language')}</dt><dd>${pht(cx('pages.eventDetail.langValue', 'English'))}</dd></div>
+        ${whenStr?`<div class="dl-item"><dt>${cx('pages.eventDetail.dateLabel', 'Date')}</dt><dd>${esc(whenStr)}</dd></div>`:''}
+        ${e.deadline?`<div class="dl-item"><dt>Registration deadline</dt><dd>${esc(oppDate(e.deadline))}</dd></div>`:''}
+        ${where?`<div class="dl-item"><dt>${cx('pages.eventDetail.locLabel', 'Location')}</dt><dd>${esc(where)}</dd></div>`:''}
+        <div class="dl-item"><dt>${cx('pages.eventDetail.langLabel', 'Language')}</dt><dd>${cx('pages.eventDetail.langValue', 'English')}</dd></div>
         <div class="dl-item"><dt>${cx('pages.eventDetail.costLabel', 'Cost')}</dt><dd>${cx('pages.eventDetail.costValue', 'Free')}</dd></div>
       </dl>
-      <a class="btn teal mt16" href="#/join" style="width:100%;justify-content:center">${e.when==='upcoming'?cx('pages.eventDetail.btnRegister','Register'):cx('pages.eventDetail.btnWatch','Watch recording')}</a>
-      <p class="xs mt8">${cx('pages.eventDetail.regNote', 'Registration goes to your existing tool (Luma, Zoom or Google Forms) — the event record just stores the URL.')}</p>
+      ${hasReg
+        ? `<a class="btn teal mt16" href="${esc(e.registerUrl)}" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${e.when==='upcoming'?cx('pages.eventDetail.btnRegister','Register now'):'Open event page'}</a>
+           <p class="xs mt8">${cx('pages.eventDetail.regNote', 'External registration link — opens in a new tab.')}</p>`
+        : (hasLinks
+            ? `<a class="btn teal mt16" href="${esc(e.links[0].u)}" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${esc(e.links[0].l)}</a>`
+            : `<a class="btn teal mt16" href="#/join" style="width:100%;justify-content:center">${e.when==='upcoming'?cx('pages.eventDetail.btnRegister','Register interest'):cx('pages.eventDetail.btnWatch','Contact for recording')}</a>`)}
     </div>
-    <div class="panel mt16"><h5>${cx('pages.eventDetail.orgHead', 'Organisers')}</h5><p class="small">${pht(cx('pages.eventDetail.orgBody', 'Organising team / chapter'))}</p></div>
-    <div class="panel mt16"><h5>${cx('pages.eventDetail.partnersHead', 'Partners')}</h5><div class="grid g2" style="gap:8px">${Array.from({length:2}).map(()=>`<div class="logo-cell" style="height:58px;font-size:.55rem"><span class="mk" style="width:22px;height:22px"></span>LOGO</div>`).join('')}</div></div>
+    <div class="panel mt16"><h5>${cx('pages.eventDetail.orgHead', 'Organisers')}</h5><p class="small">${esc(e.org||pht(cx('pages.eventDetail.orgBody', 'Organising team / chapter')))}</p></div>
+    ${hasPartners?`<div class="panel mt16"><h5>${cx('pages.eventDetail.partnersHead', 'Partners &amp; supporters')}</h5><ul style="margin:0;padding-left:18px;color:var(--ink-2);line-height:1.85;font-size:.88rem">${e.partners.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>`:''}
+    ${e.editionUrl?`<div class="panel mt16"><h5>External edition page</h5><a class="link-a" href="${esc(e.editionUrl)}" target="_blank" rel="noopener noreferrer">Open on the organiser site <span class="ar" aria-hidden="true">&rarr;</span></a></div>`:''}
   </aside>
 </div></div></section>
 <section class="sec tint"><div class="wrap">
@@ -4037,7 +4178,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:e.type}])}
     null,
     {t:cx('pages.eventDetail.moreCta', 'All events'),h:'#/events'}
   )}
-  <div class="grid g3">${EVENTS.filter(x=>x.slug!==e.slug).slice(0,3).map((e,i)=>eventCard(e,i)).join('')}</div>
+  <div class="grid g3">${EVENTS.filter(x=>x.slug!==e.slug).slice(0,3).map((ev,i)=>eventCard(ev,i)).join('')}</div>
 </div></section>`;
 };
 
@@ -4186,7 +4327,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     cx('pages.workshops.galleryLede', '')
   )}
   <div class="grid g4">${[
-    '/media/workshops/1786655195296.JPG',
+    '/media/workshops/1786655195296.jpeg',
     '/media/workshops/1786655195534.jpeg',
     '/media/workshops/1786655195632.jpeg',
     '/media/workshops/1786655195820.jpeg',
