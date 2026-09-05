@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T14:12:40+00:00",
+ "updated": "2026-09-05T11:35:33+00:00",
  "generated_by": "quantum-africa-backend",
  "kind": "event",
  "sources": {
@@ -40,22 +40,6 @@
    "first_seen": "2026-08-30T05:17:24+00:00"
   },
   {
-   "id": "9c7b3ccdbc",
-   "kind": "event",
-   "title": "5th European Summer School on Quantum AI",
-   "start": "2026-08-31",
-   "end": "2026-09-04",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Summer school",
-   "status": "Running now",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/5th-european-summer-school-quantum-ai",
-   "first_seen": "2026-08-30T05:17:24+00:00"
-  },
-  {
    "id": "43c495e8f3",
    "kind": "event",
    "title": "Q-Camp: Quantum Summer School 2026",
@@ -69,54 +53,6 @@
    "status": "Running now",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/q-camp-quantum-summer-school-2026",
-   "first_seen": "2026-08-30T05:17:24+00:00"
-  },
-  {
-   "id": "02b1e477f3",
-   "kind": "event",
-   "title": "QALYPSO 2026: Quantum Optimisation Techniques & Physics of Computation",
-   "start": "2026-08-31",
-   "end": "2026-09-04",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Running now",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/qalypso-2026-quantum-optimisation-techniques-physics-computation",
-   "first_seen": "2026-08-30T05:17:24+00:00"
-  },
-  {
-   "id": "56be6711c7",
-   "kind": "event",
-   "title": "TQC 2026",
-   "start": "2026-08-31",
-   "end": "2026-09-04",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Conference",
-   "status": "Running now",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/tqc-2026",
-   "first_seen": "2026-08-30T05:17:24+00:00"
-  },
-  {
-   "id": "e92ec09e6e",
-   "kind": "event",
-   "title": "Workshop - Dynamics of entanglement - the Isaac Newton Institute for Mathematical Sciences, Cambridge",
-   "start": "2026-09-01",
-   "end": "2026-09-04",
-   "city": "",
-   "country": "",
-   "online": false,
-   "africa": false,
-   "type": "Workshop",
-   "status": "Running now",
-   "source": "quantiki",
-   "url": "https://www.quantiki.org/conference/workshop-dynamics-entanglement-isaac-newton-institute-mathematical-sciences-cambridge",
    "first_seen": "2026-08-30T05:17:24+00:00"
   },
   {
@@ -696,6 +632,22 @@
    "first_seen": "2026-08-30T05:17:24+00:00"
   },
   {
+   "id": "9c7b3ccdbc",
+   "kind": "event",
+   "title": "5th European Summer School on Quantum AI",
+   "start": "2026-08-31",
+   "end": "2026-09-04",
+   "city": "",
+   "country": "",
+   "online": false,
+   "africa": false,
+   "type": "Summer school",
+   "status": "Past",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/conference/5th-european-summer-school-quantum-ai",
+   "first_seen": "2026-08-30T05:17:24+00:00"
+  },
+  {
    "id": "2acc5796ce",
    "kind": "event",
    "title": "IOP Photon 2026",
@@ -712,6 +664,22 @@
    "first_seen": "2026-08-30T05:17:24+00:00"
   },
   {
+   "id": "02b1e477f3",
+   "kind": "event",
+   "title": "QALYPSO 2026: Quantum Optimisation Techniques & Physics of Computation",
+   "start": "2026-08-31",
+   "end": "2026-09-04",
+   "city": "",
+   "country": "",
+   "online": false,
+   "africa": false,
+   "type": "Conference",
+   "status": "Past",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/conference/qalypso-2026-quantum-optimisation-techniques-physics-computation",
+   "first_seen": "2026-08-30T05:17:24+00:00"
+  },
+  {
    "id": "fd27f783ec",
    "kind": "event",
    "title": "Silicon Quantum Electronics Workshop 2026 & International Conference on Spin Shuttling 2026",
@@ -725,6 +693,38 @@
    "status": "Past",
    "source": "quantiki",
    "url": "https://www.quantiki.org/conference/silicon-quantum-electronics-workshop-2026-international-conference-spin-shuttling-2026",
+   "first_seen": "2026-08-30T05:17:24+00:00"
+  },
+  {
+   "id": "56be6711c7",
+   "kind": "event",
+   "title": "TQC 2026",
+   "start": "2026-08-31",
+   "end": "2026-09-04",
+   "city": "",
+   "country": "",
+   "online": false,
+   "africa": false,
+   "type": "Conference",
+   "status": "Past",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/conference/tqc-2026",
+   "first_seen": "2026-08-30T05:17:24+00:00"
+  },
+  {
+   "id": "e92ec09e6e",
+   "kind": "event",
+   "title": "Workshop - Dynamics of entanglement - the Isaac Newton Institute for Mathematical Sciences, Cambridge",
+   "start": "2026-09-01",
+   "end": "2026-09-04",
+   "city": "",
+   "country": "",
+   "online": false,
+   "africa": false,
+   "type": "Workshop",
+   "status": "Past",
+   "source": "quantiki",
+   "url": "https://www.quantiki.org/conference/workshop-dynamics-entanglement-isaac-newton-institute-mathematical-sciences-cambridge",
    "first_seen": "2026-08-30T05:17:24+00:00"
   }
  ]

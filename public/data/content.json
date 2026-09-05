@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-04T14:10:53+00:00",
+ "updated": "2026-09-05T11:52:52+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -82,7 +82,7 @@
   },
   "stats": {
    "members": 350,
-   "chapters": 7,
+   "chapters": 8,
    "countries": 52,
    "events": 10,
    "projects": 7,
@@ -118,7 +118,7 @@
     "name": "Yousra Farhani",
     "group": "Leadership",
     "role": "Founder",
-    "institution": "PhD in Quantum Computing at Niels Bohr Institute, NQCP, University of Copenhagen",
+    "institution": "Niels Bohr Institute, NQCP, University of Copenhagen",
     "country": "",
     "photo": "media/2ed89ea2fe4af44c.png",
     "bio": "Founder of Quantum Africa, and PhD in Quantum Computing at Niels Bohr Institute, NQCP, University of Copenhagen.",
