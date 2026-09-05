@@ -735,7 +735,24 @@ const CONTENT_INLINE = __CONTENT_JSON__;
    Point it at the running API instead with either of:
      <meta name="qa-feed" content="https://feed.quantum-africa.org/api">
      window.QA_FEED = 'https://feed.quantum-africa.org/api';
-   The API sends CORS headers, so it works from any origin. */
+   The API sends CORS headers, so it works from any origin.
+   When running locally (file://, localhost, or 127.0.0.1) we also probe for the
+   admin CMS running at http://127.0.0.1:8000 — if it responds, we temporarily
+   override the feed to read directly from the panel so edits show up instantly
+   without needing to re-export the static JSON files or re-run the build. */
+(function autoFeedProbe(){
+  try{
+    const h = (location.hostname || '').toLowerCase();
+    const p = location.protocol.toLowerCase();
+    const local = p === 'file:' || h === '' || h === 'localhost' || h === '127.0.0.1' ||
+                  /\.local$/.test(h);
+    if(!local) return;
+    fetch('http://127.0.0.1:8000/api/health', {mode:'cors', cache:'no-store'})
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(j => { if(j && j.ok){ try{ window.QA_FEED = 'http://127.0.0.1:8000/api'; }catch(e){} } })
+      .catch(()=>{});
+  }catch(_){}
+})();
 /* ---------- live content ----------
    CONTENT is whatever has been entered in the admin panel. It arrives at
    runtime from data/content.json, or from the API when one is configured.
@@ -3788,34 +3805,56 @@ function markActiveNav(path){
 function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); document.body.style.overflow=''; }
 
 /* ---------- hero slider ---------- */
-let slideTimer = null, slideIdx = 0, sliderControllers = null;
+let slideTimer = null, slideIdx = 0, sliderControllers = null, _sliderGen = 0;
 function initSlider(){
-  const stage = document.getElementById('stage');
-  if(!stage) return;
-  // Clear any previous timer/listeners so re-renders never leave orphan intervals / double-listeners.
+  // Each init bumps the generation counter. Any setTimeout / setInterval closure captured by
+  // an earlier init will detect it's now stale and bail before touching the DOM — this
+  // defeats the race where rebuildFromContent() replaces the hero stage while the previous
+  // init's 420ms "startSoon" timer is still pending (it used to animate a detached DOM).
+  const gen = ++_sliderGen;
+  const initialStage = document.getElementById('stage');
+  if(!initialStage) return;
   if(slideTimer){ clearInterval(slideTimer); slideTimer = null; }
   if(sliderControllers && sliderControllers.abort){ try{ sliderControllers.abort(); }catch(e){} }
   sliderControllers = new AbortController();
   const signal = sliderControllers.signal;
-  const slides = [...stage.querySelectorAll('.slide')];
-  const dots = document.getElementById('dots');
-  const cap = document.getElementById('slideCap');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.body.classList.contains('no-motion');
   slideIdx = 0;
-  dots.innerHTML = slides.map((_,i)=>`<button class="dot-btn ${i===0?'on':''}" data-i="${i}" role="tab" aria-label="Slide ${i+1} of ${slides.length}"></button>`).join('');
+
+  function getLiveEls(){
+    const s = document.getElementById('stage');
+    if(!s) return { stage:null, slides:[], dots:null, cap:null };
+    const d = document.getElementById('dots');
+    const c = document.getElementById('slideCap');
+    return { stage:s, slides:[...s.querySelectorAll('.slide')], dots:d, cap:c };
+  }
+  const firstDraw = () => {
+    const { stage, slides, dots } = getLiveEls();
+    if(dots && stage){
+      dots.innerHTML = slides.map((_,i)=>`<button class="dot-btn ${i===0?'on':''}" data-i="${i}" role="tab" aria-label="Slide ${i+1} of ${slides.length}"></button>`).join('');
+    }
+  };
+  firstDraw();
 
   function go(i){
+    if(gen !== _sliderGen) return;
+    const { stage, slides, dots, cap } = getLiveEls();
+    if(!stage || !slides.length) return;
     slideIdx = (i + slides.length) % slides.length;
     slides.forEach((s,n)=>s.classList.toggle('on', n===slideIdx));
-    [...dots.children].forEach((d,n)=>{ d.classList.remove('on'); if(n===slideIdx){ void d.offsetWidth; d.classList.add('on'); }});
+    if(dots){
+      [...dots.children].forEach((d,n)=>{ d.classList.remove('on'); if(n===slideIdx){ void d.offsetWidth; d.classList.add('on'); }});
+    }
     const meta = HERO_SLIDES[slideIdx] || {};
     if(cap) cap.textContent = `Slide ${slideIdx+1} of ${slides.length} — ${meta.caption || meta.t || ''}`;
   }
   function stopAll(){
-    stage.querySelectorAll('[data-hero-video]').forEach(v => { try{ v.pause(); }catch(e){} });
+    const { stage } = getLiveEls();
+    if(stage) stage.querySelectorAll('[data-hero-video]').forEach(v => { try{ v.pause(); }catch(e){} });
   }
   function playActive(){
-    if(reduced) return;
+    if(reduced || gen !== _sliderGen) return false;
+    const { slides } = getLiveEls();
     const v = slides[slideIdx] && slides[slideIdx].querySelector('[data-hero-video]');
     if(!v) return false;
     try{ v.currentTime = 0; }catch(e){}
@@ -3824,45 +3863,85 @@ function initSlider(){
     return true;
   }
   function play(){
-    if(reduced) return;
+    if(reduced || gen !== _sliderGen) return;
+    const { stage, slides } = getLiveEls();
+    if(!stage || !slides.length) return;
     if(slideTimer){ clearInterval(slideTimer); slideTimer = null; }
     stopAll();
     const isVideo = playActive();
     const ms = isVideo ? 6000 : 3200;
     slideTimer = setInterval(()=>{
+      if(gen !== _sliderGen){ clearInterval(slideTimer); return; }
       go(slideIdx+1); play();
     }, ms);
   }
-  stage.querySelectorAll('[data-hero-video]').forEach(v => {
-    v.addEventListener('ended', ()=>{
-      if(slides[slideIdx] && slides[slideIdx].contains(v)){ go(slideIdx+1); play(); }
-    }, { signal });
-  });
+  // Attach ended listeners only to videos in the currently mounted stage, so if they're swapped out
+  // the event listeners are harmless (and the new stage's ended listener on the new video element
+  // will get installed by the next initSlider).
+  function bindVideoEnded(){
+    const { stage } = getLiveEls();
+    if(!stage) return;
+    stage.querySelectorAll('[data-hero-video]').forEach(v => {
+      v.addEventListener('ended', ()=>{
+        if(gen !== _sliderGen) return;
+        const { slides } = getLiveEls();
+        if(slides[slideIdx] && slides[slideIdx].contains(v)){ go(slideIdx+1); play(); }
+      }, { signal });
+    });
+  }
+  bindVideoEnded();
   go(0);
-  // Start the auto-advance after the DOM has had a chance to paint the stage, and
-  // after any first-paint work (feed fetches / rebuildFromContent) is done).
+
   const startSoon = () => {
-    if(document.readyState === 'complete' || document.readyState === 'interactive'){
-      setTimeout(()=>{ if(location.hash.replace(/^#/,'/') === '/' || !location.hash){ play(); } }, 420);
+    const kick = (delayMs) => {
+      setTimeout(() => {
+        if(gen !== _sliderGen) return;
+        play();
+        // Redundant fallback kick ~1s later. If rebuildFromContent fires a 2nd or 3rd render
+        // between now and ~1820ms the generation will mismatch and this no-op, the new gen
+        // will have scheduled its own kicks.
+        setTimeout(()=>{
+          if(gen !== _sliderGen) return;
+          if(!slideTimer) play();
+        }, Math.max(1000, 1820 - delayMs));
+      }, delayMs);
+    };
+    const rs = document.readyState;
+    if(rs === 'complete' || rs === 'interactive'){
+      // requestAnimationFrame then a 250ms wait after paint guarantees the stage is in
+      // the document, layout has happened and any pending render queues are empty.
+      requestAnimationFrame(()=> kick(250));
     } else {
-      window.addEventListener('load', startSoon, { once: true, signal });
+      window.addEventListener('load', ()=> kick(420), { once:true, signal });
     }
   };
   startSoon();
 
-  dots.addEventListener('click', e => { const b = e.target.closest('.dot-btn'); if(b){ go(+b.dataset.i); play(); } }, { signal });
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-  if(prevBtn) prevBtn.addEventListener('click', () => { go(slideIdx-1); play(); }, { signal });
-  if(nextBtn) nextBtn.addEventListener('click', () => { go(slideIdx+1); play(); }, { signal });
-  const hero = stage.closest('.hero');
-  if(hero){
-    hero.addEventListener('mouseenter', ()=>{ if(slideTimer){ clearInterval(slideTimer); slideTimer = null; } }, { signal });
-    hero.addEventListener('mouseleave', play, { signal });
+  function installClicksOnce(){
+    const { dots } = getLiveEls();
+    if(dots){
+      dots.addEventListener('click', e => {
+        if(gen !== _sliderGen) return;
+        const b = e.target.closest('.dot-btn');
+        if(b){ go(+b.dataset.i); play(); }
+      }, { signal });
+    }
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    if(prevBtn) prevBtn.addEventListener('click', () => { if(gen===_sliderGen){ go(slideIdx-1); play(); } }, { signal });
+    if(nextBtn) nextBtn.addEventListener('click', () => { if(gen===_sliderGen){ go(slideIdx+1); play(); } }, { signal });
+    const hero = document.getElementById('stage') && document.getElementById('stage').closest('.hero');
+    if(hero){
+      hero.addEventListener('mouseenter', ()=>{ if(gen===_sliderGen && slideTimer){ clearInterval(slideTimer); slideTimer = null; } }, { signal });
+      hero.addEventListener('mouseleave', ()=>{ if(gen===_sliderGen) play(); }, { signal });
+    }
+    document.addEventListener('visibilitychange', ()=>{
+      if(gen !== _sliderGen) return;
+      if(document.hidden){ if(slideTimer){ clearInterval(slideTimer); slideTimer = null; } stopAll(); }
+      else { play(); }
+    }, { signal });
   }
-  document.addEventListener('visibilitychange', ()=>{
-    if(document.hidden){ if(slideTimer){ clearInterval(slideTimer); slideTimer = null; } stopAll(); } else { play(); }
-  }, { signal });
+  installClicksOnce();
 }
 
 /* ---------- map interactions ---------- */
@@ -4131,7 +4210,11 @@ function loadContent(force){
       if(firstLoad || changed){ try { rebuildFromContent(); } catch(e){} }
       else { try { hydrateFooterSocials(); } catch(e){} }
     }
-    return;
+    // Do NOT return here. The FEED.content URL (deployed feed server, or the
+    // admin panel's live /api/content when running locally with the CMS up)
+    // may contain newer content than what was baked in at build time, and we
+    // want to overlay it as soon as it arrives. Inline is a fast first-paint
+    // snapshot, not the source of truth.
   }
 
   contentLoading = true;
@@ -4144,7 +4227,7 @@ function loadContent(force){
       const prevUpdated = CONTENT_META.loaded ? CONTENT_META.updated : null;
       CONTENT = _nestFlatKeys(doc);
       const firstLoad = !CONTENT_META.loaded;
-      const changed = (CONTENT_META.loaded && incomingUpdated && prevUpdated !== incomingUpdated);
+      const changed = !prevUpdated || (incomingUpdated && prevUpdated !== incomingUpdated);
       CONTENT_META = { loaded:true, updated: incomingUpdated };
       if(firstLoad || changed){
         rebuildFromContent();
