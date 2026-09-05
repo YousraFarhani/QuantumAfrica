@@ -11,7 +11,7 @@ const NAV = [
     {t:'Mission & Vision', h:'#/about', d:'What we exist to do'},
     {t:'Team', h:'#/people', d:'The people behind Quantum Africa'},
     {t:'Our Impact', h:'#/impact', d:'Verified numbers and stories'},
-    {t:'Collaborators & Partners', h:'#/partners', d:'Universities, research institutions, industry partners and international organisations we work with'},
+    {t:'Collaborators & Partners', h:'#/partners', d:'Organisations we work with'},
   ]},
   {label:'Programs', href:'#/education', items:[
     {t:'Quantum Education', h:'#/education', d:'Webinars, workshops, resources'},
