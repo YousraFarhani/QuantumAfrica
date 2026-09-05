@@ -4437,7 +4437,7 @@ function nameGrid(list, cls, opts){
     ${(() => { const pr = confProfile(x.n); const href = x.url || (pr && pr.url);
       return href
         ? `<a class="nm-l" href="${esc(href)}" target="_blank" rel="noopener noreferrer">Profile <span class="ar" aria-hidden="true">&rarr;</span></a>`
-        : `<span class="nm-l tbd">${pht('profile link')}</span>`; })()}
+        : ``; })()}
   </div>`).join('')}</div>`;
 }
 
@@ -4587,19 +4587,18 @@ PAGES.conference = () => {
       + (c.invitedGroups?c.invitedGroups.reduce((v,g)=>v+g.list.length,0):0), 0);
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
-<section class="phero">${africaWatermark('wm-hero')}<div class="wrap">
+<section class="sec phero" style="padding-top:52px;padding-bottom:36px">${africaWatermark('wm-hero')}<div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.conference.heroEyebrow', 'Conference series')}</span><i></i></div>
-  <h1>${cx('pages.conference.heroTitle', 'Quantum Africa')}</h1>
-  <p class="lede">${cx('pages.conference.heroLede', 'Bringing the best quantum research to Africa. Seven editions since 2010, in South Africa, Morocco, Tunisia and Rwanda.')}</p>
-  <div class="phero-meta"><a class="btn teal" href="#/conference/qa7">${cx('pages.conference.heroBtn1', 'Quantum Africa 7')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/join">${cx('pages.conference.heroBtn2', 'Register interest in the next edition')}</a></div>
+  <h1 style="font-size:clamp(2.2rem,4.2vw,3.4rem);letter-spacing:-.035em;max-width:18ch">${cx('pages.conference.heroTitle', 'Quantum Africa')}</h1>
+  <p class="lede" style="max-width:62ch">${cx('pages.conference.heroLede', 'Bringing the best quantum research to Africa. Seven editions since 2010, in South Africa, Morocco, Tunisia and Rwanda.')}</p>
+  <div class="phero-meta" style="margin-top:18px"><a class="btn teal" href="#/conference/qa7">${cx('pages.conference.heroBtn1', 'Quantum Africa 7')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/join">${cx('pages.conference.heroBtn2', 'Register interest in the next edition')}</a></div>
 </div></section>
 
 <section class="sec flush"><div class="wrap">
-  <blockquote class="conf-quote">${cx('pages.conference.quoteBody', 'Quantum Africa is a conference series dedicated to promoting quantum science and technology across the continent. Held in various African countries, the series fosters collaboration both within Africa and with the global scientific community.')}
-    <cite>${cx('pages.conference.quoteCite', 'quantumafrica.org')}</cite></blockquote>
+  <blockquote class="conf-quote" style="border-left:0;background:transparent;padding:18px 0 0;font-size:1.02rem;line-height:1.7;color:var(--ink-1);max-width:72ch;font-style:normal;margin:0">${cx('pages.conference.quoteBody', 'Quantum Africa is a conference series dedicated to promoting quantum science and technology across the continent. Held in various African countries, the series fosters collaboration both within Africa and with the global scientific community.')}</blockquote>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec" style="padding-top:22px"><div class="wrap">
   ${sectionHead(
     cx('pages.conference.edEyebrow', 'Editions'),
     cx('pages.conference.edTitle', 'Seven editions, four countries'),
@@ -4614,28 +4613,26 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
       <span class="cy">${cCountry(c.country)}</span>
     </a>`).join('')}
   </div>
-  <div class="stats mt48">
+  <div class="stats mt48" style="grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:4px;background:#fff">
     ${[[ cx('pages.conference.stat1N','7'),cx('pages.conference.stat1L','Editions')],
        [cx('pages.conference.stat2N','4'),cx('pages.conference.stat2L','Host countries')],
        [cx('pages.conference.stat3N','15'),cx('pages.conference.stat3L','Years')],
        [String(total),cx('pages.conference.stat4L','People on record')]]
-      .map(([n,l])=>`<div class="stat rv"><span class="n" data-count="${n}">${n}</span><span class="l">${l}</span></div>`).join('')}
+      .map(([n,l])=>`<div class="stat" style="border-right:1px solid var(--line);background:#fff;box-shadow:none;padding:22px 18px;border-radius:0;margin:0"><span class="n" data-count="${n}" style="font-feature-settings:\"tnum\";font-size:2rem">${n}</span><span class="l" style="color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem">${l}</span></div>`).join('')}
   </div>
 </div></section>
 
-<section class="sec inv">
-  ${patternPanel('soft')}
-  ${ringMark('cta-ring')}
+<section class="sec" style="padding-top:18px;padding-bottom:18px">
   <div class="wrap">
     <div class="sec-idx"><span class="n">—</span><span class="lbl">${cx('pages.conference.latestLbl', 'Latest edition')}</span><i></i></div>
-    <div class="conf-hero">
+    <div class="conf-hero" style="display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;border:1px solid var(--line);border-radius:4px;padding:28px;background:#fff">
       <div>
-        <h2>${cx('pages.conference.latestTitle', 'Quantum Africa 7')}</h2>
-        <p class="lede mt16">${esc(latest.city)}, ${esc(latest.country)} · ${esc(latest.dates)}</p>
-        <p class="small mt16">${esc(latest.venue)}</p>
-        <div class="hero-cta">
+        <h2 style="font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.02em;max-width:20ch">${cx('pages.conference.latestTitle', 'Quantum Africa 7')}</h2>
+        <p class="lede mt16" style="font-size:1.02rem;font-weight:500">${esc(latest.city)}, ${esc(latest.country)} · ${esc(latest.dates)}</p>
+        <p class="small mt16" style="color:var(--ink-2);max-width:54ch">${esc(latest.venue)}</p>
+        <div class="hero-cta" style="margin-top:18px">
           <a class="btn teal" href="#/conference/qa7">${cx('pages.conference.latestBtn1', 'Edition page')} <span class="ar" aria-hidden="true">&rarr;</span></a>
-          <a class="btn inv ghost" href="#/contact">${cx('pages.conference.latestBtn2', 'Ask about QA8')}</a>
+          <a class="btn ghost" href="#/contact">${cx('pages.conference.latestBtn2', 'Ask about QA8')}</a>
         </div>
       </div>
       <div>${cimg('pages.conference.latestImage','Photograph from Quantum Africa 7','2400×1350 · JPG','tall','network')}</div>
@@ -4643,7 +4640,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
   </div>
 </section>
 
-<section class="sec tint"><div class="wrap">
+<section class="sec" style="padding-top:18px;padding-bottom:16px"><div class="wrap">
   ${sectionHead(
     cx('pages.conference.spkEyebrow', 'Speakers'),
     cx('pages.conference.spkTitle', 'Who has spoken at Quantum Africa'),
@@ -4666,36 +4663,24 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
     {n:'Jean-Marc Lévy-Leblond', a:'Université de Nice · QA7 plenary'},
     {n:'Norbert Hounkonnou', a:'University of Abomey-Calavi, Benin · QA7 plenary'},
     {n:'Romain Murenzi', a:'Worcester Polytechnic Institute · QA7 plenary'},
-  ])}
+  ], 'scientific', {photo:false})}
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec" style="padding-top:12px;padding-bottom:32px"><div class="wrap">
   ${sectionHead(
     cx('pages.conference.govEyebrow', 'Governance'),
     cx('pages.conference.govTitle', 'Steering committee'),
     cx('pages.conference.govLede', '')
   )}
-  ${nameGrid(CONF_SC)}
+  ${nameGrid(CONF_SC, 'scientific', {photo:false})}
   <h4 class="mt48" style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">${cx('pages.conference.formerScLbl', 'Former steering committee members')}</h4>
-  <div class="mt16">${nameGrid(CONF_SC_PAST)}</div>
-  <div class="mt48 grid g2">
-    <div class="panel">
-      <h5>${cx('pages.conference.panel1Head', 'What the series covers')}</h5>
-      <p class="small">${cx('pages.conference.panel1Body', 'Quantum science and technology across the continent — strengthening Africa’s role in quantum research and development, encouraging cross-border partnerships, and raising awareness among African stakeholders of the opportunities in the field.')}</p>
-    </div>
-    <div class="panel">
-      <h5>${cx('pages.conference.panel2Head', 'Quantum Africa’s role')}</h5>
-      <p class="small">${cx('pages.conference.role', pht('STATE THE RELATIONSHIP — the series is run by its own steering committee. Say precisely what Quantum Africa does: attend, co-organise, sponsor, run a satellite workshop, sit on the committee. Do not imply ownership.'))}</p>
-    </div>
-  </div>
+  <div class="mt16">${nameGrid(CONF_SC_PAST, 'scientific', {photo:false})}</div>
 </div></section>
 
-<section class="cta-band">
-  ${patternPanel('soft')}
-  ${africaWatermark('wm-cta')}
-  <div class="wrap"><div class="hero-eye">${cx('pages.conference.ctaBandEyebrow', 'Next edition')}</div>
-    <h2 class="mt24">${cx('pages.conference.ctaBandTitle', 'Be there for Quantum Africa 8.')}</h2>
-    <div class="btns"><a class="btn teal" href="#/join">${cx('pages.conference.ctaBandBtn1', 'Register your interest')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn inv ghost" href="#/contact">${cx('pages.conference.ctaBandBtn2', 'Propose a host institution')}</a></div>
+<section class="cta-band" style="padding-top:44px;padding-bottom:44px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:inherit">
+  <div class="wrap"><div class="hero-eye" style="color:var(--ink-2)">${cx('pages.conference.ctaBandEyebrow', 'Next edition')}</div>
+    <h2 class="mt24" style="color:var(--ink-1);font-size:clamp(1.8rem,3.2vw,2.6rem);max-width:22ch">${cx('pages.conference.ctaBandTitle', 'Be there for Quantum Africa 8.')}</h2>
+    <div class="btns"><a class="btn teal" href="#/join">${cx('pages.conference.ctaBandBtn1', 'Register your interest')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/contact">${cx('pages.conference.ctaBandBtn2', 'Propose a host institution')}</a></div>
   </div>
 </section>`;
 };
@@ -5403,7 +5388,11 @@ ${crumb([{t:'Home',h:'#/'},{t:'News & Articles'}])}
   </div>
 </div></section>`;
 
-PAGES.article = () => `
+PAGES.article = (m) => {
+  const slug = (m && m[1]) || '';
+  const a = ARTICLES.find(x => x && x.slug && x.slug === slug);
+  if(!a){
+    return `
 ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:'Article'}])}
 <section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.article.heroImage', cx('pages.article.heroImageAlt', 'Article hero image'), '2400×1000 · JPG', 'wide', 'network')}</div></section>
 <section class="sec"><div class="wrap-n">
@@ -5432,6 +5421,49 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:'Article'}])}
   )}
   <div class="grid g3">${ARTICLES.slice(1,4).map(articleCard).join('')}</div>
 </div></section>`;
+  }
+  const md = (s) => {
+    let html = (s||'').trim();
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\[(.+?)\]\((https?:\/\/.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1 &rarr;</a>');
+    html = html.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    const parts = html.split(/\n{2,}/);
+    return parts.map(p => {
+      if (/^\s*-\s+/m.test(p)) {
+        const lines = p.split(/\n/).filter(l => l.trim().length);
+        const items = lines.map(l => l.replace(/^\s*-\s+/, '')).join('');
+        return `<ul>${items.replace(/(^|<\/li>)(.+?)(?=$|<li>)/g, (_, pre, content) => `${pre}<li>${content}</li>`)}</ul>`;
+      }
+      return `<p>${p}</p>`;
+    }).join('');
+  };
+  const related = ARTICLES.filter(x => x && x.slug && x.slug !== a.slug).slice(0,3);
+  return `
+${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:a.title}])}
+<section class="sec flush" style="padding:0"><div class="wrap">${artImage(a,'2400×1000 · JPG')}</div></section>
+<section class="sec"><div class="wrap-n">
+  <div class="news-meta" style="margin-bottom:20px"><span class="t">${esc(a.type||'News')}</span><span>${artDate(a)}</span>${a.read?`<span>${esc(a.read)}</span>`:''}</div>
+  <h1 style="font-size:clamp(1.9rem,3.4vw,2.9rem)">${esc(a.title)}</h1>
+  ${a.summary ? `<p class="lede mt16">${esc(a.summary)}</p>` : ''}
+  <div class="prose mt32">${md(a.body||'')}</div>
+  ${(a.links && a.links.length) ? `<div class="mt32" style="display:flex;gap:12px;flex-wrap:wrap">${a.links.map(l=>`<a class="btn ghost" href="${esc(l.u||'#')}" target="_blank" rel="noopener noreferrer">${esc(l.l||'Link')} <span class="ar" aria-hidden="true">&rarr;</span></a>`).join('')}</div>` : ''}
+  <div class="panel mt48"><h5>${cx('pages.article.authorPanelHead', 'Author')}</h5>
+    <div class="person" style="flex-direction:row;align-items:center;gap:14px">
+      <div style="width:48px;flex:none">${avatar()}</div>
+      <div><div class="nm" style="font-size:.9rem">${esc(a.author||pht('Name'))}</div><div class="xs">${a.chapter?`${esc(a.chapter)}`:(pht('Role / chapter'))}</div></div>
+    </div>
+  </div>
+</div></section>
+<section class="sec tint"><div class="wrap">
+  ${sectionHead(
+    cx('pages.article.moreEyebrow', 'More'),
+    cx('pages.article.moreTitle', 'Related articles'),
+    null,
+    {t:cx('pages.article.moreCta', 'All articles'),h:'#/news'}
+  )}
+  <div class="grid g3">${related.length ? related.map(articleCard).join('') : ARTICLES.slice(1,4).map(articleCard).join('')}</div>
+</div></section>`;
+};
 
 /* ---------- JOIN ---------- */
 PAGES.join = () => `
@@ -5611,7 +5643,7 @@ const ROUTES = [
   [/^\/students$/,                 () => PAGES.students()],
   [/^\/researchers$/,              () => PAGES.researchers()],
   [/^\/news$/,                     () => PAGES.news()],
-  [/^\/news\/(.+)$/,               () => PAGES.article()],
+  [/^\/news\/(.+)$/,               m => PAGES.article(m)],
   [/^\/join$/,                     () => PAGES.join()],
   [/^\/contact$/,                  () => PAGES.contact()],
   [/^\/legal$/,                    () => PAGES.legal()],
