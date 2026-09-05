@@ -910,13 +910,13 @@ tr:last-child td{border-bottom:0}
 }
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,165,91,.26)}
 
-.logo-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-@media(max-width:900px){.logo-wall{grid-template-columns:repeat(2,1fr)}}
+.logo-wall{display:flex;flex-wrap:wrap;gap:36px 56px;justify-content:center;align-items:center;padding:28px 12px}
+@media(max-width:900px){.logo-wall{gap:28px 36px;padding:24px 8px}}
 .logo-cell{
-  height:112px;background:var(--bg);display:flex;align-items:center;justify-content:center;gap:11px;flex-direction:column;
-  font-weight:600;font-size:.7rem;letter-spacing:.13em;color:var(--ink-3);transition:background .25s,color .25s;
+  min-width:140px;max-width:240px;flex:1 1 160px;height:auto;min-height:84px;padding:8px 4px;background:transparent;display:flex;align-items:center;justify-content:center;gap:6px;flex-direction:column;border:0;
+  font-weight:600;font-size:.7rem;letter-spacing:.13em;color:var(--ink-3);transition:transform .3s ease,opacity .25s;opacity:.92;
 }
-.logo-cell:hover{background:var(--bg-2);color:var(--teal)}
+.logo-cell:hover{background:transparent;color:var(--teal);transform:translateY(-2px);opacity:1}
 .logo-cell .mk{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line-2);transition:border-color .25s}
 .logo-cell:hover .mk{border-color:var(--teal)}
 body.hl-ph .logo-cell{color:var(--ph)}

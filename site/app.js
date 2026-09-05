@@ -922,8 +922,8 @@ let PARTNERS = [
 ];
 function partnerLogoCell(p){
   const src = (p.logo||'').trim();
-  const style = 'display:flex;align-items:center;justify-content:center;height:112px;padding:12px 16px;gap:6px;';
-  const imgStyle = 'max-width:100%;max-height:100%;height:auto;object-fit:contain;object-position:center;';
+  const style = 'display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:220px;padding:4px;gap:0;';
+  const imgStyle = 'max-width:100%;max-height:88px;width:auto;height:auto;object-fit:contain;object-position:center;filter:saturate(1.02);';
   const img = src
     ? `<img src="${esc(_assetSrc(src))}" alt="${esc(p.name||'Partner logo')}" title="${esc(p.name||'Partner')}" loading="lazy" style="${imgStyle}">`
     : `<span class="mk"></span><span>${esc(p.name||'PARTNER LOGO')}</span>`;
@@ -3524,6 +3524,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:a.title}])}
   <h1 style="font-size:clamp(1.9rem,3.4vw,2.9rem)">${esc(a.title)}</h1>
   ${a.summary ? `<p class="lede mt16">${esc(a.summary)}</p>` : ''}
   <div class="prose mt32">${md(a.body||'')}</div>
+  ${(a.gallery && a.gallery.length) ? `<div class="mt40"><div class="sec-idx"><span class="lbl">${cx('pages.article.galleryEyebrow', 'Gallery')}</span><i></i></div><div class="grid g3 mt24" style="grid-template-columns:repeat(${a.gallery.length >= 3 ? 3 : 2},1fr)">${a.gallery.map(src=>`<a class="rv" href="${esc(_assetSrc(src))}" target="_blank" rel="noopener noreferrer" style="display:block;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -22px rgba(0,0,0,.22);border:1px solid var(--line)"><img src="${esc(_assetSrc(src))}" alt="${esc(a.title)}" loading="lazy" style="width:100%;height:100%;max-height:320px;object-fit:cover;display:block"></a>`).join('')}</div></div>` : ''}
   ${(a.links && a.links.length) ? `<div class="mt32" style="display:flex;gap:12px;flex-wrap:wrap">${a.links.map(l=>`<a class="btn ghost" href="${esc(l.u||'#')}" target="_blank" rel="noopener noreferrer">${esc(l.l||'Link')} <span class="ar" aria-hidden="true">&rarr;</span></a>`).join('')}</div>` : ''}
 </div></section>
 <section class="sec tint"><div class="wrap">

@@ -777,7 +777,7 @@
         "slug": "uganda-indaba-2026",
         "type": "Chapter update",
         "title": "Quantum Uganda Chapter Connects with the African AI Community",
-        "summary": "Ssemaganda George represented Quantum Uganda at Deep Learning Indaba 2026, running a community booth with Makerere and Uganda Christian University teams — 50+ booth visitors and 3 new chapter leads for future African national chapters.",
+        "summary": "Ssemaganda George represented Quantum Uganda at Deep Learning Indaba 2026, running a community booth with Makerere and Uganda Christian University teams, 50+ booth visitors and 3 new chapter leads for future African national chapters.",
         "body": "Quantum Uganda was represented at **Deep Learning Indaba 2026** by its chapter lead Ssemaganda George, who joined the Quantum Uganda Community Booth alongside members of the university community from **Uganda Christian University** and **Makerere University**.\n\nThe team engaged with participants throughout the final day, introducing Quantum Uganda’s activities and connecting with students, researchers, and professionals interested in quantum technologies.\n\n**Day 6 highlights:**\n\n- **50+** booth visitors\n- **3** new leads for establishing Quantum Africa chapters across Africa\n- Community materials and swag fully distributed\n\nA strong opportunity to grow Quantum Uganda’s visibility and connect the chapter with the wider African technology and research community.",
         "author": "Quantum Uganda team",
         "chapter": "Uganda",
@@ -802,6 +802,34 @@
             "l": "Watch roundtable recording",
             "u": "https://www.youtube.com/watch?v=SJT1w7xtXSU"
           }
+        ]
+      },
+      {
+        "id": "gesda-cern-2026",
+        "slug": "gesda-cern-2026",
+        "type": "News",
+        "title": "Quantum Africa at GESDA — Geneva Science and Diplomacy Anticipator",
+        "summary": "Quantum Africa represented the African quantum ecosystem at GESDA Science and Diplomacy Week hosted at CERN, connecting with African and global quantum leaders including the Open Quantum Institute (OQI), QUALARIA, GenQ Hackathon organisers, and hackathon winners.",
+        "body": "Quantum Africa is proud to have been represented at **Science and Diplomacy Week** hosted by **GESDA (Geneva Science and Diplomacy Anticipator)**, held at **CERN** in Switzerland.\n\nThis participation marks a significant step forward for Africa's presence in the global quantum dialogue, highlighting the growing talent, innovation, and leadership emerging across the continent.\n\nWe extend our sincere thanks to **Stéphane Decoutère** for the kind invitation, and to the **OQI — Open Quantum Institute** and **Martin Gastal** for their continued efforts in making quantum technologies more accessible worldwide.\n\nIt was a pleasure to connect with members of the African quantum ecosystem, including **Prince Koree Osei, PhD**, **Charlene (Asiedu) Danso Amoah**, and the **QUALARIA** team, **Augustina Agyeman**, and **Prince Dorcis** — winners of the first Quantum African Hackathon — and to engage in impactful conversations with global quantum leaders.\n\nQuantum Africa also attended the **GenQ Hackathon** opening ceremony, where the challenges and discussions led by **Alexandra Beckstein** and **Tobias Denzler** showcased the next generation of quantum innovators.\n\nWe are proud to see African voices and contributions increasingly recognised in shaping the future of quantum science and technology on the world stage.",
+        "author": "Quantum Africa team",
+        "chapter": "",
+        "date": "2026-05-12",
+        "read": "4 min",
+        "image": "/media/news/Gesda/1.jpeg",
+        "links": [
+          {
+            "l": "GESDA — Geneva Science and Diplomacy Anticipator",
+            "u": "https://www.gesda.global/"
+          },
+          {
+            "l": "Open Quantum Institute (OQI)",
+            "u": "https://www.openquantuminstitute.org/"
+          }
+        ],
+        "gallery": [
+          "/media/news/Gesda/1.jpeg",
+          "/media/news/Gesda/2.jpeg",
+          "/media/news/Gesda/3.jpeg"
         ]
       },
       {
