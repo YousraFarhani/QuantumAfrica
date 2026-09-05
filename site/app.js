@@ -4095,7 +4095,7 @@ function rebuildFromContent(){
   const projects = clist('projects');
   if(projects.length){
     PROJECTS = projects.map((p, i) => Object.assign({
-      slug: p.id || ((p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
+      slug: p.id || (p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-'),
       tech: p.tech || [], area: p.area || '', short: p.short || '' }, p));
   }
   const articles = clist('articles');
