@@ -1741,7 +1741,7 @@ ${highlightSection()}
   <div class="wrap">
     ${sectionHead(
       cx('pages.home.partnersEyebrow', 'Collaborators & Partners'),
-      cx('pages.home.partnersTitle', 'Collaborators ,partners, and organisations we worked with'),
+      cx('pages.home.partnersTitle', 'Collaborators partners, and organisations we worked with'),
       cx('pages.home.partnersLede', ''),
       {t:cx('pages.home.partnersCta', 'Work with us'),h:'#/partners'}
     )}
@@ -3300,7 +3300,7 @@ PAGES.partners = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Collaborators & Partners',h:'#/partners'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.partners.heroEyebrow', 'Collaborators & Partners')}</span><i></i></div>
-  <h1 class="mt24">${cx('pages.partners.heroTitle', 'Collaborators ,partners, and organisations we worked with')}</h1>
+  <h1 class="mt24">${cx('pages.partners.heroTitle', 'Collaborators partners, and organisations we worked with')}</h1>
   <p class="lede">${cx('pages.partners.heroLede', "Universities, research institutions, industry partners and international organisations building Africa's quantum workforce with us.")}</p>
   <div class="phero-meta"><a class="btn teal sm" href="#/contact">${cx('pages.partners.heroBtn', "Let's collaborate")}</a></div>
 </div></section>
