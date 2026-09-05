@@ -59,6 +59,7 @@ let CHAPTERS = [
   {slug:'morocco',    code:'ma', name:'Morocco',    flag:'\u{1F1F2}\u{1F1E6}'},
   {slug:'nigeria',    code:'ng', name:'Nigeria',    flag:'\u{1F1F3}\u{1F1EC}'},
   {slug:'mauritania', code:'mr', name:'Mauritania', flag:'\u{1F1F2}\u{1F1F7}'},
+  {slug:'ethiopia',   code:'et', name:'Ethiopia',   flag:'\u{1F1EA}\u{1F1F9}'},
   {slug:'zambia',     code:'zm', name:'Zambia',     flag:'\u{1F1FF}\u{1F1F2}'},
   {slug:'uganda',     code:'ug', name:'Uganda',     flag:'\u{1F1FA}\u{1F1EC}'},
 ];
@@ -586,6 +587,62 @@ A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participan
    image:'/media/edition1.JPG',
    heroImage:'/media/edition1.JPG',
    org:'DeepLearning Indaba'},
+  {slug:'qiskit-fallfest-2026', type:'Festival', when:'upcoming',
+   title:'Qiskit Fall Fest 2026 · Nairobi',
+   n:'Qiskit Fall Fest 2026 — Nairobi',
+   subhead:'Hosted by QuantumKe · University of Nairobi',
+   eyebrow:'QFF26 · A decade of quantum on the cloud',
+   lede:'QuantumKe is bringing Qiskit Fall Fest 2026 to Nairobi this October — celebrating a decade of quantum computing on the cloud with workshops, Qiskit 101, hands-on sessions, a hackathon challenge, and networking with Kenya’s growing quantum community.',
+   description:`QuantumKe brings Qiskit Fall Fest 2026 to Nairobi — celebrating **a decade of quantum computing on the cloud**.
+
+**What to expect**
+• Qiskit 101 — Foundations for students, researchers and professionals new to the stack
+• Hands-on technical workshops — circuit building, applications and quantum machine learning
+• Hackathon challenge — Solve real-world problems using Qiskit with mentorship
+• Community networking — Connect with Kenya’s growing quantum ecosystem and peers from across the region
+
+Open to **students, researchers, professionals, and anyone curious** about quantum computing.
+
+**Event Details**
+• Dates: 1 – 24 October 2026
+• Venue: University of Nairobi (Main Campus)
+• Tags: #QFF26 · #IBMQuantum · #QiskitFallFest`,
+   heroImage:'/media/events/qiskit.jpeg',
+   gallery:['/media/events/qiskit.jpeg'],
+   start:'2026-10-01', end:'2026-10-24', city:'Nairobi', country:'Kenya',
+   registerUrl:'https://luma.com/lbaau2un',
+   links:[{l:'Register on Luma', u:'https://luma.com/lbaau2un'},{l:'Learn more', u:'https://lnkd.in/dAS3UCtq'}],
+   org:'QuantumKe · IBM Quantum · Qiskit',
+   status:'Scheduled · October 2026'},
+  {slug:'zambia-quantum-seminar-1', type:'Seminar', when:'upcoming',
+   title:'Quantum Zambia — Inaugural Quantum Science Seminar',
+   n:'Quantum Science Seminar · Quantum Zambia',
+   subhead:'First Quantum Science Seminar hosted by Quantum Zambia',
+   eyebrow:'Quantum Zambia milestone · Free attendance + certificates',
+   lede:'Quantum Zambia, under Quantum Africa, hosts its first Quantum Science Seminar on Friday 7 August 2026 — a full day of talks from 09:00 to 15:00 CAT (UTC+2), open to all with certificates issued after the seminar.',
+   description:`Quantum Zambia, under Quantum Africa, hosts its **first Quantum Science Seminar** — an exciting milestone for Zambia’s emerging quantum ecosystem.
+
+**Programme**
+• 09:00 – 10:00 — Welcome & keynote: Why quantum matters for Africa
+• 10:15 – 12:00 — Technical session: Foundations of quantum computing and quantum information
+• 12:00 – 13:00 — Break + networking
+• 13:00 – 15:00 — Panel: Opportunities in African quantum science + student lightning talks
+
+**Attendance**
+• Participation is free for all attendees
+• Certificates of attendance will be issued after the seminar
+• Please share the registration link with colleagues and encourage them to register
+
+**Timings**
+• Friday, 7 August 2026
+• 09:00 – 15:00 hrs Zambian Time (CAT / UTC+2)
+• Equivalent to 07:00 – 13:00 UTC`,
+   heroImage:'/media/events/zambia/1785899683901.jpeg',
+   gallery:['/media/events/zambia/1785899683901.jpeg','/media/events/zambia/1785929131822.jpeg','/media/events/zambia/1786000206630.jpeg','/media/events/zambia/1786001452228.jpeg'],
+   start:'2026-08-07', end:'2026-08-07', deadline:'2026-08-05', city:'Lusaka', country:'Zambia',
+   registerUrl:'https://lnkd.in/dEthyAQY',
+   org:'Quantum Zambia · Quantum Africa',
+   status:'Planned · August 2026'},
   {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
    title:'Quantum Machine Learning 4 Africa — Third Edition',
    n:'Quantum Machine Learning 4 Africa — Third Edition',
@@ -1710,10 +1767,10 @@ ${crumb([{t:'Home',h:'#/'},{t:'About',h:'#/about'},{t:'Our Impact'}])}
 <section class="sec flush"><div class="wrap">
   <div class="bignum">
     ${[[cnum('stats.members',350),'+',cx('pages.impact.kpi1Key','Community members'),cx('pages.impact.kpi1Desc','Across the continent and the diaspora.')],
-       [cnum('stats.chapters',7),'',cx('pages.impact.kpi2Key','National chapters'),cx('pages.impact.kpi2Desc','Across North, West, East and Southern Africa.')],
+       [cnum('stats.chapters',8),'',cx('pages.impact.kpi2Key','National chapters'),cx('pages.impact.kpi2Desc','Across North, West, East and Southern Africa.')],
        [cnum('stats.projects',4),'',cx('pages.impact.kpi3Key','Research projects'),cx('pages.impact.kpi3Desc','All open to new contributors.')],
        [cnum('stats.countries',52),'',cx('pages.impact.kpi4Key','Countries reached'),cx('pages.impact.kpi4Desc','Across the continent and the diaspora.')],
-       [cnum('stats.events',10),'',cx('pages.impact.kpi5Key','Events held'),cx('pages.impact.kpi5Desc','Webinars, workshops and chapter events.')],
+       [cnum('stats.events',12),'',cx('pages.impact.kpi5Key','Events held'),cx('pages.impact.kpi5Desc','Webinars, workshops and chapter events.')],
        [cval('stats.partners'),'',cx('pages.impact.kpi6Key','Partner institutions'),cx('pages.impact.kpi6Desc','Institutions that trust our vision.')]]
       .map(([n,sfx,k,d])=>`<div class="bigcell rv">${n===''
         ? `<span class="v tbd">[ ?? ]</span>`
