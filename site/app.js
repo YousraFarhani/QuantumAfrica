@@ -696,9 +696,9 @@ const DEFAULT_ARTICLES = [
   {slug:'women-quantum-roundtable', title:'Quantum Africa Joins African Women in Quantum Roundtable',
    type:'Member story', date:'2026-08-29', author:'Quantum Circle & Africa Quantum Consortium', read:'4 min',
    summary:'Yousra Farhani joined 18 women leaders from across Africa working in quantum research, industry and policy at the Quantum Circle roundtable hosted by the Africa Quantum Consortium — reflecting on 2025 and aligning on a collective 2026 communiqu\u00e9.',
-   body:'Quantum Africa Founder Yousra Farhani joined 18 women leaders from across Africa working in quantum research, industry, and policy for the Quantum Circle roundtable hosted by the Africa Quantum Consortium.\n\nThe December roundtable reflected on developments and priorities from 2025 and explored key priorities for 2026, culminating in a collective communiqu\u00e9 outlining shared commitments and priorities for the year ahead.\n\nThe discussion brought together women shaping the future of Africa\u2019s quantum ecosystem and created an important space for collaboration, exchange, and collective action.\n\nWatch the roundtable recording \u2192 Watch the session on YouTube.',
+   body:'Quantum Africa Founder Yousra Farhani joined 18 women leaders from across Africa working in quantum research, industry, and policy for the Quantum Circle roundtable hosted by the Africa Quantum Consortium.\n\nThe December roundtable reflected on developments and priorities from 2025 and explored key priorities for 2026, culminating in a collective communiqu\u00e9 outlining shared commitments and priorities for the year ahead.\n\nThe discussion brought together women shaping the future of Africa\u2019s quantum ecosystem and created an important space for collaboration, exchange, and collective action.\n\n[Watch the roundtable recording \u2192 Watch the session on YouTube](https://www.youtube.com/watch?v=SJT1w7xtXSU)',
    image:'media/news/quantumcircle.png', cover:'media/news/quantumcircle.png', hero:'media/news/quantumcircle.png',
-   chapter:'Pan-African', url:''},
+   chapter:'Pan-African', url:'https://www.youtube.com/watch?v=SJT1w7xtXSU'},
 ];
 
 const QUBO_PUB = {
