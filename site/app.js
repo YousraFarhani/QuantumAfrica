@@ -1038,7 +1038,7 @@ function projectCard(p){
     </div></a>`;
 }
 function chapterCard(c){
-  const CHAPTER_IMG = {'algeria':'Algeria.jpg','egypt':'egypt.jpg','morocco':'Morocco.jpg','nigeria':'Nigeria.jpg','mauritania':'mauritania.jpg','zambia':'zambia.png','uganda':'uganda.png'};
+  const CHAPTER_IMG = {'algeria':'Algeria.jpg','egypt':'egypt.jpg','morocco':'Morocco.jpg','nigeria':'Nigeria.jpg','mauritania':'mauritania.jpg','ethiopia':'ethiopia.png','zambia':'zambia.png','uganda':'uganda.png'};
   const img = CHAPTER_IMG[(c.name||'').toLowerCase()] ? `/media/chapters/${CHAPTER_IMG[(c.name||'').toLowerCase()]}` : null;
   return `<div class="card rv">
     <div class="card-media">${rimg(img,'Quantum '+esc(c.name)+' chapter photo','1600×900 · JPG','','network')}</div>
