@@ -88,6 +88,42 @@ def main():
     opps = load('opportunities.json', {'updated': None, 'items': [], 'sources': {}})
     evts = load('events.json', {'updated': None, 'items': [], 'sources': {}})
     content = load('content.json', {'updated': None, 'content': {}})
+    partner_dir = os.path.join(PUBLIC, 'media', 'partners')
+    if content and isinstance(content, dict) and 'content' in content and isinstance(content['content'], dict):
+        root = content['content']
+    elif content and isinstance(content, dict):
+        root = content
+    else:
+        root = {}
+    if os.path.isdir(partner_dir) and not root.get('partners'):
+        mapping = {
+            'Junction_Logo.png': ('Junction', 'Industry', 'Finland'),
+            'Logo300x300px5_ae1945a3-9bdf-4706-9d43-e5245bd9e8fc.png': ('Qiskit / IBM Quantum', 'Industry', 'Global'),
+            'Screenshot 2026-09-05 at 15.24.35.png': ('Africa Quantum Consortium', 'Strategic', 'Pan-African'),
+            'Screenshot 2026-09-05 at 16.22.52.png': ('UNICC', 'International organisations', 'Global'),
+            'Screenshot 2026-09-05 at 16.30.07.png': ('Quantum Circle', 'Strategic', 'Pan-African'),
+            'aims_logos-02.png': ('African Institute for Mathematical Sciences (AIMS)', 'Academic', 'Pan-African'),
+            'cropped-logo_top2.jpg': ('Makerere University', 'Academic', 'Uganda'),
+            'indaba-logo.png': ('Deep Learning Indaba', 'Education', 'Pan-African'),
+            'Screenshot 2026-09-05 at 16.41.50.png': ('Northern Quantum Initiative (NQI)', 'Strategic', 'Pan-African'),
+        }
+        partners = []
+        for fn in sorted(os.listdir(partner_dir)):
+            p = os.path.join(partner_dir, fn)
+            if not os.path.isfile(p):
+                continue
+            info = mapping.get(fn, (os.path.splitext(fn)[0].replace('_', ' ').title(), 'Research', ''))
+            partners.append({
+                'id': fn, 'name': info[0], 'category': info[1],
+                'logo': '/media/partners/' + fn, 'url': '', 'country': info[2], 'note': ''
+            })
+        if partners:
+            root['partners'] = partners
+            if content and isinstance(content, dict) and 'content' in content and isinstance(content['content'], dict):
+                content['content'] = root
+            elif content and isinstance(content, dict):
+                content.update(root)
+            print(f'auto-seeded {len(partners)} partners from media/partners/')
 
     shell = shell.replace('__LOGO_GOLD__',    resolve_logo('__LOGO_GOLD__',    'light', 'logo-gold.png'))
     shell = shell.replace('__LOGO_GOLD_W__',  resolve_logo('__LOGO_GOLD_W__',  'dark',  'logo-gold-w.png'))

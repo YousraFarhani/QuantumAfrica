@@ -895,6 +895,51 @@ const PERSON_LINKS = [
 ];
 
 const PARTNER_CATS = ['Academic','Research','Industry','Education','Strategic'];
+let PARTNERS = [
+  {name:'Junction', category:'Industry', logo:'/media/partners/Junction_Logo.png',
+   country:'Finland', url:''},
+  {name:'Qiskit / IBM Quantum', category:'Industry',
+   logo:'/media/partners/Logo300x300px5_ae1945a3-9bdf-4706-9d43-e5245bd9e8fc.png',
+   country:'Global', url:''},
+  {name:'Africa Quantum Consortium', category:'Strategic',
+   logo:'/media/partners/Screenshot 2026-09-05 at 15.24.35.png',
+   country:'Pan-African', url:''},
+  {name:'UNICC', category:'International organisations',
+   logo:'/media/partners/Screenshot 2026-09-05 at 16.22.52.png',
+   country:'Global', url:''},
+  {name:'Quantum Circle', category:'Strategic',
+   logo:'/media/partners/Screenshot 2026-09-05 at 16.30.07.png',
+   country:'Pan-African', url:''},
+  {name:'African Institute for Mathematical Sciences (AIMS)', category:'Academic',
+   logo:'/media/partners/aims_logos-02.png', country:'Pan-African', url:''},
+  {name:'Makerere University', category:'Academic',
+   logo:'/media/partners/cropped-logo_top2.jpg', country:'Uganda', url:''},
+  {name:'Deep Learning Indaba', category:'Education',
+   logo:'/media/partners/indaba-logo.png', country:'Pan-African', url:''},
+  {name:'Northern Quantum Initiative (NQI)', category:'Strategic',
+   logo:'/media/partners/Screenshot 2026-09-05 at 16.41.50.png',
+   country:'Pan-African', url:''},
+];
+function partnerLogoCell(p){
+  const src = (p.logo||'').trim();
+  const style = 'display:flex;align-items:center;justify-content:center;height:112px;padding:12px 16px;gap:6px;';
+  const imgStyle = 'max-width:100%;max-height:100%;height:auto;object-fit:contain;object-position:center;';
+  const img = src
+    ? `<img src="${esc(_assetSrc(src))}" alt="${esc(p.name||'Partner logo')}" title="${esc(p.name||'Partner')}" loading="lazy" style="${imgStyle}">`
+    : `<span class="mk"></span><span>${esc(p.name||'PARTNER LOGO')}</span>`;
+  const tag = p.url
+    ? `<a class="logo-cell" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" title="${esc(p.name||'Partner')}" style="${style}">${img}</a>`
+    : `<div class="logo-cell" title="${esc(p.name||'Partner')}" style="${style}">${img}</div>`;
+  return tag;
+}
+function partnerWall(limit){
+  const list = limit ? PARTNERS.slice(0, limit) : PARTNERS;
+  if (!list.length) {
+    const n = limit || 8;
+    return Array.from({length:n}).map(()=>`<div class="logo-cell rv"><span class="mk"></span>PARTNER LOGO</div>`).join('');
+  }
+  return list.map(partnerLogoCell).join('');
+}
 
 let ARTICLES = [
   {slug:'uganda-indaba-2026', type:'Chapter update', art:'fringes', read:'3 min'},
@@ -1628,7 +1673,7 @@ ${highlightSection()}
       cx('pages.home.partnersLede', ''),
       {t:cx('pages.home.partnersCta', 'Work with us'),h:'#/partners'}
     )}
-    <div class="logo-wall">${Array.from({length:8}).map(()=>`<div class="logo-cell rv"><span class="mk"></span>PARTNER LOGO</div>`).join('')}</div>
+    <div class="logo-wall">${partnerWall()}</div>
     <p class="xs mt24">${cx('pages.home.partnersNote', ' ')}</p>
   </div>
 </section>
@@ -2645,7 +2690,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
   ${sectionHead(
     cx('pages.conference.edEyebrow', 'Editions'),
     cx('pages.conference.edTitle', 'Seven editions, four countries'),
-    cx('pages.conference.edLede', 'Every edition since the series began in Durban in 2010. Each page carries the committees and speakers exactly as the series publishes them.')
+    cx('pages.conference.edLede', '')
   )}
   <div class="tl">
     ${CONF.map(c=>`<a class="tl-i ${c.latest?'now':''}" href="#/conference/${c.slug}">
@@ -2689,7 +2734,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
   ${sectionHead(
     cx('pages.conference.spkEyebrow', 'Speakers'),
     cx('pages.conference.spkTitle', 'Who has spoken at Quantum Africa'),
-    cx('pages.conference.spkLede', 'A selection across the seven editions. Every edition page carries its full line-up.')
+    cx('pages.conference.spkLede', '')
   )}
   ${nameGrid([
     {n:'Serge Haroche', a:'Collège de France & École Normale Supérieure · QA1 and QA3'},
@@ -2715,7 +2760,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
   ${sectionHead(
     cx('pages.conference.govEyebrow', 'Governance'),
     cx('pages.conference.govTitle', 'Steering committee'),
-    cx('pages.conference.govLede', 'The committee that carries the series between editions, as published by Quantum Africa.')
+    cx('pages.conference.govLede', '')
   )}
   ${nameGrid(CONF_SC)}
   <h4 class="mt48" style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)">${cx('pages.conference.formerScLbl', 'Former steering committee members')}</h4>
@@ -3191,7 +3236,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Collaborators & Partners',h:'#/partners'}])}
     cx('pages.partners.wallEyebrow','Directory'),
     cx('pages.partners.wallTitle','Collaborators & Partners')
   )}
-  <div class="logo-wall">${Array.from({length:20}).map(()=>`<div class="logo-cell rv"><span class="mk"></span>PARTNER LOGO</div>`).join('')}</div>
+  <div class="logo-wall">${partnerWall()}</div>
 </div></section>
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
@@ -4135,6 +4180,13 @@ function rebuildFromContent(){
       n: ed.number || '', slug: ed.slug || '', year: ed.year || '', city: ed.city || '',
       country: ed.country || '', dates: ed.dates || ''
     }, ed));
+  }
+  const partners = clist('partners');
+  if(partners.length){
+    PARTNERS = partners.map(p => Object.assign({
+      name: p.name || 'Partner', category: p.category || 'Research',
+      logo: p.logo || '', url: p.url || '', country: p.country || ''
+    }, p));
   }
   /* Opportunities entered by hand are pinned above the collected feed.
      They are kept in their own list, because the jobs feed and the content

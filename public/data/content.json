@@ -688,7 +688,89 @@
         "contributors": []
       }
     ],
-    "partners": [],
+    "partners": [
+      {
+        "id": "Junction_Logo.png",
+        "name": "Junction",
+        "category": "Industry",
+        "logo": "/media/partners/Junction_Logo.png",
+        "url": "",
+        "country": "Finland",
+        "note": ""
+      },
+      {
+        "id": "Logo300x300px5_ae1945a3-9bdf-4706-9d43-e5245bd9e8fc.png",
+        "name": "Qiskit / IBM Quantum",
+        "category": "Industry",
+        "logo": "/media/partners/Logo300x300px5_ae1945a3-9bdf-4706-9d43-e5245bd9e8fc.png",
+        "url": "",
+        "country": "Global",
+        "note": ""
+      },
+      {
+        "id": "Screenshot 2026-09-05 at 15.24.35.png",
+        "name": "Africa Quantum Consortium",
+        "category": "Strategic",
+        "logo": "/media/partners/Screenshot 2026-09-05 at 15.24.35.png",
+        "url": "",
+        "country": "Pan-African",
+        "note": ""
+      },
+      {
+        "id": "Screenshot 2026-09-05 at 16.22.52.png",
+        "name": "UNICC",
+        "category": "International organisations",
+        "logo": "/media/partners/Screenshot 2026-09-05 at 16.22.52.png",
+        "url": "",
+        "country": "Global",
+        "note": ""
+      },
+      {
+        "id": "Screenshot 2026-09-05 at 16.30.07.png",
+        "name": "Quantum Circle",
+        "category": "Strategic",
+        "logo": "/media/partners/Screenshot 2026-09-05 at 16.30.07.png",
+        "url": "",
+        "country": "Pan-African",
+        "note": ""
+      },
+      {
+        "id": "aims_logos-02.png",
+        "name": "African Institute for Mathematical Sciences (AIMS)",
+        "category": "Academic",
+        "logo": "/media/partners/aims_logos-02.png",
+        "url": "",
+        "country": "Pan-African",
+        "note": ""
+      },
+      {
+        "id": "cropped-logo_top2.jpg",
+        "name": "Makerere University",
+        "category": "Academic",
+        "logo": "/media/partners/cropped-logo_top2.jpg",
+        "url": "",
+        "country": "Uganda",
+        "note": ""
+      },
+      {
+        "id": "indaba-logo.png",
+        "name": "Deep Learning Indaba",
+        "category": "Education",
+        "logo": "/media/partners/indaba-logo.png",
+        "url": "",
+        "country": "Pan-African",
+        "note": ""
+      },
+      {
+        "id": "Screenshot 2026-09-05 at 16.41.50.png",
+        "name": "Northern Quantum Initiative (NQI)",
+        "category": "Strategic",
+        "logo": "/media/partners/Screenshot 2026-09-05 at 16.41.50.png",
+        "url": "",
+        "country": "Pan-African",
+        "note": ""
+      }
+    ],
     "articles": [
       {
         "id": "uganda-indaba-2026",
