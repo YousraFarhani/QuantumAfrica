@@ -513,7 +513,46 @@ let PROJECTS = [
   {slug:'african-pigments-photonics', title:'Modeling African Natural Pigments for Photonics & DSSC', area:'Photonics · Materials', status:'current',
    short:'Comparative spectral and performance analysis of African natural pigments for photonic applications and dye-sensitised solar cells.',
    tech:['DFT','Spectroscopy','Simulation'], repo:false, art:'spectra'},
+  {slug:'qubo-microgrid-optimization', title:'QUBO Model for Energy Planning', area:'Quantum optimization · Energy access', status:'current',
+   short:'Quantum-enhanced microgrid optimization for rural electrification in Africa — a QUBO-based planning model exploring demand, generation, storage and grid extension trade-offs.',
+   tech:['QUBO','Quantum annealing','Energy systems','Microgrid modelling'], repo:false, art:'network',
+   proposedBy:'Yousra Farhani',
+   authors:[
+     {n:'Yousra Farhani',               a:'NNF Quantum Computing Programme, Niels Bohr Institute, University of Copenhagen, Copenhagen, Denmark',  e:'yousra.farhani@nbi.ku.dk'},
+     {n:'Helarie Rose Medie Fah',       a:'University of Kwazulu Natal, Durban, South Africa',                                                      e:'helarie@aims.ac.za'},
+     {n:'Ahmed Samir',                  a:'Cairo University, Cairo, Egypt',                                                                           e:'ahmedsamir1598@gmail.com'},
+     {n:'Marzuq Yussif Etsie Adam',     a:'University of Ghana, Accra, Ghana',                                                                       e:'myeadam@st.ug.edu.gh'},
+     {n:'Kenedy Mwendwa Mulila',        a:'African Institute for Mathematical Sciences (AIMS), Mbour, Senegal',                                      e:'Kenedy.m.mulila@aims-senegal.org'},
+     {n:'Abdulmajid Osumanu',           a:'African Institute for Mathematical Sciences (AIMS) Ghana, Accra, Ghana',                                  e:'abdulmajid@aims.edu.gh'},
+   ],
+   doi:'https://dl.acm.org/doi/pdf/10.1145/3795101.3814703',
+   description:`This work introduces a QUBO (Quadratic Unconstrained Binary Optimization) formulation for community-level energy planning, with a focus on rural microgrid electrification scenarios in Africa. The model jointly considers generation mix, storage sizing, demand profiles, and capital and operational trade-offs so that planners can compare centralized grid extension, standalone solar microgrids, and hybrid configurations using quantum annealing and classical QUBO solvers.
+
+The case studies and sensitivity analyses demonstrate how QUBO-based optimization can support locally tailored energy-access decisions — including demand sizing, renewable penetration targets, and resilience to seasonal load variation — with particular attention to communities currently without reliable grid access.`},
 ];
+
+const QUBO_PUB = {
+  slug:'qubo-microgrid-optimization',
+  title:'QUBO Model for Energy Planning',
+  subTitle:'Quantum-Enhanced Microgrid Optimization for Rural Electrification in Africa',
+  doi:'https://dl.acm.org/doi/pdf/10.1145/3795101.3814703',
+  authors:[
+    {n:'Yousra Farhani',               a:'NNF Quantum Computing Programme, Niels Bohr Institute, University of Copenhagen, Copenhagen, Denmark',  e:'yousra.farhani@nbi.ku.dk'},
+    {n:'Helarie Rose Medie Fah',       a:'University of Kwazulu Natal, Durban, South Africa',                                                      e:'helarie@aims.ac.za'},
+    {n:'Ahmed Samir',                  a:'Cairo University, Cairo, Egypt',                                                                           e:'ahmedsamir1598@gmail.com'},
+    {n:'Marzuq Yussif Etsie Adam',     a:'University of Ghana, Accra, Ghana',                                                                       e:'myeadam@st.ug.edu.gh'},
+    {n:'Kenedy Mwendwa Mulila',        a:'African Institute for Mathematical Sciences (AIMS), Mbour, Senegal',                                      e:'Kenedy.m.mulila@aims-senegal.org'},
+    {n:'Abdulmajid Osumanu',           a:'African Institute for Mathematical Sciences (AIMS) Ghana, Accra, Ghana',                                  e:'abdulmajid@aims.edu.gh'},
+  ],
+  area:'Quantum optimization · Energy access',
+  short:'Quantum-enhanced microgrid optimization for rural electrification in Africa — a QUBO-based planning model exploring demand, generation, storage and grid extension trade-offs.',
+  tech:['QUBO','Quantum annealing','Energy systems','Microgrid modelling'],
+  repo:false, art:'network', proposedBy:'Yousra Farhani',
+  description:`This work introduces a QUBO (Quadratic Unconstrained Binary Optimization) formulation for community-level energy planning, with a focus on rural microgrid electrification scenarios in Africa. The model jointly considers generation mix, storage sizing, demand profiles, and capital and operational trade-offs so that planners can compare centralized grid extension, standalone solar microgrids, and hybrid configurations using quantum annealing and classical QUBO solvers.
+
+The case studies and sensitivity analyses demonstrate how QUBO-based optimization can support locally tailored energy-access decisions — including demand sizing, renewable penetration targets, and resilience to seasonal load variation — with particular attention to communities currently without reliable grid access.`,
+};
+if(!PROJECTS.some(p=>p.slug===QUBO_PUB.slug)) PROJECTS.push(QUBO_PUB);
 
 /* Opportunities feed.
    __OPPORTUNITIES_JSON__ is replaced at build time with feed/opportunities.json.
@@ -857,8 +896,10 @@ function projectCard(p){
     </div></a>`;
 }
 function chapterCard(c){
+  const CHAPTER_IMG = {'algeria':'Algeria.jpg','egypt':'egypt.jpg','morocco':'Morocco.jpg','nigeria':'Nigeria.jpg','mauritania':'mauritania.jpg','zambia':'zambia.png','uganda':'uganda.png'};
+  const img = CHAPTER_IMG[(c.name||'').toLowerCase()] ? `/media/chapters/${CHAPTER_IMG[(c.name||'').toLowerCase()]}` : null;
   return `<div class="card rv">
-    <div class="card-media">${media('network','Chapter team photo','1600×900 · JPG')}</div>
+    <div class="card-media">${rimg(img,'Quantum '+esc(c.name)+' chapter photo','1600×900 · JPG','','network')}</div>
     <div class="card-b">
       <div class="card-meta"><span class="fl" style="width:48px;height:34px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:1.8rem;line-height:1;flex:none;background:color-mix(in srgb,var(--ink) 3%,transparent);box-shadow:0 0 0 1px var(--line)" aria-hidden="true">${c.flag||'?'}</span>${statusPill()}</div>
       <h4>Quantum ${esc(c.name)}</h4>
@@ -1729,9 +1770,9 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
   ${ringMark('cta-ring')}
   <div class="wrap">
     ${sectionHead(
-      cx('pages.research.projectsEyebrow', 'Active projects'),
-      cx('pages.research.projectsTitle', 'Seven projects running now')
-    )}
+    cx('pages.research.projectsEyebrow', 'Active projects'),
+    cx('pages.research.projectsTitle', 'Five projects running now')
+  )}
     <div class="blist">
       ${PROJECTS.map((p,i)=>`<a class="brow rv" href="#/research/${p.slug}">
         <span class="bn">${String(i+1).padStart(2,'0')}</span>
@@ -1752,8 +1793,15 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research'}])}
     cx('pages.research.outTitle', 'Publications, code and openings')
   )}
   <div class="grid g3">
-    <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out1Head', 'Publications')}</h4><p>${pht(cx('pages.research.out1Body', 'Papers, preprints, DOIs — empty until there are real entries'))}</p></div></div>
-    <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out2Head', 'Open source')}</h4><p>${cx('pages.research.out2BodyPrefix', 'Public repositories from Quantum Africa projects.')} ${pht(cx('pages.research.out2Body', 'GitHub organisation URL'))}</p></div></div>
+    <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out1Head', 'Publications')}</h4>
+      <div style="margin-top:10px">
+        <a class="pub-row" href="${esc(QUBO_PUB.doi)}" target="_blank" rel="noopener noreferrer" style="display:block;padding:12px 13px;border-radius:8px;background:color-mix(in srgb,var(--bg) 88%,transparent);border:1px solid var(--line);text-decoration:none;color:inherit;margin-bottom:8px">
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:6px"><span class="tag" style="margin:0;background:var(--gold);color:#061224">DOI</span><b style="font-size:.95rem;line-height:1.3">${esc(QUBO_PUB.title)}: ${esc(QUBO_PUB.subTitle)}</b></div>
+          <div class="small" style="margin-bottom:6px;color:var(--ink-2)">${QUBO_PUB.authors.map((a,i)=>esc(a.n)+(i<QUBO_PUB.authors.length-1?', ':'')).join('')}</div>
+          <div style="display:flex;align-items:center;gap:10px;justify-content:space-between"><span class="small" style="color:var(--ink-3)">dl.acm.org</span><span class="link-a" style="font-size:.82rem">${cx('pages.research.out1PdfCta','Open PDF')} <span class="ar" aria-hidden="true">&rarr;</span></span></div>
+        </a>
+      </div></div></div>
+    <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out2Head', 'Open source')}</h4><p>${cx('pages.research.out2BodyPrefix', 'Public repositories from Quantum Africa projects.')}</p></div></div>
     <div class="card pad rv"><div class="card-b"><h4>${cx('pages.research.out3Head', 'Open roles')}</h4><p>${cx('pages.research.out3BodyPrefix', 'Contributor, student researcher, mentor.')}<a class="link-a mt16" href="#/join" style="display:inline-flex">${cx('pages.research.out3Cta', 'Get involved')} <span class="ar" aria-hidden="true">&rarr;</span></a></p></div></div>
   </div>
 </div></section>
@@ -1821,6 +1869,27 @@ ${crumb([{t:'Home',h:'#/'},{t:'Research',h:'#/research'},{t:p.title}])}
     ${_objRender(p)}
     <h3 style="margin-top:28px">${cx('pages.researchDetail.joinHead', 'Join this project / Skills needed')}</h3>
     ${_needsRender(p)}
+    ${p.authors && p.authors.length ? `
+      <h3 style="margin-top:28px">${cx('pages.researchDetail.authorsHead', 'Authors &amp; affiliations')}</h3>
+      <div class="authors">${p.authors.map(a=>`
+        <div class="author rv">
+          <div class="a-n">${esc(a.n)}</div>
+          ${a.a ? `<div class="a-a small">${esc(a.a)}</div>`:''}
+          ${a.e ? `<div class="a-e small"><a class="link-a" href="mailto:${esc(a.e)}">${esc(a.e)}</a></div>`:''}
+        </div>`).join('')}
+      </div>`:''}
+    ${p.doi ? `
+      <h3 style="margin-top:28px">${cx('pages.researchDetail.pubHead', 'Publication')}</h3>
+      <a class="pub-row" href="${esc(p.doi)}" target="_blank" rel="noopener noreferrer" style="display:block;padding:14px 16px;border-radius:10px;background:color-mix(in srgb,var(--bg) 94%,transparent);border:1px solid var(--line);text-decoration:none;color:inherit;margin-top:10px">
+        <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:8px">
+          <span class="tag" style="margin:0;background:var(--gold);color:#061224">DOI</span>
+          <b style="font-size:1rem;line-height:1.45">${esc(p.title)}</b>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;justify-content:space-between;margin-top:4px">
+          <span class="small" style="color:var(--ink-3)">dl.acm.org · opens in a new tab</span>
+          <span class="link-a" style="font-size:.86rem">${cx('pages.researchDetail.pubCta','Open PDF (ACM Digital Library)')} <span class="ar" aria-hidden="true">&rarr;</span></span>
+        </div>
+      </a>`:''}
     <a class="btn mt16" style="display:inline-flex" href="#/join">${cx('pages.researchDetail.joinBtn', 'Join this project')} <span class="ar" aria-hidden="true">→</span></a>
   </div>
   <aside>
@@ -2311,7 +2380,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Webinars'}])}
   ${sectionHead(
     cx('pages.webinars.sessionsEyebrow','Featured Sessions'),
     cx('pages.webinars.sessionsTitle','Our webinar library'),
-    cx('pages.webinars.sessionsLede','Six sessions from the Quantum Africa Webinar Series — click a card to open the recording or explore the series archive.'),
+    cx('pages.webinars.sessionsLede',''),
     {t:cx('pages.webinars.sessionsCta','Browse all sessions'),h:'#/events'}
   )}
   <div class="grid g3 web-shots" style="grid-template-columns:repeat(3,minmax(0,1fr))">
@@ -3846,6 +3915,7 @@ function rebuildFromContent(){
       slug: p.id || ((p.title||'project').toLowerCase().replace(/[^a-z0-9]+/g,'-')),
       tech: p.tech || [], area: p.area || '', short: p.short || '' }, p));
   }
+  if(!PROJECTS.some(p=>p.slug===QUBO_PUB.slug)) PROJECTS.push(QUBO_PUB);
   const articles = clist('articles');
   if(articles.length){
     // Newest first, so the lead on the homepage really is the latest thing.
