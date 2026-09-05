@@ -976,6 +976,7 @@ let HERO_LINES = [
   {a:'We are opening research ', b:'to the whole continent.',
    p:'Our projects are open by default: read the work, run the code, join a team. What it takes to contribute is curiosity, not an invitation.'},
 ];
+let VOICES = [];
 let HERO_SLIDES = [
   {t:'QML4Africa - Rwanda', s:'',
     image:'/media/856c43197563ecf6.jpg', video:'', f:'/media/856c43197563ecf6.jpg', art:'field'},
@@ -1693,11 +1694,10 @@ ${highlightSection()}
       {t:cx('pages.home.communityCta', 'Read member stories'),h:'#/news'}
     )}
     <div class="grid g3">
-      ${(clist('pages.home.communityQuotes') || []).concat(Array.from({length: Math.max(0, 3 - (clist('pages.home.communityQuotes') || []).length)})
-          .map(()=>({}))).map(q=>`<div class="vq rv">
+      ${VOICES.concat(Array.from({length: Math.max(0, 3 - VOICES.length)}).map(()=>({}))).slice(0,3).map(q=>`<div class="vq rv">
         <span class="vq-quote-tl" aria-hidden="true">“</span>
         <span class="vq-quote-br" aria-hidden="true">“</span>
-        <div class="vq-head">${circuitRing(q.photo || '')}</div>
+        <div class="vq-head">${circuitRing(q.photo || q.image || q.picture || q.avatar || '')}</div>
         <div class="vq-by">
           <span class="nm">${q.name ? esc(q.name) : pht('Name')}</span>
           <div class="xs">${(q.role ? esc(q.role) : (q.name ? '' : pht('Role'))) + (q.role && q.institution ? ' · ' : '') + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution')))}</div>
@@ -3419,9 +3419,9 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Students'}])}
     null,
     {t:cx('pages.students.voicesCta', 'Member stories'),h:'#/news'}
   )}
-  <div class="grid g3">${(clist('pages.home.communityQuotes') || []).concat(Array.from({length: Math.max(0, 3 - (clist('pages.home.communityQuotes') || []).length)}).map(()=>({}))).map(v=>`<div class="vq rv">
-    <span class="vq-quote-tl" aria-hidden="true">"6</span>
-    <span class="vq-quote-br" aria-hidden="true">"6</span>
+  <div class="grid g3">${VOICES.concat(Array.from({length: Math.max(0, 3 - VOICES.length)}).map(()=>({}))).slice(0,3).map(v=>`<div class="vq rv">
+    <span class="vq-quote-tl" aria-hidden="true">"</span>
+    <span class="vq-quote-br" aria-hidden="true">"</span>
     <div class="vq-body" style="order:1"><p style="font-size:1.02rem;line-height:1.55">${v.quote ? esc(v.quote) : cx('pages.students.voicesQuotePlaceholder', pht('[ Student quote ]'))}</p></div>
     <div class="vq-by" style="order:2;text-align:left;margin-top:14px">
       <div class="xs" style="font-size:0.78rem;font-weight:500;letter-spacing:0.01em;color:var(--muted);text-transform:none">${(v.name ? esc(v.name) : cx('pages.students.voicesWhoPlaceholder', pht('[ Name ]'))) + (v.institution ? ' · ' + esc(v.institution) : ' · ' + pht('[ University ]')) + (v.country ? ' · ' + esc(tc(v.country)) : ' · ' + pht('[ Country ]'))}</div>
@@ -4358,6 +4358,39 @@ function rebuildFromContent(){
       logo: p.logo || '', url: p.url || '', country: p.country || ''
     }, p));
   }
+  const voiceSources = [
+    clist('pages.home.communityQuotes'),
+    clist('communityQuotes'),
+    clist('pages.home.voices'),
+    clist('pages.students.voices'),
+    clist('pages.students.communityQuotes'),
+    clist('testimonials'),
+    clist('voices'),
+    clist('students'),
+    clist('people')
+  ];
+  const _seenVoice = new Set();
+  const _normalizeVoice = v => {
+    if(!v || typeof v !== 'object') return null;
+    const quote = String(v.quote || v.body || v.testimonial || v.message || v.story || '').trim();
+    const name = String(v.name || v.who || v.author || v.fullName || '').trim();
+    const photo = v.photo || v.image || v.picture || v.avatar || v.profilePic || v.pictureUrl || v.headerImage || v.hero || '';
+    const role = String(v.role || v.title || v.position || '').trim();
+    const institution = String(v.institution || v.org || v.organization || v.company || v.university || v.school || '').trim();
+    const country = String(v.country || v.location || v.nationality || '').trim();
+    const key = (name + '|' + quote + '|' + photo).toLowerCase();
+    if(!name && !quote) return null;
+    if(_seenVoice.has(key)) return null;
+    _seenVoice.add(key);
+    const hasEnoughContent = (quote && quote.length >= 20) || (name && photo);
+    if(!hasEnoughContent) return null;
+    return { name, quote, photo, role, institution, country };
+  };
+  VOICES = voiceSources
+    .flat()
+    .map(_normalizeVoice)
+    .filter(Boolean)
+    .slice(0, 12);
   /* Opportunities entered by hand are pinned above the collected feed.
      They are kept in their own list, because the jobs feed and the content
      document load independently and either can finish last. */
