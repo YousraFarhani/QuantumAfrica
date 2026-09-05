@@ -5405,12 +5405,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:'Article'}])}
     <h3>${cx('pages.article.subheadPlaceholder', pht('Subheading'))}</h3>
     <p>${cx('pages.article.bodyPlaceholder3', pht('BODY continued'))}</p>
   </div>
-  <div class="panel mt48"><h5>${cx('pages.article.authorPanelHead', 'Author')}</h5>
-    <div class="person" style="flex-direction:row;align-items:center;gap:14px">
-      <div style="width:48px;flex:none">${avatar()}</div>
-      <div><div class="nm" style="font-size:.9rem">${cx('pages.article.authorNamePlaceholder', pht('Name'))}</div><div class="xs">${cx('pages.article.authorRolePlaceholder', pht('Role'))} · ${cx('pages.article.authorChapterPlaceholder', pht('Chapter'))}</div></div>
-    </div>
-  </div>
 </div></section>
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
@@ -5447,12 +5441,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:a.title}])}
   ${a.summary ? `<p class="lede mt16">${esc(a.summary)}</p>` : ''}
   <div class="prose mt32">${md(a.body||'')}</div>
   ${(a.links && a.links.length) ? `<div class="mt32" style="display:flex;gap:12px;flex-wrap:wrap">${a.links.map(l=>`<a class="btn ghost" href="${esc(l.u||'#')}" target="_blank" rel="noopener noreferrer">${esc(l.l||'Link')} <span class="ar" aria-hidden="true">&rarr;</span></a>`).join('')}</div>` : ''}
-  <div class="panel mt48"><h5>${cx('pages.article.authorPanelHead', 'Author')}</h5>
-    <div class="person" style="flex-direction:row;align-items:center;gap:14px">
-      <div style="width:48px;flex:none">${avatar()}</div>
-      <div><div class="nm" style="font-size:.9rem">${esc(a.author||pht('Name'))}</div><div class="xs">${a.chapter?`${esc(a.chapter)}`:(pht('Role / chapter'))}</div></div>
-    </div>
-  </div>
 </div></section>
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
