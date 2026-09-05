@@ -3831,16 +3831,194 @@ function currentPath(){
   const h = location.hash.replace(/^#/, '');
   return h || '/';
 }
+
+const SEO_TITLE_HOME = 'Quantum Africa — Quantum computing research, education & chapters across Africa';
+const SEO_DESC_HOME  = 'Quantum Africa is building a connected, homegrown quantum ecosystem across the continent: national chapters, research projects, workshops, webinars, quantum jobs and fellowships, and learning programmes for African students, researchers and innovators working in quantum computing, quantum information science and quantum ML.';
+const SEO_TITLE_BY_ROUTE = {
+  'about':        'About Quantum Africa — Building a pan-African quantum community',
+  'impact':       'Impact — Quantum Africa projects, chapters and community outcomes',
+  'education':    'Quantum Education — Learning programmes, quantum tutoring and workshops for African students',
+  'tutor':        '1-on-1 Quantum Tutoring — Book private tutoring with Quantum Africa tutors',
+  'research':     'Research — Open quantum computing research projects by Quantum Africa contributors',
+  'chapters':     'Chapters — National quantum computing chapters across Africa',
+  'events':       'Events — Quantum Africa workshops, webinars, seminars and conferences',
+  'events/workshops':   'Workshops — Quantum Africa hands-on quantum workshops',
+  'events/webinars':   'Webinars — Quantum Africa expert-led webinars on quantum computing',
+  'conference':   'Quantum Africa Conference — The annual pan-African quantum conference',
+  'support':      'Support Quantum Africa — Sponsor, partner or donate',
+  'opportunities':'Quantum Opportunities — Jobs, internships, fellowships and grants in quantum computing worldwide, curated for Africans',
+  'people':       'People — Team, advisors and researchers of Quantum Africa',
+  'partners':     'Partners — Quantum Africa\u2019s academic, industry and non-profit partners',
+  'universities': 'Universities Programme — Quantum clubs at African universities',
+  'students':     'For Students — Learning, chapters and quantum opportunities for African students',
+  'researchers':  'For Researchers — Research projects, collaborations and access for African researchers',
+  'news':         'News & Articles — Quantum Africa updates, chapter reports and community stories',
+  'join':         'Join Quantum Africa — Become a member, start a chapter, or volunteer',
+  'contact':      'Contact Quantum Africa',
+  'legal':        'Legal — Quantum Africa terms & privacy',
+};
+const SEO_DESC_BY_ROUTE = {
+  'about':        'Quantum Africa is a pan-African network of students, researchers, professionals and innovators building a homegrown quantum ecosystem across the continent through chapters, research, education and events.',
+  'impact':       'See the concrete impact of Quantum Africa across Africa: launched national chapters, workshop participants, research projects, community stories and measurable outcomes in education and research.',
+  'education':    'Quantum Africa runs learning programmes for African students: workshops, webinars, peer groups, quantum tutoring and training paths in quantum computing, quantum information and quantum machine learning.',
+  'tutor':        'Book 1-on-1 quantum computing tutoring with vetted Quantum Africa tutors — Qiskit, quantum algorithms, quantum ML, undergraduate quantum mechanics, exam prep and more.',
+  'research':     'Open-source and collaborative research projects led by Quantum Africa contributors across Africa: quantum ML, quantum computing for healthcare, materials discovery, QKD and education tools.',
+  'chapters':     'National Quantum Africa chapters bring together students, researchers and professionals in countries across Africa. Start a chapter or join an existing one near you.',
+  'events':       'Explore upcoming and past Quantum Africa events: hands-on workshops, expert webinars, seminars and the annual Quantum Africa conference.',
+  'events/workshops':   'Hands-on workshops on quantum computing, Qiskit, quantum algorithms and quantum machine learning, organised by Quantum Africa chapters and partners across Africa.',
+  'events/webinars':   'Free expert-led Quantum Africa webinars covering recent research, careers in quantum, African chapter stories, tooling workshops and more.',
+  'conference':   'The annual Quantum Africa conference brings together the African quantum research community, global leaders, students and industry for talks, posters, workshops and hackathons.',
+  'support':      'Partner with, sponsor or donate to Quantum Africa and help scale a connected, homegrown quantum ecosystem across the African continent.',
+  'opportunities':'Curated quantum computing opportunities for Africans: quantum jobs, internships, PhD positions, research fellowships, travel grants and hackathons from around the world.',
+  'people':       'Meet the team, advisors and researchers behind Quantum Africa — volunteers, organisers, chapter leads and researchers across the continent and beyond.',
+  'partners':     'Quantum Africa works with academic institutions, industry partners, non-profits and quantum initiatives worldwide to build a pan-African quantum ecosystem.',
+  'universities': 'The Quantum Africa Universities Programme helps students start and run quantum clubs at their African universities, with mentorship, materials and event support.',
+  'students':     'Resources for African students to get started in quantum computing: chapters, workshops, learning paths, tutoring, quantum internships, grants and community support.',
+  'researchers':  'Support for African researchers working in quantum computing: research projects, collaboration, event grants, speaking opportunities and our community network.',
+  'news':         'Latest news, chapter updates, community stories and feature articles from the Quantum Africa network.',
+  'join':         'Join the Quantum Africa network as an individual member, volunteer, chapter lead or institutional partner.',
+  'contact':      'Get in touch with the Quantum Africa team: email contact@quantum-africa.org for chapters, partnerships, press, research collaborations and events.',
+  'legal':        'Terms of use, cookies and privacy policy for quantum-africa.org.',
+};
+
+const SEO_SITE = 'Quantum Africa';
+const SEO_SEP = ' — ';
+const SEO_OG_IMG = document.querySelector('meta[property="og:image"]')
+  ? document.querySelector('meta[property="og:image"]').getAttribute('content') || ''
+  : '';
+const SEO_TWITTER_SITE = '@QuantumAfricaHQ';
+
+function _ensureMeta(selector, attrs) {
+  let el = document.head.querySelector(selector);
+  if (!el) { el = document.createElement('meta'); Object.keys(attrs).forEach(k => el.setAttribute(k, attrs[k])); document.head.appendChild(el); }
+  return el;
+}
+
+function setHead(title, desc, opts) {
+  opts = opts || {};
+  const t = (title || SEO_TITLE_HOME).replace(/\s+/g,' ').trim();
+  const d = (desc  || SEO_DESC_HOME ).replace(/\s+/g,' ').trim();
+  document.title = t;
+
+  _ensureMeta('meta[name="description"]',   {name:'description'}).setAttribute('content', d);
+  _ensureMeta('meta[name="author"]',      {name:'author'}).setAttribute('content', SEO_SITE);
+  _ensureMeta('meta[name="robots"]',      {name:'robots'}).setAttribute('content', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
+
+  _ensureMeta('meta[property="og:title"]',       {'property':'og:title'}).setAttribute('content', t);
+  _ensureMeta('meta[property="og:description"]', {'property':'og:description'}).setAttribute('content', d);
+  _ensureMeta('meta[property="og:type"]',        {'property':'og:type'}).setAttribute('content', opts.ogType || 'website');
+  _ensureMeta('meta[property="og:site_name"]',   {'property':'og:site_name'}).setAttribute('content', SEO_SITE);
+  _ensureMeta('meta[property="og:locale"]',      {'property':'og:locale'}).setAttribute('content', 'en_GB');
+  _ensureMeta('meta[property="og:url"]',         {'property':'og:url'}).setAttribute('content', opts.url || (location.origin + location.pathname + location.hash));
+  if (SEO_OG_IMG) {
+    _ensureMeta('meta[property="og:image"]',         {'property':'og:image'}).setAttribute('content', SEO_OG_IMG);
+    _ensureMeta('meta[property="og:image:secure_url"]',{'property':'og:image:secure_url'}).setAttribute('content', SEO_OG_IMG);
+    _ensureMeta('meta[property="og:image:type"]',     {'property':'og:image:type'}).setAttribute('content', opts.imgType || 'image/png');
+    _ensureMeta('meta[property="og:image:width"]',    {'property':'og:image:width'}).setAttribute('content', opts.imgWidth || '1200');
+    _ensureMeta('meta[property="og:image:height"]',   {'property':'og:image:height'}).setAttribute('content', opts.imgHeight || '630');
+    _ensureMeta('meta[property="og:image:alt"]',      {'property':'og:image:alt'}).setAttribute('content', opts.imgAlt || (SEO_SITE + ' logo — a connected, homegrown quantum ecosystem across Africa'));
+  }
+
+  _ensureMeta('meta[name="twitter:card"]',        {name:'twitter:card'}).setAttribute('content', opts.twCard || 'summary_large_image');
+  _ensureMeta('meta[name="twitter:site"]',        {name:'twitter:site'}).setAttribute('content', SEO_TWITTER_SITE);
+  _ensureMeta('meta[name="twitter:title"]',       {name:'twitter:title'}).setAttribute('content', t);
+  _ensureMeta('meta[name="twitter:description"]', {name:'twitter:description'}).setAttribute('content', d);
+  if (SEO_OG_IMG) {
+    _ensureMeta('meta[name="twitter:image"]',    {name:'twitter:image'}).setAttribute('content', SEO_OG_IMG);
+    _ensureMeta('meta[name="twitter:image:alt"]',{name:'twitter:image:alt'}).setAttribute('content', opts.imgAlt || (SEO_SITE + ' logo'));
+  }
+
+  const c = _ensureMeta('link[rel="canonical"]', {rel:'canonical'});
+  if (c.tagName.toLowerCase() === 'link') c.setAttribute('href', opts.url || (location.origin + location.pathname + location.hash));
+}
+
+function applyRouteSEO(path, routeArgs) {
+  routeArgs = routeArgs || null;
+  const p = (path || '').replace(/^#/,'').replace(/^\//,'') || '';
+  const top = p.split('/')[0] || '';
+  const key = p || '/';
+  const topTitle = SEO_TITLE_BY_ROUTE[top]  ? SEO_TITLE_BY_ROUTE[top]  : (SEO_TITLE_BY_ROUTE[key]  || null);
+  const topDesc  = SEO_DESC_BY_ROUTE [top]  ? SEO_DESC_BY_ROUTE [top]  : (SEO_DESC_BY_ROUTE [key]  || null);
+
+  let t = topTitle;
+  let d = topDesc;
+  let extras = {};
+
+  if (p === '' || p === '/') {
+    t = SEO_TITLE_HOME; d = SEO_DESC_HOME;
+  } else if (p.startsWith('news/')) {
+    const slug = routeArgs && routeArgs[1] ? routeArgs[1] : p.slice('news/'.length);
+    const a = (typeof ARTICLES !== 'undefined' && Array.isArray(ARTICLES))
+      ? ARTICLES.find(x => x && x.slug === slug)
+      : null;
+    if (a) {
+      t = (a.title || 'Article') + SEO_SEP + SEO_SITE;
+      d = (a.summary || a.type ? 'News article' + (a.type ? ' · '+a.type : '') + ' from Quantum Africa.' : SEO_DESC_HOME);
+      extras = { ogType:'article' };
+    } else {
+      t = topTitle || ('Article' + SEO_SEP + SEO_SITE);
+      d = topDesc  || SEO_DESC_HOME;
+    }
+  } else if (p.startsWith('research/')) {
+    const slug = routeArgs && routeArgs[1] ? routeArgs[1] : p.slice('research/'.length);
+    const proj = (typeof PROJECTS !== 'undefined' && Array.isArray(PROJECTS))
+      ? PROJECTS.find(x => x && x.slug === slug)
+      : null;
+    if (proj) {
+      t = (proj.title || 'Project') + SEO_SEP + SEO_SITE;
+      d = (proj.short || proj.area ? 'Open research project' + (proj.area ? ' · '+proj.area : '') + ' by Quantum Africa contributors.' : SEO_DESC_HOME);
+      extras = { ogType:'article' };
+    } else {
+      t = topTitle || ('Research' + SEO_SEP + SEO_SITE);
+      d = topDesc  || SEO_DESC_HOME;
+    }
+  } else if (p.startsWith('chapters/')) {
+    const slug = routeArgs && routeArgs[1] ? routeArgs[1] : p.slice('chapters/'.length);
+    t = (slug.charAt(0).toUpperCase() + slug.slice(1).replace(/[-_]/g,' ') + ' Chapter') + SEO_SEP + SEO_SITE;
+    d = 'Quantum Africa chapter page for ' + (slug.replace(/[-_]/g,' ') || slug) + '. Join the local quantum community, events and chapters activities across Africa.';
+  } else if (p.startsWith('events/') && !SEO_TITLE_BY_ROUTE[p]) {
+    const slug = routeArgs && routeArgs[1] ? routeArgs[1] : p.slice('events/'.length);
+    const e = (typeof EVENTS !== 'undefined' && Array.isArray(EVENTS))
+      ? EVENTS.find(x => x && x.slug === slug)
+      : null;
+    if (e) {
+      t = (e.title || e.n || 'Event') + SEO_SEP + SEO_SITE;
+      d = (e.type ? e.type + ' · ' : '') + 'Quantum Africa event' + (e.city || e.country ? ' in '+ (e.city || '') + (e.city && e.country ? ', ' : '') + (e.country || '') : '') + '.';
+      extras = { ogType:'article' };
+    }
+  } else if (p.startsWith('conference/')) {
+    const slug = routeArgs && routeArgs[1] ? routeArgs[1] : p.slice('conference/'.length);
+    const conf = (typeof CONF !== 'undefined' && Array.isArray(CONF))
+      ? CONF.find(x => x && x.slug === slug)
+      : null;
+    if (conf) {
+      t = (conf.n || conf.title || ('QA ' + (conf.year || ''))) + SEO_SEP + SEO_SITE;
+      d = 'Quantum Africa conference edition ' + (conf.year || slug) + (conf.city ? ' in '+ conf.city : '') + (conf.country ? ', '+conf.country : '') + ' — programme, organising committee, speakers and sponsors.';
+    }
+  } else if (p.startsWith('people/')) {
+    t = SEO_TITLE_BY_ROUTE['people'] || ('People' + SEO_SEP + SEO_SITE);
+    d = SEO_DESC_BY_ROUTE ['people'] || SEO_DESC_HOME;
+  }
+
+  if (!t) t = (key.charAt(0).toUpperCase() + key.slice(1).replace(/\//g,' · ') + SEO_SEP + SEO_SITE);
+  if (!d) d = SEO_DESC_HOME;
+
+  setHead(t, d, extras);
+}
+
 function render(){
   const path = currentPath();
   __sec = 0;
   let html = null;
+  let matchedArgs = null;
+  let matchedPathKey = null;
   for(const [re, fn] of ROUTES){
     const m = path.match(re);
-    if(m){ html = fn(m); break; }
+    if(m){ html = fn(m); matchedArgs = m; matchedPathKey = path; break; }
   }
   const view = document.getElementById('view');
   view.innerHTML = html === null ? PAGES.notFound() : html;
+  try { applyRouteSEO(matchedPathKey || path, matchedArgs); } catch (e) { try { setHead(SEO_TITLE_HOME, SEO_DESC_HOME); } catch(_) {} }
   window.scrollTo({top:0, behavior:'instant'});
   markActiveNav(path);
   initReveal();

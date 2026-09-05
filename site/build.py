@@ -79,6 +79,26 @@ def resolve_icon():
     return b64(os.path.join(HERE, 'logo-mark.png'))
 
 
+def resolve_og_image():
+    """Pick the best social card image.
+
+    SEO default: the main QA logo mark already works for social; if someone
+    adds a dedicated 1200x630 share card at public/media/logo/share.png we
+    prefer that, otherwise fall back to logo-mark.png (b64) as a reliable
+    built-in default so og:image and twitter:image are always valid.
+    """
+    candidates = [
+        os.path.join(PUBLIC, 'media', 'logo', 'share.png'),
+        os.path.join(PUBLIC, 'media', 'logo', 'share.jpg'),
+        os.path.join(PUBLIC, 'media', 'logo', 'share.jpeg'),
+        os.path.join(PUBLIC, 'media', 'logo', 'icon.png'),
+    ]
+    for c in candidates:
+        if os.path.exists(c):
+            return b64(c)
+    return b64(os.path.join(HERE, 'logo-mark.png'))
+
+
 def main():
     shell = open(os.path.join(HERE, 'shell.html'), encoding='utf-8').read()
     art = open(os.path.join(HERE, 'art.js'), encoding='utf-8').read()
@@ -129,7 +149,13 @@ def main():
     shell = shell.replace('__LOGO_GOLD_W__',  resolve_logo('__LOGO_GOLD_W__',  'dark',  'logo-gold-w.png'))
     shell = shell.replace('__LOGO_LIGHT__',   resolve_logo('__LOGO_LIGHT__',   'light', 'logo-light.png'))
     shell = shell.replace('__LOGO_DARK__',    resolve_logo('__LOGO_DARK__',    'dark',  'logo-dark.png'))
-    shell = shell.replace('__LOGO_MARK__',    resolve_icon())
+    ICON = resolve_icon()
+    OG   = resolve_og_image()
+    shell = shell.replace('__LOGO_MARK__',        ICON)
+    shell = shell.replace('__LOGO_MARK_32__',     ICON)
+    shell = shell.replace('__LOGO_MARK_192__',    ICON)
+    shell = shell.replace('__LOGO_MARK_APPLE__',  ICON)
+    shell = shell.replace('__OG_IMAGE__',         OG)
 
     data = ('const AFRICA = ' + json.dumps(
                 {'view': af['view'], 'paths': af['paths'], 'bbox': af['bbox']},
