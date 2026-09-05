@@ -1,0 +1,31 @@
+{
+  "name": "Quantum Africa",
+  "short_name": "Quantum Africa",
+  "description": "Quantum Africa is a pan-African organization building capacity in quantum science and technology through education, research, talent development, university partnerships and global collaboration.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#001F3F",
+  "theme_color": "#001F3F",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/media/logo/icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

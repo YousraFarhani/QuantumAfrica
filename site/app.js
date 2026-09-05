@@ -3843,7 +3843,7 @@ function currentPath(){
 }
 
 const SEO_TITLE_HOME = 'Quantum Africa';
-const SEO_DESC_HOME  = 'Quantum Africa is building a connected quantum ecosystem across the continent: national chapters, research projects, workshops, webinars, quantum jobs and fellowships, and learning programmes for African students.';
+const SEO_DESC_HOME  = 'Quantum Africa is a pan-African organization building capacity in quantum science and technology through education, research, talent development, university partnerships and global collaboration.';
 const SEO_TITLE_BY_ROUTE = {
   'about':        'About Quantum Africa — Building a pan-African quantum community',
   'impact':       'Impact — Quantum Africa projects, chapters and community outcomes',
