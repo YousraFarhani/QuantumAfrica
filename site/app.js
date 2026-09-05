@@ -2055,22 +2055,22 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
   ${africaWatermark('wm-hero')}
 </div></section>
 
-<section class="sec flush"><div class="wrap">
-  <div class="series-bar">
+<section class="sec flush" style="padding-top:0"><div class="wrap">
+  <div class="series-bar tight">
     <span>${cx('pages.workshops.barLbl1','Series')} <b>QML4Africa</b></span>
     <span>${cx('pages.workshops.barLbl2','Editions delivered')} <b>2</b></span>
-    <span>${cx('pages.workshops.barLbl3','Format')} <b>Online &amp; in-person</b></span>
-    <span>${cx('pages.workshops.barLbl4','Participants')} <b>${pht(cx('pages.workshops.barVal4','Total participants'))}</b></span>
-    <span>${cx('pages.workshops.barLbl5','Partners')} <b>${pht(cx('pages.workshops.barVal5','Number of partners'))}</b></span>
+    <span>${cx('pages.workshops.barLbl3','Format')} <b>In person</b></span>
+    <span>${cx('pages.workshops.barLbl4','Participants')} <b>+250</b></span>
   </div>
-  <div class="editions">
+  <div class="editions tight">
     ${eds.map((e,i)=>{
       const datesLine =
         e.edition==='01' ? 'Delivered September 2025, Kigali, Rwanda' :
         e.edition==='02' ? 'Delivered August 2026, Lagos, Nigeria' : '';
       const editionHref = e.editionUrl ? e.editionUrl : `#/events/${e.slug}`;
       const cardImg = e.image
-        ? `<img class="edition-photo" src="${esc(mediaUrl(e.image))}" alt="${esc(e.title)}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0">`
+        ? `<img class="edition-photo" src="${esc(mediaUrl(e.image))}" alt="${esc(e.title)}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0">
+           <div class="edition-overlay" aria-hidden="true"></div>`
         : '';
       const titleShort = e.subhead || e.title.replace('Quantum Machine Learning 4 Africa — ','');
       const copy =
@@ -2086,7 +2086,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
           ${copy ? `<p>${esc(copy)}</p>` : ''}
           <span class="efoot">
             <span class="pill ${pillCls}">${esc(e.status||(e.when==='upcoming'?'Upcoming':'Delivered'))}</span>
-            ${datesLine ? `<span class="kv" style="color:rgba(255,255,255,.72)">${esc(datesLine)}</span>` : ''}
+            ${datesLine ? `<span class="kv" style="color:rgba(255,255,255,.78)">${esc(datesLine)}</span>` : ''}
             <span class="link-a">${cx('pages.workshops.editionPage', 'Edition page')} <span class="ar" aria-hidden="true">&rarr;</span></span>
           </span>
         </div>
@@ -2105,13 +2105,13 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec" style="padding-top:40px"><div class="wrap">
   ${sectionHead(
     cx('pages.workshops.seriesEyebrow', 'The Series'),
     cx('pages.workshops.seriesTitle', 'What QML4Africa Is'),
     'QML4Africa is a practical learning initiative connecting African students and researchers with the emerging field of quantum machine learning.'
   )}
-  <div class="prose mt24" style="max-width:72ch;margin:0 auto 28px">
+  <div class="prose mt16" style="max-width:72ch;margin:0 auto 20px">
     <p>The series combines accessible theory, hands-on programming, expert-led sessions, and collaborative learning to help participants move from understanding quantum machine learning concepts to implementing them in practice.</p>
   </div>
   <div class="grid g3">
@@ -2128,24 +2128,53 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
       <p>${cx('pages.workshops.card3Body','Participants gain a practical foundation in quantum machine learning, experience working with quantum programming tools, and a clearer understanding of how quantum methods can be applied to machine learning problems.<br><br>The workshops also provide opportunities to connect with researchers, peers, and the wider African quantum community and identify pathways for further learning and research.')}</p>
     </div></div>
   </div>
-  <div class="mt48 grid g2">
-    <div class="panel"><h5>${cx('pages.workshops.panel1Head', 'Organisers &amp; Partners')}</h5>
-      <p class="small">${cx('pages.workshops.panel1Body', 'QML4Africa is organized in collaboration with DeepLearning Indaba.')}</p></div>
-    <div class="panel"><h5>${cx('pages.workshops.panel2Head', 'Recordings &amp; materials')}</h5>
-      <p class="small">${pht(cx('pages.workshops.panel2Body', 'Video links, slides and notebooks for each edition'))}</p></div>
+  <div class="mt32 grid g2">
+    <div class="panel">
+      <h5 style="margin-bottom:14px">${cx('pages.workshops.panel1Head', 'Organisers &amp; Partners')}</h5>
+      <div class="partner-row">
+        <div class="partner-logo" style="background:#fff;padding:12px 14px;border-radius:8px;border:1px solid var(--line)">
+          <img src="${esc(mediaUrl('/media/workshops/indaba-logo.png'))}" alt="DeepLearning Indaba logo" loading="lazy" style="max-height:56px;width:auto;max-width:100%;display:block">
+        </div>
+        <div class="partner-bio">
+          <p class="small" style="margin:0 0 6px"><b>DeepLearning Indaba</b></p>
+          <p class="small" style="margin:0;color:var(--ink-2)">${cx('pages.workshops.panel1Body', 'QML4Africa is organized in collaboration with DeepLearning Indaba.')}</p>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h5 style="margin-bottom:14px">${cx('pages.workshops.panel2Head', 'Recordings &amp; materials')}</h5>
+      <a class="yt-card rv" href="https://www.youtube.com/watch?v=6rdC1lh8-lI" target="_blank" rel="noopener noreferrer">
+        <span class="yt-thumb">
+          <img src="https://img.youtube.com/vi/6rdC1lh8-lI/hqdefault.jpg" alt="QML4Africa recording on YouTube" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:8px 0 0 8px">
+          <span class="yt-play" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </span>
+        <span class="yt-body">
+          <span class="yt-title">QML4Africa — Workshop recordings</span>
+          <span class="yt-sub">Watch on YouTube · 6rdC1lh8-lI</span>
+          <span class="yt-cta">Open video <span class="ar" aria-hidden="true">&rarr;</span></span>
+        </span>
+      </a>
+    </div>
   </div>
 </div></section>
 
-<section class="sec tint"><div class="wrap">
+<section class="sec tint" style="padding-top:40px"><div class="wrap">
   ${sectionHead(
     cx('pages.workshops.galleryEyebrow', 'Gallery'),
     cx('pages.workshops.galleryTitle', 'From the workshops'),
     cx('pages.workshops.galleryLede', '')
   )}
-  <div class="grid g4">${['/media/edition1.JPG','/media/edition2.jpeg'].filter(Boolean).concat(['kernel','lattice']).map((src,i) => {
-    const isImg = typeof src === 'string' && /\\.(jpe?g|png|webp|svg)/i.test(src);
-    if (isImg) return `<div class="slot short filled rv"><img src="${esc(mediaUrl(src))}" alt="Edition ${i+1} photograph" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`;
-    return cimg('pages.workshops.galleryImage'+(i+1),'Workshop photograph','1600×900 · JPG','short',src);
+  <div class="grid g4">${[
+    '/media/workshops/1786655195296.jpeg',
+    '/media/workshops/1786655195534.jpeg',
+    '/media/workshops/1786655195632.jpeg',
+    '/media/workshops/1786655195820.jpeg',
+    '/media/edition1.JPG',
+    '/media/edition2.jpeg'
+  ].filter(Boolean).map((src,i) => {
+    return `<div class="slot short filled rv"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`;
   }).join('')}</div>
 </div></section>
 
