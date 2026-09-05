@@ -1227,16 +1227,22 @@ const PILLAR_SVG = {
   lead:'<path d="M12 3.2 14.5 9l6.3.5-4.8 4.1 1.5 6.2L12 16.6 6.5 19.8 8 13.6 3.2 9.5 9.5 9z"/>'
 };
 function pillarCard(n, title, body, icon, cta, href){
-  return `<div class="pillar rv" style="position:relative;border-top:0;padding:0;background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--bg-2) 60%,transparent) 100%);border-radius:14px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease" onmouseenter="const el=this;el.style.transform='translateY(-4px)';el.style.boxShadow='0 18px 48px -20px rgba(0,0,0,.18)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='100%'" onmouseleave="const el=this;el.style.transform='translateY(0)';el.style.boxShadow='none';const bar=el.querySelector('.pbar');if(bar)bar.style.width='56px'">
-    <div style="display:flex;align-items:flex-start;gap:16px;padding:26px 24px 0;position:relative">
-      <span class="ic" style="width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:linear-gradient(135deg,var(--teal) 0%,color-mix(in srgb,var(--teal) 50%,var(--gold)) 100%);color:#fff;box-shadow:0 6px 18px -8px rgba(13,122,119,.6);flex:0 0 48px;margin:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PILLAR_SVG[icon]}</svg></span>
-      <span class="n" style="font-size:2.2rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--gold);margin:0 0 0 auto;font-variant-numeric:tabular-nums;opacity:.85">${n}</span>
+  const BLUE_DEEP = '#0B2A6B';
+  const BLUE_MID = '#1E4DB7';
+  const BLUE_LIGHT = '#3D7BED';
+  const BLUE_SOFT = 'color-mix(in srgb,'+BLUE_MID+' 10%,transparent)';
+  const BLUE_SOFT_BD = 'color-mix(in srgb,'+BLUE_MID+' 22%,transparent)';
+  return `<div class="pillar rv" style="position:relative;border-top:0;padding:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease,border-color .4s ease" onmouseenter="const el=this;el.style.transform='translateY(-4px)';el.style.boxShadow='0 22px 56px -28px rgba(11,42,107,.28)';el.style.borderColor='color-mix(in srgb,'+BLUE_MID+' 30%,transparent)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='100%'" onmouseleave="const el=this;el.style.transform='translateY(0)';el.style.boxShadow='none';el.style.borderColor='var(--line)';const bar=el.querySelector('.pbar');if(bar)bar.style.width='56px'">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,${BLUE_DEEP},${BLUE_MID},var(--gold))"></div>
+    <div style="display:flex;align-items:flex-start;gap:16px;padding:30px 26px 0;position:relative">
+      <span class="ic" style="width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,${BLUE_DEEP} 0%,${BLUE_MID} 55%,${BLUE_LIGHT} 100%);color:#fff;box-shadow:0 10px 26px -14px rgba(11,42,107,.55), inset 0 1px 0 rgba(255,255,255,.15);flex:0 0 52px;margin:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PILLAR_SVG[icon]}</svg></span>
+      <span class="n" style="font-size:2.3rem;font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--gold);margin:0 0 0 auto;font-variant-numeric:tabular-nums;opacity:.9">${n}</span>
     </div>
-    <div class="pbar" style="height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));width:56px;margin:14px 24px 0;transition:width .55s cubic-bezier(.2,.7,.3,1);border-radius:2px"></div>
-    <div style="padding:20px 24px 26px">
-      <h3 style="font-size:1.42rem;letter-spacing:-.032em;margin:0 0 8px;line-height:1.18">${title}</h3>
-      <p style="font-size:.92rem;color:var(--ink-2);max-width:34ch;margin:0 0 18px;line-height:1.55">${body}</p>
-      <a class="link-a" href="${href}" style="margin:0;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.92rem;padding:9px 14px;border-radius:9px;background:color-mix(in srgb,var(--teal) 12%,transparent);border:1px solid color-mix(in srgb,var(--teal) 30%,transparent);color:var(--teal);transition:all .3s ease;text-decoration:none" onmouseenter="this.style.background='var(--teal)';this.style.color='#fff';this.style.borderColor='var(--teal)'" onmouseleave="this.style.background='color-mix(in srgb,var(--teal) 12%,transparent)';this.style.color='var(--teal)';this.style.borderColor='color-mix(in srgb,var(--teal) 30%,transparent)'">${cta} <span class="ar" aria-hidden="true" style="margin-left:2px">&rarr;</span></a>
+    <div class="pbar" style="height:2px;background:linear-gradient(90deg,${BLUE_DEEP},${BLUE_MID},${BLUE_LIGHT});width:56px;margin:16px 26px 0;transition:width .55s cubic-bezier(.2,.7,.3,1);border-radius:2px"></div>
+    <div style="padding:22px 26px 28px">
+      <h3 style="font-size:1.48rem;letter-spacing:-.034em;margin:0 0 10px;line-height:1.16;color:var(--dark)">${title}</h3>
+      <p style="font-size:.92rem;color:var(--ink-2);max-width:34ch;margin:0 0 22px;line-height:1.6">${body}</p>
+      <a class="link-a" href="${href}" style="margin:0;display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.86rem;padding:10px 16px;border-radius:10px;background:${BLUE_SOFT};border:1px solid ${BLUE_SOFT_BD};color:${BLUE_MID};transition:all .3s ease;text-decoration:none;letter-spacing:.03em;text-transform:uppercase" onmouseenter="this.style.background='${BLUE_MID}';this.style.color='#fff';this.style.borderColor='${BLUE_MID}';this.style.boxShadow='0 10px 24px -14px rgba(30,77,183,.65)'" onmouseleave="this.style.background='${BLUE_SOFT}';this.style.color='${BLUE_MID}';this.style.borderColor='${BLUE_SOFT_BD}';this.style.boxShadow='none'">${cta} <span class="ar" aria-hidden="true" style="margin-left:2px">&rarr;</span></a>
     </div>
   </div>`;
 }
