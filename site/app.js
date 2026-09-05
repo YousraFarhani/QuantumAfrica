@@ -2366,7 +2366,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Webinars'}])}
   </div>
 </div></section>
 
-<section class="sec inv" style="padding-top:44px;padding-bottom:44px;background:linear-gradient(180deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 60%,#061224 60%) 0 0 / 100% 62px no-repeat,#061224;background-color:#061224;background-image:linear-gradient(180deg,color-mix(in srgb,var(--bg) 58%,#061224) 0%,#061224 100%)"><div class="wrap">
+<section class="sec inv" style="padding-top:44px;padding-bottom:44px"><div class="wrap">
   <div class="sec-idx"><span class="n" style="color:var(--vq-gold,var(--gold))">01</span><span class="lbl" style="color:rgba(255,255,255,.6)">Explore the Series</span><i></i></div>
   <div class="sec-title" style="color:#fff">
     <h2 style="color:#fff;margin:0 0 10px">${cx('pages.webinars.seriesTitle','Explore the Series')}</h2>
@@ -2376,7 +2376,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Webinars'}])}
   </div>
 </div></section>
 
-<section class="sec inv" style="padding-top:8px;padding-bottom:50px;background-color:#061224"><div class="wrap">
+<section class="sec inv" style="padding-top:8px;padding-bottom:50px"><div class="wrap">
   ${sectionHead(
     cx('pages.webinars.sessionsEyebrow','Featured Sessions'),
     cx('pages.webinars.sessionsTitle','Our webinar library'),
@@ -2409,7 +2409,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Webinars'}])}
   </div>
 </div></section>
 
-<section class="sec inv" style="padding-top:8px;padding-bottom:52px;background-color:#061224"><div class="wrap">
+<section class="sec inv" style="padding-top:8px;padding-bottom:52px"><div class="wrap">
   <div class="grid g2">
     <div class="panel" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:#fff">
       <h5 style="margin-bottom:14px;color:#fff">${cx('pages.webinars.panel1Head','Previous session recording')}</h5>
