@@ -27,7 +27,7 @@ const NAV = [
   ]},
   {label:'Events', href:'#/events', items:[
     {t:'Upcoming Events', h:'#/events', d:'What is happening next'},
-    {t:'Quantum Africa Webinars', h:'#/events', d:'The recurring webinar series'},
+    {t:'Quantum Africa Webinars', h:'#/events/webinars', d:'The recurring webinar series'},
     {t:'Workshops', h:'#/events/workshops', d:'QML4Africa and other hands-on training'},
     {t:'Past Events & Recordings', h:'#/events', d:'The full archive'},
   ]},
@@ -1616,7 +1616,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'
 </div></section>
 <section class="sec"><div class="wrap">
   <div class="grid g2">
-    ${[[cx('pages.education.p1Title','Quantum Africa Webinars'),cx('pages.education.p1Desc','A recurring online series where experts from around the world speak to the community about quantum computing, quantum technologies, applications, research, careers, policy and the future of the field.'),'current','#/events'],
+    ${[[cx('pages.education.p1Title','Quantum Africa Webinars'),cx('pages.education.p1Desc','A recurring online series where experts from around the world speak to the community about quantum computing, quantum technologies, applications, research, careers, policy and the future of the field.'),'current','#/events/webinars'],
        [cx('pages.education.p2Title','Quantum Machine Learning 4 Africa'),cx('pages.education.p2Desc','A hands-on workshop series on quantum machine learning. Two editions delivered.'),'current','#/events/workshops'],
        [cx('pages.education.p3Title','Quantum AI Tutor'),cx('pages.education.p3Desc','A free AI-powered tutor for learning quantum computing at your own pace, with structured learning pathways.'),'dev','#/tutor'],
        [cx('pages.education.p4Title','Learning Resources'),cx('pages.education.p4Desc','A curated library — courses, notebooks, reading lists, tools and recordings, filterable by topic and level.'),'dev','#/education'],
@@ -2240,6 +2240,140 @@ function nameGrid(list, cls, opts){
         : `<span class="nm-l tbd">${pht('profile link')}</span>`; })()}
   </div>`).join('')}</div>`;
 }
+
+/* ---------- QUANTUM AFRICA WEBINAR SERIES ---------- */
+PAGES.webinars = () => {
+  const shots = [
+    {n:'Screenshot 2026-09-05 at 11.03.59.png'},
+    {n:'Screenshot 2026-09-05 at 11.04.06.png'},
+    {n:'Screenshot 2026-09-05 at 11.04.15.png'},
+    {n:'Screenshot 2026-09-05 at 11.04.22.png'},
+    {n:'Screenshot 2026-09-05 at 11.04.32.png'},
+    {n:'Screenshot 2026-09-05 at 11.04.42.png'},
+  ];
+  return `
+${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Webinars'}])}
+<section class="phero"><div class="wrap">
+  <div class="sec-idx"><span class="lbl">${cx('pages.webinars.heroEyebrow', 'Online series')}</span><i></i></div>
+  <h1>${cx('pages.webinars.heroTitle', 'Quantum Africa Webinar Series')}</h1>
+  <p class="lede">${cx('pages.webinars.heroLede', 'Bringing Quantum Knowledge to Africa')}</p>
+  <div class="phero-meta"><a class="btn teal" href="#/join">${cx('pages.webinars.heroBtn1', 'Watch the next session')} <span class="ar" aria-hidden="true">&rarr;</span></a><a class="btn ghost" href="#/events">${cx('pages.webinars.heroBtn2', 'All events')}</a></div>
+  ${africaWatermark('wm-hero')}
+</div></section>
+
+<section class="sec flush" style="padding-top:0"><div class="wrap">
+  <div class="series-bar tight">
+    <span>${cx('pages.webinars.barLbl1','Series')} <b>Quantum Africa Webinars</b></span>
+    <span>${cx('pages.webinars.barLbl2','Sessions delivered')} <b>${shots.length}</b></span>
+    <span>${cx('pages.webinars.barLbl3','Format')} <b>Online</b></span>
+    <span>${cx('pages.webinars.barLbl4','Access')} <b>Free · Open to All</b></span>
+  </div>
+  <div class="wb-hero">
+    <div class="wb-hero-art" style="position:relative;border-radius:14px;overflow:hidden;
+      border:1px solid rgba(0,0,0,.06);box-shadow:0 18px 50px -22px rgba(6,12,24,.22),0 4px 14px -6px rgba(6,12,24,.08)">
+      <img class="wb-hero-img" src="${esc(mediaUrl('/media/webinar/Main.png'))}" alt="Quantum Africa Webinars" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0">
+      <div class="wb-hero-overlay" aria-hidden="true" style="position:absolute;inset:0;z-index:1;pointer-events:none;
+        background:linear-gradient(180deg,rgba(6,12,24,.18) 0%,rgba(6,12,24,.42) 52%,rgba(6,12,24,.82) 100%),
+          linear-gradient(90deg,rgba(6,12,24,.30) 0%,transparent 42%)"></div>
+      <div style="position:relative;z-index:2;display:flex;align-items:flex-end;min-height:300px;padding:30px 28px">
+        <div class="wb-hero-chip" style="max-width:480px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;
+            background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border:1px solid rgba(201,165,91,.34);
+            color:#fff;font-weight:700;font-size:.78rem;letter-spacing:.04em">
+              <span class="chip-dot" style="width:8px;height:8px;border-radius:999px;background:var(--teal,#44d3a7);display:inline-block"></span>
+              Online · Free to Join · Open to All
+            </span>
+          </div>
+          <p style="margin:0;color:rgba(255,255,255,.94);font-size:1rem;line-height:1.55;font-weight:500">
+            ${cx('pages.webinars.heroCopy','The Quantum Africa Webinar Series brings together leading researchers, educators, and practitioners from Africa and around the world to share knowledge, explore emerging quantum technologies, and connect with the continent’s growing quantum community.')}
+          </p>
+          <p style="margin:10px 0 0;color:rgba(255,255,255,.82);font-size:.92rem;line-height:1.5">
+            ${cx('pages.webinars.heroCopy2','From quantum computing and machine learning to optimization, communication, cryptography, and beyond, each session offers accessible insights into the technologies shaping the quantum future.')}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec inv" style="padding-top:44px;padding-bottom:44px;background:linear-gradient(180deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 60%,#061224 60%) 0 0 / 100% 62px no-repeat,#061224;background-color:#061224;background-image:linear-gradient(180deg,color-mix(in srgb,var(--bg) 58%,#061224) 0%,#061224 100%)"><div class="wrap">
+  <div class="sec-idx"><span class="n" style="color:var(--vq-gold,var(--gold))">01</span><span class="lbl" style="color:rgba(255,255,255,.6)">Explore the Series</span><i></i></div>
+  <div class="sec-title" style="color:#fff">
+    <h2 style="color:#fff;margin:0 0 10px">${cx('pages.webinars.seriesTitle','Explore the Series')}</h2>
+    <p style="margin:0;color:rgba(255,255,255,.78);max-width:680px;font-size:1rem;line-height:1.6">
+      ${cx('pages.webinars.seriesBody','Discover previous sessions, meet the experts who joined us, and access recordings and learning materials from our growing collection of quantum talks.')}
+    </p>
+  </div>
+</div></section>
+
+<section class="sec inv" style="padding-top:8px;padding-bottom:50px;background-color:#061224"><div class="wrap">
+  ${sectionHead(
+    cx('pages.webinars.sessionsEyebrow','Featured Sessions'),
+    cx('pages.webinars.sessionsTitle','Our webinar library'),
+    cx('pages.webinars.sessionsLede','Six sessions from the Quantum Africa Webinar Series — click a card to open the recording or explore the series archive.'),
+    {t:cx('pages.webinars.sessionsCta','Browse all sessions'),h:'#/events'}
+  )}
+  <div class="grid g3 web-shots" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+    ${shots.map((s,i)=>{
+      const idx = String(i+1).padStart(2,'0');
+      return `<a class="wb-shot rv" href="#/events" style="position:relative;display:block;border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:#0a1830;border:1px solid rgba(255,255,255,.06);box-shadow:0 10px 34px -18px rgba(0,0,0,.58)">
+        <img src="${esc(mediaUrl('/media/webinar/'+encodeURIComponent(s.n)))}" alt="Quantum Africa Webinar session ${idx}" loading="lazy"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0">
+        <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;pointer-events:none;
+          background:linear-gradient(180deg,rgba(6,12,24,.12) 0%,rgba(6,12,24,.48) 60%,rgba(6,12,24,.76) 100%),
+            linear-gradient(90deg,rgba(6,12,24,.16) 0%,transparent 40%)"></div>
+        <div style="position:relative;z-index:2;padding:14px 14px 16px;height:100%;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span style="display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:rgba(6,12,24,.56);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:.7rem;letter-spacing:.06em">${idx}</span>
+            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:rgba(201,165,91,.18);backdrop-filter:blur(6px);border:1px solid rgba(201,165,91,.34);color:#fff;font-weight:700;font-size:.68rem">
+              <span class="chip-dot" style="width:7px;height:7px;border-radius:999px;background:var(--teal,#44d3a7);display:inline-block"></span>
+              Webinar
+            </span>
+          </div>
+          <div style="align-self:flex-end;display:flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:.78rem">
+            <span>${cx('pages.webinars.sessionOpen','Open session')}</span>
+            <span class="ar" aria-hidden="true" style="color:var(--vq-gold,var(--gold))">&rarr;</span>
+          </div>
+        </div>
+      </a>`}).join('')}
+  </div>
+</div></section>
+
+<section class="sec inv" style="padding-top:8px;padding-bottom:52px;background-color:#061224"><div class="wrap">
+  <div class="grid g2">
+    <div class="panel" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:#fff">
+      <h5 style="margin-bottom:14px;color:#fff">${cx('pages.webinars.panel1Head','Previous session recording')}</h5>
+      <div class="partner-bio">
+        <p class="small" style="margin:0 0 10px;color:rgba(255,255,255,.86)"><b>${cx('pages.webinars.panel1Title','Missed a session?')}</b></p>
+        <p class="small" style="margin:0;color:rgba(255,255,255,.72)">${cx('pages.webinars.panel1Body','Catch up with our latest webinar recording — open the link to watch on YouTube.')}</p>
+      </div>
+    </div>
+    <a class="yt-card rv" href="https://www.youtube.com/watch?v=nzUaZw41Rk4" target="_blank" rel="noopener noreferrer">
+      <span class="yt-thumb">
+        <img src="https://img.youtube.com/vi/nzUaZw41Rk4/hqdefault.jpg" alt="Webinar recording nzUaZw41Rk4" loading="lazy">
+        <span class="yt-play" aria-hidden="true">
+          <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52,7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"/><path d="M 45,24 27,14v20z" fill="#fff"/></svg>
+        </span>
+      </span>
+      <span class="yt-meta"><b>${cx('pages.webinars.ytTitle','Quantum Africa Webinar — session recording')}</b><i>youtube.com · opens in a new tab</i></span>
+    </a>
+  </div>
+</div></section>
+
+<section class="sec tint" style="padding-top:40px"><div class="wrap">
+  ${sectionHead(
+    cx('pages.webinars.ctaEyebrow','Bring it to your campus'),
+    cx('pages.webinars.ctaTitle','Host the next webinar.'),
+    cx('pages.webinars.ctaLede','Invite a speaker, propose a topic, or co-host a webinar with Quantum Africa at your university or chapter.'),
+    null
+  )}
+  <div class="grid g2 mt18" style="max-width:760px">
+    <a class="panel rv cta-horiz" href="#/universities"><div class="cta-title">${cx('pages.webinars.cta1Title','University partnerships')} <span class="ar" aria-hidden="true">&rarr;</span></div><p>${cx('pages.webinars.cta1Body','Partner with us to bring webinars, workshops and learning programs to your campus.')}</p></a>
+    <a class="panel rv cta-horiz" href="#/contact"><div class="cta-title">${cx('pages.webinars.cta2Title','Get in touch')} <span class="ar" aria-hidden="true">&rarr;</span></div><p>${cx('pages.webinars.cta2Body','Suggest a speaker, propose a session topic, or join as a volunteer host.')}</p></a>
+  </div>
+</div></section>
+`;}
 
 /* ---------- QUANTUM AFRICA CONFERENCE SERIES ---------- */
 const CONF_FLAG = {'South Africa':'\u{1F1FF}\u{1F1E6}','Morocco':'\u{1F1F2}\u{1F1E6}','Tunisia':'\u{1F1F9}\u{1F1F3}','Rwanda':'\u{1F1F7}\u{1F1FC}'};
@@ -3230,6 +3364,7 @@ const ROUTES = [
   [/^\/chapters\/(.+)$/,           m  => PAGES.chapterDetail(m[1])],
   [/^\/events$/,                   () => PAGES.events()],
   [/^\/events\/workshops$/,         () => PAGES.workshops()],
+  [/^\/events\/webinars$/,         () => PAGES.webinars()],
   [/^\/events\/(.+)$/,             m  => PAGES.eventDetail(m[1])],
   [/^\/conference$/,                () => PAGES.conference()],
   [/^\/conference\/(.+)$/,         m  => PAGES.confEdition(m[1])],

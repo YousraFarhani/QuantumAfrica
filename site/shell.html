@@ -1159,6 +1159,26 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
 .sec.inv .mt28{margin-top:28px}
 
 /* ============================================================
+   WEBINAR SERIES
+   ============================================================ */
+.wb-hero{margin-top:22px}
+.wb-hero-art{min-height:320px;background:#0a1830}
+.wb-hero-img{transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.wb-hero-art:hover .wb-hero-img{transform:scale(1.015)}
+@media(max-width:720px){
+  .wb-hero-art{min-height:360px}
+  .wb-hero-chip .small{max-width:100%}
+}
+.wb-shot{text-decoration:none;color:inherit;transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s}
+.wb-shot:hover{transform:translateY(-4px);border-color:rgba(201,165,91,.42)!important;box-shadow:0 22px 56px -26px rgba(0,0,0,.75),0 6px 22px -8px rgba(0,0,0,.55)!important}
+@media(max-width:900px){
+  .grid.g3.web-shots{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:580px){
+  .grid.g3.web-shots{grid-template-columns:1fr!important}
+}
+
+/* ============================================================
    CONFERENCE SERIES — timeline
    ============================================================ */
 .tl{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:0;padding-top:34px}
