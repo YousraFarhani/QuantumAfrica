@@ -2074,8 +2074,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
         : '';
       const titleShort = e.subhead || e.title.replace('Quantum Machine Learning 4 Africa — ','');
       const copy =
-        e.edition==='01' ? cx('pages.workshops.editionCopy1','An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and practical implementation using quantum programming tools.') :
-        e.edition==='02' ? cx('pages.workshops.editionCopy2','Building on the foundations of the first edition, the second workshop explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.') :
+        e.edition==='01' ? cx('pages.workshops.editionCopy1','An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and quantum programming.') :
+        e.edition==='02' ? cx('pages.workshops.editionCopy2','Explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.') :
         '';
       const pillCls = (e.when==='upcoming'||e.status==='Planned') ? 'future' : 'current';
       return `<a class="edition rv" href="${editionHref}" ${e.editionUrl?'target="_blank" rel="noopener noreferrer"':''} style="position:relative;overflow:hidden">
@@ -2105,30 +2105,48 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
   </div>
 </div></section>
 
-<section class="sec" style="padding-top:40px"><div class="wrap">
-  ${sectionHead(
-    cx('pages.workshops.seriesEyebrow', 'The Series'),
-    cx('pages.workshops.seriesTitle', 'What is QML4Africa'),
-    'QML4Africa is a practical learning initiative connecting African students and researchers with the emerging field of quantum machine learning.'
-  )}
-  <div class="prose mt16" style="max-width:72ch;margin:0 auto 20px">
-    <p>The series combines accessible theory, hands-on programming, expert-led sessions, and collaborative learning to help participants move from understanding quantum machine learning concepts to implementing them in practice.</p>
+<section class="sec inv" style="padding-top:56px;padding-bottom:56px"><div class="wrap">
+  <div class="sec-idx"><span class="n" style="color:var(--vq-gold,var(--gold))">01</span><span class="lbl" style="color:rgba(255,255,255,.6)">The Series</span><i></i></div>
+  <div class="sec-title" style="color:#fff">
+    <h2 style="color:#fff">${cx('pages.workshops.seriesTitle', 'What is QML4Africa')}</h2>
   </div>
-  <div class="grid g3">
-    <div class="card pad rv"><div class="card-b">
+  <div class="ql-split">
+    <div class="ql-split-copy">
+      <p class="ql-lead-par"><b>QML4Africa</b> is a practical learning initiative connecting African students and researchers with the emerging field of quantum machine learning.</p>
+      <p class="ql-lede">The series combines accessible theory, hands-on programming, expert-led sessions, and collaborative learning to help participants move from understanding quantum machine learning concepts to implementing them in practice.</p>
+      <div class="ql-stats">
+        <span><b>3</b><em>Editions planned</em></span>
+        <span><b>2</b><em>Delivered so far</em></span>
+        <span><b>+250</b><em>Participants</em></span>
+      </div>
+    </div>
+    <div class="ql-split-art">
+      ${ringMark('ql-art-ring',{noSvg:true})}
+      ${patternPanel('lattice','light','ql-art-pat')}
+      <div class="ql-art-chip">
+        <span class="chip-dot"></span>
+        <span>Hands-on sessions · Expert-led · Community</span>
+      </div>
+    </div>
+  </div>
+  <div class="ql-cards">
+    <div class="ql-card rv">
+      <span class="ql-ico">${svgIcon('ui', 22)}</span>
       <h4>${cx('pages.workshops.card1Title','Who It Is For')}</h4>
       <p>${cx('pages.workshops.card1Body','Students and researchers in physics, mathematics, computer science, artificial intelligence, and data science, as well as learners with a strong interest in exploring the intersection of quantum computing and machine learning.')}</p>
-    </div></div>
-    <div class="card pad rv"><div class="card-b">
+    </div>
+    <div class="ql-card rv">
+      <span class="ql-ico">${svgIcon('data', 22)}</span>
       <h4>${cx('pages.workshops.card2Title','What It Covers')}</h4>
       <p>${cx('pages.workshops.card2Body','Quantum computing fundamentals, quantum machine learning concepts, quantum circuits and algorithms, variational methods, quantum neural networks, and practical implementation using quantum programming frameworks.<br><br>Participants work through hands-on examples and exercises designed to connect theoretical concepts with practical quantum machine learning applications.')}</p>
-    </div></div>
-    <div class="card pad rv"><div class="card-b">
+    </div>
+    <div class="ql-card rv">
+      <span class="ql-ico">${svgIcon('doc', 22)}</span>
       <h4>${cx('pages.workshops.card3Title','What You Leave With')}</h4>
       <p>${cx('pages.workshops.card3Body','Participants gain a practical foundation in quantum machine learning, experience working with quantum programming tools, and a clearer understanding of how quantum methods can be applied to machine learning problems.<br><br>The workshops also provide opportunities to connect with researchers, peers, and the wider African quantum community and identify pathways for further learning and research.')}</p>
-    </div></div>
+    </div>
   </div>
-  <div class="mt32 grid g2">
+  <div class="mt28 grid g2">
     <div class="panel">
       <h5 style="margin-bottom:14px">${cx('pages.workshops.panel1Head', 'Organisers &amp; Partners')}</h5>
       <div class="partner-row">

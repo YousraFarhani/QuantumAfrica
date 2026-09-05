@@ -1067,8 +1067,8 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
 .edition-overlay{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(10,18,32,.28) 0%,rgba(10,18,32,.52) 45%,rgba(10,18,32,.82) 100%),
-    linear-gradient(90deg,rgba(10,18,32,.42) 0%,transparent 50%);
+    linear-gradient(180deg,rgba(10,18,32,.44) 0%,rgba(10,18,32,.68) 40%,rgba(10,18,32,.90) 100%),
+    linear-gradient(90deg,rgba(10,18,32,.58) 0%,rgba(10,18,32,.22) 55%,transparent 80%);
 }
 .partner-row{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
 .partner-logo{display:inline-flex;align-items:center;justify-content:center;min-width:100px;min-height:72px}
@@ -1092,6 +1092,68 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
 .grid.g4{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:860px){.grid.g4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.grid.g4{grid-template-columns:1fr}}
+
+/* ============================================================
+   QML4AFRICA — Series section
+   ============================================================ */
+.ql-split{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:stretch;
+  margin:20px 0 32px;padding:28px 28px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.01) 100%);
+  border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden}
+.ql-split::before{content:"";position:absolute;top:-80px;right:-80px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(rgba(201,165,91,.18),transparent 65%);pointer-events:none}
+.ql-split-copy{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.ql-lead-par{color:#fff;font-size:1.1rem;line-height:1.5;margin:0;font-family:var(--f);font-weight:500;letter-spacing:-.01em}
+.ql-lead-par b{color:var(--vq-gold,var(--gold));font-weight:700}
+.ql-lede{color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.6;margin:0;max-width:60ch}
+.ql-stats{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:10px;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.1)}
+.ql-stats span{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.ql-stats b{font-family:var(--f);font-weight:800;font-size:1.65rem;line-height:1;color:var(--vq-gold,var(--gold));letter-spacing:-.02em}
+.ql-stats em{font-style:normal;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.ql-split-art{position:relative;z-index:1;border-radius:10px;overflow:hidden;min-height:200px;
+  background:#061224;border:1px solid rgba(255,255,255,.06)}
+.ql-art-pat{opacity:.28}
+.ql-art-ring{position:absolute;inset:auto -20px -30% -20%;pointer-events:none}
+.ql-art-chip{position:absolute;left:14px;bottom:14px;right:14px;z-index:2;
+  display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;
+  background:rgba(6,12,24,.72);backdrop-filter:blur(6px);
+  border:1px solid rgba(201,165,91,.3);font-family:var(--f);font-size:.76rem;font-weight:600;
+  color:#fff;letter-spacing:.02em}
+.chip-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);
+  box-shadow:0 0 0 3px rgba(40,160,140,.18);flex:none;animation:qlpulse 2.2s ease-in-out infinite}
+@keyframes qlpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+@media(max-width:860px){
+  .ql-split{grid-template-columns:1fr;padding:22px;gap:22px}
+  .ql-split-art{min-height:160px}
+}
+
+.ql-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:4px}
+.ql-card{position:relative;background:rgba(255,255,255,.035);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:22px 20px 22px;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),border-color .3s,background .3s;overflow:hidden}
+.ql-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:0 3px 3px 0;
+  background:linear-gradient(180deg,var(--vq-gold,var(--gold)),rgba(40,160,140,.75));
+  transform:scaleY(.4);transform-origin:center;opacity:.7;transition:transform .35s,opacity .3s}
+.ql-card:hover{transform:translateY(-4px);border-color:rgba(201,165,91,.35);background:rgba(255,255,255,.05)}
+.ql-card:hover::before{transform:scaleY(1);opacity:1}
+.ql-ico{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(201,165,91,.22),rgba(40,160,140,.16));
+  color:var(--vq-gold,var(--gold));border:1px solid rgba(201,165,91,.3);margin-bottom:14px}
+.ql-card h4{color:#fff;font-size:1.04rem;margin:0 0 8px;letter-spacing:-.015em}
+.ql-card p{color:rgba(255,255,255,.7);font-size:.9rem;line-height:1.6;margin:0}
+.ql-card p br{display:block;content:"";margin-top:12px}
+@media(max-width:900px){.ql-cards{grid-template-columns:1fr}}
+
+.sec.inv h5{color:#fff}
+.sec.inv .panel{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);color:#fff}
+.sec.inv .panel h5{color:#fff}
+.sec.inv .partner-bio .small b{color:#fff}
+.sec.inv .partner-bio .small, .sec.inv .panel p.small{color:rgba(255,255,255,.7)}
+.sec.inv .yt-card{background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.08)}
+.sec.inv .yt-title{color:#fff}
+.sec.inv .yt-sub{color:rgba(255,255,255,.5)}
+.sec.inv .mt28{margin-top:28px}
 
 /* ============================================================
    CONFERENCE SERIES — timeline
@@ -3909,8 +3971,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
         : '';
       const titleShort = e.subhead || e.title.replace('Quantum Machine Learning 4 Africa — ','');
       const copy =
-        e.edition==='01' ? cx('pages.workshops.editionCopy1','An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and practical implementation using quantum programming tools.') :
-        e.edition==='02' ? cx('pages.workshops.editionCopy2','Building on the foundations of the first edition, the second workshop explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.') :
+        e.edition==='01' ? cx('pages.workshops.editionCopy1','An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and quantum programming.') :
+        e.edition==='02' ? cx('pages.workshops.editionCopy2','Explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.') :
         '';
       const pillCls = (e.when==='upcoming'||e.status==='Planned') ? 'future' : 'current';
       return `<a class="edition rv" href="${editionHref}" ${e.editionUrl?'target="_blank" rel="noopener noreferrer"':''} style="position:relative;overflow:hidden">
@@ -3940,30 +4002,48 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
   </div>
 </div></section>
 
-<section class="sec" style="padding-top:40px"><div class="wrap">
-  ${sectionHead(
-    cx('pages.workshops.seriesEyebrow', 'The Series'),
-    cx('pages.workshops.seriesTitle', 'What is QML4Africa'),
-    'QML4Africa is a practical learning initiative connecting African students and researchers with the emerging field of quantum machine learning.'
-  )}
-  <div class="prose mt16" style="max-width:72ch;margin:0 auto 20px">
-    <p>The series combines accessible theory, hands-on programming, expert-led sessions, and collaborative learning to help participants move from understanding quantum machine learning concepts to implementing them in practice.</p>
+<section class="sec inv" style="padding-top:56px;padding-bottom:56px"><div class="wrap">
+  <div class="sec-idx"><span class="n" style="color:var(--vq-gold,var(--gold))">01</span><span class="lbl" style="color:rgba(255,255,255,.6)">The Series</span><i></i></div>
+  <div class="sec-title" style="color:#fff">
+    <h2 style="color:#fff">${cx('pages.workshops.seriesTitle', 'What is QML4Africa')}</h2>
   </div>
-  <div class="grid g3">
-    <div class="card pad rv"><div class="card-b">
+  <div class="ql-split">
+    <div class="ql-split-copy">
+      <p class="ql-lead-par"><b>QML4Africa</b> is a practical learning initiative connecting African students and researchers with the emerging field of quantum machine learning.</p>
+      <p class="ql-lede">The series combines accessible theory, hands-on programming, expert-led sessions, and collaborative learning to help participants move from understanding quantum machine learning concepts to implementing them in practice.</p>
+      <div class="ql-stats">
+        <span><b>3</b><em>Editions planned</em></span>
+        <span><b>2</b><em>Delivered so far</em></span>
+        <span><b>+250</b><em>Participants</em></span>
+      </div>
+    </div>
+    <div class="ql-split-art">
+      ${ringMark('ql-art-ring',{noSvg:true})}
+      ${patternPanel('lattice','light','ql-art-pat')}
+      <div class="ql-art-chip">
+        <span class="chip-dot"></span>
+        <span>Hands-on sessions · Expert-led · Community</span>
+      </div>
+    </div>
+  </div>
+  <div class="ql-cards">
+    <div class="ql-card rv">
+      <span class="ql-ico">${svgIcon('ui', 22)}</span>
       <h4>${cx('pages.workshops.card1Title','Who It Is For')}</h4>
       <p>${cx('pages.workshops.card1Body','Students and researchers in physics, mathematics, computer science, artificial intelligence, and data science, as well as learners with a strong interest in exploring the intersection of quantum computing and machine learning.')}</p>
-    </div></div>
-    <div class="card pad rv"><div class="card-b">
+    </div>
+    <div class="ql-card rv">
+      <span class="ql-ico">${svgIcon('data', 22)}</span>
       <h4>${cx('pages.workshops.card2Title','What It Covers')}</h4>
       <p>${cx('pages.workshops.card2Body','Quantum computing fundamentals, quantum machine learning concepts, quantum circuits and algorithms, variational methods, quantum neural networks, and practical implementation using quantum programming frameworks.<br><br>Participants work through hands-on examples and exercises designed to connect theoretical concepts with practical quantum machine learning applications.')}</p>
-    </div></div>
-    <div class="card pad rv"><div class="card-b">
+    </div>
+    <div class="ql-card rv">
+      <span class="ql-ico">${svgIcon('doc', 22)}</span>
       <h4>${cx('pages.workshops.card3Title','What You Leave With')}</h4>
       <p>${cx('pages.workshops.card3Body','Participants gain a practical foundation in quantum machine learning, experience working with quantum programming tools, and a clearer understanding of how quantum methods can be applied to machine learning problems.<br><br>The workshops also provide opportunities to connect with researchers, peers, and the wider African quantum community and identify pathways for further learning and research.')}</p>
-    </div></div>
+    </div>
   </div>
-  <div class="mt32 grid g2">
+  <div class="mt28 grid g2">
     <div class="panel">
       <h5 style="margin-bottom:14px">${cx('pages.workshops.panel1Head', 'Organisers &amp; Partners')}</h5>
       <div class="partner-row">
