@@ -2562,7 +2562,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     cx('pages.workshops.galleryTitle', 'From the workshops'),
     cx('pages.workshops.galleryLede', '')
   )}
-  <div class="grid g3">${[
+  <div class="grid g3 workshops-gallery">${[
     '/media/workshops/1786655195296.jpeg',
     '/media/workshops/1786655195534.jpeg',
     '/media/workshops/1786655195632.jpeg',
@@ -2570,7 +2570,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     '/media/edition1.JPG',
     '/media/edition2.jpeg'
   ].filter(Boolean).map((src,i) => {
-    return `<div class="slot filled rv" style="aspect-ratio:1/1;background:var(--bg-2);border-radius:10px"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;border-radius:10px"></div>`;
+    return `<div class="wg-cell"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" class="wg-img"></div>`;
   }).join('')}</div>
 </div></section>
 

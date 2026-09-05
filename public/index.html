@@ -1432,6 +1432,48 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
   color:var(--ink-2);border:1px solid var(--line-2);border-radius:2px;padding:6px 10px}
 .pp-l em{font-style:normal;opacity:.65;margin-left:6px;letter-spacing:.04em}
 .pp-more{margin-top:20px;display:inline-flex}
+
+/* ============================================================
+   WORKSHOPS 01 GALLERY — uniform size tiles with soft corners
+   ============================================================ */
+.grid.g3.workshops-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.workshops-gallery .wg-cell{
+  position:relative;
+  aspect-ratio:1/1;
+  width:100%;
+  min-width:0;
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--bg-3);
+  box-shadow:0 1px 3px rgba(0,31,63,.06),0 10px 26px -18px rgba(0,31,63,.32);
+  transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s;
+}
+.workshops-gallery .wg-cell:hover{
+  transform:translateY(-3px);
+  box-shadow:0 2px 6px rgba(0,31,63,.08),0 22px 42px -18px rgba(0,31,63,.45);
+}
+.workshops-gallery .wg-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  border-radius:14px;
+}
+@media(max-width:940px){
+  .grid.g3.workshops-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .workshops-gallery .wg-cell,.workshops-gallery .wg-img{border-radius:12px}
+}
+@media(max-width:620px){
+  .grid.g3.workshops-gallery{grid-template-columns:1fr;gap:12px}
+  .workshops-gallery .wg-cell{aspect-ratio:4/3}
+  .workshops-gallery .wg-cell,.workshops-gallery .wg-img{border-radius:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .workshops-gallery .wg-cell{transition:none}
+}
 </style>
 
 <div class="topline" aria-hidden="true"></div>
@@ -4501,7 +4543,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     cx('pages.workshops.galleryTitle', 'From the workshops'),
     cx('pages.workshops.galleryLede', '')
   )}
-  <div class="grid g3">${[
+  <div class="grid g3 workshops-gallery">${[
     '/media/workshops/1786655195296.jpeg',
     '/media/workshops/1786655195534.jpeg',
     '/media/workshops/1786655195632.jpeg',
@@ -4509,7 +4551,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
     '/media/edition1.JPG',
     '/media/edition2.jpeg'
   ].filter(Boolean).map((src,i) => {
-    return `<div class="slot filled rv" style="aspect-ratio:1/1;background:var(--bg-2);border-radius:10px"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;border-radius:10px"></div>`;
+    return `<div class="wg-cell"><img src="${esc(mediaUrl(src))}" alt="Workshop photograph ${i+1}" loading="lazy" class="wg-img"></div>`;
   }).join('')}</div>
 </div></section>
 
