@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-05T11:52:52+00:00",
+ "updated": "2026-09-05T13:25:20+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -119,7 +119,7 @@
     "group": "Leadership",
     "role": "Founder",
     "institution": "Niels Bohr Institute, NQCP, University of Copenhagen",
-    "country": "",
+    "country": "Algeria",
     "photo": "media/2ed89ea2fe4af44c.png",
     "bio": "Founder of Quantum Africa, and PhD in Quantum Computing at Niels Bohr Institute, NQCP, University of Copenhagen.",
     "fullBio": "Founder of Quantum Africa, and PhD in Quantum Computing at Niels Bohr Institute, NQCP, University of Copenhagen.",
@@ -138,7 +138,7 @@
     "group": "Leadership",
     "role": "Co-founder",
     "institution": "New York University of Abu Dhabi",
-    "country": "",
+    "country": "Morocco",
     "photo": "media/483d60563979fc02.webp",
     "bio": "Co-founder of Quantum Africa, Postdoc Researcher @ NYUAD, PhD in Quantum Computing from University Hassan II",
     "fullBio": "Co-founder of Quantum Africa, Postdoc Researcher @ NYUAD, PhD in Quantum Computing from University Hassan II",
@@ -156,7 +156,7 @@
     "group": "Leadership",
     "role": "HR Manager",
     "institution": "Breast Cancer Therapeutics Ltd",
-    "country": "",
+    "country": "Egypt",
     "photo": "media/b188b7ed575451f0.png",
     "bio": "HR Manager at Quantum Africa, IBM Qiskit advocate, Deep Learning & AI Engineer",
     "fullBio": "HR Manager at Quantum Africa, IBM Qiskit advocate, Deep Learning & AI Engineer",
@@ -380,7 +380,7 @@
     "group": "Leadership",
     "role": "Partnerships & Outreach Lead ",
     "institution": "Kwantom",
-    "country": "",
+    "country": "Nigeria",
     "photo": "media/dc139bda3eedc14e.jpg",
     "bio": "Lead of Partnerships & Outreach at Quantum Africa, Founder & CEO at Kwantom.",
     "fullBio": "Lead Partnerships & Outreach at Quantum Africa, Founder & CEO at Kwantom.",
