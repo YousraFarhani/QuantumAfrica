@@ -6124,8 +6124,8 @@ function rebuildFromContent(){
   }
   const articles = clist('articles');
   if(articles.length){
-    // Newest first, so the lead on the homepage really is the latest thing.
     ARTICLES = articles
+      .filter(a => a && (a.slug && String(a.slug).trim() !== ''))
       .map((a, i) => Object.assign({ slug: a.id || ('a' + (i+1)), art: 'network',
                                      read: a.read || '' }, a))
       .sort((x, y) => String(y.date || '').localeCompare(String(x.date || '')));
