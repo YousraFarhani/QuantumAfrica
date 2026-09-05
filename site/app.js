@@ -11,7 +11,7 @@ const NAV = [
     {t:'Mission & Vision', h:'#/about', d:'What we exist to do'},
     {t:'Team', h:'#/people', d:'The people behind Quantum Africa'},
     {t:'Our Impact', h:'#/impact', d:'Verified numbers and stories'},
-    {t:'Partners', h:'#/partners', d:'Universities, industry and strategic partners'},
+    {t:'Collaborators & Partners', h:'#/partners', d:'Universities, research institutions, industry partners and international organisations we work with'},
   ]},
   {label:'Programs', href:'#/education', items:[
     {t:'Quantum Education', h:'#/education', d:'Webinars, workshops, resources'},
@@ -1622,10 +1622,10 @@ ${highlightSection()}
 <section class="sec tint">
   <div class="wrap">
     ${sectionHead(
-      cx('pages.home.partnersEyebrow', 'Partners'),
-      cx('pages.home.partnersTitle', 'Working with institutions across Africa and beyond'),
+      cx('pages.home.partnersEyebrow', 'Collaborators & Partners'),
+      cx('pages.home.partnersTitle', 'Collaborators and partners, organisations we worked with'),
       cx('pages.home.partnersLede', ''),
-      {t:cx('pages.home.partnersCta', 'Become a partner'),h:'#/partners'}
+      {t:cx('pages.home.partnersCta', 'Work with us'),h:'#/partners'}
     )}
     <div class="logo-wall">${Array.from({length:8}).map(()=>`<div class="logo-cell rv"><span class="mk"></span>PARTNER LOGO</div>`).join('')}</div>
     <p class="xs mt24">${cx('pages.home.partnersNote', ' ')}</p>
@@ -1639,7 +1639,7 @@ ${highlightSection()}
     <h2 class="mt24">${cx('pages.home.ctaBandTitle', "Be Part of Africa's Quantum Future.")}</h2>
     <div class="btns">
       <a class="btn teal" href="#/join">${cx('pages.home.ctaBandBtn1', 'Join Quantum Africa')}</a>
-      <a class="btn inv ghost" href="#/partners">${cx('pages.home.ctaBandBtn2', 'Partner With Us')}</a>
+      <a class="btn inv ghost" href="#/partners">${cx('pages.home.ctaBandBtn2', 'Work with us')}</a>
       <a class="btn inv ghost" href="#/contact">${cx('pages.home.ctaBandBtn3', 'Support Our Mission')}</a>
     </div>
   </div>
@@ -3185,22 +3185,24 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
 
 /* ---------- PARTNERS ---------- */
 PAGES.partners = () => `
-${crumb([{t:'Home',h:'#/'},{t:'Partners'}])}
+${crumb([{t:'Home',h:'#/'},{t:'Collaborators & Partners',h:'#/partners'}])}
 <section class="phero"><div class="wrap">
-  <div class="sec-idx"><span class="lbl">${cx('pages.partners.heroEyebrow', 'Partners')}</span><i></i></div>
-  <h1 class="mt24">${cx('pages.partners.heroTitle', 'Partner With Quantum Africa')}</h1>
-  <p class="lede">${cx('pages.partners.heroLede', "Institutions building Africa's quantum workforce with us.")}</p>
+  <div class="sec-idx"><span class="lbl">${cx('pages.partners.heroEyebrow', 'Collaborators & Partners')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.partners.heroTitle', 'Collaborators and partners, organisations we worked with')}</h1>
+  <p class="lede">${cx('pages.partners.heroLede', "Universities, research institutions, industry partners and international organisations building Africa's quantum workforce with us.")}</p>
   <div class="phero-meta"><a class="btn teal sm" href="#/contact">${cx('pages.partners.heroBtn', "Let's collaborate")}</a></div>
 </div></section>
-${PARTNER_CATS.map(cat=>`
 <section class="sec"><div class="wrap">
-  ${sectionHead(cat,cat+' partners')}
-  <div class="grid g4">${Array.from({length:4}).map(()=>`<div class="card pad rv"><div class="ph-logo">PARTNER LOGO</div><div class="card-b" style="padding:16px 0 0"><h4>${pht(cx('pages.partners.cardName','Partner name'))}</h4><p>${pht(cx('pages.partners.cardBody','One line on the collaboration'))}</p></div></div>`).join('')}</div>
-</div></section>`).join('')}
+  ${sectionHead(
+    cx('pages.partners.wallEyebrow','Directory'),
+    cx('pages.partners.wallTitle','Collaborators & Partners')
+  )}
+  <div class="logo-wall">${Array.from({length:20}).map(()=>`<div class="logo-cell rv"><span class="mk"></span>PARTNER LOGO</div>`).join('')}</div>
+</div></section>
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
-    cx('pages.partners.becomeEyebrow', 'Become a partner'),
-    cx('pages.partners.becomeTitle', 'Six ways to work with us')
+    cx('pages.partners.becomeEyebrow', 'Work with us'),
+    cx('pages.partners.becomeTitle', 'Six ways to collaborate')
   )}
   <div class="grid g3">
     ${[[cx('pages.partners.w1Title','Universities'),cx('pages.partners.w1Body','Workshops, faculty training, student bootcamps, guest lectures, curriculum support and student chapters.')],
@@ -3225,24 +3227,12 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'University Program
   ${africaWatermark('wm-univ')}
   <div class="wrap">
     <div class="sec-idx"><span class="lbl">${cx('pages.universities.heroEyebrow', 'Programs · University partnerships')}</span><i></i></div>
-    <div class="split" style="align-items:center;gap:clamp(22px,3.6vw,48px)">
-      <div>
-        <h1 class="mt24" style="font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.05;letter-spacing:-.03em;max-width:20ch">${cx('pages.universities.heroTitle', 'Bring Quantum to Your Campus')}</h1>
-        <p class="lede mt16" style="max-width:52ch">${cx('pages.universities.heroLede', 'Structured programmes that help African universities launch, teach and grow quantum — from first workshops to long-term research partnerships.')}</p>
-        <div class="phero-meta mt24">
-          <a class="btn teal" href="#/contact">${cx('pages.universities.heroBtn1', 'Start a partnership')} <span class="ar" aria-hidden="true">&rarr;</span></a>
-          <a class="btn ghost" href="#/education">${cx('pages.universities.heroBtn2', 'Explore programmes')}</a>
-        </div>
-      </div>
-      <div class="panel" style="margin:0;padding:26px 24px;background:color-mix(in srgb,var(--teal) 4%,transparent);border:1px solid color-mix(in srgb,var(--teal) 14%,transparent)">
-        <div class="hero-eye" style="color:var(--teal-p)">${cx('pages.universities.heroPanelEyebrow','Impact at a glance')}</div>
-        <h3 style="margin-top:10px;font-size:1.3rem;letter-spacing:-.02em">${cx('pages.universities.heroPanelTitle','Trusted across 8 national chapters')}</h3>
-        <dl class="dl-list" style="margin-top:18px">
-          <div class="dl-item"><dt>${cx('pages.universities.kpiWorkshops','Workshops delivered')}</dt><dd style="font-weight:600;font-size:1.05rem">${cnum('stats.events',12)}+</dd></div>
-          <div class="dl-item"><dt>${cx('pages.universities.kpiChapters','Campus chapters')}</dt><dd style="font-weight:600;font-size:1.05rem">${cnum('stats.chapters',8)}</dd></div>
-          <div class="dl-item"><dt>${cx('pages.universities.kpiProjects','Open research projects')}</dt><dd style="font-weight:600;font-size:1.05rem">${cnum('stats.projects',4)}</dd></div>
-          <div class="dl-item"><dt>${cx('pages.universities.kpiMembers','Students & researchers')}</dt><dd style="font-weight:600;font-size:1.05rem">${cnum('stats.members',350)}+</dd></div>
-        </dl>
+    <div>
+      <h1 class="mt24" style="font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.05;letter-spacing:-.03em;max-width:20ch">${cx('pages.universities.heroTitle', 'Bring Quantum to Your Campus')}</h1>
+      <p class="lede mt16" style="max-width:52ch">${cx('pages.universities.heroLede', 'Structured programmes that help African universities launch, teach and grow quantum — from first workshops to long-term research partnerships.')}</p>
+      <div class="phero-meta mt24">
+        <a class="btn teal" href="#/contact">${cx('pages.universities.heroBtn1', 'Start a partnership')} <span class="ar" aria-hidden="true">&rarr;</span></a>
+        <a class="btn ghost" href="#/education">${cx('pages.universities.heroBtn2', 'Explore programmes')}</a>
       </div>
     </div>
   </div>
@@ -3252,10 +3242,10 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'University Program
   ${sectionHead(
     cx('pages.universities.whyEyebrow', 'What we bring'),
     cx('pages.universities.whyTitle', 'A complete quantum programme, staged for your context'),
-    cx('pages.universities.whyLede', 'Plug-and-play components that fit the reality of African departments: short timeframes, small budgets, ambitious students.')
+    cx('pages.universities.whyLede', '')
   )}
   <div class="grid g3">
-    ${[[cx('pages.universities.o1Title','Quantum computing workshops'),cx('pages.universities.o1Body','Hands-on Qiskit / PennyLane workshops delivered on your campus or online, for students and staff.'),'01'],
+    ${[[cx('pages.universities.o1Title','Quantum computing workshops'),cx('pages.universities.o1Body','Hands-on Qiskit / PennyLane  on your campus or online, for students and staff.'),'01'],
        [cx('pages.universities.o2Title','Faculty training'),cx('pages.universities.o2Body','Up-skilling workshops for lecturers so they can teach quantum topics with confidence long-term.'),'02'],
        [cx('pages.universities.o3Title','Student bootcamps'),cx('pages.universities.o3Body','Intensive short programmes taking students from zero to running real quantum circuits.'),'03'],
        [cx('pages.universities.o4Title','Guest lectures'),cx('pages.universities.o4Body','Speakers from the global quantum ecosystem invited into your classroom or lecture series.'),'04'],
@@ -3275,7 +3265,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'University Program
   ${sectionHead(
     cx('pages.universities.howEyebrow', 'How we start'),
     cx('pages.universities.howTitle', 'From first email to first workshop'),
-    cx('pages.universities.howLede', 'A lightweight four-stage onboarding designed for busy departments.')
+    cx('pages.universities.howLede', '')
   )}
   <div class="grid g2" style="gap:14px">
   ${[[cx('pages.universities.s1Title','Get in touch'),cx('pages.universities.s1Body','One email is enough. Tell us your department, your students and what you are trying to build.')],
@@ -3305,7 +3295,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Students'}])}
   <div class="wrap">
     <div class="sec-idx"><span class="lbl">${cx('pages.students.heroEyebrow', 'For students')}</span><i></i></div>
     <h1 style="max-width:14ch">${cx('pages.students.heroTitle', 'Start Your Quantum Journey')}</h1>
-    <p class="lede mt24">${cx('pages.students.heroLede', 'No lab, no supervisor, no course required. Pick what you are looking for.')}</p>
+    <p class="lede mt24">${cx('pages.students.heroLede', '')}</p>
   </div>
 </section>
 
