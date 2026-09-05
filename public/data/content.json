@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-05T13:25:20+00:00",
+ "updated": "2026-09-05T13:36:06+00:00",
  "content": {
   "site": {
    "name": "Quantum Africa",
@@ -390,6 +390,23 @@
     ],
     "chapter": "",
     "linkedin": "https://ng.linkedin.com/in/aliyuibrahimusman",
+    "scholar": "",
+    "orcid": ""
+   },
+   {
+    "name": "Jibril Abdullahi ",
+    "group": "",
+    "role": "R&D Department",
+    "institution": "Aliko Dangote University of Science and Technology",
+    "country": "Nigeria",
+    "photo": "media/cb3bef8754be21d5.png",
+    "bio": "",
+    "fullBio": "",
+    "interests": [
+     "Quantum Computing"
+    ],
+    "chapter": "",
+    "linkedin": "https://www.linkedin.com/in/jibril-abdullahi-594743331",
     "scholar": "",
     "orcid": ""
    }
