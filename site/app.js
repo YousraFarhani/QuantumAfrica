@@ -945,7 +945,19 @@ const PERSON_LINKS = [
 ];
 
 const PARTNER_CATS = ['Academic','Research','Industry','Education','Strategic'];
-let PARTNERS = [
+const BANNED_PARTNER_SUBSTRINGS = ['aims_logos-02', 'African Institute for Mathematical Sciences'];
+function _cleanPartnerList(list){
+  if(!Array.isArray(list)) return [];
+  const banned = BANNED_PARTNER_SUBSTRINGS.map(s => String(s||'').toLowerCase());
+  return list.filter(p => {
+    if(!p || typeof p !== 'object') return false;
+    const hay = [p.id, p.name, p.logo, p.note, p.country]
+      .map(v => String(v||'').toLowerCase())
+      .join(' | ');
+    return !banned.some(b => b && hay.includes(b));
+  });
+}
+let PARTNERS = _cleanPartnerList([
   {name:'Junction', category:'Industry', logo:'/media/partners/Junction_Logo.png',
    country:'Finland', url:''},
   {name:'Qiskit / IBM Quantum', category:'Industry',
@@ -960,8 +972,6 @@ let PARTNERS = [
   {name:'Quantum Circle', category:'Strategic',
    logo:'/media/partners/Screenshot 2026-09-05 at 16.30.07.png',
    country:'Pan-African', url:''},
-  {name:'African Institute for Mathematical Sciences (AIMS)', category:'Academic',
-   logo:'/media/partners/aims_logos-02.png', country:'Pan-African', url:''},
   {name:'Makerere University', category:'Academic',
    logo:'/media/partners/cropped-logo_top2.jpg', country:'Uganda', url:''},
   {name:'Deep Learning Indaba', category:'Education',
@@ -969,7 +979,7 @@ let PARTNERS = [
   {name:'Northern Quantum Initiative (NQI)', category:'Strategic',
    logo:'/media/partners/Screenshot 2026-09-05 at 16.41.50.png',
    country:'Pan-African', url:''},
-];
+]);
 function partnerLogoCell(p){
   const src = (p.logo||'').trim();
   const style = 'display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:220px;padding:4px;gap:0;';
@@ -983,7 +993,7 @@ function partnerLogoCell(p){
   return tag;
 }
 function partnerWall(limit){
-  const list = limit ? PARTNERS.slice(0, limit) : PARTNERS;
+  const list = limit ? _cleanPartnerList(PARTNERS).slice(0, limit) : _cleanPartnerList(PARTNERS);
   if (!list.length) {
     const n = limit || 8;
     return Array.from({length:n}).map(()=>`<div class="logo-cell rv"><span class="mk"></span>PARTNER LOGO</div>`).join('');
@@ -4636,10 +4646,10 @@ function rebuildFromContent(){
   _safe(() => {
     const partners = clist('partners');
     if(partners.length){
-      PARTNERS = partners.map(p => Object.assign({
+      PARTNERS = _cleanPartnerList(partners.map(p => Object.assign({
         name: p.name || 'Partner', category: p.category || 'Research',
         logo: p.logo || '', url: p.url || '', country: p.country || ''
-      }, p));
+      }, p)));
     }
   });
   _safe(() => {

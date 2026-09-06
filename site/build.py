@@ -122,7 +122,6 @@ def main():
             'Screenshot 2026-09-05 at 15.24.35.png': ('Africa Quantum Consortium', 'Strategic', 'Pan-African'),
             'Screenshot 2026-09-05 at 16.22.52.png': ('UNICC', 'International organisations', 'Global'),
             'Screenshot 2026-09-05 at 16.30.07.png': ('Quantum Circle', 'Strategic', 'Pan-African'),
-            'aims_logos-02.png': ('African Institute for Mathematical Sciences (AIMS)', 'Academic', 'Pan-African'),
             'cropped-logo_top2.jpg': ('Makerere University', 'Academic', 'Uganda'),
             'indaba-logo.png': ('Deep Learning Indaba', 'Education', 'Pan-African'),
             'Screenshot 2026-09-05 at 16.41.50.png': ('Northern Quantum Initiative (NQI)', 'Strategic', 'Pan-African'),
