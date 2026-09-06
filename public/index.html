@@ -4826,7 +4826,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
           <a class="btn teal" href="https://quantumafrica.org/" target="_blank" rel="noopener noreferrer">${cx('pages.conference.latestBtn1', 'Visit Quantum Africa Conference Website')} <span class="ar" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
-      <div>${cimg('pages.conference.latestImage','Photograph from Quantum Africa 7','2400×1350 · JPG','tall','network')}</div>
+      <div>${(() => { const v = cval('pages.conference.latestImage') || 'media/conference/kenitra.jpeg'; return `<div class="slot filled tall"><img src="${esc(_assetSrc(v))}" alt="Photograph from Quantum Africa 7" loading="lazy"></div>`; })()}</div>
     </div>
   </div>
 </section>
@@ -4904,7 +4904,7 @@ PAGES.confEdition = (slug) => {
 </div></section>` : '';
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Conference',h:'#/conference'},{t:'QA'+num}])}
-<section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.confEdition.heroImage','Photograph from this edition','2400×1000 · JPG','wide','lattice')}</div></section>
+<section class="sec flush" style="padding:0"><div class="wrap">${(() => { const v = cval('pages.confEdition.heroImage') || c.heroImage || 'media/conference/kenitra.jpeg'; return `<div class="slot wide filled"><img src="${esc(_assetSrc(v))}" alt="Photograph from Quantum Africa ${num}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`; })()}</div></section>
 <section class="phero" style="padding-top:34px"><div class="wrap">
   <div class="phero-meta" style="margin:0 0 16px">
     <span class="tag">${cx('pages.confEdition.editionPrefix', 'Edition')} ${esc(c.n)}</span>
@@ -4962,7 +4962,7 @@ ${c.sponsors?`
     <p>${cx('pages.confEdition.aboutPrefix1', 'Quantum Africa')} ${num} ${cx('pages.confEdition.aboutPrefix2', 'was held in')} ${esc(c.city)}, ${cCountry(c.country)}, ${esc(c.dates)}.</p>
     <h3>${cx('pages.confEdition.progHead', 'Programme')}</h3><p>${pht(cx('pages.confEdition.progBody', 'Session titles, talk titles and schedule'))}</p>
     <h3>${cx('pages.confEdition.photosHead', 'Photographs')}</h3>
-    <div class="grid g3 mt16">${['circuit','wave','network'].map((k,i)=>cimg('pages.confEdition.photo'+(i+1),'Conference photograph','1200×800 · JPG','short',k)).join('')}</div>
+    <div class="grid g3 mt16">${[1,2,3].map((i)=>{ const v = cval('pages.confEdition.photo'+i) || (Array.isArray(c.gallery) && c.gallery[i-1]) || (c.photos && c.photos[i-1]) || 'media/conference/kenitra.jpeg'; return `<div class="slot filled short"><img src="${esc(_assetSrc(v))}" alt="Conference photograph ${i}" loading="lazy"></div>`; }).join('')}</div>
     <h3>${cx('pages.confEdition.portraitsHead', 'Portraits and profiles')}</h3>
     <p>${pht(cx('pages.confEdition.portraitsBody', 'Every speaker and committee member above has an empty portrait slot and an empty profile link. Supply a 600×600 JPG and a URL — personal page, university page, ORCID or Google Scholar — per person. Use only photographs you have permission to publish.'))}</p>
   </div>
