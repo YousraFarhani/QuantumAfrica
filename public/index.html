@@ -4773,10 +4773,16 @@ const cflag = (country) => CONF_FLAG[country] ? `<span class="flag" role="img" a
 const cCountry = (country) => `${cflag(country)}${esc(country)}`;
 
 PAGES.conference = () => {
-  const latest = CONF.find(c=>c.latest);
-  const total = CONF.reduce((t,c)=> t + ['plenary','keynote','invited','steering','ipc','loc']
-      .reduce((u,k)=> u + (c[k]?c[k].length:0), 0)
-      + (c.invitedGroups?c.invitedGroups.reduce((v,g)=>v+g.list.length,0):0), 0);
+  const confArr = Array.isArray(CONF) && CONF.length ? CONF : [];
+  const latest = (confArr.find(c=>c && c.latest) || confArr[confArr.length - 1] || {});
+  const latestCity = latest && (latest.city || latest.town || '') || '';
+  const latestCountry = latest && (latest.country || '') || '';
+  const latestDates = latest && (latest.dates || '') || '';
+  const latestVenue = latest && (latest.venue || latest.location || '') || '';
+  const total = confArr.reduce((t,c)=> t + ['plenary','keynote','invited','steering','ipc','loc']
+      .reduce((u,k)=> u + (c && c[k] && Array.isArray(c[k]) ? c[k].length : 0), 0)
+      + (c && c.invitedGroups && Array.isArray(c.invitedGroups)
+        ? c.invitedGroups.reduce((v,g)=> v + (g && g.list && Array.isArray(g.list) ? g.list.length : 0), 0) : 0), 0);
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
 <section class="sec phero" style="padding-top:52px;padding-bottom:36px">${africaWatermark('wm-hero')}<div class="wrap">
@@ -4820,8 +4826,8 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
     <div class="conf-hero" style="display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;border:1px solid var(--line);border-radius:4px;padding:28px;background:#fff">
       <div>
         <h2 style="font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.02em;max-width:20ch">${cx('pages.conference.latestTitle', 'Quantum Africa 7')}</h2>
-        <p class="lede mt16" style="font-size:1.02rem;font-weight:500">${esc(latest.city)}, ${esc(latest.country)} · ${esc(latest.dates)}</p>
-        <p class="small mt16" style="color:var(--ink-2);max-width:54ch">${esc(latest.venue)}</p>
+        <p class="lede mt16" style="font-size:1.02rem;font-weight:500">${esc(latestCity)}${latestCountry?`${esc(latestCity)?', ':''}${esc(latestCountry)}`:''}${latestDates?` · ${esc(latestDates)}`:''}</p>
+        <p class="small mt16" style="color:var(--ink-2);max-width:54ch">${esc(latestVenue)}</p>
         <div class="hero-cta" style="margin-top:18px">
           <a class="btn teal" href="https://quantumafrica.org/" target="_blank" rel="noopener noreferrer">${cx('pages.conference.latestBtn1', 'Visit Quantum Africa Conference Website')} <span class="ar" aria-hidden="true">&rarr;</span></a>
         </div>
@@ -6636,11 +6642,28 @@ function rebuildFromContent(){
   });
   _safe(() => {
     const confEditions = clist('confEditions');
-    if(confEditions.length){
-      CONF = confEditions.map(ed => Object.assign({
-        n: ed.number || '', slug: ed.slug || '', year: ed.year || '', city: ed.city || '',
-        country: ed.country || '', dates: ed.dates || ''
-      }, ed));
+    if(Array.isArray(confEditions) && confEditions.length){
+      const merged = confEditions.map(ed => Object.assign({
+        n: (ed && (ed.number || ed.n || '')),
+        slug: (ed && (ed.slug || '')) || '',
+        year: (ed && (ed.year || '')) || '',
+        city: (ed && (ed.city || '')) || '',
+        country: (ed && (ed.country || '')) || '',
+        dates: (ed && (ed.dates || '')) || ''
+      }, Object(ed || {})));
+      // Always ensure there is exactly one `latest` entry: prefer existing .latest,
+      // otherwise fall back to the last (most recent) edition. This prevents
+      // PAGES.conference() from crashing when the CMS seed omits `latest:true`.
+      const hasLatest = merged.some(ed => ed && ed.latest);
+      if(!hasLatest && merged.length) merged[merged.length - 1].latest = true;
+      // Keep explicit latest if multiple: mark all but one as false.
+      let foundMark = false;
+      for(let i = merged.length - 1; i >= 0; i--){
+        if(merged[i] && merged[i].latest){
+          if(foundMark) merged[i].latest = false; else foundMark = true;
+        }
+      }
+      if(merged.length) CONF = merged;
     }
   });
   _safe(() => {
