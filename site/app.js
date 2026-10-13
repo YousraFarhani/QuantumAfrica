@@ -986,6 +986,9 @@ let PARTNERS = _cleanPartnerList([
   {name:'Northern Quantum Initiative (NQI)', category:'Strategic',
    logo:'/media/partners/Screenshot 2026-09-05 at 16.41.50.png',
    country:'Pan-African', url:''},
+  {name:'New Event', category:'Industry',
+   logo:'/media/partners/new-event.png',
+   country:'Global', url:''},
 ]);
 function partnerLogoCell(p){
   const src = (p.logo||'').trim();
