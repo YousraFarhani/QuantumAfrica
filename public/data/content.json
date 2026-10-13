@@ -80,7 +80,7 @@
   },
   "stats": {
     "members": 361,
-    "chapters": 8,
+    "chapters": 9,
     "countries": 48,
     "events": 10,
     "projects": 7,
@@ -546,6 +546,11 @@
       "members": 0,
       "linkedin": "",
       "web": ""
+    },
+    {
+      "name": "Somalia",
+      "code": "so",
+      "flag": "🇸🇴"
     }
   ],
   "events": [],
@@ -2750,5 +2755,5 @@
     "directBasedLabel": "",
     "directBasedValue": ""
   },
-  "updated": "2026-10-13T11:11:53Z"
+  "updated": "2026-10-13T11:45:30Z"
 }

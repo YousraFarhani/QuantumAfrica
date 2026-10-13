@@ -58,6 +58,7 @@ let CHAPTERS = [
   {slug:'ethiopia',   code:'et', name:'Ethiopia',   flag:'\u{1F1EA}\u{1F1F9}'},
   {slug:'zambia',     code:'zm', name:'Zambia',     flag:'\u{1F1FF}\u{1F1F2}'},
   {slug:'uganda',     code:'ug', name:'Uganda',     flag:'\u{1F1FA}\u{1F1EC}'},
+  {slug:'somalia',    code:'so', name:'Somalia',    flag:'\u{1F1F8}\u{1F1F4}'},
 ];
 
 /* ---------- Quantum Africa Conference Series ----------
@@ -3312,7 +3313,7 @@ ${PEOPLE_GROUPS.map(([g, note], gi) => `
   )}
   <div class="grid g3">
     ${[[cx('pages.people.p1N','361'),cx('pages.people.p1K','Members'),cx('pages.people.p1D','Across the continent and the diaspora.')],
-       [cx('pages.people.p2N','8'),cx('pages.people.p2K','Chapters'),cx('pages.people.p2D','Each with its own team.')],
+       [cx('pages.people.p2N','9'),cx('pages.people.p2K','Chapters'),cx('pages.people.p2D','Each with its own team.')],
        [cx('pages.people.p3N','48'),cx('pages.people.p3K','Countries reached'),cx('pages.people.p3D','Members, attendees and collaborators.')]
       ].map(([n,k,d])=>`<div class="pillar rv"><span class="pi">${esc(n)}</span><h3 style="font-size:1.22rem">${esc(k)}</h3><p>${esc(d)}</p></div>`).join('')}
   </div>
