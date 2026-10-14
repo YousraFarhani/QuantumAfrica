@@ -1969,7 +1969,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}
   <div class="split" style="align-items:center">
     <div>
       <div class="sec-idx"><span class="lbl">${cx('pages.tutor.heroEyebrow', 'Quantum Africa · Flagship project')}</span><i></i></div>
-      <h1 class="mt24" style="font-size:clamp(2.1rem,4.4vw,3.4rem);line-height:1.06;letter-spacing:-.035em">${cx('pages.tutor.heroTitle', 'Learn quantum computing.<br><span class="duotext">For free.</span> With your AI tutor.')}</h1>
+      <h1 class="mt24" style="font-size:clamp(2.1rem,4.4vw,3.4rem);line-height:1.06;letter-spacing:-.035em">${cx('pages.tutor.heroTitle', 'Learn quantum computing<br><span class="duotext">With our Quantum AI tutor.</span>')}</h1>
       <p class="lede mt24" style="max-width:48ch">${cx('pages.tutor.heroLede', 'A free tutor built by Quantum Africa. From first principles to running circuits at your own pace, in your own words.')}</p>
       <div class="hero-cta" style="margin-top:22px">
         <a class="btn teal" href="https://quantum-tutor-726z.vercel.app/" target="_blank" rel="noopener">${cx('pages.tutor.ctaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
