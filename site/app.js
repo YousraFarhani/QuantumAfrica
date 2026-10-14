@@ -1963,23 +1963,67 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'
 /* ---------- AI TUTOR ---------- */
 PAGES.tutor = () => `
 ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}])}
-<section class="sec inv flush" style="padding-top:clamp(56px,7vw,96px)">
-  <div class="wrap">
-  <div class="split">
+<section class="sec inv flush" style="padding-top:clamp(56px,7vw,96px);position:relative;overflow:hidden">
+  ${patternPanel('','dark')}
+  <div class="wrap" style="position:relative;z-index:2">
+  <div class="split" style="align-items:center">
     <div>
       <div class="sec-idx"><span class="lbl">${cx('pages.tutor.heroEyebrow', 'Quantum Africa · Flagship project')}</span><i></i></div>
-      <h1 class="mt24">${cx('pages.tutor.heroTitle', 'Learn quantum computing.<br>For free. With your AI tutor.')}</h1>
-      <p class="lede mt24">${cx('pages.tutor.heroLede', 'A free tutor built by Quantum Africa. From first principles to running circuits, at your own pace.')}</p>
-      <div class="hero-cta">
+      <h1 class="mt24" style="font-size:clamp(2.1rem,4.4vw,3.4rem);line-height:1.06;letter-spacing:-.035em">${cx('pages.tutor.heroTitle', 'Learn quantum computing.<br><span class="duotext">For free.</span> With your AI tutor.')}</h1>
+      <p class="lede mt24" style="max-width:48ch">${cx('pages.tutor.heroLede', 'A free tutor built by Quantum Africa. From first principles to running circuits — at your own pace, in your own words.')}</p>
+      <div class="hero-cta" style="margin-top:22px">
         <a class="btn teal" href="https://quantum-tutor-726z.vercel.app/" target="_blank" rel="noopener">${cx('pages.tutor.ctaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn inv ghost" href="#/tutor">${cx('pages.tutor.ctaSecondary', 'See how it works')}</a>
+        <a class="btn inv ghost" href="#tutor-conv">${cx('pages.tutor.ctaSecondary', 'See how it works')}</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px">
+        ${[['100%','Free, forever'],['24/7','Always available'],['EN','Multi-language ready']].map(([n,l])=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 16px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.04)"><span style="font-weight:700;font-size:1.05rem;color:var(--teal-p)">${n}</span><span style="font-size:.8rem;color:rgba(255,255,255,.65);letter-spacing:.04em">${l}</span></div>`).join('')}
       </div>
     </div>
-    <div>${cimg('pages.tutor.heroMockImage','Tutor mockup','PNG · any width ≥1200px','','bloch') || tutorMock()}</div>
+    <div style="position:relative">
+      <div class="slot filled" style="border-radius:20px;overflow:hidden;box-shadow:0 50px 100px -40px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1)">
+        <img src="${esc(mediaUrl('media/tutor/hero.jpg'))}" alt="A learner exploring quantum computing with the Quantum AI Tutor" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy">
+      </div>
+      <div style="position:absolute;top:-28px;right:-22px;width:130px;height:74px;border-radius:14px;overflow:hidden;box-shadow:0 20px 50px -12px rgba(0,0,0,.55);border:1px solid rgba(201,165,91,.4)">${art('bloch')}</div>
+      <div style="position:absolute;bottom:-22px;left:-18px;padding:12px 16px;background:var(--dark-2);border:1px solid rgba(201,165,91,.35);border-radius:14px;box-shadow:0 20px 50px -18px rgba(0,0,0,.6)">
+        <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-p);font-weight:600">Now learning</div>
+        <div style="font-size:.92rem;font-weight:600;margin-top:3px">Superposition &amp; measurement</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec tint" id="tutor-conv"><div class="wrap">
+  ${sectionHead(
+    cx('pages.tutor.convEyebrow', 'See it in action'),
+    cx('pages.tutor.convTitle', 'A conversation, not a lecture'),
+    cx('pages.tutor.convLede', 'Ask anything. The tutor meets you where you are — with explanations, figures and code that fit the question.')
+  )}
+  <div style="max-width:760px;margin:10px auto 0">${tutorMock()}</div>
+  <div style="margin-top:28px">
+    <div style="font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:12px">Try asking</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      ${['Why does measuring a qubit destroy superposition?','Explain entanglement like I am 12','Show me a quantum circuit for a Bell state','What is Shor\u2019s algorithm and why does it matter?','Help me write Qiskit code for a GHZ state'].map(p=>`<button type="button" class="chip-q" onclick="window.open('https://quantum-tutor-726z.vercel.app/','_blank')" style="cursor:pointer;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:.85rem;transition:all .2s" onmouseenter="this.style.borderColor='var(--gold)';this.style.background='var(--bg-2)'" onmouseleave="this.style.borderColor='var(--line)';this.style.background='var(--bg)'">${esc(p)}</button>`).join('')}
+    </div>
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
+  ${sectionHead(
+    cx('pages.tutor.pathEyebrow', 'Learning pathways'),
+    cx('pages.tutor.pathTitle', 'Four roads into quantum'),
+    cx('pages.tutor.pathLede', 'Structured tracks take you from first principles to real applications — follow one in order, or dip in wherever you are.')
+  )}
+  <div class="grid g4">
+    ${[
+      ['Foundations','Qubits, superposition, measurement and the Bloch sphere.','bloch'],
+      ['Gates & Circuits','Build and read quantum circuits with single- and multi-qubit gates.','circuit'],
+      ['Algorithms','Shor, Grover, phase estimation and what they are actually for.','network'],
+      ['Applications','Simulation, optimisation, sensing and where quantum helps today.','wave']
+    ].map(([t,d,artKind])=>`<div class="card pad rv" style="display:flex;flex-direction:column;gap:14px"><div style="height:120px;border-radius:12px;overflow:hidden;background:var(--dark-2)">${art(artKind)}</div><h4 style="font-size:1.15rem;letter-spacing:-.02em">${esc(t)}</h4><p style="font-size:.88rem;color:var(--ink-2);line-height:1.55;margin:0">${esc(d)}</p></div>`).join('')}
+  </div>
+</div></section>
+
+<section class="sec inv"><div class="wrap">
   ${sectionHead(
     cx('pages.tutor.audienceEyebrow', 'Who it is for'),
     cx('pages.tutor.audienceTitle', 'Built for the person who has no one to ask')
@@ -1989,24 +2033,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}
        [cx('pages.tutor.a2Title','Self-learners'),cx('pages.tutor.a2Desc','No university course available locally, and no lab to walk into.')],
        [cx('pages.tutor.a3Title','Educators'),cx('pages.tutor.a3Desc','Preparing to teach quantum for the first time, and needing a reliable explainer.')],
        [cx('pages.tutor.a4Title','Professionals'),cx('pages.tutor.a4Desc','Moving into quantum from software, telecoms, finance or engineering.')]
-      ].map(([t,d])=>`<div class="pillar rv"><h3 style="font-size:1.2rem">${esc(t)}</h3><p>${esc(d)}</p></div>`).join('')}
-  </div>
-</div></section>
-
-<section class="sec tint"><div class="wrap">
-  ${sectionHead(
-    cx('pages.tutor.howEyebrow', 'How it works'),
-    cx('pages.tutor.howTitle', 'Four steps')
-  )}
-  <div class="grid g2" style="gap:0 48px">
-    <div>
-      ${[[cx('pages.tutor.s1Title','Ask anything'),cx('pages.tutor.s1Desc','Start from a question, a piece of code, or a topic. The tutor meets you where you are.')],
-         [cx('pages.tutor.s2Title','Follow a pathway'),cx('pages.tutor.s2Desc','Structured learning pathways take you from qubits and superposition through gates, circuits and algorithms.')],
-         [cx('pages.tutor.s3Title','Practise'),cx('pages.tutor.s3Desc','Worked examples and exercises with feedback, rather than a wall of text.')],
-         [cx('pages.tutor.s4Title','Go further'),cx('pages.tutor.s4Desc','When you are ready, the tutor points you at Quantum Africa research projects, events and opportunities.')]
-        ].map(([t,d],i)=>`<div class="step"><span class="n">0${i+1}</span><div><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
-    </div>
-    <div>${cimg('pages.tutor.interfaceImage','Two or three real interface captures — conversation, pathway, exercise','PNG · any width ≥1200px','tall','bloch')}</div>
+      ].map(([t,d])=>`<div class="pillar rv" style="border-top-color:rgba(255,255,255,.18)"><h3 style="font-size:1.2rem;color:#fff">${esc(t)}</h3><p style="color:rgba(255,255,255,.68)">${esc(d)}</p></div>`).join('')}
   </div>
 </div></section>
 
@@ -2024,7 +2051,11 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}
        [cx('pages.tutor.f6Title','Connected to the ecosystem'),cx('pages.tutor.f6Desc','Links out to Quantum Africa events, projects and opportunities.')]
       ].map(([t,d])=>`<div class="card pad rv"><div class="card-b"><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
   </div>
-  <div class="mt48 grid g2">
+</div></section>
+
+<section class="sec deep" style="padding:clamp(48px,6vw,80px) 0"><div class="wrap">
+  <div class="grid g4" style="text-align:center">
+    ${[['0','Cost to the learner'],['\u221E','Questions you can ask'],['4','Learning pathways'],['24/7','Availability']].map(([n,l])=>`<div><div style="font-size:clamp(2.2rem,4vw,3rem);font-weight:800;letter-spacing:-.04em;background:var(--duo-w);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1">${n}</div><div style="margin-top:8px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)">${l}</div></div>`).join('')}
   </div>
 </div></section>
 
