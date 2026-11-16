@@ -115,7 +115,7 @@
   "people": [
     {
       "name": "Yousra Farhani",
-      "group": "Leadership",
+      "group": "Board of Directors",
       "category": "",
       "role": "Founder",
       "institution": "Niels Bohr Institute, NQCP, University of Copenhagen",
@@ -135,7 +135,7 @@
     },
     {
       "name": "Walid Elmaouki",
-      "group": "Leadership",
+      "group": "Board of Directors",
       "category": "",
       "role": "Co-founder",
       "institution": "New York University of Abu Dhabi",
@@ -151,6 +151,25 @@
       "linkedin": "https://www.linkedin.com/in/walid-el-maouaki-8b6328190/",
       "scholar": "https://scholar.google.com/citations?user=oFhVfzkAAAAJ&hl=fr",
       "orcid": "https://orcid.org/0009-0004-2339-5401"
+    },
+    {
+      "name": "Dr. Maria Schuld",
+      "group": "Board of Directors",
+      "category": "",
+      "role": "Board Member",
+      "institution": "",
+      "country": "",
+      "photo": "media/maria_schuld.jpg",
+      "bio": "Maria has spent the past decade exploring the intersection of machine learning and quantum computing. Currently between jobs, she spent the last 9 years working remotely for Xanadu, a Canadian quantum technology startup, where she led the quantum machine learning team's efforts to make new ways of machine learning a reality. Maria co-authored the standard textbook in the field, \"Machine Learning with Quantum Computers\", as well as numerous papers on the intersection between AI and quantum sciences, and was one of the core developers of the PennyLane open source software framework for quantum computing. She received her PhD in theoretical physics from the University of KwaZulu-Natal in South Africa in 2017, and her passion projects, such as the long-standing involvement in the Deep Learning Indaba, use AI to understand and strengthen people on the African continent.",
+      "fullBio": "Maria has spent the past decade exploring the intersection of machine learning and quantum computing. Currently between jobs, she spent the last 9 years working remotely for Xanadu, a Canadian quantum technology startup, where she led the quantum machine learning team's efforts to make new ways of machine learning a reality. Maria co-authored the standard textbook in the field, \"Machine Learning with Quantum Computers\", as well as numerous papers on the intersection between AI and quantum sciences, and was one of the core developers of the PennyLane open source software framework for quantum computing. She received her PhD in theoretical physics from the University of KwaZulu-Natal in South Africa in 2017, and her passion projects, such as the long-standing involvement in the Deep Learning Indaba, use AI to understand and strengthen people on the African continent.",
+      "interests": [
+        "Quantum Machine Learning",
+        "Quantum Computing"
+      ],
+      "chapter": "",
+      "linkedin": "",
+      "scholar": "",
+      "orcid": ""
     },
     {
       "name": "Gamal Moneep",

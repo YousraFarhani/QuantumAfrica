@@ -944,11 +944,13 @@ const OPP_SOURCES = OPP_FEED.sources;
 const OPP_TYPES = ['PhD','Postdoc','MSc','Faculty','Research fellow','Internship','Summer school','Industry'];
 
 let PEOPLE = [
-  {slug:'p1', group:'Leadership'},{slug:'p2', group:'Leadership'},{slug:'p3', group:'Leadership'},
+  {slug:'p1', group:'Board of Directors'},{slug:'p2', group:'Board of Directors'},{slug:'p9', group:'Board of Directors'},
+  {slug:'p3', group:'Leadership'},
   {slug:'p4', group:'Advisors'},{slug:'p5', group:'Advisors'},
   {slug:'p6', group:'Chapter leads'},{slug:'p7', group:'Chapter leads'},{slug:'p8', group:'Chapter leads'},
 ];
 const PEOPLE_GROUPS = [
+  ['Board of Directors',''],
   ['Leadership',   ''],
   ['Advisors',     ''],
   ['Chapter leads',''],
@@ -1025,7 +1027,7 @@ let HERO_LINES = [
   {a:'We are building Africa\u2019s ', b:'quantum ecosystem.',
    p:'Quantum technology will redraw the map of who leads this century. Africa will be on that map \u2014 through the students we teach, the research we open to anyone on the continent, and the institutions we connect to the people defining the field.'},
   {a:'We are training Africa\u2019s ', b:'quantum generation.',
-   p:'Webinars, workshops and a free AI tutor, run for students and researchers anywhere on the continent \u2014 no lab, no travel budget and no gatekeeper needed to start.'},
+   p:'Webinars, workshops and self-paced learning resources, run for students and researchers anywhere on the continent \u2014 no lab, no travel budget and no gatekeeper needed to start.'},
   {a:'We are opening research ', b:'to the whole continent.',
    p:'Our projects are open by default: read the work, run the code, join a team. What it takes to contribute is curiosity, not an invitation.'},
 ];
@@ -1649,19 +1651,24 @@ ${highlightSection()}
   </div>
 </section>
 
-<section class="sec inv" style="padding-top:40px;padding-bottom:40px">
+<section class="sec tint">
   <div class="wrap">
-    <div class="split" style="gap:clamp(20px,3vw,44px);align-items:center">
-      <div>
-        <div class="sec-idx" style="margin-bottom:10px"><span class="lbl">${cx('pages.home.tutorEyebrow', 'Featured program')}</span><i></i></div>
-        <h2 style="margin-top:8px;margin-bottom:10px;font-size:clamp(1.6rem,2.6vw,2.15rem);line-height:1.12">${cx('pages.home.tutorTitle', 'Meet the Quantum AI Tutor')}</h2>
-        <p class="lede" style="margin-top:6px;margin-bottom:16px;max-width:46ch;font-size:.96rem;line-height:1.5">${cx('pages.home.tutorLede', 'Learn quantum computing. For free. A guided, conversational way in , built by Quantum Africa, open to anyone.')}</p>
-        <div class="hero-cta" style="margin-top:14px;gap:10px">
-          <a class="btn teal" href="https://quantum-tutor-726z.vercel.app/" target="_blank" rel="noopener">${cx('pages.home.tutorCtaPrimary', 'Try the Quantum AI Tutor')} <span class="ar" aria-hidden="true">→</span></a>
-          <a class="btn inv ghost" href="#/tutor">${cx('pages.home.tutorCtaSecondary', 'How it works')}</a>
-        </div>
-      </div>
-      <div style="transform:scale(.9);transform-origin:center right">${cval('pages.tutor.tutorMockImage') ? `<div class="slot filled"><img src="${esc(mediaUrl(cval('pages.tutor.tutorMockImage')))}" alt="Tutor mockup" loading="lazy"></div>` : tutorMock()}</div>
+    ${sectionHead(
+      cx('pages.home.newsEyebrow', 'News & articles'),
+      cx('pages.home.newsTitle', 'Latest from the network'),
+      cx('pages.home.newsLede', ' '),
+      {t:cx('pages.home.newsCta', 'All articles'),h:'#/news'}
+    )}
+    <div class="news-lead">
+      ${(() => {
+        const featured = (ARTICLES.find(a => a && a.slug === 'uganda-indaba-2026') || ARTICLES[0]);
+        const rest = ARTICLES.filter(a => a !== featured);
+        return articleFeature(featured || {}) +
+          `<div>
+             <div class="news-side">${rest.slice(0,6).map(articleRow).join('')}</div>
+             <div class="news-more"><a class="btn ghost sm" href="#/news">Browse the archive <span class="ar" aria-hidden="true">&rarr;</span></a></div>
+           </div>`;
+      })()}
     </div>
   </div>
 </section>
@@ -1716,28 +1723,6 @@ ${highlightSection()}
       {t:cx('pages.home.eventsCta', 'View all events'),h:'#/events'}
     )}
     <div class="grid g3">${EVENTS.filter(e=>e.when==='upcoming').map((e,i)=>eventCard(e,i)).join('')}</div>
-  </div>
-</section>
-
-<section class="sec hair">
-  <div class="wrap">
-    ${sectionHead(
-      cx('pages.home.newsEyebrow', 'News & articles'),
-      cx('pages.home.newsTitle', 'Latest from the network'),
-      cx('pages.home.newsLede', ' '),
-      {t:cx('pages.home.newsCta', 'All articles'),h:'#/news'}
-    )}
-    <div class="news-lead">
-      ${(() => {
-        const featured = (ARTICLES.find(a => a && a.slug === 'uganda-indaba-2026') || ARTICLES[0]);
-        const rest = ARTICLES.filter(a => a !== featured);
-        return articleFeature(featured || {}) +
-          `<div>
-             <div class="news-side">${rest.slice(0,4).map(articleRow).join('')}</div>
-             <div class="news-more"><a class="btn ghost sm" href="#/news">Browse the archive <span class="ar" aria-hidden="true">&rarr;</span></a></div>
-           </div>`;
-      })()}
-    </div>
   </div>
 </section>
 
@@ -1889,7 +1874,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
     cx('pages.about.peopleEyebrow', 'People'),
-    cx('pages.about.peopleTitle', 'Leadership and advisors'),
+    cx('pages.about.peopleTitle', 'Board of Directors, leadership and advisors'),
     null,
     {t:cx('pages.about.peopleCta', 'Full directory'),h:'#/people'}
   )}
