@@ -944,13 +944,12 @@ const OPP_SOURCES = OPP_FEED.sources;
 const OPP_TYPES = ['PhD','Postdoc','MSc','Faculty','Research fellow','Internship','Summer school','Industry'];
 
 let PEOPLE = [
-  {slug:'p1', group:'Board of Directors'},{slug:'p2', group:'Board of Directors'},{slug:'p9', group:'Board of Directors'},
-  {slug:'p3', group:'Leadership'},
+  {slug:'p1', group:'Directors and Leadership'},{slug:'p2', group:'Directors and Leadership'},{slug:'p9', group:'Directors and Leadership'},
+  {slug:'p3', group:'Directors and Leadership'},
   {slug:'p6', group:'Chapter leads'},{slug:'p7', group:'Chapter leads'},{slug:'p8', group:'Chapter leads'},
 ];
 const PEOPLE_GROUPS = [
-  ['Board of Directors',''],
-  ['Leadership',   ''],
+  ['Directors and Leadership',''],
   ['Chapter leads',''],
 ];
 const PERSON_LINKS = [
@@ -1872,7 +1871,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
 <section class="sec tint"><div class="wrap">
   ${sectionHead(
     cx('pages.about.peopleEyebrow', 'People'),
-    cx('pages.about.peopleTitle', 'Board of Directors and leadership'),
+    cx('pages.about.peopleTitle', 'Directors and Leadership'),
     null,
     {t:cx('pages.about.peopleCta', 'Full directory'),h:'#/people'}
   )}
@@ -3900,7 +3899,7 @@ const SEO_TITLE_BY_ROUTE = {
   'conference':   'Quantum Africa Conference — The annual pan-African quantum conference',
   'support':      'Support Quantum Africa — Sponsor, partner or donate',
   'opportunities':'Quantum Opportunities — Jobs, internships, fellowships and grants in quantum computing worldwide, curated for Africans',
-  'people':       'People — Board, team and researchers of Quantum Africa',
+  'people':       'People — Directors and leadership of Quantum Africa',
   'partners':     'Partners — Quantum Africa\u2019s academic, industry and non-profit partners',
   'universities': 'Universities Programme — Quantum clubs at African universities',
   'students':     'For Students — Learning, chapters and quantum opportunities for African students',
@@ -3923,7 +3922,7 @@ const SEO_DESC_BY_ROUTE = {
   'conference':   'The annual Quantum Africa conference brings together the African quantum research community, global leaders, students and industry for talks, posters, workshops and hackathons.',
   'support':      'Partner with, sponsor or donate to Quantum Africa and help scale a connected, homegrown quantum ecosystem across the African continent.',
   'opportunities':'Curated quantum computing opportunities for Africans: quantum jobs, internships, PhD positions, research fellowships, travel grants and hackathons from around the world.',
-  'people':       'Meet the board, team and researchers behind Quantum Africa — volunteers, organisers, chapter leads and researchers across the continent and beyond.',
+  'people':       'Meet the directors, leadership and researchers behind Quantum Africa — volunteers, organisers, chapter leads and researchers across the continent and beyond.',
   'partners':     'Quantum Africa works with academic institutions, industry partners, non-profits and quantum initiatives worldwide to build a pan-African quantum ecosystem.',
   'universities': 'The Quantum Africa Universities Programme helps students start and run quantum clubs at their African universities, with mentorship, materials and event support.',
   'students':     'Resources for African students to get started in quantum computing: chapters, workshops, learning paths, tutoring, quantum internships, grants and community support.',
@@ -4582,7 +4581,7 @@ function rebuildFromContent(){
     const people = clist('people');
     if(people.length){
       PEOPLE = people.map((p, i) => Object.assign({ slug: p.id || ('p' + (i+1)),
-        group: p.group || 'Leadership' }, p));
+        group: p.group || 'Directors and Leadership' }, p));
     }
   });
   _safe(() => {
