@@ -172,25 +172,6 @@
       "orcid": ""
     },
     {
-      "name": "Gamal Moneep",
-      "group": "Directors and Leadership",
-      "category": "",
-      "role": "HR Manager",
-      "institution": "Breast Cancer Therapeutics Ltd",
-      "country": "Egypt",
-      "photo": "media/b188b7ed575451f0.png",
-      "bio": "HR Manager at Quantum Africa, IBM Qiskit advocate, Deep Learning & AI Engineer",
-      "fullBio": "HR Manager at Quantum Africa, IBM Qiskit advocate, Deep Learning & AI Engineer",
-      "interests": [
-        "Quantum  Computing",
-        "Artificial Intelligence"
-      ],
-      "chapter": "Quantum Egypt",
-      "linkedin": "https://www.linkedin.com/in/gamal-moneep/",
-      "scholar": "",
-      "orcid": ""
-    },
-    {
       "name": "Rahma Boughale",
       "group": "Chapter leads",
       "category": "",
@@ -463,6 +444,25 @@
       ],
       "chapter": "",
       "linkedin": "",
+      "scholar": "",
+      "orcid": ""
+    },
+    {
+      "name": "Gamal Moneep",
+      "group": "Directors and Leadership",
+      "category": "",
+      "role": "HR Manager",
+      "institution": "Breast Cancer Therapeutics Ltd",
+      "country": "Egypt",
+      "photo": "media/b188b7ed575451f0.png",
+      "bio": "HR Manager at Quantum Africa, IBM Qiskit advocate, Deep Learning & AI Engineer",
+      "fullBio": "HR Manager at Quantum Africa, IBM Qiskit advocate, Deep Learning & AI Engineer",
+      "interests": [
+        "Quantum  Computing",
+        "Artificial Intelligence"
+      ],
+      "chapter": "Quantum Egypt",
+      "linkedin": "https://www.linkedin.com/in/gamal-moneep/",
       "scholar": "",
       "orcid": ""
     }
