@@ -7026,16 +7026,32 @@ function runCounters(scope){
   });
 }
 
-/* ---------- hero headline — static (typewriter effect removed) ---------- */
+/* ---------- hero headline — cycles HERO_LINES (no typewriter effect) ---------- */
+let heroLineTimer = null;
 function initTyping(){
   const a = document.getElementById('typeA'), b = document.getElementById('typeB'),
         c = document.getElementById('caret'), p = document.getElementById('heroLede');
-  const L = HERO_LINES[0] || { a:'', b:'', p:'' };
-  if(a) a.textContent = L.a;
-  if(b) b.textContent = L.b;
-  if(p) p.textContent = L.p;
+  const seq = [...document.querySelectorAll('.fade-seq')];
+  clearTimeout(heroLineTimer);
   if(c) c.style.display = 'none';
-  [...document.querySelectorAll('.fade-seq')].forEach(el=>el.classList.add('in'));
+  const lines = HERO_LINES.filter(L => L && (L.a || L.b));
+  if(a && b && lines.length){
+    a.textContent = lines[0].a;
+    b.textContent = lines[0].b;
+    if(p && lines[0].p) p.textContent = lines[0].p;
+  }
+  seq.forEach(el=>el.classList.add('in'));
+  const reduced = document.body.classList.contains('no-motion') || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!a || !b || lines.length < 2 || reduced) return;
+  let idx = 0;
+  const advance = () => {
+    idx = (idx + 1) % lines.length;
+    const L = lines[idx];
+    a.textContent = L.a; b.textContent = L.b;
+    if(p && L.p){ p.classList.add('sw'); setTimeout(()=>{ p.textContent = L.p; p.classList.remove('sw'); }, 300); }
+    heroLineTimer = setTimeout(advance, 5000);
+  };
+  heroLineTimer = setTimeout(advance, 5000);
 }
 
 /* ---------- controls ---------- */
