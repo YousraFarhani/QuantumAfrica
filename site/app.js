@@ -2023,7 +2023,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/programs'},{t:'Our Three Pillars'}
         <li><b>Hackathons and innovation sprints</b> with universities and industry.</li>
       </ul>
     </div>
-    <div class="pillar-visual"><div class="slot wide">${art('lattice','')}</div></div>
+    <div class="pillar-visual"><div class="slot wide filled"><img src="/media/programs/Programs.png" alt="Quantum innovation" loading="lazy"></div></div>
   </div>
   <div class="grid g2" style="margin-top:44px">
     <div class="card pad rv"><div class="card-b">
