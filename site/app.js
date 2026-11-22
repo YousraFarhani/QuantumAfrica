@@ -13,7 +13,8 @@ const NAV = [
     {t:'Our Impact', h:'#/impact', d:'Verified numbers and stories'},
     {t:'Collaborators & Partners', h:'#/partners', d:'Organisations we work with'},
   ]},
-  {label:'Programs', href:'#/education', items:[
+  {label:'Programs', href:'#/programs', items:[
+    {t:'Our Three Pillars', h:'#/programs', d:'Education · Diplomacy · Innovation'},
     {t:'Quantum Education', h:'#/education', d:'Webinars, workshops, resources'},
     {t:'Quantum AI Tutor', h:'#/tutor', d:'Free AI-powered quantum tutor'},
     {t:'Research & Innovation', h:'#/research', d:'Collaborative and open-source projects'},
@@ -1635,15 +1636,15 @@ ${highlightSection()}
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     ${sectionHead(
-      cx('pages.home.pillarEyebrow', 'Our work'),
-      cx('pages.home.pillarTitle', 'From Learning to Leadership'),
-      cx('pages.home.pillarLede', '')
+      cx('pages.home.pillarEyebrow', 'Our Three Pillars'),
+      cx('pages.home.pillarTitle', 'Education. Diplomacy. Innovation.'),
+      cx('pages.home.pillarLede', 'Our work is organised around three pillars — built to scale with universities, governments, industry and funders across the continent.'),
+      {t:cx('pages.home.pillarCta', 'Explore our pillars'),h:'#/programs'}
     )}
-    <div class="grid g4">
-      ${pillarCard('01','Educate','Webinars, workshops, resources and the AI Tutor.','educate','Education','#/education')}
-      ${pillarCard('02','Research','Open, collaborative projects with published code.','research','Research','#/research')}
-      ${pillarCard('03','Connect','Chapters, universities and global partnerships.','connect','Chapters','#/chapters')}
-      ${pillarCard('04','Lead','The next generation of African quantum leaders.','lead','Opportunities','#/opportunities')}
+    <div class="grid g3">
+      ${pillarCard('01','Quantum Education &amp; Accessibility','Free, continent-wide learning — the AI Tutor, workshops and university programmes.','educate','Explore','#/education')}
+      ${pillarCard('02','Quantum Diplomacy &amp; Policy','A coordinated African voice in global quantum governance, standards and readiness.','connect','Explore','#/programs')}
+      ${pillarCard('03','Quantum Innovation','Open research, the African Quantum Startup Program and Women in Quantum.','research','Explore','#/programs')}
     </div>
   </div>
 </section>
@@ -1940,6 +1941,139 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'
     {t:cx('pages.education.archiveCta', 'Browse events'),h:'#/events'}
   )}
   <div class="grid g3">${EVENTS.slice(0,3).map((e,i)=>eventCard(e,i)).join('')}</div>
+</div></section>`;
+
+/* ---------- PROGRAMS · THREE PILLARS ---------- */
+PAGES.programs = () => `
+${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/programs'},{t:'Our Three Pillars'}])}
+<section class="phero"><div class="wrap">
+  <div class="sec-idx"><span class="lbl">${cx('pages.programs.heroEyebrow', 'Programs · Our strategy')}</span><i></i></div>
+  <h1 class="mt24">${cx('pages.programs.heroTitle', 'Three pillars for Africa&rsquo;s quantum future.')}</h1>
+  <p class="lede">${cx('pages.programs.heroLede', 'Quantum Africa builds the skills, institutions and ventures that place Africa at the centre of quantum science. Our work is organised around three pillars, each designed for long-term partnership with universities, governments, industry and funders.')}</p>
+  <div class="phero-meta">
+    <a class="btn teal sm" href="#/contact">${cx('pages.programs.heroBtn1','Partner with us')}</a>
+    <a class="btn ghost sm" href="#/impact">${cx('pages.programs.heroBtn2','See our impact')}</a>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div class="grid g3">
+    ${[['01','Quantum Education &amp; Accessibility','Free, continent-wide learning — from first principles to research, with the AI tutor, workshops and university programmes.'],
+       ['02','Quantum Diplomacy &amp; Policy','A coordinated African voice in global quantum governance, standards and national readiness.'],
+       ['03','Quantum Innovation','Open research, the African Quantum Startup Program and Women in Quantum.']]
+      .map(([n,t,d])=>`<div class="pillar rv"><span class="n">${n}</span><h3 style="font-size:1.24rem">${t}</h3><p>${d}</p></div>`).join('')}
+  </div>
+</div></section>
+
+<section class="sec tint"><div class="wrap">
+  <div class="split">
+    <div>
+      <div class="sec-idx"><span class="n">01</span><span class="lbl">Pillar one</span><i></i></div>
+      <h2 class="mt16">Quantum Education &amp; Accessibility</h2>
+      <p class="lede">Talent is everywhere; opportunity is not. We remove the cost, distance and curriculum barriers that keep African students out of quantum.</p>
+      <ul class="qa-list">
+        <li>A free, always-available <b>Quantum AI Tutor</b> for self-paced learning.</li>
+        <li>Expert <b>webinars</b> and hands-on <b>Quantum Machine Learning for Africa</b> workshops.</li>
+        <li><b>University programmes</b> — curriculum support, faculty training and student chapters.</li>
+        <li>A curated <b>learning library</b> of courses, notebooks, reading lists and recordings.</li>
+        <li>A visible <b>opportunities pipeline</b>: scholarships, PhDs, internships and fellowships.</li>
+      </ul>
+      <div class="phero-meta" style="margin-top:26px">
+        <a class="btn teal sm" href="#/education">Explore education</a>
+        <a class="btn ghost sm" href="#/universities">For universities</a>
+      </div>
+    </div>
+    <div class="pillar-visual"><div class="slot wide">${art('bloch','')}</div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="split">
+    <div class="pillar-visual"><div class="slot wide">${art('network','')}</div></div>
+    <div>
+      <div class="sec-idx"><span class="n">02</span><span class="lbl">Pillar two</span><i></i></div>
+      <h2 class="mt16">Quantum Diplomacy &amp; Policy</h2>
+      <p class="lede">Quantum is becoming a matter of national strategy. We help African institutions engage that conversation with one clear, evidence-based voice.</p>
+      <ul class="qa-list">
+        <li><b>Policy briefs and white papers</b> on quantum readiness, ethics and standards.</li>
+        <li><b>National quantum readiness</b> assessments for governments and regulators.</li>
+        <li><b>Delegations and representation</b> at international fora and multilateral bodies.</li>
+        <li>A continental <b>policy working group</b> linking researchers, diplomats and industry.</li>
+        <li><b>Capacity building</b> for public institutions on quantum technologies and their implications.</li>
+      </ul>
+      <div class="phero-meta" style="margin-top:26px">
+        <a class="btn teal sm" href="#/contact">Engage our policy team</a>
+        <a class="btn ghost sm" href="#/partners">Partner as an institution</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec tint"><div class="wrap">
+  <div class="split">
+    <div>
+      <div class="sec-idx"><span class="n">03</span><span class="lbl">Pillar three</span><i></i></div>
+      <h2 class="mt16">Quantum Innovation</h2>
+      <p class="lede">We turn talent into ventures and breakthroughs — connecting open research, startups and industry across the continent.</p>
+      <ul class="qa-list">
+        <li><b>Open research projects</b>, built in the open with published code.</li>
+        <li>The <b>African Quantum Startup Program</b> — incubation and early support for quantum ventures.</li>
+        <li><b>Women in Quantum</b> — mentoring, visibility and leadership for women in the field.</li>
+        <li><b>Industry partnerships</b>: sponsored challenges, tooling access and pilot projects.</li>
+        <li><b>Hackathons and innovation sprints</b> with universities and industry.</li>
+      </ul>
+    </div>
+    <div class="pillar-visual"><div class="slot wide">${art('lattice','')}</div></div>
+  </div>
+  <div class="grid g2" style="margin-top:44px">
+    <div class="card pad rv"><div class="card-b">
+      <span class="prog-tag">Flagship programme</span>
+      <h3>African Quantum Startup Program</h3>
+      <p>Incubation and support for early-stage quantum ventures founded in Africa — mentorship from researchers and operators, technical guidance, and connections to industry and funders.</p>
+      <ul class="qa-list">
+        <li>Structured incubation and mentorship</li>
+        <li>Technical and commercial guidance</li>
+        <li>Access to our research and talent network</li>
+      </ul>
+    </div></div>
+    <div class="card pad rv"><div class="card-b">
+      <span class="prog-tag">Flagship programme</span>
+      <h3>Women in Quantum</h3>
+      <p>A programme to grow and celebrate women in quantum across Africa — pairing participants with mentors, raising their visibility, and building a leadership pipeline for the field.</p>
+      <ul class="qa-list">
+        <li>Mentorship and role models</li>
+        <li>Speaking and leadership opportunities</li>
+        <li>A supportive continental community</li>
+      </ul>
+    </div></div>
+  </div>
+</div></section>
+
+<section class="sec deep"><div class="wrap">
+  ${sectionHead(
+    cx('pages.programs.whyEyebrow','Partnership'),
+    cx('pages.programs.whyTitle','Why partner with Quantum Africa'),
+    cx('pages.programs.whyLede','We give institutions a credible, measurable way to invest in African quantum capacity — with real reach and transparent outcomes.')
+  )}
+  <div class="grid g3">
+    ${[['Continental reach','Chapters in nine countries and a network reaching learners and researchers in 48 countries — a single entry point to the continent.'],
+       ['Credibility and governance','A governing board of directors, published outcomes and reporting you can take to your own stakeholders.'],
+       ['Measurable impact','Every programme is tracked: participants, completions, research outputs and ventures supported.'],
+       ['Talent pipeline','Direct access to the students, researchers and founders building Africa&rsquo;s quantum future.'],
+       ['Policy access','A seat at the table as Africa&rsquo;s quantum community engages governments and global fora.'],
+       ['Co-branded visibility','Joint workshops, reports and events, with recognition for your institution across our network.']]
+      .map(([t,d])=>`<div class="card pad rv why-card"><div class="card-b"><h4>${t}</h4><p>${d}</p></div></div>`).join('')}
+  </div>
+  <div class="metric-row">
+    ${[[cnum('stats.chapters',9),'National chapters'],[cnum('stats.countries',48),'Countries reached'],[cnum('stats.members',361),'Community members'],[cnum('stats.events',10),'Events held']]
+      .map(([n,l])=>`<div class="metric"><span class="n">${n}</span><span class="l">${l}</span></div>`).join('')}
+  </div>
+</div></section>
+
+<section class="cta-band">
+  ${ringMark('cta-ring')}
+  <div class="wrap"><h2>${cx('pages.programs.ctaTitle','Let&rsquo;s build Africa&rsquo;s quantum future together.')}</h2>
+  <div class="btns"><a class="btn teal" href="#/contact">Start a conversation</a><a class="btn inv ghost" href="#/partners">Ways to partner</a></div>
 </div></section>`;
 
 /* ---------- AI TUTOR ---------- */
@@ -3372,6 +3506,30 @@ ${crumb([{t:'Home',h:'#/'},{t:'Collaborators & Partners',h:'#/partners'}])}
       ].map(([t,d])=>`<div class="card pad rv"><div class="card-b"><h4>${esc(t)}</h4><p>${esc(d)}</p></div></div>`).join('')}
   </div>
 </div></section>
+<section class="sec deep"><div class="wrap">
+  ${sectionHead(
+    cx('pages.partners.whyEyebrow','For institutions'),
+    cx('pages.partners.whyTitle','Why institutions partner with Quantum Africa'),
+    cx('pages.partners.whyLede','A credible, measurable way to invest in African quantum capacity — with real reach, transparent outcomes and a single entry point to the continent.')
+  )}
+  <div class="grid g3">
+    ${[[cx('pages.partners.why1Title','Continental reach'),cx('pages.partners.why1Body','Chapters in nine countries and a network reaching learners and researchers in 48 countries.')],
+       [cx('pages.partners.why2Title','Credibility and governance'),cx('pages.partners.why2Body','A board of directors, published outcomes and reporting you can take to your own stakeholders.')],
+       [cx('pages.partners.why3Title','Measurable impact'),cx('pages.partners.why3Body','Every programme is tracked: participants, completions, research outputs and ventures supported.')],
+       [cx('pages.partners.why4Title','Talent pipeline'),cx('pages.partners.why4Body','Direct access to the students, researchers and founders building Africa&rsquo;s quantum future.')],
+       [cx('pages.partners.why5Title','Policy access'),cx('pages.partners.why5Body','A seat at the table as Africa&rsquo;s quantum community engages governments and global fora.')],
+       [cx('pages.partners.why6Title','Co-branded visibility'),cx('pages.partners.why6Body','Joint workshops, reports and events, with recognition for your institution across our network.')]]
+      .map(([t,d])=>`<div class="card pad rv why-card"><div class="card-b"><h4>${t}</h4><p>${d}</p></div></div>`).join('')}
+  </div>
+  <div class="metric-row">
+    ${[[cnum('stats.chapters',9),'National chapters'],[cnum('stats.countries',48),'Countries reached'],[cnum('stats.members',361),'Community members'],[cnum('stats.events',10),'Events held']]
+      .map(([n,l])=>`<div class="metric"><span class="n">${n}</span><span class="l">${l}</span></div>`).join('')}
+  </div>
+  <div class="phero-meta" style="margin-top:30px">
+    <a class="btn teal" href="#/programs">${cx('pages.partners.whyCta1','Our Three Pillars')}</a>
+    <a class="btn inv ghost" href="#/contact">${cx('pages.partners.whyCta2','Start a conversation')}</a>
+  </div>
+</div></section>
 <section class="cta-band">
   ${ringMark('cta-ring')}
   <div class="wrap"><h2>${cx('pages.partners.ctaBandTitle','Let&rsquo;s collaborate.')}</h2>
@@ -3851,6 +4009,7 @@ const ROUTES = [
   [/^\/?$/,                        () => PAGES.home()],
   [/^\/about$/,                    () => PAGES.about()],
   [/^\/impact$/,                   () => PAGES.impact()],
+  [/^\/programs$/,                 () => PAGES.programs()],
   [/^\/education$/,                () => PAGES.education()],
   [/^\/tutor$/,                    () => PAGES.tutor()],
   [/^\/research$/,                 () => PAGES.research()],
@@ -3889,6 +4048,7 @@ const SEO_DESC_HOME  = 'Quantum Africa is a pan-African organization building ca
 const SEO_TITLE_BY_ROUTE = {
   'about':        'About Quantum Africa — Building a pan-African quantum community',
   'impact':       'Impact — Quantum Africa projects, chapters and community outcomes',
+  'programs':     'Our Three Pillars — Quantum Education, Quantum Diplomacy & Policy, and Quantum Innovation',
   'education':    'Quantum Education — Learning programmes, quantum tutoring and workshops for African students',
   'tutor':        '1-on-1 Quantum Tutoring — Book private tutoring with Quantum Africa tutors',
   'research':     'Research — Open quantum computing research projects by Quantum Africa contributors',
@@ -3912,6 +4072,7 @@ const SEO_TITLE_BY_ROUTE = {
 const SEO_DESC_BY_ROUTE = {
   'about':        'Quantum Africa is a pan-African network of students, researchers, professionals and innovators building a homegrown quantum ecosystem across the continent through chapters, research, education and events.',
   'impact':       'See the concrete impact of Quantum Africa across Africa: launched national chapters, workshop participants, research projects, community stories and measurable outcomes in education and research.',
+  'programs':     'Quantum Africa works across three pillars: Quantum Education & Accessibility, Quantum Diplomacy & Policy, and Quantum Innovation — including the African Quantum Startup Program and Women in Quantum. Built for partnership with universities, governments, industry and funders.',
   'education':    'Quantum Africa runs learning programmes for African students: workshops, webinars, peer groups, quantum tutoring and training paths in quantum computing, quantum information and quantum machine learning.',
   'tutor':        'Book 1-on-1 quantum computing tutoring with vetted Quantum Africa tutors — Qiskit, quantum algorithms, quantum ML, undergraduate quantum mechanics, exam prep and more.',
   'research':     'Open-source and collaborative research projects led by Quantum Africa contributors across Africa: quantum ML, quantum computing for healthcare, materials discovery, QKD and education tools.',

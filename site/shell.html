@@ -819,6 +819,25 @@ tr:last-child td{border-bottom:0}
 @media(max-width:940px){.side{grid-template-columns:1fr}}
 .panel{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:var(--bg-2)}
 .panel h5{margin-bottom:14px;font-family:var(--f);font-weight:600;font-size:.735rem;letter-spacing:.13em;text-transform:uppercase;color:var(--teal)}
+/* ---------- programmes · three pillars ---------- */
+.qa-list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:11px}
+.qa-list li{position:relative;padding-left:25px;font-size:.94rem;line-height:1.55;color:var(--ink-2)}
+.qa-list li::before{content:"";position:absolute;left:1px;top:.48em;width:9px;height:9px;border-radius:2px;background:var(--duo);transform:rotate(45deg)}
+.qa-list b{color:var(--ink);font-weight:600}
+.sec.inv .qa-list li,.sec.deep .qa-list li{color:rgba(255,255,255,.72)}
+.sec.inv .qa-list b,.sec.deep .qa-list b{color:#fff}
+.pillar-visual .slot{border-radius:var(--r);min-height:330px}
+.pillar-visual .slot .art{opacity:.94}
+.prog-tag{display:inline-block;font-family:var(--f);font-weight:600;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid color-mix(in srgb,var(--gold) 42%,transparent);border-radius:999px;padding:4px 11px;margin-bottom:14px}
+.why-card h4{font-size:1.06rem;margin-bottom:8px}
+.why-card p{font-size:.9rem;color:var(--ink-2)}
+.sec.inv .why-card p,.sec.deep .why-card p{color:rgba(255,255,255,.7)}
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
+.metric{text-align:center;padding:20px 12px;border-radius:var(--r);background:color-mix(in srgb,var(--ink) 5%,transparent);border:1px solid var(--line)}
+.metric .n{font-family:var(--f);font-weight:800;font-size:clamp(1.7rem,3vw,2.3rem);letter-spacing:-.03em;background:var(--duo-w);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.metric .l{display:block;margin-top:9px;font-family:var(--f);font-weight:500;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.sec.inv .metric,.sec.deep .metric{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.14)}
+@media(max-width:760px){.metric-row{grid-template-columns:1fr 1fr}}
 .dl-list{display:flex;flex-direction:column;margin:0}
 .dl-item{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.87rem}
 .dl-item:last-child{border-bottom:0}
@@ -1595,6 +1614,7 @@ body.no-motion .sec-idx i{transform:scaleX(1)}
         <div class="socials" id="footSocials"></div>
       </div>
       <div class="f-col"><h5>Programs</h5>
+        <a href="#/programs">Our Three Pillars</a>
         <a href="#/education">Education</a><a href="#/tutor">AI Tutor</a>
         <a href="#/research">Research</a><a href="#/opportunities">Opportunities</a>
         <a href="#/universities">Universities</a>
