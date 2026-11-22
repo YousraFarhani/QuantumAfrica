@@ -1,5 +1,5 @@
 /* ============================================================
-   QUANTUM AFRICA — GENERATED ARTWORK
+   QUANTUM AFRICA: GENERATED ARTWORK
    Every figure is drawn in code from the organisation's own
    subject matter: circuits, light cones, Bloch spheres,
    interference, spectra, entanglement lattices, networks.
@@ -118,7 +118,7 @@ const ART = {
     return o;
   },
 
-  /* interference fringes — intensity bands */
+  /* interference fringes, intensity bands */
   fringes(id){
     let o = '';
     for(let x=0;x<800;x+=8){
@@ -178,7 +178,7 @@ const ART = {
     return o;
   },
 
-  /* absorption spectra — for the pigments project */
+  /* absorption spectra, for the pigments project */
   spectra(id){
     const curves=[[300,58,.95,'#EFD9AA'],[400,70,.72,'#C9A55B'],[500,64,.85,'#1E9A57'],[600,80,.55,'#8A6B2E']];
     let o=`<line x1="80" y1="380" x2="740" y2="380" stroke="#8FB4DE" stroke-opacity=".4" stroke-width="1.2"/>
@@ -203,7 +203,7 @@ const ART = {
     return o;
   },
 
-  /* kernel / feature-map heatmap — for the QML project */
+  /* kernel / feature-map heatmap, for the QML project */
   kernel(id){
     let o='';
     const N=14, s=22, x0=250, y0=66;
@@ -215,7 +215,7 @@ const ART = {
     return o;
   },
 
-  /* key rate vs distance — for the QKD project */
+  /* key rate vs distance, for the QKD project */
   qkd(id){
     let o=`<line x1="90" y1="370" x2="740" y2="370" stroke="#8FB4DE" stroke-opacity=".4" stroke-width="1.2"/>
            <line x1="90" y1="60" x2="90" y2="370" stroke="#8FB4DE" stroke-opacity=".4" stroke-width="1.2"/>`;
@@ -234,7 +234,7 @@ const ART = {
     return o;
   },
 
-  /* wide hero field — orbitals over a horizon */
+  /* wide hero field, orbitals over a horizon */
   field(id){
     let o='';
     for(let i=0;i<7;i++){
@@ -291,9 +291,9 @@ function tutorMock(){
         <div class="mock-msg you">Why does measuring a qubit destroy superposition?</div>
         <div class="mock-msg bot">
           <span class="mock-badge">Quantum AI Tutor</span>
-          Think of the qubit's state as a point on a sphere — it can sit anywhere on the surface. Measurement asks a yes/no question, and the only answers available are the two poles.
+          Think of the qubit's state as a point on a sphere, it can sit anywhere on the surface. Measurement asks a yes/no question, and the only answers available are the two poles.
           <div class="mock-fig">${art('bloch')}</div>
-          The probability of each answer comes from how close the point sits to that pole. Once answered, the state <em>is</em> that pole — the rest of the information is gone.
+          The probability of each answer comes from how close the point sits to that pole. Once answered, the state <em>is</em> that pole, the rest of the information is gone.
         </div>
         <div class="mock-msg you">Show me that with a circuit.</div>
         <div class="mock-input"><span>Ask anything about quantum computing…</span><span class="mock-send">↑</span></div>

@@ -1,5 +1,5 @@
 /* ============================================================
-   QUANTUM AFRICA — prototype application
+   QUANTUM AFRICA, prototype application
    Data below stands in for CMS collections. In production each
    array is a Sanity collection and each page is a Next.js route.
    ============================================================ */
@@ -64,7 +64,7 @@ let CHAPTERS = [
 
 /* ---------- Quantum Africa Conference Series ----------
    Edition history verified against the QA7 host site and IQST.
-   The series is run by its own steering committee — confirm
+   The series is run by its own steering committee, confirm
    Quantum Africa's relationship to it before publishing. */
 let CONF = [
   {n:'01', slug:'qa1', year:'2010', city:'Durban', country:'South Africa',
@@ -463,17 +463,17 @@ const CONF_SC_PAST = [
 
 let EVENTS = [
   {slug:'junction-hackathon', type:'Hackathon', when:'past',
-   title:'European Quantum Hackathon by Junction — Espoo, Finland 2026',
+   title:'European Quantum Hackathon by Junction: Espoo, Finland 2026',
    n:'European Quantum Hackathon by Junction',
    subhead:'Hosted by Junction in Espoo · Finland',
    eyebrow:'European Quantum Hackathon · Junction',
    lede:'We are incredibly proud to partner with Junction for the European Quantum Hackathon stop hosted in Espoo, Finland. The event tackles real-world quantum challenges with expert-led mentorship and a global innovator community.',
-   description:`We partnered with Junction for the European Quantum Hackathon in Espoo, Finland — part of the wider European Quantum Hackathon series bringing quantum computing challenges, hands-on workshops, and industry/academic mentorship to participants from across Europe and beyond.
+   description:`We partnered with Junction for the European Quantum Hackathon in Espoo, Finland, part of the wider European Quantum Hackathon series bringing quantum computing challenges, hands-on workshops, and industry/academic mentorship to participants from across Europe and beyond.
 
 **What the event covered**
-• Real-World Challenges — Tackle complex problems using the power of quantum computing.
-• Workshops & Mentorship — Learn from industry experts and academic leaders throughout the event.
-• Prizes & Networking — Connect with a global community of innovators and win big.
+• Real-World Challenges: Tackle complex problems using the power of quantum computing.
+• Workshops & Mentorship: Learn from industry experts and academic leaders throughout the event.
+• Prizes & Networking: Connect with a global community of innovators and win big.
 
 **Event Details**
 • Dates: 23–25 June 2026
@@ -487,7 +487,7 @@ Supported by Junction and its institutional partners this is a flagship stop on 
    registerUrl:'https://lnkd.in/e4ZA9d-S', org:'Junction · European Quantum Hackathon',
    status:'Delivered · June 2026'},
   {slug:'morocco-hackathon', type:'Hackathon', when:'past',
-   title:'Morocco Quantum Hackathon — Rabat 2026',
+   title:'Morocco Quantum Hackathon: Rabat 2026',
    n:'Morocco Quantum Hackathon',
    subhead:'Official Media Partners · Quantum Africa',
    eyebrow:'Morocco Quantum Hackathon · Rabat',
@@ -495,16 +495,16 @@ Supported by Junction and its institutional partners this is a flagship stop on 
    description:`We were official media partners for the Morocco Quantum Hackathon – Rabat 2026! Quantum technology is set to redefine the future, and there was no better place to witness this transformation than in the heart of Morocco.
 
 **What to Expect**
-• Real-World Challenges — Tackle complex problems using the power of quantum computing.
-• Workshops & Mentorship — Learn from industry experts and academic leaders throughout the event.
-• Prizes & Networking — Connect with a global community of innovators and win big.
+• Real-World Challenges: Tackle complex problems using the power of quantum computing.
+• Workshops & Mentorship: Learn from industry experts and academic leaders throughout the event.
+• Prizes & Networking: Connect with a global community of innovators and win big.
 
 **Event Details**
 • Dates: 23–25 June 2026
 • Location: Rabat, Morocco
 • Registration Deadline: 31 March 2026
 
-Supported by UM6P — University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI — Open Quantum Institute this was an event not to miss.`,
+Supported by UM6P: University Mohammed VI Polytechnic, Mohammed V University in Rabat and the OQI: Open Quantum Institute this was an event not to miss.`,
    heroImage:'/media/events/mor/Screenshot 2026-09-05 at 12.03.34.png',
    gallery:['/media/events/mor/Screenshot 2026-09-05 at 12.03.34.png','/media/events/mor/Screenshot 2026-09-05 at 12.03.41.png'],
    start:'2026-06-23', end:'2026-06-25', deadline:'2026-03-31', city:'Rabat', country:'Morocco',
@@ -512,12 +512,12 @@ Supported by UM6P — University Mohammed VI Polytechnic, Mohammed V University 
    registerUrl:'https://lnkd.in/e4ZA9d-S', org:'UM6P · Mohammed V University · OQI',
    status:'Delivered · June 2026'},
   {slug:'pan-hackathon', type:'Challenge', when:'past',
-   title:'Hack the Horizon — The Pan-African Quantum Challenge',
+   title:'Hack the Horizon: The Pan-African Quantum Challenge',
    n:'Hack the Horizon · Pan-African Quantum Challenge',
    subhead:'Launched by the Africa Quantum Consortium',
    eyebrow:'Landmark pan-African initiative',
-   lede:'Hack the Horizon — the Pan-African Quantum Challenge launched by the Africa Quantum Consortium activated Africa\'s sovereign quantum ecosystem, uniting innovators, industry leaders and problem-solvers to co-build solutions.',
-   description:`Hack the Horizon — the Pan-African Quantum Challenge launched by the Africa Quantum Consortium.
+   lede:'Hack the Horizon, the Pan-African Quantum Challenge launched by the Africa Quantum Consortium activated Africa\'s sovereign quantum ecosystem, uniting innovators, industry leaders and problem-solvers to co-build solutions.',
+   description:`Hack the Horizon, the Pan-African Quantum Challenge launched by the Africa Quantum Consortium.
 
 This landmark initiative assembled and activated Africa's sovereign quantum ecosystem. More than a competition, this was the strategic assembly of Africa's quantum future, uniting the continent's top innovators, visionary industry leaders, and the next generation of problem-solvers to co-build solutions for the continent and the world.`,
    heroImage:'/media/events/pan.png',
@@ -526,14 +526,14 @@ This landmark initiative assembled and activated Africa's sovereign quantum ecos
    registerUrl:'https://lnkd.in/gJTuNKXE', org:'Africa Quantum Consortium',
    status:'Delivered'},
   {slug:'unicc-course', type:'Online Programme', when:'past',
-   title:'International Quantum Course — UNICC & ITU',
+   title:'International Quantum Course: UNICC & ITU',
    n:'International Quantum Course',
    subhead:'Free online programme launched at ITU AI & Quantum for Good Summit',
    eyebrow:'The International Quantum Course is live! 📚🎓',
-   lede:'Quantum technology is shaping the future, but understanding it should not be limited to a few specialists. The International Quantum Course is a free online programme that opens the world of quantum to everyone — developed by Jim Stolze, Quantum Delta NL, UNICC and ITU.',
+   lede:'Quantum technology is shaping the future, but understanding it should not be limited to a few specialists. The International Quantum Course is a free online programme that opens the world of quantum to everyone, developed by Jim Stolze, Quantum Delta NL, UNICC and ITU.',
    description:`Quantum technology is shaping the future, but understanding it should not be limited to a few specialists.
 
-The International Quantum Course — a free online programme that opens the world of quantum to everyone. Through the course, participants can:
+The International Quantum Course, a free online programme that opens the world of quantum to everyone. Through the course, participants can:
 • Learn the foundations of quantum mechanics
 • Explore current applications and future potential of quantum technology
 • Earn a certificate upon completion
@@ -548,7 +548,7 @@ The official launch took place in Geneva at ITU's AI & Quantum for Good Summit, 
    org:'Quantum Delta NL · UNICC · ITU',
    status:'Live · Free access'},
   {slug:'qtedu-hackathon', type:'Hackathon', when:'past',
-   title:'QTEdu · Pan-African Quantum Hackathon — AIMS Ghana',
+   title:'QTEdu · Pan-African Quantum Hackathon: AIMS Ghana',
    n:'QTEdu Pan-African Quantum Hackathon',
    subhead:'Accra, Ghana · July 2025',
    eyebrow:'First-ever African Quantum Hackathon',
@@ -564,8 +564,8 @@ A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participan
    org:'AIMS Ghana · Open Quantum Institute',
    status:'Delivered · July 2025'},
   {slug:'qml4africa-2', type:'Workshop', when:'past', series:'QML4Africa', edition:'02', status:'Delivered',
-   title:'Quantum Machine Learning 4 Africa — Second Edition',
-   n:'Quantum Machine Learning 4 Africa — Second Edition',
+   title:'Quantum Machine Learning 4 Africa: Second Edition',
+   n:'Quantum Machine Learning 4 Africa: Second Edition',
    subhead:'Advancing Quantum Machine Learning',
    lede:'Building on the foundations of the first edition, the second workshop explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.',
    description:'Building on the foundations of the first edition, the second workshop explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.',
@@ -575,8 +575,8 @@ A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participan
    heroImage:'/media/edition2.jpeg',
    org:'DeepLearning Indaba'},
   {slug:'qml4africa-1', type:'Workshop', when:'past', series:'QML4Africa', edition:'01', status:'Delivered',
-   title:'Quantum Machine Learning 4 Africa — First Edition',
-   n:'Quantum Machine Learning 4 Africa — First Edition',
+   title:'Quantum Machine Learning 4 Africa: First Edition',
+   n:'Quantum Machine Learning 4 Africa: First Edition',
    subhead:'Introduction to Quantum Machine Learning',
    lede:'An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and practical implementation using quantum programming tools.',
    description:'An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and practical implementation using quantum programming tools.',
@@ -587,17 +587,17 @@ A huge thank you to AIMS Ghana, the Open Quantum Institute, and every participan
    org:'DeepLearning Indaba'},
   {slug:'qiskit-fallfest-2026', type:'Festival', when:'upcoming',
    title:'Qiskit Fall Fest 2026 · Nairobi',
-   n:'Qiskit Fall Fest 2026 — Nairobi',
+   n:'Qiskit Fall Fest 2026, Nairobi',
    subhead:'Hosted by QuantumKe · University of Nairobi',
    eyebrow:'QFF26 · A decade of quantum on the cloud',
-   lede:'QuantumKe is bringing Qiskit Fall Fest 2026 to Nairobi this October — celebrating a decade of quantum computing on the cloud with workshops, Qiskit 101, hands-on sessions, a hackathon challenge, and networking with Kenya’s growing quantum community.',
-   description:`QuantumKe brings Qiskit Fall Fest 2026 to Nairobi — celebrating **a decade of quantum computing on the cloud**.
+   lede:'QuantumKe is bringing Qiskit Fall Fest 2026 to Nairobi this October, celebrating a decade of quantum computing on the cloud with workshops, Qiskit 101, hands-on sessions, a hackathon challenge, and networking with Kenya’s growing quantum community.',
+   description:`QuantumKe brings Qiskit Fall Fest 2026 to Nairobi, celebrating **a decade of quantum computing on the cloud**.
 
 **What to expect**
-• Qiskit 101 — Foundations for students, researchers and professionals new to the stack
-• Hands-on technical workshops — circuit building, applications and quantum machine learning
-• Hackathon challenge — Solve real-world problems using Qiskit with mentorship
-• Community networking — Connect with Kenya’s growing quantum ecosystem and peers from across the region
+• Qiskit 101, Foundations for students, researchers and professionals new to the stack
+• Hands-on technical workshops, circuit building, applications and quantum machine learning
+• Hackathon challenge: Solve real-world problems using Qiskit with mentorship
+• Community networking: Connect with Kenya’s growing quantum ecosystem and peers from across the region
 
 Open to **students, researchers, professionals, and anyone curious** about quantum computing.
 
@@ -613,18 +613,18 @@ Open to **students, researchers, professionals, and anyone curious** about quant
    org:'QuantumKe · IBM Quantum · Qiskit',
    status:'Scheduled · October 2026'},
   {slug:'zambia-quantum-seminar-1', type:'Seminar', when:'upcoming',
-   title:'Quantum Zambia — Inaugural Quantum Science Seminar',
+   title:'Quantum Zambia: Inaugural Quantum Science Seminar',
    n:'Quantum Science Seminar · Quantum Zambia',
    subhead:'First Quantum Science Seminar hosted by Quantum Zambia',
    eyebrow:'Quantum Zambia milestone · Free attendance + certificates',
-   lede:'Quantum Zambia, under Quantum Africa, hosts its first Quantum Science Seminar on Friday 7 August 2026 — a full day of talks from 09:00 to 15:00 CAT (UTC+2), open to all with certificates issued after the seminar.',
-   description:`Quantum Zambia, under Quantum Africa, hosts its **first Quantum Science Seminar** — an exciting milestone for Zambia’s emerging quantum ecosystem.
+   lede:'Quantum Zambia, under Quantum Africa, hosts its first Quantum Science Seminar on Friday 7 August 2026, a full day of talks from 09:00 to 15:00 CAT (UTC+2), open to all with certificates issued after the seminar.',
+   description:`Quantum Zambia, under Quantum Africa, hosts its **first Quantum Science Seminar**, an exciting milestone for Zambia’s emerging quantum ecosystem.
 
 **Programme**
-• 09:00 – 10:00 — Welcome & keynote: Why quantum matters for Africa
-• 10:15 – 12:00 — Technical session: Foundations of quantum computing and quantum information
-• 12:00 – 13:00 — Break + networking
-• 13:00 – 15:00 — Panel: Opportunities in African quantum science + student lightning talks
+• 09:00 – 10:00, Welcome & keynote: Why quantum matters for Africa
+• 10:15 – 12:00, Technical session: Foundations of quantum computing and quantum information
+• 12:00 – 13:00, Break + networking
+• 13:00 – 15:00, Panel: Opportunities in African quantum science + student lightning talks
 
 **Attendance**
 • Participation is free for all attendees
@@ -643,8 +643,8 @@ Open to **students, researchers, professionals, and anyone curious** about quant
    org:'Quantum Zambia · Quantum Africa',
    status:'Planned · August 2026'},
   {slug:'qml4africa-3', type:'Workshop', when:'upcoming', series:'QML4Africa', edition:'03', status:'Planned',
-   title:'Quantum Machine Learning 4 Africa — Third Edition',
-   n:'Quantum Machine Learning 4 Africa — Third Edition',
+   title:'Quantum Machine Learning 4 Africa: Third Edition',
+   n:'Quantum Machine Learning 4 Africa: Third Edition',
    subhead:'Third Edition',
    lede:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
    description:'A new edition of QML4Africa bringing together African learners and researchers for another hands-on exploration of quantum machine learning.',
@@ -664,13 +664,13 @@ let PROJECTS = [
    short:'Small, interpretable models that predict material properties well enough to tell an experimentalist which candidates are worth making.',
    tech:['Python','scikit-learn','Open materials databases'], repo:false, art:'spectra', image:'media/projects/project3.png', cover:'media/projects/project3.png', hero:'media/projects/project3.png'},
   {slug:'satellite-qkd', title:'Satellite Quantum Communication Across Africa', area:'Quantum communication · Infrastructure', status:'current',
-   short:'Link budgets, key rates and pass windows for satellite QKD between African research hubs — and a first ranked list of city pairs worth a pilot.',
+   short:'Link budgets, key rates and pass windows for satellite QKD between African research hubs, and a first ranked list of city pairs worth a pilot.',
    tech:['Python','Orbital and link modelling','Geospatial analysis'], repo:false, art:'qkd', image:'media/projects/project4.png', cover:'media/projects/project4.png', hero:'media/projects/project4.png'},
   {slug:'quantum-education-llm', title:'Quantum Education LLM for African Communities', area:'Education technology · Quantum education', status:'current',
    short:'A domain-specific language model for quantum computing education, built for the contexts, prior backgrounds and constraints African learners actually have.',
    tech:['Python','Open LLMs','Retrieval-augmented generation'], repo:false, art:'circuit', image:'media/projects/project5.png', cover:'media/projects/project5.png', hero:'media/projects/project5.png'},
   {slug:'healthcare-quantum', title:'Quantum Computing for Healthcare Applications', area:'Quantum algorithms · Health', status:'current',
-   short:'Where in the biomedical research pipeline quantum methods could genuinely shorten a computation — and where they could not.',
+   short:'Where in the biomedical research pipeline quantum methods could genuinely shorten a computation, and where they could not.',
    tech:['Python','Qiskit','Computational chemistry'], repo:false, art:'bloch', image:'media/projects/project6.png', cover:'media/projects/project6.png', hero:'media/projects/project6.png'},
   {slug:'secure-qml', title:'Secure Quantum Machine Learning', area:'Quantum machine learning · Security', status:'current',
    short:'Whether quantum machine learning models can be attacked, how, and what it takes to make them trustworthy.',
@@ -700,20 +700,20 @@ const DEFAULT_ARTICLES = [
    links:[{l:'Read the article on The Quantum Insider', u:'https://thequantuminsider.com/2026/09/07/qml4africa-quantum-researchers-lagos/'}]},
   {slug:'uganda-indaba-2026', title:'Quantum Uganda Chapter Connects with the African AI Community',
    type:'Chapter update', date:'2026-09-03', author:'Ssmaganda George, Chapter Lead', read:'3 min',
-   summary:'Quantum Uganda was represented at Deep Learning Indaba 2026 by chapter lead Ssmaganda George, running a community booth together with Uganda Christian University and Makerere University members — welcoming 50+ visitors, distributing all swag, and seeding three new national chapter leads.',
+   summary:'Quantum Uganda was represented at Deep Learning Indaba 2026 by chapter lead Ssmaganda George, running a community booth together with Uganda Christian University and Makerere University members, welcoming 50+ visitors, distributing all swag, and seeding three new national chapter leads.',
    body:'Quantum Uganda was represented at Deep Learning Indaba 2026 by its chapter lead Ssmaganda George, who joined the Quantum Uganda Community Booth alongside members of the university community from Uganda Christian University and Makerere University.\n\nThe team engaged with participants throughout the final day, introducing Quantum Uganda\u2019s activities and connecting with students, researchers, and professionals interested in quantum technologies.\n\nDay 6 highlights:\n\n\u2022 50+ booth visitors, 3 new leads for establishing Quantum Africa chapters across Africa\n\u2022 Community materials and swag fully distributed\n\nA strong opportunity to grow Quantum Uganda\u2019s visibility and connect the chapter with the wider African technology and research community.',
    image:'media/news/uganda.jpeg', cover:'media/news/uganda.jpeg', hero:'media/news/uganda.jpeg',
    chapter:'Uganda', url:''},
   {slug:'gesda-quantum-summit-2026', title:'Quantum Africa at the GESDA - Geneva Science and Diplomacy Anticipator',
    type:'Report', date:'2026-08-18', author:'Geneva delegation', read:'7 min',
-   summary:'Quantum Africa participated in GESDA Science and Diplomacy Week hosted at CERN — African voices in the global quantum dialogue, meeting with the Open Quantum Institute, African hackathon winners QUALARIA, and the wider African quantum ecosystem.',
+   summary:'Quantum Africa participated in GESDA Science and Diplomacy Week hosted at CERN: African voices in the global quantum dialogue, meeting with the Open Quantum Institute, African hackathon winners QUALARIA, and the wider African quantum ecosystem.',
    body:'Quantum Africa is proud to have been represented at the Science and Diplomacy Week hosted by GESDA, held at CERN \ud83c\udde8\ud83c\udded\n\nThis participation marks a significant step forward for Africa\u2019s presence in the global quantum dialogue, highlighting the growing talent, innovation, and leadership emerging across the continent.\n\nWe extend our sincere thanks to St\u00e9phane Decout\u00e8re for the kind invitation and to the OQI \u2013 Open Quantum Institute and Martin Gastal for their continued efforts in making quantum technologies more accessible worldwide.\n\nIt was a pleasure to connect with members of the African quantum ecosystem, including Prince Koree Osei, PhD, Charlene (Asiedu) Danso Amoah, and the QUALARIA team, Augustina Agyeman, and Prince Dorcis, winners of the first Quantum African Hackathon, and to engage in impactful conversations with global quantum leaders.\n\nQuantum Africa also attended the GenQ Hackathon opening ceremony, where the challenges and discussions led by Alexandra Beckstein and Tobias Denzler showcased the next generation of quantum innovators.\n\nWe are proud to see African voices and contributions increasingly recognized in shaping the future of quantum science and technology on the world stage \ud83c\udf0d',
    image:'media/news/Gesda/1.jpeg', cover:'media/news/Gesda/1.jpeg', hero:'media/news/Gesda/1.jpeg',
    gallery:['media/news/Gesda/1.jpeg','media/news/Gesda/2.jpeg','media/news/Gesda/3.jpeg'],
    chapter:'Pan-African', url:''},
   {slug:'women-quantum-roundtable', title:'Quantum Africa Joins African Women in Quantum Roundtable',
    type:'Member story', date:'2026-08-29', author:'Quantum Circle & Africa Quantum Consortium', read:'4 min',
-   summary:'Yousra Farhani joined 18 women leaders from across Africa working in quantum research, industry and policy at the Quantum Circle roundtable hosted by the Africa Quantum Consortium — reflecting on 2025 and aligning on a collective 2026 communiqu\u00e9.',
+   summary:'Yousra Farhani joined 18 women leaders from across Africa working in quantum research, industry and policy at the Quantum Circle roundtable hosted by the Africa Quantum Consortium, reflecting on 2025 and aligning on a collective 2026 communiqu\u00e9.',
    body:'Quantum Africa Founder Yousra Farhani joined 18 women leaders from across Africa working in quantum research, industry, and policy for the Quantum Circle roundtable hosted by the Africa Quantum Consortium.\n\nThe December roundtable reflected on developments and priorities from 2025 and explored key priorities for 2026, culminating in a collective communiqu\u00e9 outlining shared commitments and priorities for the year ahead.\n\nThe discussion brought together women shaping the future of Africa\u2019s quantum ecosystem and created an important space for collaboration, exchange, and collective action.',
    image:'media/news/quantumcircle.png', cover:'media/news/quantumcircle.png', hero:'media/news/quantumcircle.png',
    chapter:'Pan-African', url:'https://www.youtube.com/watch?v=SJT1w7xtXSU'},
@@ -733,12 +733,12 @@ const QUBO_PUB = {
     {n:'Abdulmajid Osumanu',           a:'African Institute for Mathematical Sciences (AIMS) Ghana, Accra, Ghana',                                  e:'abdulmajid@aims.edu.gh'},
   ],
   area:'Quantum optimization · Energy access',
-  short:'Quantum-enhanced microgrid optimization for rural electrification in Africa — a QUBO-based planning model exploring demand, generation, storage and grid extension trade-offs.',
+  short:'Quantum-enhanced microgrid optimization for rural electrification in Africa, a QUBO-based planning model exploring demand, generation, storage and grid extension trade-offs.',
   tech:['QUBO','Quantum annealing','Energy systems','Microgrid modelling'],
   repo:false, art:'network', proposedBy:'Yousra Farhani',
   description:`This work introduces a QUBO (Quadratic Unconstrained Binary Optimization) formulation for community-level energy planning, with a focus on rural microgrid electrification scenarios in Africa. The model jointly considers generation mix, storage sizing, demand profiles, and capital and operational trade-offs so that planners can compare centralized grid extension, standalone solar microgrids, and hybrid configurations using quantum annealing and classical QUBO solvers.
 
-The case studies and sensitivity analyses demonstrate how QUBO-based optimization can support locally tailored energy-access decisions — including demand sizing, renewable penetration targets, and resilience to seasonal load variation — with particular attention to communities currently without reliable grid access.`,
+The case studies and sensitivity analyses demonstrate how QUBO-based optimization can support locally tailored energy-access decisions, including demand sizing, renewable penetration targets, and resilience to seasonal load variation, with particular attention to communities currently without reliable grid access.`,
 };
 
 /* Opportunities feed.
@@ -786,7 +786,7 @@ const CONTENT_INLINE = __CONTENT_JSON__;
      window.QA_FEED = 'https://feed.quantum-africa.org/api';
    The API sends CORS headers, so it works from any origin.
    When running locally (file://, localhost, or 127.0.0.1) we also probe for the
-   admin CMS running at http://127.0.0.1:8000 — if it responds, we temporarily
+   admin CMS running at http://127.0.0.1:8000, if it responds, we temporarily
    override the feed to read directly from the panel so edits show up instantly
    without needing to re-export the static JSON files or re-run the build. */
 (function autoFeedProbe(){
@@ -807,7 +807,7 @@ const CONTENT_INLINE = __CONTENT_JSON__;
    runtime from data/content.json, or from the API when one is configured.
 
    cx(path, fallback)  a value, or the placeholder that asks for it
-   cval(path)          the raw value, or '' — for attributes and tests
+   cval(path)          the raw value, or '', for attributes and tests
    clist(key)          a collection, or [] */
 let CONTENT = {};
 let CONTENT_META = { loaded:false, updated:null };
@@ -1143,7 +1143,7 @@ function eventCard(e, idx){
   const where = [e.city, e.country].filter(Boolean).join(', ');
   const cta = e.when==='upcoming' ? (e.registerUrl?'Register now':'Register interest') : (e.links&&e.links.length?'View resources':'Details');
   return `<a class="card rv" href="#/events/${e.slug}">
-    <div class="card-media">${rimg(img,'Event photo — '+(esc(e.n||e.title||'')),'1600×900 · JPG','',k)}</div>
+    <div class="card-media">${rimg(img,'Event photo, '+(esc(e.n||e.title||'')),'1600×900 · JPG','',k)}</div>
     <div class="card-b">
       <div class="card-meta"><span class="tag">${esc(e.type)}</span>${e.series?`<span class="pill current">${esc(e.series)} · ${esc(e.edition)}</span>`:`<span class="pill ${pillWhen}">${esc(pillLbl)}</span>`}</div>
       <h4>${e.title ? esc(e.title) : pht(e.n)}</h4>
@@ -1296,8 +1296,8 @@ function articleFeature(a){
     <div class="card-media">${artImage(a, '2400×1350 · JPG')}</div>
     <div class="fb">
       <div class="news-meta"><span class="t">Featured · ${esc(a.type||'News')}</span><span>${artDate(a)}</span>${a.read?`<span>${esc(a.read)}</span>`:''}</div>
-      <h3>${a.title ? esc(a.title) : pht('Lead article headline — the piece you most want read')}</h3>
-      <p>${a.summary ? esc(a.summary) : pht('Standfirst — one or two sentences that make someone want to open it')}</p>
+      <h3>${a.title ? esc(a.title) : pht('Lead article headline, the piece you most want read')}</h3>
+      <p>${a.summary ? esc(a.summary) : pht('Standfirst, one or two sentences that make someone want to open it')}</p>
       <span class="link-a">Read the article <span class="ar" aria-hidden="true">&rarr;</span></span>
     </div></a>`;
 }
@@ -1367,7 +1367,7 @@ function chapterList(){
       ${CHAPTERS.map(c=>`<div class="ch-row" data-code="${c.code||''}" style="cursor:default">
         <span class="fl" aria-hidden="true">${c.flag || '?'}</span>
         <span class="nm">Quantum ${esc(c.name)}</span>
-        <span class="cc">${c.code ? c.code.toUpperCase() : '—'}</span>
+        <span class="cc">${c.code ? c.code.toUpperCase() : ''}</span>
       </div>`).join('')}
     </div>
     <div class="panel mt24" style="background:var(--grad-soft);border-color:var(--line)">
@@ -1455,7 +1455,7 @@ function highlightSection(){
   const when = [date ? oppDate(date) : '', place].filter(Boolean).join(' · ');
   return `
 <section class="sec hl-sec"><div class="wrap">
-  ${sectionHead(eyebrow || 'Latest', title || pht('HIGHLIGHT — your latest event'),
+  ${sectionHead(eyebrow || 'Latest', title || pht('HIGHLIGHT, your latest event'),
      summary || pht('Two or three sentences: what happened and why it mattered.'))}
   ${when ? `<p class="hl-when">${esc(when)}</p>` : ''}
 
@@ -1468,7 +1468,7 @@ function highlightSection(){
   <div class="hl-ths" id="hlThumbs">${items.map(highlightThumb).join('')}</div>
 
   ${linkUrl ? `<div class="phero-meta mt24"><a class="btn teal" href="${esc(linkUrl)}"${/^https?:/.test(linkUrl) ? ' target="_blank" rel="noopener noreferrer"' : ''}>${esc(linkText || 'Read more')} <span class="ar" aria-hidden="true">&rarr;</span></a></div>` : ''}
-  ${gallery.length ? '' : `<p class="xs mt24">${pht('Add photos and videos to this carousel inside Page: Home — the “Highlight — photos & video” list. Uploaded clips play here; for a full talk, paste a YouTube or Vimeo link instead.')}</p>`}
+  ${gallery.length ? '' : `<p class="xs mt24">${pht('Add photos and videos to this carousel inside Page: Home, the “Highlight, photos & video” list. Uploaded clips play here; for a full talk, paste a YouTube or Vimeo link instead.')}</p>`}
 </div></section>`;
 }
 
@@ -1507,7 +1507,7 @@ function initHighlight(){
   }
 
   /* Scroll the thumbnail strip itself, never the page. scrollIntoView would
-     drag the whole document down to the carousel — including on first paint,
+     drag the whole document down to the carousel, including on first paint,
      which threw the visitor past the hero before they had read it. */
   const strip = document.getElementById('hlThumbs');
   function keepThumbInView(){
@@ -1741,7 +1741,7 @@ ${highlightSection()}
           <span class="nm">${q.name ? esc(q.name) : pht('Name')}</span>
           <div class="xs">${(q.role ? esc(q.role) : (q.name ? '' : pht('Role'))) + (q.role && q.institution ? ' · ' : '') + (q.institution ? esc(q.institution) : (q.name ? '' : pht('Institution')))}</div>
         </div>
-        <div class="vq-body"><p>${q.quote ? esc(q.quote) : pht('Member quote — 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p></div>
+        <div class="vq-body"><p>${q.quote ? esc(q.quote) : pht('Member quote, 25 to 40 words, in their own words, about what Quantum Africa changed for them')}</p></div>
         <div class="vq-country">${q.country ? esc(tc(q.country)) : pht('Country')}</div>
       </div>`).join('')}
     </div>
@@ -1788,7 +1788,7 @@ PAGES.about = () => {
   const title   = cx('pages.about.heroTitle',
               (cval('about.heroTitle')   || 'We build people, not just programmes.'));
   const lede    = fall('heroLede',
-    "Quantum Africa exists to build Africa's quantum workforce — through education, research, leadership and global connection.");
+    "Quantum Africa exists to build Africa's quantum workforce, through education, research, leadership and global connection.");
   const objectives = (function(){
     let raw = cval('pages.about.objectivesList');
     if(!(Array.isArray(raw) && raw.length)){
@@ -1833,11 +1833,11 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
     <h3>${cx('pages.about.whoWeAreHead', 'Who we are')}</h3>
     ${whoHtml
       ? String(whoHtml).split(/\n\s*\n/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join('')
-      : `<p>${pht('WHO WE ARE — two or three short paragraphs. What Quantum Africa is, and what it is not.')}</p>`}
+      : `<p>${pht('WHO WE ARE, two or three short paragraphs. What Quantum Africa is, and what it is not.')}</p>`}
     <h3>${cx('pages.about.storyHead', 'Our story')}</h3>
     ${storyHtml
       ? String(storyHtml).split(/\n\s*\n/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join('')
-      : `<p>${pht('OUR STORY — 3 to 4 paragraphs: how Quantum Africa started, who started it, what the first activity was, and what changed as the community grew. Include founding year and any turning points.')}</p>`}
+      : `<p>${pht('OUR STORY, 3 to 4 paragraphs: how Quantum Africa started, who started it, what the first activity was, and what changed as the community grew. Include founding year and any turning points.')}</p>`}
     <h3>${cx('pages.about.missionHead', 'Mission')}</h3>
     ${missionHtml
       ? `<p>${esc(missionHtml)}</p>`
@@ -1845,7 +1845,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'About'}])}
     <h3>${cx('pages.about.visionHead', 'Vision')}</h3>
     ${visionHtml
       ? `<p>${esc(visionHtml)}</p>`
-      : `<p>${pht('An Africa whose talent is not left behind in the quantum revolution — with a workforce, a research base and an institutional presence in the global quantum ecosystem.')}</p>`}
+      : `<p>${pht('An Africa whose talent is not left behind in the quantum revolution, with a workforce, a research base and an institutional presence in the global quantum ecosystem.')}</p>`}
     <h3>${cx('pages.about.objectivesHead', 'Objectives')}</h3>
     <ul>${objectives}</ul>
   </div>
@@ -1925,7 +1925,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum Education'
     ${[[cx('pages.education.p1Title','Quantum Africa Webinars'),cx('pages.education.p1Desc','A recurring online series where experts from around the world speak to the community about quantum computing, quantum technologies, applications, research, careers, policy and the future of the field.'),'current','#/events/webinars'],
        [cx('pages.education.p2Title','Quantum Machine Learning 4 Africa'),cx('pages.education.p2Desc','A hands-on workshop series on quantum machine learning. Two editions delivered.'),'current','#/events/workshops'],
        [cx('pages.education.p3Title','Quantum AI Tutor'),cx('pages.education.p3Desc','A free AI-powered tutor for learning quantum computing at your own pace, with structured learning pathways.'),'dev','#/tutor'],
-       [cx('pages.education.p4Title','Learning Resources'),cx('pages.education.p4Desc','A curated library — courses, notebooks, reading lists, tools and recordings, filterable by topic and level.'),'dev','#/education'],
+       [cx('pages.education.p4Title','Learning Resources'),cx('pages.education.p4Desc','A curated library, courses, notebooks, reading lists, tools and recordings, filterable by topic and level.'),'dev','#/education'],
        [cx('pages.education.p5Title','Mentorship'),cx('pages.education.p5Desc','Connecting students with researchers and professionals for guidance on study, research and careers.'),'future','#/join'],
        [cx('pages.education.p6Title','University Programs'),cx('pages.education.p6Desc','Structured quantum education inside African universities: curriculum support, faculty training, student chapters.'),'future','#/universities']
       ].map(([t,d,,h])=>`<a class="card pad rv" href="${h}"><div class="card-b" style="padding:0">
@@ -1958,7 +1958,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/programs'},{t:'Our Three Pillars'}
 
 <section class="sec" style="padding-top:0"><div class="wrap">
   <div class="grid g3">
-    ${[['01','Quantum Education &amp; Accessibility','Free, continent-wide learning — from first principles to research, with the AI tutor, workshops and university programmes.'],
+    ${[['01','Quantum Education &amp; Accessibility','Free, continent-wide learning, from first principles to research, with the AI tutor, workshops and university programmes.'],
        ['02','Quantum Diplomacy &amp; Policy','A coordinated African voice in global quantum governance, standards and national readiness.'],
        ['03','Quantum Innovation','Open research, the African Quantum Startup Program and Women in Quantum.']]
       .map(([n,t,d])=>`<div class="pillar rv"><span class="n">${n}</span><h3 style="font-size:1.24rem">${t}</h3><p>${d}</p></div>`).join('')}
@@ -1974,7 +1974,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/programs'},{t:'Our Three Pillars'}
       <ul class="qa-list">
         <li>A free, always-available <b>Quantum AI Tutor</b> for self-paced learning.</li>
         <li>Expert <b>webinars</b> and hands-on <b>Quantum Machine Learning for Africa</b> workshops.</li>
-        <li><b>University programmes</b> — curriculum support, faculty training and student chapters.</li>
+        <li><b>University programmes</b>, curriculum support, faculty training and student chapters.</li>
         <li>A curated <b>learning library</b> of courses, notebooks, reading lists and recordings.</li>
         <li>A visible <b>opportunities pipeline</b>: scholarships, PhDs, internships and fellowships.</li>
       </ul>
@@ -2014,11 +2014,11 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/programs'},{t:'Our Three Pillars'}
     <div>
       <div class="sec-idx"><span class="n">03</span><span class="lbl">Pillar three</span><i></i></div>
       <h2 class="mt16">Quantum Innovation</h2>
-      <p class="lede">We turn talent into ventures and breakthroughs — connecting open research, startups and industry across the continent.</p>
+      <p class="lede">We turn talent into ventures and breakthroughs, connecting open research, startups and industry across the continent.</p>
       <ul class="qa-list">
         <li><b>Open research projects</b>, built in the open with published code.</li>
-        <li>The <b>African Quantum Startup Program</b> — incubation and early support for quantum ventures.</li>
-        <li><b>Women in Quantum</b> — mentoring, visibility and leadership for women in the field.</li>
+        <li>The <b>African Quantum Startup Program</b>, incubation and early support for quantum ventures.</li>
+        <li><b>Women in Quantum</b>, mentoring, visibility and leadership for women in the field.</li>
         <li><b>Industry partnerships</b>: sponsored challenges, tooling access and pilot projects.</li>
         <li><b>Hackathons and innovation sprints</b> with universities and industry.</li>
       </ul>
@@ -2029,7 +2029,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/programs'},{t:'Our Three Pillars'}
     <div class="card pad rv"><div class="card-b">
       <span class="prog-tag">Flagship programme</span>
       <h3>African Quantum Startup Program</h3>
-      <p>Incubation and support for early-stage quantum ventures founded in Africa — mentorship from researchers and operators, technical guidance, and connections to industry and funders.</p>
+      <p>Incubation and support for early-stage quantum ventures founded in Africa, mentorship from researchers and operators, technical guidance, and connections to industry and funders.</p>
       <ul class="qa-list">
         <li>Structured incubation and mentorship</li>
         <li>Technical and commercial guidance</li>
@@ -2039,7 +2039,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/programs'},{t:'Our Three Pillars'}
     <div class="card pad rv"><div class="card-b">
       <span class="prog-tag">Flagship programme</span>
       <h3>Women in Quantum</h3>
-      <p>A programme to grow and celebrate women in quantum across Africa — pairing participants with mentors, raising their visibility, and building a leadership pipeline for the field.</p>
+      <p>A programme to grow and celebrate women in quantum across Africa, pairing participants with mentors, raising their visibility, and building a leadership pipeline for the field.</p>
       <ul class="qa-list">
         <li>Mentorship and role models</li>
         <li>Speaking and leadership opportunities</li>
@@ -2124,7 +2124,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/education'},{t:'Quantum AI Tutor'}
     cx('pages.tutor.audienceTitle', 'Built for the person who has no one to ask')
   )}
   <div class="grid g4">
-    ${[[cx('pages.tutor.a1Title','Students'),cx('pages.tutor.a1Desc','Learning quantum alongside a physics, maths or computing degree — or entirely outside one.')],
+    ${[[cx('pages.tutor.a1Title','Students'),cx('pages.tutor.a1Desc','Learning quantum alongside a physics, maths or computing degree, or entirely outside one.')],
        [cx('pages.tutor.a2Title','Self-learners'),cx('pages.tutor.a2Desc','No university course available locally, and no lab to walk into.')],
        [cx('pages.tutor.a3Title','Educators'),cx('pages.tutor.a3Desc','Preparing to teach quantum for the first time, and needing a reliable explainer.')],
        [cx('pages.tutor.a4Title','Professionals'),cx('pages.tutor.a4Desc','Moving into quantum from software, telecoms, finance or engineering.')]
@@ -2243,7 +2243,7 @@ PAGES.researchDetail = (slug) => {
         return `<p>${line.split('\n').map(l=>esc(l)).join('<br>')}</p>`;
       }).join('');
     }
-    return `<p>${esc(p.short || '')}</p><p>${pht(cx('pages.researchDetail.descExtended', 'EXTENDED DESCRIPTION — 2 to 3 paragraphs written by the project lead'))}</p>`;
+    return `<p>${esc(p.short || '')}</p><p>${pht(cx('pages.researchDetail.descExtended', 'EXTENDED DESCRIPTION, 2 to 3 paragraphs written by the project lead'))}</p>`;
   };
   const _objRender = (p) => {
     const list = Array.isArray(p.objectives) ? p.objectives : [];
@@ -2356,17 +2356,17 @@ PAGES.chapterDetail = (slug) => {
   const leadBlock = (c.lead||c.leadRole) ? `
   <div class="panel mt24">
     <h5>${cx('pages.chapterDetail.namedLeadHead', 'Chapter lead')}</h5>
-    ${c.lead ? `<p><strong>${esc(c.lead)}</strong>${c.leadRole ? ' — '+esc(c.leadRole) : ''}</p>` : ''}
+    ${c.lead ? `<p><strong>${esc(c.lead)}</strong>${c.leadRole ? ' · '+esc(c.leadRole) : ''}</p>` : ''}
     ${c.leadRole && !c.lead ? `<p>${esc(c.leadRole)}</p>` : ''}
     ${c.email ? `<p class="small mt8"><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></p>` : ''}
   </div>` : '';
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Chapters',h:'#/chapters'},{t:nm}])}
-<section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.chapterDetail.heroImage','Chapter hero — team or event photo','2400×1000 · JPG → assets/chapters/'+c.slug+'/hero.jpg','wide','network')}</div></section>
+<section class="sec flush" style="padding:0"><div class="wrap">${cimg('pages.chapterDetail.heroImage','Chapter hero, team or event photo','2400×1000 · JPG → assets/chapters/'+c.slug+'/hero.jpg','wide','network')}</div></section>
 <section class="phero" style="padding-top:34px">${countryWatermark(c.code,'wm-chapter')}<div class="wrap">
   <div class="row" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
     <span class="fl" style="width:56px;height:38px;border:1.5px dashed color-mix(in srgb,var(--ph) 45%,transparent);border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:var(--f);font-size:1.1rem;color:var(--ph)" aria-hidden="true">${c.flag||'?'}</span>
-    <span class="tag">${cx('pages.chapterDetail.nationalTagPrefix', 'National chapter')} · ${c.code ? c.code.toUpperCase() : '—'}</span>
+    <span class="tag">${cx('pages.chapterDetail.nationalTagPrefix', 'National chapter')} · ${c.code ? c.code.toUpperCase() : ''}</span>
     ${statusPill()}
   </div>
   <h1 class="mt16">Quantum ${esc(nm)}</h1>
@@ -2435,7 +2435,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events'}])}
 <section class="sec flush"><div class="wrap">
   <div class="news-lead">
     <a class="feature rv" href="#/events/${featured.slug}">
-      <div class="card-media">${rimg(featured.heroImage||featured.image,'Featured event photograph — '+(esc(featured.title||featured.n||'')),'2400×1350 · JPG','','bloch')}</div>
+      <div class="card-media">${rimg(featured.heroImage||featured.image,'Featured event photograph, '+(esc(featured.title||featured.n||'')),'2400×1350 · JPG','','bloch')}</div>
       <div class="fb">
         <div class="news-meta"><span class="t">${cx('pages.events.nextUpPrefix', (featured.when==='upcoming'?'Featured next':'Headlining'))} · ${esc(featured.type)}</span><span>${(featured.start?oppDate(featured.start):'')}${(featured.end&&featured.end!==featured.start)?' – '+oppDate(featured.end):''}</span>${featured.city?`<span>${esc(featured.city)}</span>`:''}</div>
         <h3>${esc(featured.title||featured.n)}</h3>
@@ -2503,8 +2503,8 @@ PAGES.eventDetail = (slug) => {
   return `
 ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:e.type}])}
 <section class="sec flush" style="padding:0"><div class="wrap">${e.heroImage||e.image
-  ? `<div class="slot wide filled"><img src="${esc(mediaUrl(e.heroImage||e.image))}" alt="${esc(title)} — event hero" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
-  : cimg('pages.eventDetail.heroImage','Event hero — speaker portrait or event photograph','2400×1000 · JPG','wide','bloch')}</div></section>
+  ? `<div class="slot wide filled"><img src="${esc(mediaUrl(e.heroImage||e.image))}" alt="${esc(title)}, event hero" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`
+  : cimg('pages.eventDetail.heroImage','Event hero, speaker portrait or event photograph','2400×1000 · JPG','wide','bloch')}</div></section>
 <section class="phero" style="padding-top:34px"><div class="wrap">
   <div class="phero-meta" style="margin:0 0 18px"><span class="tag">${esc(e.type)}</span>${e.series?`<span class="pill current">${esc(e.series)} · ${cx('pages.eventDetail.editionPrefix','Edition')} ${esc(e.edition)}</span>`:`<span class="pill ${pillCls}">${esc(pillLbl)}</span>`}${e.eyebrow?`<span class="pill">${esc(e.eyebrow)}</span>`:''}</div>
   <h1 style="font-size:clamp(2rem,4vw,3.2rem)">${esc(title)}</h1>
@@ -2533,7 +2533,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:e.type}])}
       </dl>
       ${hasReg
         ? `<a class="btn teal mt16" href="${esc(e.registerUrl)}" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${e.when==='upcoming'?cx('pages.eventDetail.btnRegister','Register now'):'Open event page'}</a>
-           <p class="xs mt8">${cx('pages.eventDetail.regNote', 'External registration link — opens in a new tab.')}</p>`
+           <p class="xs mt8">${cx('pages.eventDetail.regNote', 'External registration link, opens in a new tab.')}</p>`
         : (hasLinks
             ? `<a class="btn teal mt16" href="${esc(e.links[0].u)}" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${esc(e.links[0].l)}</a>`
             : `<a class="btn teal mt16" href="#/join" style="width:100%;justify-content:center">${e.when==='upcoming'?cx('pages.eventDetail.btnRegister','Register interest'):cx('pages.eventDetail.btnWatch','Contact for recording')}</a>`)}
@@ -2585,7 +2585,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
         ? `<img class="edition-photo" src="${esc(mediaUrl(e.image))}" alt="${esc(e.title)}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0">
            <div class="edition-overlay" aria-hidden="true"></div>`
         : '';
-      const titleShort = e.subhead || e.title.replace('Quantum Machine Learning 4 Africa — ','');
+      const titleShort = e.subhead || e.title.replace('Quantum Machine Learning 4 Africa: ','');
       const copy =
         e.edition==='01' ? cx('pages.workshops.editionCopy1','An introductory hands-on workshop introducing participants to the foundations of quantum machine learning, quantum computing concepts, and quantum programming.') :
         e.edition==='02' ? cx('pages.workshops.editionCopy2','Explored more advanced concepts and practical approaches to quantum machine learning, bringing together African students, researchers, and quantum enthusiasts.') :
@@ -2683,7 +2683,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Workshops'}])}
           </span>
         </span>
         <span class="yt-body">
-          <span class="yt-title">QML4Africa — Workshop recordings</span>
+          <span class="yt-title">QML4Africa: Workshop recordings</span>
           <span class="yt-sub">Watch on YouTube · 6rdC1lh8-lI</span>
           <span class="yt-cta">Open video <span class="ar" aria-hidden="true">&rarr;</span></span>
         </span>
@@ -2741,7 +2741,7 @@ function nameGrid(list, cls, opts){
       ${shot ? (() => { const pr = confProfile(x.n);
         return pr && pr.photo
           ? `<span class="nm-av ${shot} filled"><img src="${esc(mediaUrl(pr.photo))}" alt="${esc(x.n)}" loading="lazy"></span>`
-          : `<span class="nm-av ${shot}" title="Portrait — 600×600 JPG">${svgIcon('user', shot==='lg'?26:18)}</span>`;
+          : `<span class="nm-av ${shot}" title="Portrait, 600×600 JPG">${svgIcon('user', shot==='lg'?26:18)}</span>`;
       })() : ''}
       <span class="nm-n">${esc(x.n)}${x.role?`<em>${esc(x.role)}</em>`:''}</span>
     </span>
@@ -2859,7 +2859,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Webinars'}])}
       <h5 style="margin-bottom:14px;color:#fff">${cx('pages.webinars.panel1Head','Previous session recording')}</h5>
       <div class="partner-bio">
         <p class="small" style="margin:0 0 10px;color:rgba(255,255,255,.86)"><b>${cx('pages.webinars.panel1Title','Missed a session?')}</b></p>
-        <p class="small" style="margin:0;color:rgba(255,255,255,.72)">${cx('pages.webinars.panel1Body','Catch up with our latest webinar recording — open the link to watch on YouTube.')}</p>
+        <p class="small" style="margin:0;color:rgba(255,255,255,.72)">${cx('pages.webinars.panel1Body','Catch up with our latest webinar recording, open the link to watch on YouTube.')}</p>
       </div>
     </div>
     <a class="yt-card rv" href="https://www.youtube.com/watch?v=nzUaZw41Rk4" target="_blank" rel="noopener noreferrer">
@@ -2869,7 +2869,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Events',h:'#/events'},{t:'Webinars'}])}
           <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52,7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"/><path d="M 45,24 27,14v20z" fill="#fff"/></svg>
         </span>
       </span>
-      <span class="yt-meta"><b>${cx('pages.webinars.ytTitle','Quantum Africa Webinar — session recording')}</b><i>youtube.com · opens in a new tab</i></span>
+      <span class="yt-meta"><b>${cx('pages.webinars.ytTitle','Quantum Africa Webinar, session recording')}</b><i>youtube.com · opens in a new tab</i></span>
     </a>
   </div>
 </div></section>
@@ -2943,7 +2943,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Conference Series'}])}
 
 <section class="sec" style="padding-top:18px;padding-bottom:18px">
   <div class="wrap">
-    <div class="sec-idx"><span class="n">—</span><span class="lbl">${cx('pages.conference.latestLbl', 'Latest edition')}</span><i></i></div>
+    <div class="sec-idx"><span class="n"></span><span class="lbl">${cx('pages.conference.latestLbl', 'Latest edition')}</span><i></i></div>
     <div class="conf-hero" style="display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;border:1px solid var(--line);border-radius:4px;padding:28px;background:#fff">
       <div>
         <h2 style="font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.02em;max-width:20ch">${cx('pages.conference.latestTitle', 'Quantum Africa 7')}</h2>
@@ -3047,7 +3047,7 @@ ${c.plenary?`
 <section class="sec inv">
   ${patternPanel('soft')}
   <div class="wrap">
-    <div class="sec-idx"><span class="n">—</span><span class="lbl">${cx('pages.confEdition.plenaryLbl', 'Plenary speakers')}</span><i></i></div>
+    <div class="sec-idx"><span class="n"></span><span class="lbl">${cx('pages.confEdition.plenaryLbl', 'Plenary speakers')}</span><i></i></div>
     ${nameGrid(c.plenary,'big',{photo:'lg'})}
   </div>
 </section>`:''}
@@ -3057,7 +3057,7 @@ ${c.invited?`
 <section class="sec inv">
   ${patternPanel('soft')}
   <div class="wrap">
-    <div class="sec-idx"><span class="n">—</span><span class="lbl">${esc(c.invitedLabel||cx('pages.confEdition.invitedLbl','Invited speakers'))}</span><i></i></div>
+    <div class="sec-idx"><span class="n"></span><span class="lbl">${esc(c.invitedLabel||cx('pages.confEdition.invitedLbl','Invited speakers'))}</span><i></i></div>
     ${nameGrid(c.invited, '', {photo:'sm'})}
   </div>
 </section>`:''}
@@ -3091,7 +3091,7 @@ ${c.sponsors?`
     <h3>${cx('pages.confEdition.photosHead', 'Photographs')}</h3>
     <div class="grid g3 mt16">${[1,2,3].map((i)=>{ const v = cval('pages.confEdition.photo'+i) || (Array.isArray(c.gallery) && c.gallery[i-1]) || (c.photos && c.photos[i-1]) || 'media/conference/kenitra.jpeg'; return `<div class="slot filled short" style="position:relative;display:block;aspect-ratio:3/2;min-height:180px;overflow:hidden;background:var(--bg-3);border-radius:12px"><img src="${esc(_assetSrc(v))}" alt="Conference photograph ${i}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:12px"></div>`; }).join('')}</div>
     <h3>${cx('pages.confEdition.portraitsHead', 'Portraits and profiles')}</h3>
-    <p>${pht(cx('pages.confEdition.portraitsBody', 'Every speaker and committee member above has an empty portrait slot and an empty profile link. Supply a 600×600 JPG and a URL — personal page, university page, ORCID or Google Scholar — per person. Use only photographs you have permission to publish.'))}</p>
+    <p>${pht(cx('pages.confEdition.portraitsBody', 'Every speaker and committee member above has an empty portrait slot and an empty profile link. Supply a 600×600 JPG and a URL, personal page, university page, ORCID or Google Scholar, per person. Use only photographs you have permission to publish.'))}</p>
   </div>
   <aside>
     <div class="panel"><h5>${cx('pages.confEdition.glanceHead', 'At a glance')}</h5><dl class="dl-list">
@@ -3181,12 +3181,12 @@ ${crumb([{t:'Home',h:'#/'},{t:'Pledge your support'}])}
       </div>
       <div class="field"><label>${cx('pages.support.fMoreLbl','Tell us more')}</label><textarea rows="4" placeholder="${cx('pages.support.fMorePh','What you have in mind, and any constraints we should know about.')}"></textarea></div>
       <button class="btn teal">${cx('pages.support.fSubmit','Send my pledge')} <span class="ar" aria-hidden="true">&rarr;</span></button>
-      <p class="xs mt16">${pht(cx('pages.support.fNote', 'WIRE THIS FORM UP — endpoint, autoresponder and where submissions land. Until then it does nothing.'))}</p>
+      <p class="xs mt16">${pht(cx('pages.support.fNote', 'WIRE THIS FORM UP, endpoint, autoresponder and where submissions land. Until then it does nothing.'))}</p>
     </div>
   </div>
   <aside>
     <div class="panel"><h5>${cx('pages.support.panelMoneyHead','Giving money')}</h5>
-      <p class="small">${cx('pages.support.donation', pht(cx('pages.support.donationNote','DONATION DETAILS — bank account, payment link, registered status and any tax position. Do not publish a donate button until this is real and the legal entity is confirmed.')))}</p>
+      <p class="small">${cx('pages.support.donation', pht(cx('pages.support.donationNote','DONATION DETAILS, bank account, payment link, registered status and any tax position. Do not publish a donate button until this is real and the legal entity is confirmed.')))}</p>
     </div>
     <div class="panel mt16"><h5>${cx('pages.support.panelSplitHead','Where support goes')}</h5>
       <dl class="dl-list">
@@ -3221,7 +3221,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.opportunities.heroEyebrow', 'Opportunities')}</span><i></i></div>
   <h1 class="mt24">${cx('pages.opportunities.heroTitle', 'Your Quantum Journey Starts Here')}</h1>
-  <p class="lede">${cx('pages.opportunities.heroLede', 'Discover curated opportunities across quantum computing, research, academia, and industry, from Master’s and PhD positions to postdocs, internships, and professional roles.— with anything based in Africa pushed to the top.')}</p>
+  <p class="lede">${cx('pages.opportunities.heroLede', 'Discover curated opportunities across quantum computing, research, academia, and industry, from Master’s and PhD positions to postdocs, internships, and professional roles, with anything based in Africa pushed to the top.')}</p>
   <p class="feed-note" id="opFeed">${cx('pages.opportunities.feedLoading', 'Loading the latest listings…')}</p>
 </div></section>
 
@@ -3231,7 +3231,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
       <span class="af-b lg">${cx('pages.opportunities.afBadge', 'Africa')}</span>
       <div>
         <h3>${cx('pages.opportunities.afHead', 'Based in Africa')}</h3>
-        <p class="small">${cx('pages.opportunities.afBody', 'Positions hosted at African institutions. These are rare — that is exactly why they sit here rather than buried in the list.')}</p>
+        <p class="small">${cx('pages.opportunities.afBody', 'Positions hosted at African institutions. These are rare, that is exactly why they sit here rather than buried in the list.')}</p>
       </div>
     </div>
     ${africa.length
@@ -3277,11 +3277,11 @@ ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
   <div class="grid g2 mt48">
     <div class="panel">
       <h5>${cx('pages.opportunities.panel1Head', 'Where this comes from')}</h5>
-      <p class="small">${cx('pages.opportunities.panel1Prefix', 'Listings are collected automatically from')} ${Object.keys(OPP_SOURCES).map(k=>`<a class="link-a in" href="${esc(OPP_SOURCES[k].url)}" target="_blank" rel="noopener noreferrer">${esc(OPP_SOURCES[k].name)}</a>`).join(', ')}. ${cx('pages.opportunities.panel1Suffix', 'Quantum Africa does not administer any of them — every card links straight to the original posting, where you apply.')}</p>
+      <p class="small">${cx('pages.opportunities.panel1Prefix', 'Listings are collected automatically from')} ${Object.keys(OPP_SOURCES).map(k=>`<a class="link-a in" href="${esc(OPP_SOURCES[k].url)}" target="_blank" rel="noopener noreferrer">${esc(OPP_SOURCES[k].name)}</a>`).join(', ')}. ${cx('pages.opportunities.panel1Suffix', 'Quantum Africa does not administer any of them, every card links straight to the original posting, where you apply.')}</p>
     </div>
     <div class="panel">
       <h5>${cx('pages.opportunities.panel2Head', 'Submit an opportunity')}</h5>
-      <p class="small">${cx('pages.opportunities.panel2Body', 'Running a programme open to African applicants, or hiring in quantum on the continent? Send it to us and it goes in the list — the boards above rarely carry African positions.')}</p>
+      <p class="small">${cx('pages.opportunities.panel2Body', 'Running a programme open to African applicants, or hiring in quantum on the continent? Send it to us and it goes in the list, the boards above rarely carry African positions.')}</p>
       <a class="btn sm mt16" href="#/contact">${cx('pages.opportunities.panel2Btn', 'Submit an opportunity')} <span class="ar" aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
@@ -3320,7 +3320,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Opportunities'}])}
 
   <div class="panel mt48">
     <h5>${cx('pages.opportunities.afEventHead', 'Running something in Africa?')}</h5>
-    <p class="small">${cx('pages.opportunities.afEventBody', 'These calendars carry very few African events. If your department, chapter or partner is hosting a school, workshop or conference on the continent, send it to us — it goes straight in, above everything else on this list.')}</p>
+    <p class="small">${cx('pages.opportunities.afEventBody', 'These calendars carry very few African events. If your department, chapter or partner is hosting a school, workshop or conference on the continent, send it to us, it goes straight in, above everything else on this list.')}</p>
     <a class="btn sm mt16" href="#/contact">${cx('pages.opportunities.afEventBtn', 'Submit an event')} <span class="ar" aria-hidden="true">&rarr;</span></a>
   </div>
 </div></section>`;
@@ -3388,7 +3388,7 @@ function personLinks(p, cls){
     const href = p && p[l.k];
     return href
       ? `<a class="pl-b live" href="${esc(href)}" target="_blank" rel="noopener noreferrer" title="${esc(l.t)}" aria-label="${esc(l.t)}">${svgIcon(l.k, 15)}</a>`
-      : `<span class="pl-b" title="${esc(l.t)} — not supplied yet" aria-label="${esc(l.t)}">${svgIcon(l.k, 15)}</span>`;
+      : `<span class="pl-b" title="${esc(l.t)}, not supplied yet" aria-label="${esc(l.t)}">${svgIcon(l.k, 15)}</span>`;
   }).join('')}</span>`;
 }
 
@@ -3408,7 +3408,7 @@ function personCard(p){
       <h3>${p.name ? esc(p.name) : pht('Full name')}</h3>
       <p class="pc-role">${p.role ? esc(p.role) : pht('Role at Quantum Africa')}</p>
       ${where ? `<p class="pc-aff">${esc(where)}</p>` : ''}
-      <p class="pc-bio">${p.bio ? esc(p.bio) : pht('SHORT BIO — two or three sentences, written by this person')}</p>
+      <p class="pc-bio">${p.bio ? esc(p.bio) : pht('SHORT BIO, two or three sentences, written by this person')}</p>
       <div class="pc-foot">
         <button class="pc-more" type="button" data-bio="${esc(p.slug)}">Read bio</button>
         ${personLinks(p)}
@@ -3489,7 +3489,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Collaborators & Partners',h:'#/partners'}])}
   ${sectionHead(
     cx('pages.partners.whyEyebrow','For institutions'),
     cx('pages.partners.whyTitle','Why institutions partner with Quantum Africa'),
-    cx('pages.partners.whyLede','A credible, measurable way to invest in African quantum capacity — with real reach, transparent outcomes and a single entry point to the continent.')
+    cx('pages.partners.whyLede','A credible, measurable way to invest in African quantum capacity, with real reach, transparent outcomes and a single entry point to the continent.')
   )}
   <div class="grid g3">
     ${[[cx('pages.partners.why1Title','Continental reach'),cx('pages.partners.why1Body','Chapters in nine countries and a network reaching learners and researchers in 48 countries.')],
@@ -3601,7 +3601,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'For Students'}])}
        [cx('pages.students.c3N','03'),cx('pages.students.c3Title','Internship'),cx('pages.students.c3Desc','Placements open to African students.'),'#/opportunities'],
        [cx('pages.students.c4N','04'),cx('pages.students.c4Title','Scholarship'),cx('pages.students.c4Desc','MSc, PhD and funding, filtered for eligibility.'),'#/opportunities'],
        [cx('pages.students.c5N','05'),cx('pages.students.c5Title','Mentorship'),cx('pages.students.c5Desc','Guidance from people already in the field.'),'#/join'],
-       [cx('pages.students.c6N','06'),cx('pages.students.c6Title','Community'),cx('pages.students.c6Desc','Join your chapter — or start one.'),'#/chapters']
+       [cx('pages.students.c6N','06'),cx('pages.students.c6Title','Community'),cx('pages.students.c6Desc','Join your chapter, or start one.'),'#/chapters']
       ].map(([n,t,d,h])=>`<a class="choice rv" href="${h}">
         <span class="n">${esc(n)}</span><h3>${esc(t)}</h3><p>${esc(d)}</p>
         <span class="go">${cx('pages.students.chooserGoLabel', 'Go')} <span class="ar" aria-hidden="true">&rarr;</span></span>
@@ -3747,9 +3747,9 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:'Article'}])}
 <section class="sec"><div class="wrap-n">
   <div class="news-meta" style="margin-bottom:20px"><span class="t">${cx('pages.article.metaTypePlaceholder', pht('Type'))}</span><span>${cx('pages.article.metaDatePlaceholder', pht('DATE'))}</span><span>${cx('pages.article.metaReadPlaceholder', pht('READ TIME'))}</span></div>
   <h1 style="font-size:clamp(1.9rem,3.4vw,2.9rem)">${cx('pages.article.headlinePlaceholder', pht('Article headline'))}</h1>
-  <p class="lede mt16">${cx('pages.article.standfirstPlaceholder', pht('Standfirst — one or two sentences'))}</p>
+  <p class="lede mt16">${cx('pages.article.standfirstPlaceholder', pht('Standfirst, one or two sentences'))}</p>
   <div class="prose mt32">
-    <p>${cx('pages.article.bodyPlaceholder1', pht('BODY — the full article, written by the chapter or the author and edited in the CMS.'))}</p>
+    <p>${cx('pages.article.bodyPlaceholder1', pht('BODY, the full article, written by the chapter or the author and edited in the CMS.'))}</p>
     <p>${cx('pages.article.bodyPlaceholder2', pht('BODY continued'))}</p>
     <h3>${cx('pages.article.subheadPlaceholder', pht('Subheading'))}</h3>
     <p>${cx('pages.article.bodyPlaceholder3', pht('BODY continued'))}</p>
@@ -3788,7 +3788,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'News',h:'#/news'},{t:'Article'}])}
   <div class="sec-idx"><span class="lbl">${cx('pages.article.recordingEyebrow', 'Recording')}</span><i></i></div>
   <a class="yt-card rv" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer" style="max-width:780px;margin-top:18px">
     <span class="yt-thumb">
-      <img src="https://img.youtube.com/vi/${esc(ytId)}/hqdefault.jpg" alt="${esc(a.title)} — YouTube recording" loading="lazy">
+      <img src="https://img.youtube.com/vi/${esc(ytId)}/hqdefault.jpg" alt="${esc(a.title)}: YouTube recording" loading="lazy">
       <span class="yt-play" aria-hidden="true">
         <svg viewBox="0 0 68 48" width="54" height="38"><path d="M66.52,7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"/><path d="M 45,24 27,14v20z" fill="#fff"/></svg>
       </span>
@@ -3902,7 +3902,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Contact'}])}
   <aside><div class="panel"><h5>${cx('pages.contact.directHead', 'Direct')}</h5><dl class="dl-list">
     <div class="dl-item"><dt>${cx('pages.contact.directEmailLabel', 'Email')}</dt><dd><a href="${_href(cval('pages.contact.directEmailValue') || cval('site.footerEmail') || cval('site.email')) || 'mailto:contact@quantum-africa.org'}"${_linkRel(cval('pages.contact.directEmailValue') || cval('site.footerEmail') || cval('site.email'))}>${cx('pages.contact.directEmailValue', cval('site.email') || cval('site.footerEmail') || 'contact@quantum-africa.org')}</a></dd></div>
     <div class="dl-item"><dt>${cx('pages.contact.directLinkedinLabel', 'LinkedIn')}</dt><dd><a href="${cval('pages.contact.directLinkedinUrl') || cval('site.linkedin') || 'https://www.linkedin.com/company/quantum-africa'}"${_linkRel(cval('pages.contact.directLinkedinUrl') || cval('site.linkedin') || 'https://www.linkedin.com/company/quantum-africa')}>${cx('pages.contact.directLinkedinValue', 'Quantum Africa')}</a></dd></div>
-    <div class="dl-item"><dt>${cx('pages.contact.directBasedLabel', 'Based in')}</dt><dd>${cx('pages.contact.directBasedValue', 'Pan-African — chapters across the continent')}</dd></div>
+    <div class="dl-item"><dt>${cx('pages.contact.directBasedLabel', 'Based in')}</dt><dd>${cx('pages.contact.directBasedValue', 'Pan-African, chapters across the continent')}</dd></div>
   </dl></div></aside>
 </div></div></section>`;
 
@@ -3962,13 +3962,13 @@ ${crumb([{t:'Home',h:'#/'},{t:'Legal'}])}
   <div class="prose mt32">
     <h3>Privacy Policy</h3>${privacy
       ? _mdToHtml(privacy)
-      : `<p>${pht('PRIVACY POLICY — required before collecting emails. Must cover what is collected, why, how long it is kept, and how to request deletion.')}</p>`}
+      : `<p>${pht('PRIVACY POLICY, required before collecting emails. Must cover what is collected, why, how long it is kept, and how to request deletion.')}</p>`}
     <h3 class="mt48">Terms of Use</h3>${terms
       ? _mdToHtml(terms)
       : `<p>${pht('TERMS OF USE')}</p>`}
     <h3 class="mt48">Code of Conduct</h3>${conduct
       ? _mdToHtml(conduct)
-      : `<p>${pht('CODE OF CONDUCT — expected behaviour at events and in community channels, and how to report a problem. Universities and funders will look for this.')}</p>`}
+      : `<p>${pht('CODE OF CONDUCT, expected behaviour at events and in community channels, and how to report a problem. Universities and funders will look for this.')}</p>`}
   </div>
 </div></section>`;
 };
@@ -4025,35 +4025,35 @@ function currentPath(){
 const SEO_TITLE_HOME = 'Quantum Africa';
 const SEO_DESC_HOME  = 'Quantum Africa is a pan-African organization building capacity in quantum science and technology through education, research, talent development, university partnerships and global collaboration.';
 const SEO_TITLE_BY_ROUTE = {
-  'about':        'About Quantum Africa — Building a pan-African quantum community',
-  'impact':       'Impact — Quantum Africa projects, chapters and community outcomes',
-  'programs':     'Our Three Pillars — Quantum Education, Quantum Diplomacy & Policy, and Quantum Innovation',
-  'education':    'Quantum Education — Learning programmes, quantum tutoring and workshops for African students',
-  'tutor':        '1-on-1 Quantum Tutoring — Book private tutoring with Quantum Africa tutors',
-  'research':     'Research — Open quantum computing research projects by Quantum Africa contributors',
-  'chapters':     'Chapters — National quantum computing chapters across Africa',
-  'events':       'Events — Quantum Africa workshops, webinars, seminars and conferences',
-  'events/workshops':   'Workshops — Quantum Africa hands-on quantum workshops',
-  'events/webinars':   'Webinars — Quantum Africa expert-led webinars on quantum computing',
-  'conference':   'Quantum Africa Conference — The annual pan-African quantum conference',
-  'support':      'Support Quantum Africa — Sponsor, partner or donate',
-  'opportunities':'Quantum Opportunities — Jobs, internships, fellowships and grants in quantum computing worldwide, curated for Africans',
-  'people':       'People — Directors and leadership of Quantum Africa',
-  'partners':     'Partners — Quantum Africa\u2019s academic, industry and non-profit partners',
-  'universities': 'Universities Programme — Quantum clubs at African universities',
-  'students':     'For Students — Learning, chapters and quantum opportunities for African students',
-  'researchers':  'For Researchers — Research projects, collaborations and access for African researchers',
-  'news':         'News & Articles — Quantum Africa updates, chapter reports and community stories',
-  'join':         'Join Quantum Africa — Become a member, start a chapter, or volunteer',
+  'about':        'About Quantum Africa: Building a pan-African quantum community',
+  'impact':       'Impact: Quantum Africa projects, chapters and community outcomes',
+  'programs':     'Our Three Pillars: Quantum Education, Quantum Diplomacy & Policy, and Quantum Innovation',
+  'education':    'Quantum Education: Learning programmes, quantum tutoring and workshops for African students',
+  'tutor':        '1-on-1 Quantum Tutoring: Book private tutoring with Quantum Africa tutors',
+  'research':     'Research: Open quantum computing research projects by Quantum Africa contributors',
+  'chapters':     'Chapters: National quantum computing chapters across Africa',
+  'events':       'Events: Quantum Africa workshops, webinars, seminars and conferences',
+  'events/workshops':   'Workshops: Quantum Africa hands-on quantum workshops',
+  'events/webinars':   'Webinars: Quantum Africa expert-led webinars on quantum computing',
+  'conference':   'Quantum Africa Conference: The annual pan-African quantum conference',
+  'support':      'Support Quantum Africa: Sponsor, partner or donate',
+  'opportunities':'Quantum Opportunities: Jobs, internships, fellowships and grants in quantum computing worldwide, curated for Africans',
+  'people':       'People: Directors and leadership of Quantum Africa',
+  'partners':     'Partners: Quantum Africa\u2019s academic, industry and non-profit partners',
+  'universities': 'Universities Programme: Quantum clubs at African universities',
+  'students':     'For Students: Learning, chapters and quantum opportunities for African students',
+  'researchers':  'For Researchers: Research projects, collaborations and access for African researchers',
+  'news':         'News & Articles: Quantum Africa updates, chapter reports and community stories',
+  'join':         'Join Quantum Africa: Become a member, start a chapter, or volunteer',
   'contact':      'Contact Quantum Africa',
-  'legal':        'Legal — Quantum Africa terms & privacy',
+  'legal':        'Legal: Quantum Africa terms & privacy',
 };
 const SEO_DESC_BY_ROUTE = {
   'about':        'Quantum Africa is a pan-African network of students, researchers, professionals and innovators building a homegrown quantum ecosystem across the continent through chapters, research, education and events.',
   'impact':       'See the concrete impact of Quantum Africa across Africa: launched national chapters, workshop participants, research projects, community stories and measurable outcomes in education and research.',
-  'programs':     'Quantum Africa works across three pillars: Quantum Education & Accessibility, Quantum Diplomacy & Policy, and Quantum Innovation — including the African Quantum Startup Program and Women in Quantum. Built for partnership with universities, governments, industry and funders.',
+  'programs':     'Quantum Africa works across three pillars: Quantum Education & Accessibility, Quantum Diplomacy & Policy, and Quantum Innovation, including the African Quantum Startup Program and Women in Quantum. Built for partnership with universities, governments, industry and funders.',
   'education':    'Quantum Africa runs learning programmes for African students: workshops, webinars, peer groups, quantum tutoring and training paths in quantum computing, quantum information and quantum machine learning.',
-  'tutor':        'Book 1-on-1 quantum computing tutoring with vetted Quantum Africa tutors — Qiskit, quantum algorithms, quantum ML, undergraduate quantum mechanics, exam prep and more.',
+  'tutor':        'Book 1-on-1 quantum computing tutoring with vetted Quantum Africa tutors: Qiskit, quantum algorithms, quantum ML, undergraduate quantum mechanics, exam prep and more.',
   'research':     'Open-source and collaborative research projects led by Quantum Africa contributors across Africa: quantum ML, quantum computing for healthcare, materials discovery, QKD and education tools.',
   'chapters':     'National Quantum Africa chapters bring together students, researchers and professionals in countries across Africa. Start a chapter or join an existing one near you.',
   'events':       'Explore upcoming and past Quantum Africa events: hands-on workshops, expert webinars, seminars and the annual Quantum Africa conference.',
@@ -4062,7 +4062,7 @@ const SEO_DESC_BY_ROUTE = {
   'conference':   'The annual Quantum Africa conference brings together the African quantum research community, global leaders, students and industry for talks, posters, workshops and hackathons.',
   'support':      'Partner with, sponsor or donate to Quantum Africa and help scale a connected, homegrown quantum ecosystem across the African continent.',
   'opportunities':'Curated quantum computing opportunities for Africans: quantum jobs, internships, PhD positions, research fellowships, travel grants and hackathons from around the world.',
-  'people':       'Meet the directors, leadership and researchers behind Quantum Africa — volunteers, organisers, chapter leads and researchers across the continent and beyond.',
+  'people':       'Meet the directors, leadership and researchers behind Quantum Africa, volunteers, organisers, chapter leads and researchers across the continent and beyond.',
   'partners':     'Quantum Africa works with academic institutions, industry partners, non-profits and quantum initiatives worldwide to build a pan-African quantum ecosystem.',
   'universities': 'The Quantum Africa Universities Programme helps students start and run quantum clubs at their African universities, with mentorship, materials and event support.',
   'students':     'Resources for African students to get started in quantum computing: chapters, workshops, learning paths, tutoring, quantum internships, grants and community support.',
@@ -4074,7 +4074,7 @@ const SEO_DESC_BY_ROUTE = {
 };
 
 const SEO_SITE = 'Quantum Africa';
-const SEO_SEP = ' — ';
+const SEO_SEP = ' · ';
 const SEO_OG_IMG = document.querySelector('meta[property="og:image"]')
   ? document.querySelector('meta[property="og:image"]').getAttribute('content') || ''
   : '';
@@ -4108,7 +4108,7 @@ function setHead(title, desc, opts) {
     _ensureMeta('meta[property="og:image:type"]',     {'property':'og:image:type'}).setAttribute('content', opts.imgType || 'image/png');
     _ensureMeta('meta[property="og:image:width"]',    {'property':'og:image:width'}).setAttribute('content', opts.imgWidth || '1200');
     _ensureMeta('meta[property="og:image:height"]',   {'property':'og:image:height'}).setAttribute('content', opts.imgHeight || '630');
-    _ensureMeta('meta[property="og:image:alt"]',      {'property':'og:image:alt'}).setAttribute('content', opts.imgAlt || (SEO_SITE + ' logo — a connected, homegrown quantum ecosystem across Africa'));
+    _ensureMeta('meta[property="og:image:alt"]',      {'property':'og:image:alt'}).setAttribute('content', opts.imgAlt || (SEO_SITE + ' logo, a connected, homegrown quantum ecosystem across Africa'));
   }
 
   _ensureMeta('meta[name="twitter:card"]',        {name:'twitter:card'}).setAttribute('content', opts.twCard || 'summary_large_image');
@@ -4185,7 +4185,7 @@ function applyRouteSEO(path, routeArgs) {
       : null;
     if (conf) {
       t = (conf.n || conf.title || ('QA ' + (conf.year || ''))) + SEO_SEP + SEO_SITE;
-      d = 'Quantum Africa conference edition ' + (conf.year || slug) + (conf.city ? ' in '+ conf.city : '') + (conf.country ? ', '+conf.country : '') + ' — programme, organising committee, speakers and sponsors.';
+      d = 'Quantum Africa conference edition ' + (conf.year || slug) + (conf.city ? ' in '+ conf.city : '') + (conf.country ? ', '+conf.country : '') + ', programme, organising committee, speakers and sponsors.';
     }
   } else if (p.startsWith('people/')) {
     t = SEO_TITLE_BY_ROUTE['people'] || ('People' + SEO_SEP + SEO_SITE);
@@ -4265,7 +4265,7 @@ function closeDrawer(){ document.getElementById('drawer').classList.remove('open
 let slideTimer = null, slideIdx = 0, sliderControllers = null, _sliderGen = 0;
 function initSlider(){
   // Each init bumps the generation counter. Any setTimeout / setInterval closure captured by
-  // an earlier init will detect it's now stale and bail before touching the DOM — this
+  // an earlier init will detect it's now stale and bail before touching the DOM, this
   // defeats the race where rebuildFromContent() replaces the hero stage while the previous
   // init's 420ms "startSoon" timer is still pending (it used to animate a detached DOM).
   const gen = ++_sliderGen;
@@ -4303,7 +4303,7 @@ function initSlider(){
       [...dots.children].forEach((d,n)=>{ d.classList.remove('on'); if(n===slideIdx){ void d.offsetWidth; d.classList.add('on'); }});
     }
     const meta = HERO_SLIDES[slideIdx] || {};
-    if(cap) cap.textContent = `Slide ${slideIdx+1} of ${slides.length} — ${meta.caption || meta.t || ''}`;
+    if(cap) cap.textContent = `Slide ${slideIdx+1} of ${slides.length}, ${meta.caption || meta.t || ''}`;
   }
   function stopAll(){
     const { stage } = getLiveEls();
@@ -4590,7 +4590,7 @@ function bioModal(slug){
         ${where ? `<p class="bio-aff">${esc(where)}</p>` : ''}
         ${body
           ? body.split(/\n{2,}/).map(par => `<p>${esc(par)}</p>`).join('')
-          : `<p>${pht('FULL BIOGRAPHY — as many paragraphs as this person wants to write. Written by them, not about them.')}</p>`}
+          : `<p>${pht('FULL BIOGRAPHY, as many paragraphs as this person wants to write. Written by them, not about them.')}</p>`}
         <h4>Research interests</h4>
         <p>${(p.interests && p.interests.length) ? esc(p.interests.join(', ')) : pht('Comma-separated interests')}</p>
       </div>
@@ -4623,8 +4623,8 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') closeBio(); }
 
 /* ---------- live feeds ----------
    Two JSON documents, written by the backend (backend/app/service.py) either to
-   static files or served from its API. If neither is reachable — as in the
-   single-file prototype opened from disk — the snapshot compiled in at build
+   static files or served from its API. If neither is reachable, as in the
+   single-file prototype opened from disk, the snapshot compiled in at build
    time stays on screen and the note says so. */
 function feedNote(elId, meta, items, noun){
   const el = document.getElementById(elId);
@@ -4644,7 +4644,7 @@ function oppFeedNote(){ feedNote('opFeed', OPP_META, allOpps(), 'listings'); }
 function evtFeedNote(){ feedNote('evFeed', EVT_META, EVTS, 'events'); }
 
 /* The content document. Loaded once, then the page is drawn again so every
-   section picks it up — simpler and less error-prone than patching the DOM. */
+   section picks it up, simpler and less error-prone than patching the DOM. */
 let contentLoading = false;
 let _lastLoadAttemptAt = 0;
 function loadContent(force){
@@ -5106,7 +5106,7 @@ function initReveal(){
     });
   }, {rootMargin:'0px 0px -8% 0px', threshold:.06});
   document.querySelectorAll(REVEAL_SEL).forEach(el=>io.observe(el));
-  // stat band sits above the fold on some screens — observe it directly
+  // stat band sits above the fold on some screens, observe it directly
   document.querySelectorAll('[data-count]').forEach(el=>io.observe(el.closest('.stat, .bigcell') || el));
 }
 
@@ -5133,7 +5133,7 @@ function runCounters(scope){
   });
 }
 
-/* ---------- hero headline — cycles HERO_LINES (no typewriter effect) ---------- */
+/* ---------- hero headline, cycles HERO_LINES (no typewriter effect) ---------- */
 let heroLineTimer = null;
 function initTyping(){
   const a = document.getElementById('typeA'), b = document.getElementById('typeB'),
@@ -5244,7 +5244,7 @@ document.addEventListener('submit', async (e) => {
         body
       });
     } catch (_) {
-      // static server / offline: "/" POST will fail — fall through to backend.
+      // static server / offline: "/" POST will fail, fall through to backend.
       res = null;
     }
     const workedNetlify = !!(res && res.ok);
@@ -5269,7 +5269,7 @@ document.addEventListener('submit', async (e) => {
       msg.hidden = false;
       msg.className = 'form-msg mt16 small tl';
       msg.style.cssText = 'padding:10px 14px;border-radius:4px;background:color-mix(in srgb,var(--teal) 15%,transparent);color:var(--teal);font-weight:500';
-      msg.textContent = 'Thank you — your message has been received. We will be in touch shortly.';
+      msg.textContent = 'Thank you, your message has been received. We will be in touch shortly.';
     }
     f.reset();
   } catch (err) {

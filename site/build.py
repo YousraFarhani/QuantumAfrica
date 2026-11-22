@@ -50,7 +50,7 @@ def b64(name):
 
 
 def load(name, default):
-    """Feed snapshots are optional — a fresh clone builds fine without them."""
+    """Feed snapshots are optional, a fresh clone builds fine without them."""
     path = os.path.join(DATA, name)
     if not os.path.exists(path):
         return default
@@ -179,7 +179,7 @@ def main():
     target = os.path.join(PUBLIC, 'index.html')
     with open(target, 'w', encoding='utf-8') as f:
         f.write(out)
-    print(f'built {os.path.relpath(target, ROOT)} — '
+    print(f'built {os.path.relpath(target, ROOT)}, '
           f'{len(out)/1024/1024:.2f} MB, {len(opps.get("items", []))} listings, '
           f'{len(evts.get("items", []))} events')
 
