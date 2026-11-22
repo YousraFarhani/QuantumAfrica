@@ -1638,11 +1638,11 @@ ${highlightSection()}
     ${sectionHead(
       cx('pages.home.pillarEyebrow', 'Our Three Pillars'),
       cx('pages.home.pillarTitle', 'Education. Diplomacy. Innovation.'),
-      cx('pages.home.pillarLede', 'Our work is organised around three pillars — built to scale with universities, governments, industry and funders across the continent.'),
+      cx('pages.home.pillarLede', 'Our work is organised around three pillars, built to scale with universities, governments, industry and partners across the continent.'),
       {t:cx('pages.home.pillarCta', 'Explore our pillars'),h:'#/programs'}
     )}
     <div class="grid g3">
-      ${pillarCard('01','Quantum Education &amp; Accessibility','Free, continent-wide learning — the AI Tutor, workshops and university programmes.','educate','Explore','#/education')}
+      ${pillarCard('01','Quantum Education &amp; Accessibility','University partnerships, curriculum development, and expanded access to quantum education and research across Africa.','educate','Explore','#/education')}
       ${pillarCard('02','Quantum Diplomacy &amp; Policy','A coordinated African voice in global quantum governance, standards and readiness.','connect','Explore','#/programs')}
       ${pillarCard('03','Quantum Innovation','Open research, the African Quantum Startup Program and Women in Quantum.','research','Explore','#/programs')}
     </div>
@@ -2046,27 +2046,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Programs',h:'#/programs'},{t:'Our Three Pillars'}
         <li>A supportive continental community</li>
       </ul>
     </div></div>
-  </div>
-</div></section>
-
-<section class="sec deep"><div class="wrap">
-  ${sectionHead(
-    cx('pages.programs.whyEyebrow','Partnership'),
-    cx('pages.programs.whyTitle','Why partner with Quantum Africa'),
-    cx('pages.programs.whyLede','We give institutions a credible, measurable way to invest in African quantum capacity — with real reach and transparent outcomes.')
-  )}
-  <div class="grid g3">
-    ${[['Continental reach','Chapters in nine countries and a network reaching learners and researchers in 48 countries — a single entry point to the continent.'],
-       ['Credibility and governance','A governing board of directors, published outcomes and reporting you can take to your own stakeholders.'],
-       ['Measurable impact','Every programme is tracked: participants, completions, research outputs and ventures supported.'],
-       ['Talent pipeline','Direct access to the students, researchers and founders building Africa&rsquo;s quantum future.'],
-       ['Policy access','A seat at the table as Africa&rsquo;s quantum community engages governments and global fora.'],
-       ['Co-branded visibility','Joint workshops, reports and events, with recognition for your institution across our network.']]
-      .map(([t,d])=>`<div class="card pad rv why-card"><div class="card-b"><h4>${t}</h4><p>${d}</p></div></div>`).join('')}
-  </div>
-  <div class="metric-row">
-    ${[[cnum('stats.chapters',9),'National chapters'],[cnum('stats.countries',48),'Countries reached'],[cnum('stats.members',361),'Community members'],[cnum('stats.events',10),'Events held']]
-      .map(([n,l])=>`<div class="metric"><span class="n">${n}</span><span class="l">${l}</span></div>`).join('')}
   </div>
 </div></section>
 
