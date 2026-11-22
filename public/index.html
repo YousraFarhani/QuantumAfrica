@@ -7026,65 +7026,16 @@ function runCounters(scope){
   });
 }
 
-/* ---------- typed hero headline — cycles HERO_LINES ---------- */
-let typeTimer = null;
+/* ---------- hero headline — static (typewriter effect removed) ---------- */
 function initTyping(){
   const a = document.getElementById('typeA'), b = document.getElementById('typeB'),
         c = document.getElementById('caret'), p = document.getElementById('heroLede');
-  if(!a || !b) return;
-  clearTimeout(typeTimer);
-  const seq = [...document.querySelectorAll('.fade-seq')];
-  const reduced = document.body.classList.contains('no-motion') || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduced){
-    a.textContent = HERO_LINES[0].a; b.textContent = HERO_LINES[0].b;
-    if(p) p.textContent = HERO_LINES[0].p;
-    if(c) c.style.display = 'none';
-    seq.forEach(el=>el.classList.add('in'));
-    return;
-  }
-  a.textContent = ''; b.textContent = '';
-  let idx = 0, first = true;
-
-  const swapLede = (i) => {
-    if(!p) return;
-    p.classList.add('sw');
-    setTimeout(()=>{ p.textContent = HERO_LINES[i].p; p.classList.remove('sw'); }, 300);
-  };
-
-  const write = (L, i) => {
-    if(i <= L.a.length){ a.textContent = L.a.slice(0,i); b.textContent = ''; }
-    else { a.textContent = L.a; b.textContent = L.b.slice(0, i - L.a.length); }
-  };
-
-  const typeOne = () => {
-    const L = HERO_LINES[idx], all = L.a + L.b;
-    if(!first) swapLede(idx);
-    let i = 0;
-    const step = () => {
-      i++; write(L, i);
-      if(i < all.length){
-        const ch = all[i-1];
-        typeTimer = setTimeout(step, ch === ' ' ? 34 : (ch === '.' ? 200 : 42));
-      } else {
-        if(first){ first = false; seq.forEach((el,k)=> setTimeout(()=>el.classList.add('in'), k*130)); }
-        typeTimer = setTimeout(erase, 4200);
-      }
-    };
-    step();
-  };
-
-  const erase = () => {
-    const L = HERO_LINES[idx];
-    let i = (L.a + L.b).length;
-    const step = () => {
-      i--; write(L, i);
-      if(i > 0) typeTimer = setTimeout(step, 16);
-      else { idx = (idx + 1) % HERO_LINES.length; typeTimer = setTimeout(typeOne, 340); }
-    };
-    step();
-  };
-
-  setTimeout(()=>{ seq.filter(e=>e.dataset.seq==='0').forEach(e=>e.classList.add('in')); typeOne(); }, 260);
+  const L = HERO_LINES[0] || { a:'', b:'', p:'' };
+  if(a) a.textContent = L.a;
+  if(b) b.textContent = L.b;
+  if(p) p.textContent = L.p;
+  if(c) c.style.display = 'none';
+  [...document.querySelectorAll('.fade-seq')].forEach(el=>el.classList.add('in'));
 }
 
 /* ---------- controls ---------- */
