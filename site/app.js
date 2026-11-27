@@ -3833,34 +3833,16 @@ ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
 </div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div>
-    <h3>${cx('pages.join.formHead', 'Membership form')}</h3>
-    <p class="small mt8">${cx('pages.join.formIntro', 'Tell us who you are and we will point you at the right chapter and people.')}</p>
-    <form class="mt24" data-netlify="true" name="join" method="POST" action="/?thanks=1" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="join">
-      <p class="sr" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
-      <div class="grid g2">
-        <div class="field"><label>${cx('pages.join.formNameLabel', 'Full name')}</label><input name="full_name" required placeholder="${cx('pages.join.formNamePlaceholder', 'Your name')}"></div>
-        <div class="field"><label>${cx('pages.join.formEmailLabel', 'Email')}</label><input name="email" type="email" required placeholder="${cx('pages.join.formEmailPlaceholder', 'you@university.edu')}"></div>
-        <div class="field"><label>${cx('pages.join.formCountryLabel', 'Country')}</label><select name="country" required><option value="">${cx('pages.join.formCountryPlaceholder', 'Select…')}</option>${COUNTRIES.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('')}</select></div>
-        <div class="field"><label>${cx('pages.join.formInstitutionLabel', 'Institution')}</label><input name="institution" placeholder="${cx('pages.join.formInstitutionPlaceholder', 'University or company')}"></div>
-      </div>
-      <div class="field"><label>${cx('pages.join.formRoleLabel', 'I am a…')}</label><select name="role" required><option>${cx('pages.join.roleStudent', 'Student')}</option><option>${cx('pages.join.roleResearcher', 'Researcher')}</option><option>${cx('pages.join.roleEducator', 'Educator')}</option><option>${cx('pages.join.roleIndustry', 'Industry professional')}</option><option>${cx('pages.join.roleOther', 'Other')}</option></select></div>
-      <div class="field"><label>${cx('pages.join.formLookingLabel', 'What are you looking for?')}</label><textarea name="message" rows="4" placeholder="${cx('pages.join.formLookingPlaceholder', 'Learning, research, mentorship, opportunities, starting a chapter…')}"></textarea></div>
-      <button class="btn teal" type="submit">${cx('pages.join.formSubmitBtn', 'Join Quantum Africa')} <span class="ar" aria-hidden="true">→</span></button>
-      <div class="form-msg mt16" hidden></div>
-      <p class="small mt18" style="color:var(--ink-2);line-height:1.7">
-        ${cx('pages.join.googleFormHint', 'Prefer to sign up via Google Form?')}
-        <a class="link-a" href="https://forms.gle/b1qSiiniz5wYRZJo9" target="_blank" rel="noopener noreferrer">${cx('pages.join.googleFormCta', 'Fill in this Google Form →')}</a>
-      </p>
-    </form>
+    <h3>${cx('pages.join.formHead', 'Join the Quantum Africa network')}</h3>
+    <p class="small mt8">${cx('pages.join.formIntro', 'Membership is free. Tell us who you are and we will point you at the right chapter and people.')}</p>
+    <div class="panel mt24" style="background:color-mix(in srgb,var(--teal) 8%,transparent);border-color:color-mix(in srgb,var(--teal) 26%,var(--line))">
+      <h5>${cx('pages.join.formPanelHead', 'Membership form')}</h5>
+      <p class="small" style="margin:0 0 18px;color:var(--ink-2);line-height:1.7">${cx('pages.join.formPanelNote', 'Sign up in a couple of minutes through our Google Form. We will then connect you with your national chapter and the people working on what matters to you.')}</p>
+      <a class="btn teal" href="https://forms.gle/b1qSiiniz5wYRZJo9" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${cx('pages.join.altBtn', 'Open the Google Form')} <span class="ar" aria-hidden="true">→</span></a>
+    </div>
   </div>
   <aside>
-    <div class="panel" style="background:color-mix(in srgb,var(--teal) 8%,transparent);border-color:color-mix(in srgb,var(--teal) 26%,var(--line))">
-      <h5 style="margin-bottom:6px">${cx('pages.join.altHeadline', 'Join via Google Form')}</h5>
-      <p class="small" style="margin:0 0 14px;color:var(--ink-2)">${cx('pages.join.altSub', 'If the on-page form doesn\u2019t work for you, fill in the Google Form below instead.')}</p>
-      <a class="btn teal" href="https://forms.gle/b1qSiiniz5wYRZJo9" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${cx('pages.join.altBtn', 'Open Google Form →')}</a>
-    </div>
-    <div class="panel mt16"><h5>${cx('pages.join.getHead', 'What you get')}</h5>
+    <div class="panel"><h5>${cx('pages.join.getHead', 'What you get')}</h5>
       <ul style="margin:0;padding-left:18px;font-size:.88rem;color:var(--ink-2);line-height:1.9">
         <li>${cx('pages.join.getItem1', 'Invitations to every webinar and workshop')}</li>
         <li>${cx('pages.join.getItem2', 'Opportunities circulated before deadlines')}</li>
