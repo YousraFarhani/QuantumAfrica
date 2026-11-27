@@ -3829,7 +3829,6 @@ ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
 <section class="phero"><div class="wrap">
   <div class="sec-idx"><span class="lbl">${cx('pages.join.heroEyebrow', 'Join')}</span><i></i></div>
   <h1 class="mt24">${cx('pages.join.heroTitle', "Be Part of Africa's Quantum Future.")}</h1>
-  <p class="lede">${cx('pages.join.heroLede', 'Free. Tell us who you are and we will point you at the right chapter and people.')}</p>
 </div></section>
 <section class="sec"><div class="wrap"><div class="side">
   <div>
@@ -3838,7 +3837,7 @@ ${crumb([{t:'Home',h:'#/'},{t:'Join'}])}
     <div class="panel mt24" style="background:color-mix(in srgb,var(--teal) 8%,transparent);border-color:color-mix(in srgb,var(--teal) 26%,var(--line))">
       <h5>${cx('pages.join.formPanelHead', 'Membership form')}</h5>
       <p class="small" style="margin:0 0 18px;color:var(--ink-2);line-height:1.7">${cx('pages.join.formPanelNote', 'Sign up in a couple of minutes through our Google Form. We will then connect you with your national chapter and the people working on what matters to you.')}</p>
-      <a class="btn teal" href="https://forms.gle/b1qSiiniz5wYRZJo9" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${cx('pages.join.altBtn', 'Open the Google Form')} <span class="ar" aria-hidden="true">→</span></a>
+      <a class="btn teal" href="https://forms.gle/b1qSiiniz5wYRZJo9" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">${cx('pages.join.altBtn', 'Join us from here')} <span class="ar" aria-hidden="true">→</span></a>
     </div>
   </div>
   <aside>
